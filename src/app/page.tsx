@@ -146,36 +146,19 @@ export default function LiveMesh() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-gray-500 mb-4">
-                Capture key states as you iterate. Snap live previews or drag in assets to keep everyone aligned on what ships next.
+              <p className="text-xs text-gray-500 mb-3">
+                Capture key states as you iterate. Drag in mockups or auto-generate previews to share progress with your team.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {screenshotTiles.map((shot, index) => (
-                  <div key={shot.label} className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden">
-                    <div className="relative w-full aspect-video">
-                      <Image
-                        src={shot.path}
-                        alt={`${shot.label} screenshot`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                        priority={index === 0}
-                      />
-                    </div>
-                    <div className="px-3 py-2">
-                      <div className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">{shot.label}</div>
-                      <p className="text-xs text-gray-500">{shot.description}</p>
-                    </div>
+              <div className="grid grid-cols-2 gap-3">
+                {["Hero concept", "Dashboard", "Mobile"].map((label) => (
+                  <div
+                    key={label}
+                    className="aspect-video w-full rounded-xl border border-dashed border-gray-300 bg-gray-50 p-3 flex flex-col justify-between"
+                  >
+                    <div className="text-[10px] uppercase tracking-wide text-gray-400">{label}</div>
+                    <div className="text-xs text-gray-500 text-right">+ Add screenshot</div>
                   </div>
                 ))}
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <Button variant="secondary" size="sm" className="rounded-2xl text-xs">
-                  Upload custom
-                </Button>
-                <Button size="sm" className="rounded-2xl text-xs">
-                  Capture current preview
-                </Button>
               </div>
             </CardContent>
           </Card>
@@ -262,35 +245,20 @@ export default function LiveMesh() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-gray-500 mb-4">
+              <p className="text-xs text-gray-500 mb-3">
                 LiveMesh connects to the tools you already rely on. Link AI builders, repos, and collaboration hubs in seconds.
               </p>
-              <div className="grid grid-cols-2 gap-3">
-                {integrationLogos.map((integration) => (
-                  <div
-                    key={integration.name}
-                    className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-3 shadow-sm"
-                  >
-                    <div className="relative h-10 w-10 overflow-hidden rounded-lg">
-                      <Image
-                        src={integration.path}
-                        alt={`${integration.name} logo`}
-                        fill
-                        className="object-contain"
-                        sizes="40px"
-                      />
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">{integration.name}</div>
-                      <p className="text-[11px] text-gray-500">Connected</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3">
-                <Button variant="secondary" className="rounded-2xl text-xs">
-                  Manage integrations
-                </Button>
+              <div className="flex flex-wrap gap-2">
+                <Badge className="rounded-xl bg-black text-white">GitHub</Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  OpenAI Codex
+                </Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  Slack
+                </Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  Linear
+                </Badge>
               </div>
             </CardContent>
           </Card>
