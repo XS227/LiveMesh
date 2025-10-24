@@ -18,6 +18,8 @@ import {
   Github,
   ShieldCheck,
   Eye,
+  Images,
+  Sparkles,
 } from "lucide-react";
 
 function OptionRow({
@@ -110,6 +112,30 @@ export default function LiveMesh() {
               </p>
             </CardContent>
           </Card>
+
+          <Card className="rounded-2xl border-gray-200">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Images className="h-4 w-4" /> Screenshots
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-gray-500 mb-3">
+                Capture key states as you iterate. Drag in mockups or auto-generate previews to share progress with your team.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {["Hero concept", "Dashboard", "Mobile"].map((label) => (
+                  <div
+                    key={label}
+                    className="aspect-video w-full rounded-xl border border-dashed border-gray-300 bg-gray-50 p-3 flex flex-col justify-between"
+                  >
+                    <div className="text-[10px] uppercase tracking-wide text-gray-400">{label}</div>
+                    <div className="text-xs text-gray-500 text-right">+ Add screenshot</div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         {/* RIGHT: Minimal options, collapsed by default */}
@@ -185,11 +211,37 @@ export default function LiveMesh() {
               </Accordion>
             </CardContent>
           </Card>
+
+          <Card className="rounded-2xl border-gray-200">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Sparkles className="h-4 w-4" /> Integrations
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-gray-500 mb-3">
+                LiveMesh connects to the tools you already rely on. Link AI builders, repos, and collaboration hubs in seconds.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge className="rounded-xl bg-black text-white">GitHub</Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  OpenAI Codex
+                </Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  Slack
+                </Badge>
+                <Badge variant="secondary" className="rounded-xl">
+                  Linear
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
         </section>
       </main>
 
       <footer className="max-w-6xl mx-auto mt-8 text-xs text-gray-500">
         <p>Focus: chat-first → immediate preview → optional connections. Minimal decisions, minimal friction.</p>
+        <p className="mt-1">© Copyright Setaei. All rights reserved.</p>
       </footer>
     </div>
   );
