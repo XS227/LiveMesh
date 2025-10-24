@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +19,8 @@ import {
   Github,
   ShieldCheck,
   Eye,
+  Images,
+  Sparkles,
 } from "lucide-react";
 
 function OptionRow({
@@ -49,6 +52,31 @@ function OptionRow({
 }
 
 export default function LiveMesh() {
+  const screenshotTiles = [
+    {
+      label: "Hero concept",
+      path: "/screenshots/landing.svg",
+      description: "Top of funnel hero with CTA layout",
+    },
+    {
+      label: "Dashboard",
+      path: "/screenshots/dashboard.svg",
+      description: "Analytics + collaboration overview",
+    },
+    {
+      label: "Mobile",
+      path: "/screenshots/mobile.svg",
+      description: "Responsive mobile-ready handoff",
+    },
+  ];
+
+  const integrationLogos = [
+    { name: "GitHub", path: "/logos/github.svg" },
+    { name: "OpenAI Codex", path: "/logos/openai-codex.svg" },
+    { name: "Slack", path: "/logos/slack.svg" },
+    { name: "Linear", path: "/logos/linear.svg" },
+  ];
+
   return (
     <div className="min-h-screen w-full bg-white text-gray-900 p-6 md:p-10">
       <header className="max-w-6xl mx-auto flex items-center justify-between">
@@ -108,6 +136,47 @@ export default function LiveMesh() {
               <p className="text-xs text-gray-500 mt-2">
                 No setup needed to try. You can deploy to a temporary *.livemesh.setaei.com subdomain.
               </p>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl border-gray-200">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Images className="h-4 w-4" /> Screenshots
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-gray-500 mb-4">
+                Capture key states as you iterate. Snap live previews or drag in assets to keep everyone aligned on what ships next.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {screenshotTiles.map((shot, index) => (
+                  <div key={shot.label} className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden">
+                    <div className="relative w-full aspect-video">
+                      <Image
+                        src={shot.path}
+                        alt={`${shot.label} screenshot`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                    <div className="px-3 py-2">
+                      <div className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">{shot.label}</div>
+                      <p className="text-xs text-gray-500">{shot.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Button variant="secondary" size="sm" className="rounded-2xl text-xs">
+                  Upload custom
+                </Button>
+                <Button size="sm" className="rounded-2xl text-xs">
+                  Capture current preview
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </section>
@@ -185,11 +254,52 @@ export default function LiveMesh() {
               </Accordion>
             </CardContent>
           </Card>
+
+          <Card className="rounded-2xl border-gray-200">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Sparkles className="h-4 w-4" /> Integrations
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-gray-500 mb-4">
+                LiveMesh connects to the tools you already rely on. Link AI builders, repos, and collaboration hubs in seconds.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {integrationLogos.map((integration) => (
+                  <div
+                    key={integration.name}
+                    className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-3 shadow-sm"
+                  >
+                    <div className="relative h-10 w-10 overflow-hidden rounded-lg">
+                      <Image
+                        src={integration.path}
+                        alt={`${integration.name} logo`}
+                        fill
+                        className="object-contain"
+                        sizes="40px"
+                      />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">{integration.name}</div>
+                      <p className="text-[11px] text-gray-500">Connected</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3">
+                <Button variant="secondary" className="rounded-2xl text-xs">
+                  Manage integrations
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </section>
       </main>
 
       <footer className="max-w-6xl mx-auto mt-8 text-xs text-gray-500">
         <p>Focus: chat-first → immediate preview → optional connections. Minimal decisions, minimal friction.</p>
+        <p className="mt-1">© Copyright Setaei. All rights reserved.</p>
       </footer>
     </div>
   );
