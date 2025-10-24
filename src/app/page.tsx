@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,6 +52,31 @@ function OptionRow({
 }
 
 export default function LiveMesh() {
+  const screenshotTiles = [
+    {
+      label: "Hero concept",
+      path: "/screenshots/landing.svg",
+      description: "Top of funnel hero with CTA layout",
+    },
+    {
+      label: "Dashboard",
+      path: "/screenshots/dashboard.svg",
+      description: "Analytics + collaboration overview",
+    },
+    {
+      label: "Mobile",
+      path: "/screenshots/mobile.svg",
+      description: "Responsive mobile-ready handoff",
+    },
+  ];
+
+  const integrationLogos = [
+    { name: "GitHub", path: "/logos/github.svg" },
+    { name: "OpenAI Codex", path: "/logos/openai-codex.svg" },
+    { name: "Slack", path: "/logos/slack.svg" },
+    { name: "Linear", path: "/logos/linear.svg" },
+  ];
+
   return (
     <div className="min-h-screen w-full bg-white text-gray-900 p-6 md:p-10">
       <header className="max-w-6xl mx-auto flex items-center justify-between">
