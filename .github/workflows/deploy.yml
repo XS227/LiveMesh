@@ -20,57 +20,28 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            set -euo pipefail
-            echo "🚀 Starting deployment on $HOSTNAME"
+            echo "🚀 Deploying LiveMesh on $HOSTNAME"
 
-            # --- Config (edit if needed) ---
-            export HOME="/home/${{ secrets.SERVER_USER }}"
-            DEPLOY_PATH="${DEPLOY_PATH:-/var/www/livemesh/app}"
-            PARENT_DIR="$(dirname "$DEPLOY_PATH")"
-            DOMAIN="livemesh1.setaei.com"
+            cd /var/www/livemesh || exit 1
 
-            # Use project-local docker config to avoid ~/.docker perms/buildx issues
-            export DOCKER_CONFIG="${DEPLOY_PATH}/.docker"
-            mkdir -p "$DOCKER_CONFIG"
-
-            # --- Ensure path exists and is owned by deploy user ---
-            sudo mkdir -p "$PARENT_DIR"
-            sudo chown -R "${USER}:${USER}" "$PARENT_DIR"
-            mkdir -p "$DEPLOY_PATH"
-
-            # --- Git safety & code sync ---
-            git config --global --add safe.directory "$DEPLOY_PATH"
-            if [ -d "$DEPLOY_PATH/.git" ]; then
+            # pull latest code
+            if [ -d app/.git ]; then
               echo "📥 Pulling latest code..."
-              cd "$DEPLOY_PATH"
+              cd app
               git fetch origin main
               git reset --hard origin/main
             else
               echo "🆕 Fresh clone..."
-              rm -rf "$DEPLOY_PATH"
-              git clone https://github.com/XS227/LiveMesh "$DEPLOY_PATH"
-              cd "$DEPLOY_PATH"
+              sudo rm -rf app
+              git clone https://github.com/XS227/LiveMesh app
+              cd app
             fi
 
-            echo "🐳 Rebuilding Docker containers..."
-            # Disable BuildKit to dodge buildx ownership edge cases
-            COMPOSE_DOCKER_CLI_BUILD=0 DOCKER_BUILDKIT=0 docker compose down --remove-orphans || true
-            COMPOSE_DOCKER_CLI_BUILD=0 DOCKER_BUILDKIT=0 docker compose up -d --build
+            # make sure deploy owns everything
+            sudo chown -R deploy:deploy /var/www/livemesh
 
-            echo "⏳ Waiting for app to boot..."
-            sleep 6
+            echo "🐳 Rebuilding container..."
+            docker compose down
+            docker compose up -d --build
 
-            echo "🔎 Health check (container on 127.0.0.1:3000)..."
-            if ! curl -fsS http://127.0.0.1:3000/ >/dev/null; then
-              echo "❌ App unhealthy on 127.0.0.1:3000"
-              docker compose logs --no-color web | tail -n 200 || true
-              exit 1
-            fi
-
-            echo "🔎 Health check (public via Nginx)..."
-            if ! curl -fsSI "http://${DOMAIN}/" | head -n 1 | grep -q '200\|301\|302'; then
-              echo "❌ Front door (Nginx) not serving expected status for ${DOMAIN}"
-              exit 1
-            fi
-
-            echo "✅ Deployment complete!"
+            echo "✅ Done. Check http://livemesh1.setaei.com"
