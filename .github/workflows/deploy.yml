@@ -1,4 +1,5 @@
-name: Deploy LiveMesh
+name: Deploy LiveMesh to production server
+
 on:
   push:
     branches: [ main ]
@@ -6,10 +7,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Deploy via SSH
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to production server
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -18,48 +21,56 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             set -euo pipefail
-            echo "🚀 Deploying LiveMesh on $HOSTNAME"
+            echo "🚀 Starting deployment on $HOSTNAME"
 
-            # --- Config ---
+            # --- Config (edit if needed) ---
+            export HOME="/home/${{ secrets.SERVER_USER }}"
             DEPLOY_PATH="${DEPLOY_PATH:-/var/www/livemesh/app}"
-            export DOCKER_CONFIG="${DEPLOY_PATH}/.docker"   # project-local builder state
+            PARENT_DIR="$(dirname "$DEPLOY_PATH")"
+            DOMAIN="livemesh1.setaei.com"
+
+            # Use project-local docker config to avoid ~/.docker perms/buildx issues
+            export DOCKER_CONFIG="${DEPLOY_PATH}/.docker"
             mkdir -p "$DOCKER_CONFIG"
 
-            # --- Code sync ---
+            # --- Ensure path exists and is owned by deploy user ---
+            sudo mkdir -p "$PARENT_DIR"
+            sudo chown -R "${USER}:${USER}" "$PARENT_DIR"
+            mkdir -p "$DEPLOY_PATH"
+
+            # --- Git safety & code sync ---
+            git config --global --add safe.directory "$DEPLOY_PATH"
             if [ -d "$DEPLOY_PATH/.git" ]; then
-              echo "📥 Pulling latest..."
+              echo "📥 Pulling latest code..."
               cd "$DEPLOY_PATH"
               git fetch origin main
               git reset --hard origin/main
             else
               echo "🆕 Fresh clone..."
-              sudo mkdir -p "$(dirname "$DEPLOY_PATH")"
-              sudo chown -R $USER:$USER "$(dirname "$DEPLOY_PATH")"
               rm -rf "$DEPLOY_PATH"
               git clone https://github.com/XS227/LiveMesh "$DEPLOY_PATH"
               cd "$DEPLOY_PATH"
             fi
 
-            # --- Build & run ---
-            echo "🐳 Rebuild & start containers..."
-            # simplest/most compatible: disable BuildKit to avoid buildx perms
+            echo "🐳 Rebuilding Docker containers..."
+            # Disable BuildKit to dodge buildx ownership edge cases
             COMPOSE_DOCKER_CLI_BUILD=0 DOCKER_BUILDKIT=0 docker compose down --remove-orphans || true
             COMPOSE_DOCKER_CLI_BUILD=0 DOCKER_BUILDKIT=0 docker compose up -d --build
 
-            echo "⏳ Waiting for server to boot..."
-            sleep 5
+            echo "⏳ Waiting for app to boot..."
+            sleep 6
 
-            echo "🔎 Health check (container port 3000)..."
+            echo "🔎 Health check (container on 127.0.0.1:3000)..."
             if ! curl -fsS http://127.0.0.1:3000/ >/dev/null; then
               echo "❌ App unhealthy on 127.0.0.1:3000"
               docker compose logs --no-color web | tail -n 200 || true
               exit 1
             fi
 
-            echo "🔎 Health check (Nginx public host)..."
-            if ! curl -fsSI http://livemesh1.setaei.com/ | head -n 1 | grep -q '200\|301\|302'; then
-              echo "❌ Nginx/front-door not serving OK status"
+            echo "🔎 Health check (public via Nginx)..."
+            if ! curl -fsSI "http://${DOMAIN}/" | head -n 1 | grep -q '200\|301\|302'; then
+              echo "❌ Front door (Nginx) not serving expected status for ${DOMAIN}"
               exit 1
             fi
 
-            echo "✅ Deployment complete"
+            echo "✅ Deployment complete!"
