@@ -1,12 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import React from "react";
-
-declare module "react" {
-  interface CSSProperties {
-    [key: `--${string}`]: string | number;
-  }
-}
 
 export const metadata: Metadata = {
   title: "LiveMesh",
@@ -16,7 +11,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-slate-950 text-white antialiased">
+        <Script id="tailwind-config" strategy="beforeInteractive">
+          {`
+            tailwind.config = {
+              theme: {
+                extend: {
+                  fontFamily: {
+                    sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+                  },
+                },
+              },
+            };
+          `}
+        </Script>
+        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
+        {children}
+      </body>
     </html>
   );
 }
