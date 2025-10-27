@@ -29,45 +29,36 @@
     </style>
   </head>
   <body class="min-h-screen bg-gradient-to-b from-[#4338CA] via-[#3730A3] to-[#111827] text-white">
-    <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-16 px-6 py-16 lg:py-24">
-      <div class="flex flex-col items-center gap-12 lg:flex-row lg:items-start">
-        <div class="flex-1 space-y-6 text-center lg:text-left">
-          <span
-            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/80"
-          >
-            LiveMesh
-            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-            Ship in seconds
-          </span>
-          <h1 class="text-4xl font-semibold leading-tight md:text-5xl">
-            From idea to live website – in seconds.
-          </h1>
-          <p class="text-lg text-white/80 md:text-xl">
-            LiveMesh combines AI coding, automated deployment, and expert review to turn your thoughts into ready-to-use web
-            experiences.
-          </p>
-          <div class="flex flex-col items-center gap-4 text-sm text-white/70 lg:flex-row lg:items-center">
-            <button
-              class="h-12 rounded-full bg-gradient-to-r from-[#8B5CF6] via-[#6366F1] to-[#22D3EE] px-8 text-base font-semibold text-white shadow-lg shadow-indigo-500/40"
-            >
-              Try LiveMesh now
-            </button>
-            <p>Watch a live deployment in under 30 seconds.</p>
-          </div>
-        </div>
-        <div class="glass flex-1 rounded-[32px] border border-white/10">
+    <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-14 px-6 py-16 lg:gap-20 lg:py-24">
+      <header class="space-y-5 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/80">
+          LiveMesh Builder
+          <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+          Start instantly
+        </span>
+        <h1 class="text-4xl font-semibold leading-tight md:text-5xl">
+          Describe what you need and watch the page take shape.
+        </h1>
+        <p class="mx-auto max-w-2xl text-lg text-white/80 md:text-xl">
+          The LiveMesh builder launches right away so you can experiment, generate layouts, and polish copy without leaving the
+          screen.
+        </p>
+      </header>
+
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start">
+        <div class="order-1 flex-1 rounded-[32px] border border-white/10 bg-white/10 backdrop-blur lg:order-1">
           <div class="space-y-4 border-b border-white/10 p-10">
-            <h2 class="text-2xl font-semibold">See your idea come alive instantly</h2>
+            <h2 class="text-2xl font-semibold">Build your page right here</h2>
             <p class="text-sm text-white/70">
-              Live preview, auto-hosted builds, and human polish ensure every launch looks and feels professional.
+              Tweak the prompt, preview layout changes, and copy production-ready HTML without switching tabs.
             </p>
           </div>
           <div class="space-y-6 p-10">
             <div class="rounded-[24px] border border-white/10 bg-white text-left text-slate-900 shadow-[0_40px_80px_rgba(15,23,42,0.35)]">
               <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3 text-xs font-medium text-slate-500">
-                <span class="uppercase tracking-wide">Deployed live in 23 seconds</span>
+                <span class="uppercase tracking-wide">Live builder</span>
                 <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-600">
-                  Ready
+                  Ready to edit
                 </span>
               </div>
               <div class="grid gap-5 px-6 py-6 lg:grid-cols-2">
@@ -114,25 +105,34 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <section class="grid gap-6 lg:grid-cols-3">
-        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">1.</span>
-          <h3 class="mt-4 text-xl font-semibold text-white">Type your idea</h3>
-          <p class="mt-2 text-sm text-white/75">Describe what you imagine and LiveMesh handles the rest.</p>
+        <div class="order-2 space-y-6 text-left text-white/80 lg:order-2">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+            <h2 class="text-2xl font-semibold text-white">Launch-ready in minutes</h2>
+            <p class="mt-3 text-sm text-white/80">
+              Every prompt refresh updates the canvas and HTML preview instantly, so you can iterate before handing the code to
+              your team or deploying with LiveMesh hosting.
+            </p>
+          </div>
+          <div class="grid gap-4">
+            <div class="glass rounded-2xl border border-white/10 p-6 text-left">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white/90">1.</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">Type your idea</h3>
+              <p class="mt-2 text-sm text-white/75">Start with any thought and watch the layout adapt in the canvas.</p>
+            </div>
+            <div class="glass rounded-2xl border border-white/10 p-6 text-left">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white/90">2.</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">Generate variations</h3>
+              <p class="mt-2 text-sm text-white/75">Use Refine copy to explore new angles without losing your progress.</p>
+            </div>
+            <div class="glass rounded-2xl border border-white/10 p-6 text-left">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white/90">3.</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">Ship instantly</h3>
+              <p class="mt-2 text-sm text-white/75">Copy the HTML output or push straight to LiveMesh for a hosted version.</p>
+            </div>
+          </div>
         </div>
-        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">2.</span>
-          <h3 class="mt-4 text-xl font-semibold text-white">AI builds and deploys</h3>
-          <p class="mt-2 text-sm text-white/75">Code is generated, pushed, and hosted automatically.</p>
-        </div>
-        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">3.</span>
-          <h3 class="mt-4 text-xl font-semibold text-white">Expert review</h3>
-          <p class="mt-2 text-sm text-white/75">Our human team refines design, speed, and polish.</p>
-        </div>
-      </section>
+      </div>
     </div>
 
     <script>
