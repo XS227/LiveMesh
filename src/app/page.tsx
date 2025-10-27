@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Textarea } from "../components/ui/textarea";
 
 const DEFAULT_PROMPT = "A simple landing page for a personal portfolio";
@@ -72,24 +71,24 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
       }
       body {
         margin: 0;
-        padding: 48px 0 64px;
-        background: linear-gradient(180deg, #eef2ff 0%, #e0e7ff 100%);
+        padding: 56px 0 64px;
+        background: #f8fafc;
         color: #0f172a;
         display: flex;
         justify-content: center;
       }
       main.page {
-        width: min(720px, 92%);
+        width: min(900px, 92%);
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 48px;
       }
       section.hero {
         background: #ffffff;
-        border-radius: 24px;
-        padding: 48px;
+        border-radius: 28px;
+        padding: 56px;
         border: 1px solid rgba(15, 23, 42, 0.08);
-        box-shadow: 0 30px 60px rgba(79, 70, 229, 0.18);
+        box-shadow: 0 32px 60px rgba(15, 23, 42, 0.05);
       }
       .hero__badge {
         display: inline-flex;
@@ -97,8 +96,8 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
         gap: 8px;
         padding: 6px 12px;
         border-radius: 999px;
-        background: rgba(79, 70, 229, 0.1);
-        color: #4338ca;
+        background: rgba(15, 23, 42, 0.08);
+        color: #0f172a;
         font-weight: 600;
         font-size: 12px;
         letter-spacing: 0.08em;
@@ -106,14 +105,14 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
       }
       .hero h1 {
         margin: 24px 0 16px;
-        font-size: clamp(32px, 5vw, 44px);
-        line-height: 1.15;
+        font-size: clamp(34px, 5vw, 48px);
+        line-height: 1.1;
       }
       .hero p {
         margin: 0 0 32px;
         font-size: 18px;
         color: #334155;
-        line-height: 1.5;
+        line-height: 1.6;
       }
       .hero .actions {
         display: flex;
@@ -124,37 +123,37 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
         appearance: none;
         border: none;
         border-radius: 999px;
-        padding: 12px 24px;
+        padding: 12px 28px;
         font-weight: 600;
         font-size: 15px;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
       .hero .actions button.primary {
-        background: #4338ca;
+        background: #0f172a;
         color: #ffffff;
-        box-shadow: 0 16px 30px rgba(67, 56, 202, 0.35);
+        box-shadow: 0 18px 32px rgba(15, 23, 42, 0.18);
       }
       .hero .actions button.secondary {
         background: #ffffff;
-        color: #4338ca;
-        border: 1px solid rgba(67, 56, 202, 0.2);
+        color: #0f172a;
+        border: 1px solid rgba(15, 23, 42, 0.15);
       }
       .hero .actions button:hover {
         transform: translateY(-1px);
-        box-shadow: 0 18px 34px rgba(67, 56, 202, 0.4);
+        box-shadow: 0 20px 36px rgba(15, 23, 42, 0.18);
       }
       section.features {
         display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       }
       .feature {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
+        background: #ffffff;
+        border-radius: 24px;
         padding: 24px;
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        box-shadow: 0 20px 40px rgba(148, 163, 184, 0.2);
+        border: 1px solid rgba(148, 163, 184, 0.32);
+        box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
         display: grid;
         gap: 12px;
         align-content: start;
@@ -166,8 +165,8 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
         border-radius: 12px;
         align-items: center;
         justify-content: center;
-        background: rgba(67, 56, 202, 0.12);
-        color: #4338ca;
+        background: rgba(15, 23, 42, 0.08);
+        color: #0f172a;
         font-weight: 600;
         font-size: 14px;
       }
@@ -184,27 +183,27 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
       section.cta {
         background: #0f172a;
         color: #ffffff;
-        padding: 36px 40px;
-        border-radius: 24px;
+        padding: 40px 44px;
+        border-radius: 28px;
         display: grid;
         gap: 16px;
         align-content: start;
       }
       section.cta p {
         margin: 0;
-        color: rgba(241, 245, 249, 0.85);
+        color: rgba(241, 245, 249, 0.82);
         line-height: 1.6;
       }
       .cta__button {
         justify-self: start;
-        padding: 12px 24px;
+        padding: 12px 28px;
         border-radius: 999px;
         border: none;
-        background: #38bdf8;
+        background: #e2e8f0;
         color: #0f172a;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 18px 32px rgba(56, 189, 248, 0.35);
+        box-shadow: 0 12px 26px rgba(226, 232, 240, 0.2);
       }
       footer {
         text-align: center;
@@ -213,10 +212,10 @@ const createDocument = ({ heading, tagline, promptLabel, promptLower }: Document
       }
       @media (max-width: 640px) {
         section.hero {
-          padding: 32px 28px;
+          padding: 36px 28px;
         }
         section.cta {
-          padding: 28px;
+          padding: 32px;
         }
         .hero .actions {
           flex-direction: column;
@@ -298,88 +297,85 @@ export default function LiveMesh() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#4338CA] via-[#3730A3] to-[#111827] text-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-14 px-6 py-16 lg:gap-20 lg:py-24">
-        <header className="space-y-5 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/80">
-            LiveMesh Builder
-            <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            Start instantly
-          </span>
-          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Describe what you need and watch the page take shape.
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/80 md:text-xl">
-            The LiveMesh builder launches right away so you can experiment, generate layouts, and polish copy without leaving the
-            screen.
-          </p>
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-16 px-6 py-16 lg:px-12 lg:py-24">
+        <header className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
+          <div className="space-y-4">
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.35em] text-slate-400">
+              LiveMesh
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-400" aria-hidden />
+              Preview
+            </span>
+            <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl md:text-[56px]">
+              Big on clarity.
+              <br className="hidden sm:block" />
+              Minimal by default.
+            </h1>
+            <p className="max-w-xl text-base text-slate-500 sm:text-lg">
+              Iterate on structure and copy without distractions. Adjust the prompt, regenerate the layout, and keep everything
+              polished inside a single focused workspace.
+            </p>
+            <div className="hidden gap-3 sm:flex">
+              <Button onClick={handleGenerate} className="rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white">
+                Refresh preview
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={handleRefine}
+                className="rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700"
+              >
+                Refine copy
+              </Button>
+            </div>
+          </div>
+          <div className="relative w-full overflow-hidden rounded-[36px] border border-slate-200 bg-white shadow-[0_30px_60px_rgba(15,23,42,0.08)]">
+            <div className="absolute inset-x-8 top-6 flex items-center justify-between text-[11px] font-medium uppercase tracking-[0.28em] text-slate-400">
+              <span>Live preview</span>
+              <span>Static HTML</span>
+            </div>
+            <div className="flex h-[420px] w-full items-center justify-center p-8 pt-16 sm:h-[500px] sm:p-10">
+              <iframe
+                ref={frameRef}
+                title="Generated design preview"
+                className="h-full w-full rounded-[24px] border border-slate-200/80 bg-white shadow-[inset_0_0_0_1px_rgba(148,163,184,0.18)]"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </header>
 
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start">
-          <Card className="order-1 flex-1 rounded-[32px] border-white/10 bg-white/10 backdrop-blur lg:order-1">
-            <CardHeader className="space-y-4 text-left">
-              <CardTitle className="text-2xl font-semibold">Build your page right here</CardTitle>
-              <p className="text-sm text-white/70">
-                Tweak the prompt, preview layout changes, and copy production-ready HTML without switching tabs.
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="rounded-[24px] border border-white/10 bg-white text-left text-slate-900 shadow-[0_40px_80px_rgba(15,23,42,0.35)]">
-                <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3 text-xs font-medium text-slate-500">
-                  <span className="uppercase tracking-wide">Live builder</span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-600">
-                    Ready to edit
-                  </span>
-                </div>
-                <div className="grid gap-5 px-6 py-6 lg:grid-cols-2">
-                  <div className="space-y-3">
-                    <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">Prompt</label>
-                    <Textarea
-                      value={prompt}
-                      onChange={(event) => setPrompt(event.target.value)}
-                      placeholder="Describe the website you imagine..."
-                      className="min-h-[140px] rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 shadow-inner focus-visible:ring-0"
-                    />
-                    <div className="flex gap-2">
-                      <Button
-                        onClick={handleGenerate}
-                        className="flex-1 rounded-xl bg-slate-900 py-2 text-sm text-white hover:bg-slate-800"
-                      >
-                        Generate &amp; Preview
-                      </Button>
-                      <Button
-                        variant="secondary"
-                        className="flex-1 rounded-xl border border-slate-200 bg-white py-2 text-sm text-slate-900 hover:bg-slate-100"
-                        onClick={handleRefine}
-                      >
-                        Refine copy
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">Live preview</label>
-                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-                      <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2 text-[11px] text-slate-500">
-                        <span className="inline-block h-2.5 w-2.5 rounded-full bg-rose-400" />
-                        <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-300" />
-                        <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                        <span className="ml-auto font-medium text-slate-600">LiveMesh Preview</span>
-                      </div>
-                      <div className="bg-white p-4">
-                        <iframe
-                          ref={frameRef}
-                          title="Generated design preview"
-                          className="h-[22rem] w-full rounded-xl border border-slate-200 bg-white shadow-[inset_0_0_0_1px_rgba(148,163,184,0.35)] lg:h-[26rem]"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        <section className="grid gap-8 rounded-[32px] border border-slate-200/80 bg-white/80 p-8 shadow-[0_30px_60px_rgba(15,23,42,0.06)] backdrop-blur md:grid-cols-[minmax(0,1fr)_minmax(0,320px)] md:items-end">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Prompt</span>
+              <Textarea
+                value={prompt}
+                onChange={(event) => setPrompt(event.target.value)}
+                placeholder="A simple landing page for a personal portfolio"
+                className="min-h-[160px] rounded-[28px] border border-slate-200 bg-white px-5 py-4 text-base text-slate-700 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.2)] focus-visible:ring-0"
+              />
+            </div>
+            <p className="text-sm text-slate-400">
+              Use natural language to describe sections, tone, and layout. LiveMesh translates it into clean, accessible HTML that
+              updates instantly.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Button
+              onClick={handleGenerate}
+              className="rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
+            >
+              Refresh preview
+            </Button>
+            <Button
+              variant="secondary"
+              className="rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-600"
+              onClick={handleRefine}
+            >
+              Refine copy
+            </Button>
+          </div>
+        </section>
       </div>
     </div>
   );
