@@ -147,7 +147,7 @@ export default function LiveMesh() {
             Start instantly
           </span>
           <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Describe what you need and watch the page take shape.
+            Describe what you need and watch the page take shape..
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-white/80 md:text-xl">
             The LiveMesh builder launches right away so you can experiment, generate layouts, and polish copy without leaving the
