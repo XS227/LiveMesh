@@ -1,0 +1,23 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: livemesh-web
+    environment:
+      NODE_ENV: "production"
+      PORT: "3000"
+    expose:
+      - "3000" # only accessible within Docker network or via host proxy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - livemesh_net
+
+networks:
+  livemesh_net:
+    driver: bridge
