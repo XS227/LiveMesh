@@ -1,110 +1,252 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LiveMesh — Type → See → Ship</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-gray-900">
-  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="h-8 w-8 rounded-xl bg-black text-white grid place-items-center text-sm font-bold">LM</div>
-      <div>
-        <h1 class="text-xl font-semibold leading-tight">LiveMesh</h1>
-        <p class="text-xs text-gray-500 -mt-0.5">Type → See → Ship</p>
-      </div>
-    </div>
-    <span class="text-xs px-2 py-1 rounded-xl bg-gray-100">alpha</span>
-  </header>
-
-  <main class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <!-- Chat first -->
-    <section class="space-y-4">
-      <div class="rounded-2xl border border-gray-200">
-        <div class="p-4 pb-2 text-sm font-medium flex items-center gap-2">Describe what you want</div>
-        <div class="p-4 pt-2">
-          <textarea id="prompt" class="w-full border rounded-xl p-3 text-sm" rows="5" placeholder="A minimal landing page for a baby-care subscription, modern sans-serif, hero + features + pricing. Use Next.js + Tailwind."></textarea>
-          <div class="flex items-center gap-2 mt-2">
-            <button id="generateBtn" class="px-4 py-2 rounded-2xl bg-black text-white text-sm">Generate</button>
-            <button id="refineBtn" class="px-4 py-2 rounded-2xl bg-gray-100 text-sm">Refine</button>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LiveMesh — From idea to live website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(18px);
+      }
+      canvas {
+        image-rendering: optimizeQuality;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-[#4338CA] via-[#3730A3] to-[#111827] text-white">
+    <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-16 px-6 py-16 lg:py-24">
+      <div class="flex flex-col items-center gap-12 lg:flex-row lg:items-start">
+        <div class="flex-1 space-y-6 text-center lg:text-left">
+          <span
+            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/80"
+          >
+            LiveMesh
+            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+            Ship in seconds
+          </span>
+          <h1 class="text-4xl font-semibold leading-tight md:text-5xl">
+            From idea to live website – in seconds.
+          </h1>
+          <p class="text-lg text-white/80 md:text-xl">
+            LiveMesh combines AI coding, automated deployment, and expert review to turn your thoughts into ready-to-use web
+            experiences.
+          </p>
+          <div class="flex flex-col items-center gap-4 text-sm text-white/70 lg:flex-row lg:items-center">
+            <button
+              class="h-12 rounded-full bg-gradient-to-r from-[#8B5CF6] via-[#6366F1] to-[#22D3EE] px-8 text-base font-semibold text-white shadow-lg shadow-indigo-500/40"
+            >
+              Try LiveMesh now
+            </button>
+            <p>Watch a live deployment in under 30 seconds.</p>
           </div>
         </div>
-      </div>
-
-      <div class="rounded-2xl border border-gray-200">
-        <div class="p-4 pb-2 text-sm font-medium flex items-center gap-2">Instant mock preview</div>
-        <div class="p-4 pt-2">
-          <div class="aspect-video w-full bg-gray-50 border rounded-xl grid place-items-center">
-            <div class="text-center">
-              <div class="text-xs text-gray-400">(mock preview)</div>
-              <div id="previewTitle" class="font-medium mt-1">Your site appears here as you type</div>
-            </div>
+        <div class="glass flex-1 rounded-[32px] border border-white/10">
+          <div class="space-y-4 border-b border-white/10 p-10">
+            <h2 class="text-2xl font-semibold">See your idea come alive instantly</h2>
+            <p class="text-sm text-white/70">
+              Live preview, auto-hosted builds, and human polish ensure every launch looks and feels professional.
+            </p>
           </div>
-          <div class="flex gap-2 mt-3">
-            <button class="px-4 py-2 rounded-2xl bg-gray-100 text-sm">Open live preview</button>
-            <button class="px-4 py-2 rounded-2xl bg-black text-white text-sm">Ship</button>
-          </div>
-          <p class="text-xs text-gray-500 mt-2">Try it without setup. You can deploy to a temporary *.livemesh.setaei.com subdomain.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Options (advanced) -->
-    <section class="space-y-4">
-      <details class="rounded-2xl border border-gray-200">
-        <summary class="p-4 text-sm font-medium cursor-pointer">Options (advanced)</summary>
-        <div class="p-4 pt-2 space-y-4">
-          <div class="p-4 border rounded-2xl">
-            <div class="text-sm font-medium">Hosting</div>
-            <p class="text-xs text-gray-500 mt-1">Choose LiveMesh hosting or connect your server</p>
-            <div class="mt-3 space-y-2">
-              <button class="px-4 py-2 rounded-2xl bg-gray-100 text-sm w-full text-left">Use LiveMesh hosting</button>
-              <div>
-                <input class="w-full border rounded-xl p-2 text-sm" placeholder="ssh user@host" />
-                <button class="px-4 py-2 rounded-2xl bg-black text-white text-sm mt-2">Test connection</button>
+          <div class="space-y-6 p-10">
+            <div class="rounded-[24px] border border-white/10 bg-white text-left text-slate-900 shadow-[0_40px_80px_rgba(15,23,42,0.35)]">
+              <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3 text-xs font-medium text-slate-500">
+                <span class="uppercase tracking-wide">Deployed live in 23 seconds</span>
+                <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-600">
+                  Ready
+                </span>
+              </div>
+              <div class="grid gap-5 px-6 py-6 lg:grid-cols-2">
+                <div class="space-y-3">
+                  <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Prompt</label>
+                  <textarea
+                    id="prompt"
+                    class="min-h-[140px] w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 shadow-inner focus:outline-none"
+                    placeholder="Describe the website you imagine..."
+                  >A simple landing page for a personal portfolio</textarea>
+                  <div class="flex gap-2">
+                    <button
+                      id="generate"
+                      class="flex-1 rounded-xl bg-slate-900 py-2 text-sm text-white hover:bg-slate-800"
+                    >
+                      Generate &amp; Preview
+                    </button>
+                    <button
+                      id="refine"
+                      class="flex-1 rounded-xl border border-slate-200 bg-white py-2 text-sm text-slate-900 hover:bg-slate-100"
+                    >
+                      Refine copy
+                    </button>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Canvas preview</label>
+                  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                    <div class="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2 text-[11px] text-slate-500">
+                      <span class="inline-block h-2.5 w-2.5 rounded-full bg-rose-400"></span>
+                      <span class="inline-block h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+                      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                      <span class="ml-auto font-medium text-slate-600">LiveMesh Canvas</span>
+                    </div>
+                    <div class="bg-white p-4">
+                      <canvas id="previewCanvas" class="h-48 w-full rounded-xl border border-slate-200 bg-slate-100"></canvas>
+                    </div>
+                  </div>
+                  <div class="rounded-2xl bg-slate-900 px-5 py-4 text-[11px] leading-relaxed text-emerald-200 shadow-inner">
+                    <pre id="codeOutput" class="font-mono"></pre>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="p-4 border rounded-2xl">
-            <div class="text-sm font-medium">Domain & SSL</div>
-            <p class="text-xs text-gray-500 mt-1">Point A/AAAA/CNAME and issue SSL</p>
-            <input class="w-full border rounded-xl p-2 text-sm mt-2" placeholder="www.yourdomain.com" />
-            <div class="flex items-center gap-2 mt-2">
-              <button class="px-4 py-2 rounded-2xl bg-black text-white text-sm">Issue SSL</button>
-              <button class="px-4 py-2 rounded-2xl bg-gray-100 text-sm">DNS guide</button>
-            </div>
-          </div>
-
-          <div class="p-4 border rounded-2xl">
-            <div class="text-sm font-medium">Source control</div>
-            <p class="text-xs text-gray-500 mt-1">Connect GitHub for auto-deploy on push</p>
-            <input class="w-full border rounded-xl p-2 text-sm mt-2" placeholder="owner/repo or URL" />
-            <button class="px-4 py-2 rounded-2xl bg-gray-100 text-sm mt-2">Connect</button>
-          </div>
         </div>
-      </details>
-    </section>
-  </main>
+      </div>
 
-  <footer class="max-w-6xl mx-auto p-6 text-xs text-gray-500">
-    Focus: chat-first → immediate preview → optional connections. Minimal decisions, minimal friction.
-  </footer>
+      <section class="grid gap-6 lg:grid-cols-3">
+        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">1.</span>
+          <h3 class="mt-4 text-xl font-semibold text-white">Type your idea</h3>
+          <p class="mt-2 text-sm text-white/75">Describe what you imagine and LiveMesh handles the rest.</p>
+        </div>
+        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">2.</span>
+          <h3 class="mt-4 text-xl font-semibold text-white">AI builds and deploys</h3>
+          <p class="mt-2 text-sm text-white/75">Code is generated, pushed, and hosted automatically.</p>
+        </div>
+        <div class="glass rounded-3xl border border-white/10 p-10 text-center lg:text-left">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white/90">3.</span>
+          <h3 class="mt-4 text-xl font-semibold text-white">Expert review</h3>
+          <p class="mt-2 text-sm text-white/75">Our human team refines design, speed, and polish.</p>
+        </div>
+      </section>
+    </div>
 
-  <script>
-    const promptEl = document.getElementById('prompt');
-    const previewTitle = document.getElementById('previewTitle');
-    const gen = () => {
-      const text = (promptEl.value || '').trim();
-      previewTitle.textContent = text ? 'Mocking: ' + text.slice(0,120) : 'Your site appears here as you type';
-    };
-    promptEl.addEventListener('input', gen);
-    document.getElementById('generateBtn').addEventListener('click', gen);
-    document.getElementById('refineBtn').addEventListener('click', () => {
-      promptEl.value = (promptEl.value + ' — add hero, features, pricing, and contact.').trim();
-      gen();
-    });
-  </script>
-</body>
+    <script>
+      const promptEl = document.getElementById("prompt");
+      const canvas = document.getElementById("previewCanvas");
+      const codeOutput = document.getElementById("codeOutput");
+      const ctx = canvas.getContext("2d");
+
+      const escapeHtml = (value) =>
+        value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+
+      const wrapText = (context, text, maxWidth) => {
+        const words = text.split(/\s+/);
+        const lines = [];
+        let current = "";
+        for (const word of words) {
+          const test = current ? `${current} ${word}` : word;
+          const { width } = context.measureText(test);
+          if (width > maxWidth && current) {
+            lines.push(current);
+            current = word;
+          } else {
+            current = test;
+          }
+        }
+        if (current) lines.push(current);
+        return lines;
+      };
+
+      const baseHtml = `<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8" />\n    <title>LiveMesh Preview</title>\n  </head>\n  <body>\n    <h1>My Website</h1>\n    <p>Welcome to my website. This is a simple landing page created with LiveMesh.</p>\n    <button>Learn More</button>\n  </body>\n</html>`;
+
+      const draw = (prompt) => {
+        const dpr = window.devicePixelRatio || 1;
+        const width = canvas.clientWidth * dpr;
+        const height = canvas.clientHeight * dpr;
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+        }
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+        ctx.fillStyle = "#F8FAFC";
+        ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+        ctx.fillStyle = "#0F172A";
+        ctx.font = "700 18px 'Inter', system-ui";
+        ctx.fillText("My Website", 24, 48);
+
+        ctx.fillStyle = "#1E293B";
+        ctx.font = "400 14px 'Inter', system-ui";
+        const lines = wrapText(ctx, prompt, canvas.clientWidth - 48);
+        let textY = 78;
+        for (const line of lines) {
+          ctx.fillText(line, 24, textY);
+          textY += 20;
+        }
+
+        const buttonWidth = 160;
+        const buttonHeight = 40;
+        const buttonX = 24;
+        const buttonY = Math.min(textY + 12, canvas.clientHeight - buttonHeight - 24);
+        const radius = 12;
+        const r = Math.min(radius, buttonWidth / 2, buttonHeight / 2);
+        ctx.fillStyle = "#2563EB";
+        ctx.beginPath();
+        ctx.moveTo(buttonX + r, buttonY);
+        ctx.lineTo(buttonX + buttonWidth - r, buttonY);
+        ctx.quadraticCurveTo(buttonX + buttonWidth, buttonY, buttonX + buttonWidth, buttonY + r);
+        ctx.lineTo(buttonX + buttonWidth, buttonY + buttonHeight - r);
+        ctx.quadraticCurveTo(buttonX + buttonWidth, buttonY + buttonHeight, buttonX + buttonWidth - r, buttonY + buttonHeight);
+        ctx.lineTo(buttonX + r, buttonY + buttonHeight);
+        ctx.quadraticCurveTo(buttonX, buttonY + buttonHeight, buttonX, buttonY + buttonHeight - r);
+        ctx.lineTo(buttonX, buttonY + r);
+        ctx.quadraticCurveTo(buttonX, buttonY, buttonX + r, buttonY);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.font = "600 14px 'Inter', system-ui";
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillText("Explore", buttonX + 40, buttonY + 24);
+
+        ctx.fillStyle = "#E2E8F0";
+        ctx.fillRect(24, canvas.clientHeight - 64, canvas.clientWidth - 48, 2);
+        ctx.font = "400 12px 'Inter', system-ui";
+        ctx.fillStyle = "#475569";
+        ctx.fillText("LiveMesh Canvas Preview", 24, canvas.clientHeight - 36);
+      };
+
+      const buildHtml = (prompt) => `<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8" />\n    <title>${escapeHtml(prompt.slice(0, 60))}</title>\n    <link rel="stylesheet" href="style.css" />\n  </head>\n  <body>\n    <header>\n      <h1>${escapeHtml(prompt)}</h1>\n      <p>LiveMesh transformed your idea into a responsive landing experience.</p>\n    </header>\n    <main>\n      <section class="hero">\n        <p>${escapeHtml("Describe your value proposition and key call-to-action here.")}</p>\n        <button>Get Started</button>\n      </section>\n    </main>\n    <footer>© ${new Date().getFullYear()} LiveMesh Launchpad</footer>\n  </body>\n</html>`;
+
+      const render = (override) => {
+        const value = (override ?? promptEl.value).trim();
+        draw(value || "My Website");
+        codeOutput.textContent = value ? buildHtml(value) : baseHtml;
+      };
+
+      render();
+
+      promptEl.addEventListener("input", () => render());
+      document.getElementById("generate").addEventListener("click", () => render());
+      document.getElementById("refine").addEventListener("click", () => {
+        promptEl.value = `${promptEl.value.trim()} — polished hero, CTA, and testimonials`.trim();
+        render();
+      });
+
+      window.addEventListener("resize", () => render());
+    </script>
+  </body>
 </html>
