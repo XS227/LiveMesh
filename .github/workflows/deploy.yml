@@ -44,4 +44,4 @@ jobs:
             docker compose down
             docker compose up -d --build
 
-            echo "✅ Done. Check http://livemesh1.setaei.com"
+            echo "✅ Done. Check http://livemesh.setaei.com"
