@@ -556,6 +556,29 @@
       color: #666;
     }
 
+    .treatment-section .treatment-section-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .treatment-section .treatment-title {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .treatment-section .treatment-intro {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 12px;
+      line-height: 1.7;
+    }
+
+    .treatment-section .treatment-grid {
+      margin-top: 10px;
+    }
+
     .treatment-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1701,91 +1724,94 @@
     </section>
 
     <!-- TREATMENTS & PRICING -->
-    <section id="treatments" class="treatment-section">
-      <div class="treatment-section-inner">
-        <div class="eyebrow">Behandlinger & priser</div>
-        <h2 class="treatment-title">Enkle, trygge og forutsigbare behandlinger</h2>
-        <p class="treatment-intro">
-          Her ser du et utvalg av de mest etterspurte behandlingene hos Somi Klinikken. Alle
-          behandlinger starter med en medisinsk konsultasjon hvor vi sammen vurderer hva som
-          passer deg.
-        </p>
+    <section id="treatments" class="section section--soft treatment-section">
+      <div class="container">
+        <div class="treatment-section-inner">
+          <h2 class="treatment-title">Våre behandlinger</h2>
+          <p class="treatment-intro">
+            Velg en kategori for å se alle behandlingene, priser og varighet.
+          </p>
 
-        <div class="treatment-grid">
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">🖋️</div>
-            <h3>Microblading</h3>
-            <p>
-              Naturlige hårstrå med manuell teknikk for definert form og langvarig resultat.
-            </p>
-            <span>Fra kr&nbsp;645</span>
-          </article>
+          <div class="treatment-grid">
+            <a href="somi-behandling.html#microblading" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🖋️</div>
+              <h3>Microblading</h3>
+              <p>Naturlige, definerte bryn med hårstråteknikk.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">👁️</div>
-            <h3>Bryn &amp; vipper</h3>
-            <p>
-              Styling, farge og løft av bryn og vipper som fremhever øynene på en skånsom måte.
-            </p>
-            <span>Fra kr&nbsp;450</span>
-          </article>
+            <a href="somi-behandling.html#bryn-vipper" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">👁️</div>
+              <h3>Bryn &amp; vipper</h3>
+              <p>Form, farge, vippeløft og brow lamination.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">🌿</div>
-            <h3>Dermalogica hudpleie</h3>
-            <p>
-              Tilpassede hudprogrammer med profesjonelle produkter for glød, balanse og styrket hudbarriere.
-            </p>
-            <span>Fra kr&nbsp;850</span>
-          </article>
+            <a href="somi-behandling.html#dermalogica" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🌿</div>
+              <h3>Dermalogica</h3>
+              <p>Målrettede hudprogrammer for akne, pigment og aldring.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">✨</div>
-            <h3>Microneedling</h3>
-            <p>
-              Dypvirkende kollagenstimulering som jevner ut arr, porer og fine linjer over tid.
-            </p>
-            <span>Fra kr&nbsp;1&nbsp;900</span>
-          </article>
+            <a href="somi-behandling.html#hudpleie" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">✨</div>
+              <h3>Hudpleie</h3>
+              <p>PRX, peelinger, klassisk ansiktsbehandling og LED-lys.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">⚡</div>
-            <h3>Laser hårfjerning</h3>
-            <p>
-              Effektiv og skånsom reduksjon av uønsket hår med moderne diodelaser-teknologi.
-            </p>
-            <span>Fra kr&nbsp;690</span>
-          </article>
+            <a href="somi-behandling.html#laser-tattoo-removal" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">💫</div>
+              <h3>Laser tattoo removal</h3>
+              <p>Skånsom fjerning av tatovering og PMU.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">🌙</div>
-            <h3>Pigmentreduksjon</h3>
-            <p>
-              Målrettede laserbehandlinger som lysner ujevn pigmentering og solskader.
-            </p>
-            <span>Fra kr&nbsp;1&nbsp;200</span>
-          </article>
+            <a href="somi-behandling.html#permanent-makeup" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">💄</div>
+              <h3>Permanent makeup</h3>
+              <p>Lipblush, eyeliner, powderbrows og mer.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">🔌</div>
-            <h3>Elektrolyse</h3>
-            <p>
-              Permanent hårfjerning i små områder for presis og varig reduksjon av hårvekst.
-            </p>
-            <span>Fra kr&nbsp;450</span>
-          </article>
+            <a href="somi-behandling.html#harfjerning-voksing" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🕯️</div>
+              <h3>Hårfjerning &amp; voksing</h3>
+              <p>Brasiliansk, ansikt, kroppsvoks og alkaline.</p>
+            </a>
 
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">📝</div>
-            <h3>Konsultasjon</h3>
-            <p>
-              Kartlegging av mål, helse og forventninger slik at vi sammen finner riktig behandlingsplan.
-            </p>
-            <span>Inkludert ved de fleste behandlinger</span>
-          </article>
+            <a href="somi-behandling.html#konsultasjon" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🗨️</div>
+              <h3>Konsultasjon</h3>
+              <p>Gratis veiledning før behandling og hudanalyse.</p>
+            </a>
+
+            <a href="somi-behandling.html#laser-pakkepriser" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🎯</div>
+              <h3>Laser – pakker</h3>
+              <p>Permanent hårfjerning i serier med pakkepris.</p>
+            </a>
+
+            <a href="somi-behandling.html#laser-pigmentreduksjon" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🌙</div>
+              <h3>Laser pigmentreduksjon</h3>
+              <p>Behandling av pigmentflekker og solskader.</p>
+            </a>
+
+            <a href="somi-behandling.html#laser-harfjerning" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">⚡</div>
+              <h3>Laser – hårfjerning</h3>
+              <p>Enkeltbehandlinger for kropp og ansikt.</p>
+            </a>
+
+            <a href="somi-behandling.html#microneedling" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🪡</div>
+              <h3>Microneedling</h3>
+              <p>Strammere hud, jevnere tekstur og glød.</p>
+            </a>
+
+            <a href="somi-behandling.html#elektrolyse" class="treatment-card">
+              <div class="treatment-icon" aria-hidden="true">🔌</div>
+              <h3>Elektrolyse</h3>
+              <p>Permanent hårfjerning hår for hår.</p>
+            </a>
+          </div>
         </div>
-
-        <!-- TODO: lenk til egen pris-side når du bygger multipage -->
       </div>
     </section>
 
