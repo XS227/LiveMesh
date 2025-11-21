@@ -550,76 +550,140 @@
       margin-top: 8px;
     }
 
-    /* Team */
+    /* Team (SOMI) */
 
-    .team-grid {
+    .somi-team {
+      padding: 80px 20px;
+      background: #050505;
+      color: #111;
+    }
+
+    .somi-team-inner {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .somi-team-inner .section-header {
+      grid-column: 1 / -1;
+      color: #f5f5f5;
+    }
+
+    .somi-team-inner .section-header p,
+    .somi-team-inner .eyebrow {
+      color: #cccccc;
     }
 
     .team-card {
-      border-radius: 22px;
-      background: #fff;
-      border: 1px solid rgba(227, 215, 200, 0.9);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
-      padding: 18px 18px 16px;
+      background: #f3f3f3;
+      border-radius: 40px;
+      padding: 32px 26px 28px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      align-items: center;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      gap: 12px;
     }
 
-    .team-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    }
-
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 16px;
-      background: #ccc;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .team-meta {
+    /* SOMI-formen + tynne bevegelige linjer */
+    .team-image-orbit {
+      width: 230px;
+      height: 270px;
+      position: relative;
+      margin-bottom: 8px;
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      align-items: center;
+      justify-content: center;
     }
 
-    .team-meta h3 {
-      font-size: 18px;
-      margin: 0;
+    /* bevegelig linje rundt formen */
+    .team-image-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      animation: orbit-spin 10s linear infinite;
+    }
+
+    /* selve bildet i samme form */
+    .team-image-mask {
+      width: 86%;
+      height: 86%;
+      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-image-mask img {
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      transform: translateY(6%);
+    }
+
+    /* animasjon */
+    @keyframes orbit-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* tekst og knapp */
+    .team-name {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 6px 0 4px;
     }
 
     .team-role {
-      font-size: 13px;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .team-text {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: #333;
+      margin: 0;
+    }
+
+    .btn-book {
+      align-self: stretch;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #111;
+      font-size: 0.9rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      text-decoration: none;
+      color: #111;
+      background: transparent;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
     }
 
-    .team-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .team-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .team-tag {
-      padding: 6px 10px;
-      border-radius: 12px;
-      background: rgba(200, 155, 118, 0.12);
-      color: #8b623d;
-      font-size: 12px;
-      border: 1px solid rgba(200, 155, 118, 0.2);
+    .btn-book:hover {
+      background: #111;
+      color: #f5f5f5;
+      transform: translateY(-1px);
     }
 
     /* Testimonials */
@@ -960,7 +1024,6 @@
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
-      .team-grid,
       .faq-grid,
       .contact-grid,
       .footer-grid {
@@ -1029,10 +1092,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .team-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .usp-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1049,7 +1108,6 @@
       }
 
       .treatment-grid,
-      .team-grid,
       .usp-grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -1391,8 +1449,8 @@
     </section>
 
     <!-- TEAM / EMPLOYEES -->
-    <section id="team" class="section">
-      <div class="container">
+    <section id="team" class="somi-team">
+      <div class="somi-team-inner">
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Teamet</div>
@@ -1405,67 +1463,65 @@
           </p>
         </div>
 
-        <div class="team-grid">
-          <article class="team-card reveal">
-            <div
-              class="team-photo"
-              style="background-image: url('https://images.pexels.com/photos/3825538/pexels-photo-3825538.jpeg?auto=compress&cs=tinysrgb&w=800');"
-            ></div>
-            <div class="team-meta">
-              <div class="team-role">Medisinsk ansvarlig</div>
-              <h3>Katarina</h3>
+        <article class="team-card reveal">
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
+              <img
+                src="https://images.pexels.com/photos/3825538/pexels-photo-3825538.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Katarina"
+              />
             </div>
-            <p class="team-desc">
-              Autorisert sykepleier med spesialisering i estetiske injeksjoner. Står for
-              medisinsk vurdering, behandlingsplaner og trygg gjennomføring.
-            </p>
-            <div class="team-tags">
-              <span class="team-tag">Injeksjoner</span>
-              <span class="team-tag">Konsultasjon</span>
-              <span class="team-tag">Oppfølging</span>
-            </div>
-          </article>
+          </div>
+          <div class="team-role">Medisinsk ansvarlig</div>
+          <div class="team-name">Katarina</div>
+          <p class="team-text">
+            Autorisert sykepleier med spesialisering i estetiske injeksjoner. Står for
+            medisinsk vurdering, behandlingsplaner og trygg gjennomføring.
+          </p>
+          <a
+            href="https://somi.bestille.no"
+            class="btn-book"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Bestill time hos Katarina</a
+          >
+        </article>
 
-          <article class="team-card reveal">
-            <div
-              class="team-photo"
-              style="background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800');"
-            ></div>
-            <div class="team-meta">
-              <div class="team-role">Hudterapeut</div>
-              <h3>Maria</h3>
+        <article class="team-card reveal">
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
+              <img
+                src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Maria"
+              />
             </div>
-            <p class="team-desc">
-              Utfører hudbehandlinger, microneedling og kjemisk peel. Skreddersyr hjemmepleie
-              og kurforløp for å sikre stabile resultater over tid.
-            </p>
-            <div class="team-tags">
-              <span class="team-tag">Hudhelse</span>
-              <span class="team-tag">Microneedling</span>
-              <span class="team-tag">Peel</span>
-            </div>
-          </article>
+          </div>
+          <div class="team-role">Hudterapeut</div>
+          <div class="team-name">Maria</div>
+          <p class="team-text">
+            Utfører hudbehandlinger, microneedling og kjemisk peel. Skreddersyr hjemmepleie og
+            kurforløp for å sikre stabile resultater over tid.
+          </p>
+          <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hudtime</a>
+        </article>
 
-          <article class="team-card reveal">
-            <div
-              class="team-photo"
-              style="background-image: url('https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=800');"
-            ></div>
-            <div class="team-meta">
-              <div class="team-role">Koordinator</div>
-              <h3>Emil</h3>
+        <article class="team-card reveal">
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
+              <img
+                src="https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Emil"
+              />
             </div>
-            <p class="team-desc">
-              Hjelper deg med booking, påminnelser og praktiske spørsmål. Sørger for smidig
-              flyt mellom konsultasjon, behandling og etterkontroll.
-            </p>
-            <div class="team-tags">
-              <span class="team-tag">Booking</span>
-              <span class="team-tag">Kundeservice</span>
-              <span class="team-tag">Logistikk</span>
-            </div>
-          </article>
-        </div>
+          </div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-name">Emil</div>
+          <p class="team-text">
+            Hjelper deg med booking, påminnelser og praktiske spørsmål. Sørger for smidig flyt
+            mellom konsultasjon, behandling og etterkontroll.
+          </p>
+          <a href="mailto:post@somiklinikken.no" class="btn-book">Send forespørsel</a>
+        </article>
       </div>
     </section>
 
