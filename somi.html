@@ -551,133 +551,173 @@
     }
 
     /* Team (SOMI) */
-    .team-section {
-      padding: 60px 20px;
+
+    .somi-team {
+      padding: 80px 20px;
       background: #050505;
+      color: #111;
+    }
+
+    .somi-team-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .somi-team-inner .section-header {
+      grid-column: 1 / -1;
       color: #f5f5f5;
     }
 
-    .section-title {
-      text-align: center;
-      margin: 0 auto 40px;
-      max-width: 760px;
-      font-size: 2rem;
-      display: grid;
-      gap: 12px;
-    }
-
-    .section-title p {
-      color: #d7d7d7;
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-      justify-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+    .somi-team-inner .section-header p,
+    .somi-team-inner .eyebrow {
+      color: #cccccc;
     }
 
     .team-card {
-      text-align: center;
-      max-width: 350px;
-      display: grid;
-      gap: 12px;
-      color: #f5f5f5;
-    }
-
-    .team-img {
-      width: 100%;
-      border-radius: 20px;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* VIDEO-KORT – animert ramme */
-    .animated-border {
+      background: #f3f3f3;
+      border-radius: 40px;
+      padding: 32px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
       position: relative;
-      width: 100%;
-      padding: 8px;
-      border-radius: 20px;
       overflow: hidden;
-      background: #111;
+      gap: 12px;
     }
 
-    .animated-border::before {
+    /* SOMI-formen + tynne bevegelige linjer */
+    .team-image-orbit {
+      width: 230px;
+      height: 270px;
+      position: relative;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* bevegelig linje rundt formen */
+    .team-image-orbit::before {
       content: "";
       position: absolute;
-      inset: -2px;
-      border-radius: 20px;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 0.1)
-      );
-      z-index: -1;
-      animation: borderMove 8s linear infinite;
+      inset: 0;
+      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      animation: orbit-spin 10s linear infinite;
     }
 
-    @keyframes borderMove {
-      0% {
+    /* selve bildet i samme form */
+    .team-image-mask {
+      width: 86%;
+      height: 86%;
+      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-image-mask img {
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      transform: translateY(6%);
+    }
+
+    /* animasjon */
+    @keyframes orbit-spin {
+      from {
         transform: rotate(0deg);
       }
-      100% {
+      to {
         transform: rotate(360deg);
       }
     }
 
-    .video-inner {
-      border-radius: 14px;
-      overflow: hidden;
-      background: #000;
-    }
-
+    /* tekst og knapp */
     .team-name {
-      margin: 6px 0 2px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #f5f5f5;
+      margin: 6px 0 4px;
     }
 
     .team-role {
-      color: #b3b3b3;
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      letter-spacing: 0.06em;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: #555;
     }
 
     .team-text {
-      color: #d7d7d7;
-      line-height: 1.6;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: #333;
       margin: 0;
     }
 
-    .btn-book {
-      display: inline-flex;
-      justify-content: center;
+    .team-actions {
+      width: 100%;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-book {
+      flex: 1;
+      text-align: center;
+      padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid #f5f5f5;
+      border: 1px solid #111;
       font-size: 0.9rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #f5f5f5;
+      color: #111;
       background: transparent;
       transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
     }
 
     .btn-book:hover {
-      background: #f5f5f5;
-      color: #0f0f0f;
+      background: #111;
+      color: #f5f5f5;
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #111;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      background: #fff;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .btn-icon:hover {
+      background: #111;
+      color: #f5f5f5;
       transform: translateY(-1px);
     }
 
@@ -1482,93 +1522,174 @@
     </section>
 
     <!-- TEAM / EMPLOYEES -->
-    <section id="team" class="team-section">
-      <div class="section-title reveal">
-        <div class="eyebrow">Teamet</div>
-        <h2>Et lite team med stor omsorg</h2>
-        <p>
-          Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
-          veiledning, presise behandlinger og god oppfølging – fra første kontakt til
-          etterkontroll.
-        </p>
-      </div>
+    <section id="team" class="somi-team">
+      <div class="somi-team-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Teamet</div>
+            <h2>Møt teamet – og se oss i aksjon</h2>
+          </div>
+          <p>
+            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
+            veiledning, presise behandlinger og god oppfølging – og nå kan du også få et
+            glimt bak kulissene fra klinikken.
+          </p>
+        </div>
 
-      <div class="team-grid">
-        <article class="team-card reveal">
+        <article class="team-card video-card reveal">
           <div class="animated-border">
             <div class="video-inner">
+              <div
+                class="fb-video"
+                data-href="https://www.facebook.com/share/r/14MXkw5h77S/"
+                data-show-text="false"
+                data-width="100%"
+              ></div>
+            </div>
+          </div>
+          <div class="team-name">Somi Klinikken</div>
+          <div class="team-role">Et lite innblikk bak kulissene</div>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
               <img
-                class="team-img"
                 src="https://somi.setaei.com/img/katarina.png"
                 alt="Katarina"
               />
             </div>
           </div>
-          <div class="team-name">Katarina</div>
           <div class="team-role">Eier og daglig leder</div>
+          <div class="team-name">Katarina</div>
           <p class="team-text">
             Perfeksjonist med 11 års erfaring i permanent makeup og en sterk lidenskap for
             faget. Fokuserer på naturlige resultater som smelter sammen med ditt eget
             utgangspunkt.
           </p>
-          <a
-            href="https://somi.bestille.no"
-            class="btn-book"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Bestill time hos Katarina</a
-          >
+          <div class="team-actions">
+            <a
+              href="https://somi.bestille.no"
+              class="btn-book"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Bestill time hos Katarina</a
+            >
+            <a
+              href="https://www.instagram.com/somiklinikken"
+              class="btn-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Katarina på Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zm5.25-3.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+                />
+              </svg>
+            </a>
+          </div>
         </article>
 
         <article class="team-card reveal">
-          <div class="animated-border">
-            <div class="video-inner">
-              <img class="team-img" src="https://somi.setaei.com/img/elina.png" alt="Elina" />
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
+              <img
+                src="https://somi.setaei.com/img/elina.png"
+                alt="Elina"
+              />
             </div>
           </div>
-          <div class="team-name">Elina</div>
           <div class="team-role">Autorisert sykepleier</div>
+          <div class="team-name">Elina</div>
           <p class="team-text">
             Sykepleier med 12 års erfaring innen kosmetisk medisin. Prioriterer trygghet,
             presisjon og naturlige resultater i hud- og injeksjonsbehandlinger.
           </p>
-          <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Elina</a>
+          <div class="team-actions">
+            <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Elina</a>
+            <a
+              href="https://www.instagram.com/somiklinikken"
+              class="btn-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Elina på Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zm5.25-3.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+                />
+              </svg>
+            </a>
+          </div>
         </article>
 
         <article class="team-card reveal">
-          <div class="animated-border">
-            <div class="video-inner">
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
               <img
-                class="team-img"
                 src="https://somi.setaei.com/img/arianna.png"
                 alt="Arianna"
               />
             </div>
           </div>
-          <div class="team-name">Arianna</div>
           <div class="team-role">Laserspesialist</div>
+          <div class="team-name">Arianna</div>
           <p class="team-text">
             Utdannet helsepersonell med videreutdanning som laserspesialist. Lidenskapelig opptatt
             av brynstyling, voksing og ansiktsbehandlinger, og utvikler seg kontinuerlig innen
             flere behandlingsområder.
           </p>
-          <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Arianna</a>
+          <div class="team-actions">
+            <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Arianna</a>
+            <a
+              href="https://www.instagram.com/somiklinikken"
+              class="btn-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Arianna på Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zm5.25-3.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+                />
+              </svg>
+            </a>
+          </div>
         </article>
 
         <article class="team-card reveal">
-          <div class="animated-border">
-            <div class="video-inner">
-              <img class="team-img" src="https://somi.setaei.com/img/emma.png" alt="Emma" />
+          <div class="team-image-orbit">
+            <div class="team-image-mask">
+              <img
+                src="https://somi.setaei.com/img/emma.png"
+                alt="Emma"
+              />
             </div>
           </div>
-          <div class="team-name">Emma</div>
           <div class="team-role">Hudterapeut</div>
+          <div class="team-name">Emma</div>
           <p class="team-text">
             Utdannet hudterapeut med fem års erfaring. Dyktig på vipper, bryn og å forbedre
             ulike hudtilstander, og tilbyr hudpleie, vipper, brynstyling, permanent makeup og
             massasje.
           </p>
-          <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Emma</a>
+          <div class="team-actions">
+            <a href="mailto:post@somiklinikken.no" class="btn-book">Bestill hos Emma</a>
+            <a
+              href="https://www.instagram.com/somiklinikken"
+              class="btn-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Emma på Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zm5.25-3.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+                />
+              </svg>
+            </a>
+          </div>
         </article>
       </div>
     </section>
