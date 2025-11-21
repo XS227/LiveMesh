@@ -1306,12 +1306,36 @@
             </p>
           </div>
 
-          <div class="hero-somi-ai__visual reveal" aria-hidden="true">
+          <div class="hero-somi-ai__visual">
             <div class="hero-somi-ai__blob"></div>
-            <div class="hero-somi-ai__line hero-somi-ai__line--left"></div>
-            <div class="hero-somi-ai__line hero-somi-ai__line--right"></div>
-            <div class="hero-somi-ai__face-outline hero-somi-ai__face-outline--left"></div>
-            <div class="hero-somi-ai__face-outline hero-somi-ai__face-outline--right"></div>
+
+            <svg class="hero-somi-ai__face-svg" viewBox="0 0 200 400" aria-hidden="true">
+              <!-- Venstre profil -->
+              <path
+                class="hero-somi-ai__face-line"
+                d="M40 40
+                   C70 70, 60 120, 80 150
+                   C95 170, 95 195, 80 210
+                   C65 225, 65 245, 80 260
+                   C95 275, 90 300, 70 325
+                   C55 345, 55 365, 60 380"
+              />
+              <!-- Høyre profil -->
+              <path
+                class="hero-somi-ai__face-line"
+                d="M140 60
+                   C125 80, 125 110, 140 130
+                   C155 150, 155 180, 140 200
+                   C125 220, 130 245, 145 265
+                   C160 285, 160 315, 150 340"
+              />
+              <!-- Øyevipp / lukket øye -->
+              <path
+                class="hero-somi-ai__face-line"
+                d="M135 140
+                   C142 145, 150 145, 157 140"
+              />
+            </svg>
           </div>
         </div>
       </div>
