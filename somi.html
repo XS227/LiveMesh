@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Somi Klinikken – Estetisk medisin i hjertet av Sandnes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Somi Klinikken tilbyr trygg og moderne estetisk medisin i hjertet av Sandnes. Injeksjonsbehandlinger, hudbehandlinger og medisinsk hudpleie."
+  />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --bg-alt: #fbf7f2;
+      --bg-dark: #222222;
+      --primary: #c89b76;
+      --primary-soft: #e6cfbb;
+      --text-main: #1f1f1f;
+      --text-muted: #6f6f6f;
+      --border-soft: #e3d7c8;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.08);
+      --max-width: 1120px;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout helpers */
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section--soft {
+      background: var(--bg-alt);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Playfair Display", serif;
+      margin: 0 0 0.4em;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0 0 0.75em;
+      line-height: 1.6;
+    }
+
+    /* Header / Nav */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 242, 236, 0.88);
+      border-bottom: 1px solid rgba(227, 215, 200, 0.7);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--primary);
+      transition: width var(--transition-fast);
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(157, 112, 74, 0.35);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(157, 112, 74, 0.45);
+      background: #b7855d;
+    }
+
+    .burger {
+      display: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-main);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .burger span::before,
+    .burger span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text-main);
+    }
+
+    .burger span::before {
+      top: -6px;
+    }
+
+    .burger span::after {
+      top: 6px;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 90px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 4.1vw, 48px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-text {
+      max-width: 500px;
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .hero-cta-row {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 18px 40px rgba(157, 112, 74, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #b7855d;
+      transform: translateY(-1px);
+      box-shadow: 0 22px 60px rgba(157, 112, 74, 0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-main);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-meta {
+      margin-top: 18px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      whitespace: nowrap;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: 40px;
+      background: radial-gradient(circle at top left, #fdf9f5, #efe0d1);
+      padding: 26px 26px 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      min-height: 340px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.9), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 18px 22px 22px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #ccc;
+      background-position: center;
+      background-size: cover;
+      /* TODO: sett inn ekte bilde her */
+      background-image: url("https://images.pexels.com/photos/3760851/pexels-photo-3760851.jpeg?auto=compress&cs=tinysrgb&w=800");
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(247, 242, 236, 0.9);
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-tag strong {
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: -4px;
+      top: 24px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(34, 34, 34, 0.94);
+      color: #fff;
+      font-size: 11px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      transform: translateY(0);
+      animation: floatY 5s ease-in-out infinite;
+    }
+
+    .hero-floating span {
+      opacity: 0.7;
+    }
+
+    @keyframes floatY {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Treatments */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-header p {
+      max-width: 480px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .treatment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .treatment-card {
+      border-radius: var(--radius-lg);
+      padding: 20px 18px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.8);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .treatment-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 188, 162, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .treatment-card h3 {
+      font-size: 17px;
+    }
+
+    .treatment-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    .treatment-card span {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .treatment-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
+      border-color: var(--primary-soft);
+      background: #fffdfb;
+    }
+
+    /* Why Somi */
+
+    .usp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .usp-item h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .usp-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Doctor / about */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-card {
+      border-radius: 38px;
+      padding: 24px 24px 18px;
+      background: linear-gradient(145deg, #fdf9f5, #f0e1d1);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo {
+      height: 260px;
+      border-radius: 26px;
+      background: #ccc;
+      background-position: center;
+      background-size: cover;
+      /* TODO: bytt til ekte bilde av Katarina */
+      background-image: url("https://images.pexels.com/photos/3760852/pexels-photo-3760852.jpeg?auto=compress&cs=tinysrgb&w=800");
+      margin-bottom: 18px;
+    }
+
+    .about-meta {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .about-card h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .about-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .about-tagline {
+      font-style: italic;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .about-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    /* Team */
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .team-card {
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 16px;
+      background: #ccc;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .team-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .team-meta h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .team-role {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .team-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .team-tag {
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: rgba(200, 155, 118, 0.12);
+      color: #8b623d;
+      font-size: 12px;
+      border: 1px solid rgba(200, 155, 118, 0.2);
+    }
+
+    /* Testimonials */
+
+    .quote-block {
+      border-radius: 32px;
+      padding: 28px 28px 24px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.04);
+      max-width: 520px;
+    }
+
+    .quote-mark {
+      font-size: 30px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .quote-text {
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .quote-author {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 2px;
+      color: #d3a46d;
+      font-size: 14px;
+    }
+
+    .testimonial-list {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .testimonial-item {
+      font-size: 13px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(227, 215, 200, 0.8);
+    }
+
+    .testimonial-item strong {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .faq-list {
+      border-radius: 30px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+    }
+
+    details {
+      border-bottom: 1px solid rgba(230, 220, 205, 0.9);
+      padding: 14px 18px;
+      font-size: 14px;
+    }
+
+    details:last-of-type {
+      border-bottom: none;
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+    }
+
+    .faq-icon {
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: transform var(--transition-fast);
+    }
+
+    details[open] .faq-icon {
+      transform: rotate(90deg);
+    }
+
+    details p {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* CTA / Contact */
+
+    .cta {
+      border-radius: 34px;
+      padding: 28px 26px;
+      background: #1f1f1f;
+      color: #f7f2ec;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .cta h2 {
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .cta p {
+      max-width: 420px;
+      color: rgba(248, 243, 238, 0.8);
+      font-size: 14px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-cta-primary {
+      background: #f7f2ec;
+      color: #111;
+      border-color: transparent;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-cta-primary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+    }
+
+    .btn-cta-ghost {
+      background: transparent;
+      border-color: rgba(248, 243, 238, 0.3);
+      color: #f8f3ee;
+    }
+
+    .btn-cta-ghost:hover {
+      background: rgba(248, 243, 238, 0.1);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 34px;
+      margin-top: 40px;
+    }
+
+    .contact-card {
+      border-radius: 26px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      padding: 22px 22px 20px;
+      font-size: 14px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-card h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .contact-row {
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .contact-row strong {
+      display: inline-block;
+      min-width: 82px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .map-placeholder {
+      border-radius: 26px;
+      background: linear-gradient(135deg, #d1c3b4, #f2e5d6);
+      height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 3px solid #f7f2ec;
+      background: #b66b4b;
+      box-shadow: 0 0 0 10px rgba(182, 107, 75, 0.35);
+    }
+
+    .map-label {
+      position: absolute;
+      left: 50%;
+      top: 66%;
+      transform: translateX(-50%);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(34, 34, 34, 0.9);
+      color: #f7f2ec;
+      font-size: 11px;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      background: #181818;
+      color: #f7f2ec;
+      padding: 40px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.4fr;
+      gap: 26px;
+      font-size: 13px;
+    }
+
+    .footer-logo-title {
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .footer-logo-text {
+      color: rgba(248, 243, 238, 0.7);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .footer-heading {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-links a {
+      color: rgba(248, 243, 238, 0.8);
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(248, 243, 238, 0.16);
+      font-size: 11px;
+      color: rgba(248, 243, 238, 0.6);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-bottom a {
+      color: inherit;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 243, 238, 0.3);
+    }
+
+    /* Scroll reveal */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .team-grid,
+      .faq-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-grid {
+        gap: 44px;
+      }
+
+      .hero-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .site-header-inner {
+        padding-inline: 16px;
+      }
+
+      .nav {
+        position: fixed;
+        inset: 56px 0 auto 0;
+        padding: 16px 18px 18px;
+        background: rgba(247, 242, 236, 0.98);
+        border-bottom: 1px solid rgba(227, 215, 200, 0.9);
+        flex-direction: column;
+        gap: 12px;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+      }
+
+      .hero-title {
+        font-size: 34px;
+      }
+
+      .treatment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .usp-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .treatment-grid,
+      .team-grid,
+      .usp-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .quote-block {
+        padding: 22px 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="#top" class="logo">
+        <img
+          src="https://somiklinikken.no/wp-content/uploads/2020/06/logo-for-mobile.png"
+          alt="Somi Klinikken"
+          class="logo-img"
+        />
+      </a>
+
+      <nav class="nav" id="siteNav">
+        <a href="#top">Hjem</a>
+        <a href="#treatments">Behandlinger & priser</a>
+        <a href="#about">Om klinikken</a>
+        <a href="#team">Team</a>
+        <a href="#reviews">Erfaringer</a>
+        <a href="#faq">Spørsmål</a>
+        <a href="#contact">Kontakt</a>
+        <a
+          href="https://somi.bestille.no"
+          class="nav-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Bestill time</a
+        >
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Åpne meny">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Estetisk medisin · Sandnes</div>
+          <h1 class="hero-title">
+            <span>Naturlige,</span>
+            <span>skånsomme resultater</span>
+          </h1>
+          <p class="hero-text">
+            Somi Klinikken tilbyr medisinske injeksjoner og hudbehandlinger utført av
+            autorisert helsepersonell. Vårt mål er subtile forbedringer som føles som
+            deg – bare litt mer opplagt.
+          </p>
+
+          <div class="hero-cta-row">
+            <a
+              href="https://somi.bestille.no"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Bestill time</a
+            >
+            <a href="#treatments" class="btn btn-ghost">Se behandlinger & priser</a>
+          </div>
+
+          <div class="hero-meta">
+            <span><span class="hero-badge-dot"></span> Medisinsk ansvarlig behandler</span>
+            <span>Trygg journalføring & oppfølging</span>
+            <span>Sentral beliggenhet i Sandnes</span>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap reveal">
+          <div class="hero-card">
+            <div class="hero-photo"></div>
+            <div class="hero-tag">
+              <strong>Første gang?</strong>
+              Konsultasjon og behandlingsplan tilpasset din hud og dine ønsker.
+            </div>
+            <div class="hero-floating">
+              <strong>Over 1 000 behandlinger</strong>
+              <span>Naturlige resultater · fornøyde kunder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TREATMENTS & PRICING -->
+    <section id="treatments" class="section section--soft">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Behandlinger & priser</div>
+            <h2>Enkle, trygge og forutsigbare behandlinger</h2>
+          </div>
+          <p>
+            Her ser du et utvalg av de mest etterspurte behandlingene hos Somi Klinikken.
+            Alle behandlinger starter med en medisinsk konsultasjon hvor vi sammen
+            vurderer hva som passer deg.
+          </p>
+        </div>
+
+        <div class="treatment-grid">
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">💉</div>
+            <h3>Botox / muskelavslappende</h3>
+            <p>
+              Mykner fine linjer i panne, sinnarynke og øyeparti for et mer opplagt uttrykk.
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">👄</div>
+            <h3>Leppefiller</h3>
+            <p>
+              Skånsom volum- og konturbehandling med fokus på naturlig form og balanse.
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">💧</div>
+            <h3>Skinbooster / Profhilo</h3>
+            <p>
+              Fukt- og kollagenboost som gir jevnere hudstruktur og mer glød over tid.
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">✨</div>
+            <h3>Microneedling</h3>
+            <p>
+              Stimulerer hudens egen reparasjon ved arr, porer, fine linjer og ujevn
+              hudtone.
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">🌙</div>
+            <h3>Kjemisk peel</h3>
+            <p>
+              Målrettede peelinger for glød, pigment, akne og aldringstegn – skreddersydd
+              til din hud.
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">⚡</div>
+            <h3>Laser / hårfjerning</h3>
+            <p>
+              Langvarig reduksjon av uønsket hår med moderne laserutstyr (tekst tilpasses
+              etter tilbud).
+            </p>
+            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">👁️</div>
+            <h3>Område-behandlinger</h3>
+            <p>
+              Skreddersydde kombinasjoner for områder som øyne, munnparti eller hals /
+              bryst.
+            </p>
+            <span>Pris etter konsultasjon</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">📝</div>
+            <h3>Konsultasjon</h3>
+            <p>
+              Ny kundekonsultasjon, gjennomgang av helse, forventninger og realistiske
+              resultater.
+            </p>
+            <span>Fra kr&nbsp;XXX (ofte inkludert ved behandling)</span>
+          </article>
+        </div>
+
+        <!-- TODO: lenk til egen pris-side når du bygger multipage -->
+      </div>
+    </section>
+
+    <!-- WHY SOMI + TESTIMONIALS -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Hvorfor velge Somi?</div>
+            <h2>Trygghet, kompetanse og naturlige resultater</h2>
+          </div>
+          <p>
+            Vi tror at estetisk behandling skal forsterke det du allerede liker ved deg
+            selv – ikke forandre deg til noe annet. Derfor legger vi stor vekt på
+            kommunikasjon, trygghet og etterkontroll.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="reveal">
+            <div class="usp-grid">
+              <div class="usp-item">
+                <h3>Spesialisert innen estetisk medisin</h3>
+                <p>
+                  Behandlinger utført av erfaren behandler med solid medisinsk bakgrunn og
+                  dokumentert kompetanse.
+                </p>
+              </div>
+              <div class="usp-item">
+                <h3>Naturlige resultater</h3>
+                <p>
+                  Vi jobber i små steg og med helhetlig ansiktstilnærming for å unngå
+                  “overbehandlet” preg.
+                </p>
+              </div>
+              <div class="usp-item">
+                <h3>Trygg oppfølging</h3>
+                <p>
+                  Journalføring, informasjon og etterkontroll er alltid en del av
+                  behandlingsforløpet.
+                </p>
+              </div>
+              <div class="usp-item">
+                <h3>Sentral beliggenhet</h3>
+                <p>
+                  Klinikk lokalisert i hjertet av Sandnes, med korte avstander til parkering
+                  og kollektivtransport.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="quote-block">
+              <div class="quote-mark">“</div>
+              <div class="quote-text">
+                Utrolig dyktig, rolig og trygg. Resultatet ble akkurat slik jeg håpet – bare
+                litt freshere utgave av meg selv.
+              </div>
+              <div class="quote-author">
+                Solvåg · fast kunde
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+
+            <div class="testimonial-list">
+              <div class="testimonial-item">
+                <strong>
+                  Kristian
+                  <span class="stars">★★★★★</span>
+                </strong>
+                Følte meg godt ivaretatt fra første stund, og fikk ærlige råd om hva jeg
+                trengte – og ikke trengte.
+              </div>
+              <div class="testimonial-item">
+                <strong>
+                  Marita
+                  <span class="stars">★★★★★</span>
+                </strong>
+                Veldig fornøyd både med behandling og oppfølging i etterkant. Anbefales på
+                det varmeste.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / DOCTOR -->
+    <section id="about" class="section section--soft">
+      <div class="container">
+        <div class="about-grid">
+          <div class="reveal">
+            <div class="about-card">
+              <div class="about-photo"></div>
+              <div class="about-meta">Medisinsk ansvarlig</div>
+              <h3>Katarina – din estetiske behandler</h3>
+              <p class="about-tagline">
+                “Jeg ønsker at du skal kjenne deg igjen i speilet – bare litt mer uthvilt og
+                trygg.”
+              </p>
+              <p>
+                Katarina er autorisert sykepleier med videreutdanning innen estetiske
+                injeksjonsbehandlinger. Hun kombinerer klinisk erfaring med kontinuerlig
+                kursing for å sikre oppdaterte metoder, trygghet og varige resultater.
+              </p>
+              <p>
+                I forkant av hver behandling gjør hun en helhetlig vurdering av hud,
+                ansiktsstruktur, medisinsk historikk og ønsket uttrykk. Du får tydelig
+                informasjon om prosess, forventede resultater og oppfølging – og hun sier
+                ærlig ifra når mindre er mer.
+              </p>
+              <div class="about-buttons">
+                <a href="#contact" class="btn btn-ghost">Les mer om klinikken</a>
+                <a
+                  href="https://somi.bestille.no"
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Bestill time hos Katarina</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <h2>En klinikk bygget på omtanke</h2>
+            <p>
+              Somi Klinikken ble etablert i 2021 for å gi et rolig, trygt og faglig sterkt
+              tilbud innen estetisk medisin. Vi tar oss tid til å forstå dine mål og
+              gir anbefalinger som respekterer ansiktets naturlige balanse.
+            </p>
+            <p>
+              Vi følger gjeldende retningslinjer, benytter dokumenterte produkter og deltar
+              jevnlig på kurs og faglige samlinger. Slik sørger vi for at teknikker og
+              sikkerhetsrutiner alltid er oppdatert.
+            </p>
+            <p>
+              Enten du ønsker en liten justering eller en mer helhetlig plan, møter vi deg
+              med ærlighet, tydelig veiledning og oppfølging etter behov.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / EMPLOYEES -->
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Teamet</div>
+            <h2>Et lite team med stor omsorg</h2>
+          </div>
+          <p>
+            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
+            veiledning, presise behandlinger og god oppfølging – fra første kontakt til
+            etterkontroll.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/3825538/pexels-photo-3825538.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Medisinsk ansvarlig</div>
+              <h3>Katarina</h3>
+            </div>
+            <p class="team-desc">
+              Autorisert sykepleier med spesialisering i estetiske injeksjoner. Står for
+              medisinsk vurdering, behandlingsplaner og trygg gjennomføring.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Injeksjoner</span>
+              <span class="team-tag">Konsultasjon</span>
+              <span class="team-tag">Oppfølging</span>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Hudterapeut</div>
+              <h3>Maria</h3>
+            </div>
+            <p class="team-desc">
+              Utfører hudbehandlinger, microneedling og kjemisk peel. Skreddersyr hjemmepleie
+              og kurforløp for å sikre stabile resultater over tid.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Hudhelse</span>
+              <span class="team-tag">Microneedling</span>
+              <span class="team-tag">Peel</span>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Koordinator</div>
+              <h3>Emil</h3>
+            </div>
+            <p class="team-desc">
+              Hjelper deg med booking, påminnelser og praktiske spørsmål. Sørger for smidig
+              flyt mellom konsultasjon, behandling og etterkontroll.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Booking</span>
+              <span class="team-tag">Kundeservice</span>
+              <span class="team-tag">Logistikk</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="faq-grid">
+          <div class="reveal">
+            <div class="eyebrow">Spørsmål</div>
+            <h2>Ofte stilte spørsmål</h2>
+            <p>
+              Under finner du svar på noen av de vanligste spørsmålene vi får i klinikken.
+              Ved første konsultasjon går vi alltid gjennom hva du kan forvente før, under
+              og etter behandling.
+            </p>
+          </div>
+
+          <div class="faq-list reveal">
+            <details open>
+              <summary>
+                <span class="faq-question">Gjør behandlingene vondt?</span>
+                <span class="faq-icon">›</span>
+              </summary>
+              <p>
+                De fleste opplever bare lett ubehag. Vi bruker alltid bedøvende krem eller
+                annen lokalbedøvelse ved behov, og tilpasser teknikk etter område og
+                smerteterskel.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                <span class="faq-question">Hvor raskt ser jeg resultat?</span>
+                <span class="faq-icon">›</span>
+              </summary>
+              <p>
+                Ved filler ser du ofte en umiddelbar effekt, mens muskelavslappende
+                behandlinger bruker 3–14 dager før full effekt. Hudbehandlinger bygges
+                gjerne opp over flere ganger for best resultat.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                <span class="faq-question">Hvor lenge varer resultatet?</span>
+                <span class="faq-icon">›</span>
+              </summary>
+              <p>
+                Varighet avhenger av behandling, område, hudtype og livsstil. I
+                gjennomsnitt varer muskelavslappende behandlinger 3–6 måneder, mens filler
+                kan vare 6–18 måneder.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                <span class="faq-question">Hva bør jeg tenke på før og etter?</span>
+                <span class="faq-icon">›</span>
+              </summary>
+              <p>
+                Du får alltid skriftlig informasjon, men typisk bør man unngå alkohol,
+                blodfortynnende medisiner og hard trening samme dag, samt unngå å massere
+                området unødvendig i tiden etter.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA + CONTACT -->
+    <section id="contact" class="section section--soft">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2>Klar for å ta neste steg?</h2>
+            <p>
+              Bestill time direkte i vår online booking, eller send oss en melding om du
+              ønsker hjelp til å velge riktig behandling. Ingen spørsmål er for små.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a
+              href="https://somi.bestille.no"
+              class="btn btn-cta-primary btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Bestill time</a
+            >
+            <a href="#contact-form" class="btn btn-cta-ghost btn">Send oss en melding</a>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal" id="contact-form">
+            <h3>Kontakt & åpningstider</h3>
+            <div class="contact-row">
+              <strong>Adresse</strong>
+              <span>Her fyller du inn klinikkens adresse, 0000 Sandnes</span>
+            </div>
+            <div class="contact-row">
+              <strong>E-post</strong>
+              <a href="mailto:post@somiklinikken.no">post@somiklinikken.no</a>
+            </div>
+            <div class="contact-row">
+              <strong>Telefon</strong>
+              <a href="tel:+47XXXXXXXX">+47&nbsp;XX&nbsp;XX&nbsp;XX&nbsp;XX</a>
+            </div>
+            <div class="contact-row">
+              <strong>Åpent</strong>
+              <span>Tilpass tekst – f.eks. etter avtale / oppgitte ukedager.</span>
+            </div>
+
+            <p class="contact-note">
+              For endring eller avbestilling av time, vennligst kontakt oss innen den
+              fristen som er oppgitt i bekreftelsen fra vårt bookingsystem.
+            </p>
+          </div>
+
+          <div class="map-placeholder reveal" aria-hidden="true">
+            <!-- TODO: bytt til ekte embed fra Google Maps når du er klar -->
+            <div class="map-pin"></div>
+            <div class="map-label">Somi Klinikken · Sandnes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo-title">Somi Klinikken</div>
+          <p class="footer-logo-text">
+            Estetisk medisin i hjertet av Sandnes. Naturlige, trygge resultater utført av
+            erfarent helsepersonell.
+          </p>
+        </div>
+        <div>
+          <div class="footer-heading">Behandlinger</div>
+          <div class="footer-links">
+            <a href="#treatments">Botox & muskelavslappende</a>
+            <a href="#treatments">Filler & lepper</a>
+            <a href="#treatments">Skinbooster / Profhilo</a>
+            <a href="#treatments">Hudbehandlinger</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Klinikken</div>
+          <div class="footer-links">
+            <a href="#about">Om oss</a>
+            <a href="#reviews">Kundeerfaringer</a>
+            <a href="#faq">Ofte stilte spørsmål</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Kontakt</div>
+          <div class="footer-links">
+            <span>Adresse – fyll inn</span>
+            <a href="mailto:post@somiklinikken.no">post@somiklinikken.no</a>
+            <a href="tel:+47XXXXXXXX">+47&nbsp;XX&nbsp;XX&nbsp;XX&nbsp;XX</a>
+            <span class="pill">Bestill time på somi.bestille.no</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© Somi Klinikken – <span>2025</span></span>
+        <div class="footer-social">
+          <a href="#" class="pill">Instagram</a>
+          <a href="#" class="pill">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobilmeny
+    const burgerBtn = document.getElementById("burgerBtn");
+    const nav = document.getElementById("siteNav");
+
+    burgerBtn.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    // Lukk meny når man klikker lenke (mobil)
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => nav.classList.remove("open"));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
