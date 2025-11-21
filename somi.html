@@ -30,6 +30,17 @@
       --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.08);
       --max-width: 1120px;
       --transition-fast: 0.25s ease;
+
+      /* SOMI hero custom properties */
+      --somi-bg: #f7efe4;
+      --somi-accent: #f4a870;
+      --somi-accent-soft: #f8cfa5;
+      --somi-text: #22282b;
+      --somi-muted: #6c7478;
+      --somi-border: rgba(0, 0, 0, 0.06);
+      --somi-radius: 999px;
+      --font-heading: "Playfair Display", "Times New Roman", serif;
+      --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     * {
@@ -208,48 +219,197 @@
 
     /* Hero */
 
-    .hero {
-      padding: 90px 0 70px;
+    .hero-somi-ai {
+      position: relative;
+      padding: 6rem 1.5rem 5rem;
+      background: var(--somi-bg);
+      overflow: hidden;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 60px;
+    .hero-somi-ai__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .hero-somi-ai__top {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-somi-ai__badge {
+      display: inline-flex;
       align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 12px;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--somi-border);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      font-family: var(--font-body);
+      color: var(--somi-muted);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
     }
 
-    .hero-title {
-      font-size: clamp(36px, 4.1vw, 48px);
+    .hero-somi-ai__content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-somi-ai__text {
+      max-width: 560px;
+    }
+
+    .hero-somi-ai__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
       line-height: 1.05;
-      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+      color: var(--somi-text);
+      margin: 0 0 1.2rem;
     }
 
-    .hero-title span {
-      display: block;
+    .hero-somi-ai__title span {
+      background: linear-gradient(90deg, #f19b63, #f6c077);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .hero-text {
-      max-width: 500px;
-      font-size: 16px;
-      color: var(--text-muted);
+    .hero-somi-ai__subtitle {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--somi-muted);
+      margin: 0 0 1.8rem;
     }
 
-    .hero-cta-row {
-      margin-top: 26px;
+    .hero-somi-ai__actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
     }
+
+    .hero-somi-ai .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.7rem;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease,
+        color 150ms ease, border-color 150ms ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .hero-somi-ai .btn--primary {
+      background: #252a2e;
+      color: #ffffff;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-somi-ai .btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-somi-ai .btn--ghost {
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--somi-text);
+      border-color: var(--somi-border);
+    }
+
+    .hero-somi-ai .btn--ghost:hover {
+      background: #ffffff;
+    }
+
+    .hero-somi-ai__note {
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      color: var(--somi-muted);
+      max-width: 420px;
+    }
+
+    .hero-somi-ai__visual {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-somi-ai__blob {
+      position: absolute;
+      inset: 5% 8%;
+      background: radial-gradient(circle at 20% 20%, var(--somi-accent-soft), transparent 60%),
+        radial-gradient(circle at 70% 60%, var(--somi-accent), transparent 55%);
+      filter: blur(2px);
+      opacity: 0.95;
+      border-radius: 55%;
+      animation: somiBlob 18s ease-in-out infinite alternate;
+    }
+
+    .hero-somi-ai__line {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      mix-blend-mode: multiply;
+      animation: somiLines 16s linear infinite alternate;
+    }
+
+    .hero-somi-ai__line--left {
+      inset: 16% 45% 40% 0;
+    }
+
+    .hero-somi-ai__line--right {
+      inset: 40% 0 8% 35%;
+      animation-delay: -7s;
+    }
+
+    .hero-somi-ai__face-outline {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      opacity: 0.9;
+      mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%);
+    }
+
+    .hero-somi-ai__face-outline--left {
+      inset: 10% 58% 30% -8%;
+    }
+
+    .hero-somi-ai__face-outline--right {
+      inset: 25% -6% 10% 60%;
+    }
+
+    @keyframes somiBlob {
+      0% {
+        transform: translate3d(-10px, 10px, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(12px, -6px, 0) scale(1.04);
+      }
+      100% {
+        transform: translate3d(-8px, 4px, 0) scale(0.98);
+      }
+    }
+
+    @keyframes somiLines {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+      100% {
+        transform: translateX(8px) translateY(-6px);
+      }
+    }
+
+    /* Shared buttons */
 
     .btn {
       display: inline-flex;
@@ -289,116 +449,6 @@
     .btn-ghost:hover {
       background: rgba(255, 255, 255, 0.7);
       border-color: rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-meta {
-      margin-top: 18px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      whitespace: nowrap;
-    }
-
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-
-    .hero-image-wrap {
-      position: relative;
-    }
-
-    .hero-card {
-      border-radius: 40px;
-      background: radial-gradient(circle at top left, #fdf9f5, #efe0d1);
-      padding: 26px 26px 22px;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      position: relative;
-      min-height: 340px;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.9), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 18px 22px 22px;
-      border-radius: 32px;
-      overflow: hidden;
-      background: #ccc;
-      background-position: center;
-      background-size: cover;
-      /* TODO: sett inn ekte bilde her */
-      background-image: url("https://somi.setaei.com/img/Folkiklinikken.jpg");
-    }
-
-    .hero-tag {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      z-index: 2;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(247, 242, 236, 0.9);
-      display: inline-flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-tag strong {
-      font-size: 12px;
-      color: var(--text-main);
-    }
-
-    .hero-floating {
-      position: absolute;
-      right: -4px;
-      top: 24px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(34, 34, 34, 0.94);
-      color: #fff;
-      font-size: 11px;
-      display: inline-flex;
-      flex-direction: column;
-      gap: 2px;
-      transform: translateY(0);
-      animation: floatY 5s ease-in-out infinite;
-    }
-
-    .hero-floating span {
-      opacity: 0.7;
-    }
-
-    @keyframes floatY {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-6px);
-      }
-      100% {
-        transform: translateY(0);
-      }
     }
 
     /* Treatments */
@@ -1046,30 +1096,27 @@
     /* Responsive */
 
     @media (max-width: 960px) {
-      .hero-grid,
       .about-grid,
       .faq-grid,
       .contact-grid,
       .footer-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+    }
 
-      .hero {
-        padding-top: 70px;
+    @media (max-width: 880px) {
+      .hero-somi-ai {
+        padding: 4.5rem 1.5rem 3.5rem;
       }
 
-      .hero-grid {
-        gap: 44px;
+      .hero-somi-ai__content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
 
-      .hero-card {
-        max-width: 420px;
-        margin: 0 auto;
-      }
-
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
+      .hero-somi-ai__visual {
+        order: -1;
+        min-height: 220px;
       }
     }
 
@@ -1108,16 +1155,39 @@
         margin-top: 4px;
       }
 
-      .hero-title {
-        font-size: 34px;
-      }
-
       .treatment-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .usp-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid,
+      .faq-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-somi-ai__badge {
+        font-size: 0.72rem;
+      }
+
+      .hero-somi-ai__actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-somi-ai__visual {
+        min-height: 200px;
       }
     }
 
@@ -1183,49 +1253,46 @@
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero section">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow">Estetisk medisin · Sandnes</div>
-          <h1 class="hero-title">
-            <span>Naturlige,</span>
-            <span>skånsomme resultater</span>
-          </h1>
-          <p class="hero-text">
-            Somi Klinikken tilbyr medisinske injeksjoner og hudbehandlinger utført av
-            autorisert helsepersonell. Vårt mål er subtile forbedringer som føles som
-            deg – bare litt mer opplagt.
-          </p>
-
-          <div class="hero-cta-row">
-            <a
-              href="https://somi.bestille.no"
-              class="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Bestill time</a
-            >
-            <a href="#treatments" class="btn btn-ghost">Se behandlinger & priser</a>
-          </div>
-
-          <div class="hero-meta">
-            <span><span class="hero-badge-dot"></span> Medisinsk ansvarlig behandler</span>
-            <span>Trygg journalføring & oppfølging</span>
-            <span>Sentral beliggenhet i Sandnes</span>
-          </div>
+    <section class="hero-somi-ai">
+      <div class="hero-somi-ai__inner">
+        <div class="hero-somi-ai__top reveal">
+          <span class="hero-somi-ai__badge">SOMI · Estetisk medisin</span>
         </div>
 
-        <div class="hero-image-wrap reveal">
-          <div class="hero-card">
-            <div class="hero-photo"></div>
-            <div class="hero-tag">
-              <strong>Første gang?</strong>
-              Konsultasjon og behandlingsplan tilpasset din hud og dine ønsker.
+        <div class="hero-somi-ai__content">
+          <div class="hero-somi-ai__text reveal">
+            <h1 class="hero-somi-ai__title">
+              Skånsomme hud- og injeksjonsbehandlinger for
+              <span>naturlige resultater</span>
+            </h1>
+            <p class="hero-somi-ai__subtitle">
+              Somi Klinikken tilbyr medisinske injeksjoner og hudbehandlinger utført av
+              autorisert helsepersonell. Vårt mål er subtile forbedringer som føles som
+              deg – bare litt mer opplagt.
+            </p>
+
+            <div class="hero-somi-ai__actions">
+              <a
+                href="https://somi.bestille.no"
+                class="btn btn--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Bestill time</a
+              >
+              <a href="#treatments" class="btn btn--ghost">Se behandlinger & priser</a>
             </div>
-            <div class="hero-floating">
-              <strong>Over 1 000 behandlinger</strong>
-              <span>Naturlige resultater · fornøyde kunder</span>
-            </div>
+
+            <p class="hero-somi-ai__note">
+              Medisinsk ansvarlig behandler · Trygg journalføring & oppfølging · Sentral beliggenhet i Sandnes
+            </p>
+          </div>
+
+          <div class="hero-somi-ai__visual reveal" aria-hidden="true">
+            <div class="hero-somi-ai__blob"></div>
+            <div class="hero-somi-ai__line hero-somi-ai__line--left"></div>
+            <div class="hero-somi-ai__line hero-somi-ai__line--right"></div>
+            <div class="hero-somi-ai__face-outline hero-somi-ai__face-outline--left"></div>
+            <div class="hero-somi-ai__face-outline hero-somi-ai__face-outline--right"></div>
           </div>
         </div>
       </div>
