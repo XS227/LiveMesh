@@ -1021,7 +1021,7 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 34px;
       margin-top: 40px;
     }
@@ -1063,6 +1063,81 @@
       margin-top: 10px;
       font-size: 13px;
       color: var(--text-muted);
+    }
+
+    .contact-form-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-form-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-form .field-hint {
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--text-main);
+      background: #fff;
+      transition: border 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #d2c2ae;
+      box-shadow: 0 0 0 3px rgba(227, 215, 200, 0.4);
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: linear-gradient(120deg, #f7f2ec 0%, #f0e4d8 100%);
+      color: #111;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
     }
 
     .map-embed {
@@ -1963,6 +2038,42 @@
                 <a href="https://www.instagram.com/somiklinikken" target="_blank" rel="noopener">Instagram</a>
               </div>
             </div>
+          </div>
+
+          <div class="contact-card contact-form-card reveal">
+            <div>
+              <h3>Send oss en melding</h3>
+              <p>Del litt om hva du trenger hjelp med, så svarer vi så fort vi kan.</p>
+            </div>
+
+            <form
+              class="contact-form"
+              action="https://formsubmit.co/post@somiklinikken.no"
+              method="POST"
+            >
+              <label>
+                Navn
+                <input type="text" name="navn" placeholder="Ditt navn" required />
+              </label>
+
+              <label>
+                E-post
+                <input type="email" name="epost" placeholder="navn@epost.no" required />
+              </label>
+
+              <label>
+                Telefon (valgfritt)
+                <input type="tel" name="telefon" placeholder="+47 999 99 999" />
+                <span class="field-hint">Legg ved nummeret ditt om du ønsker å bli oppringt.</span>
+              </label>
+
+              <label>
+                Hva kan vi hjelpe deg med?
+                <textarea name="melding" placeholder="Fortell kort om ønsket behandling" required></textarea>
+              </label>
+
+              <button type="submit">Send melding</button>
+            </form>
           </div>
 
           <div class="map-embed reveal">
