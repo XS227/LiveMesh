@@ -1377,6 +1377,199 @@
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
+    /* SOMI-AI chat widget */
+    .somi-ai-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2000;
+      font-family: var(--font-body);
+    }
+
+    .somi-ai-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--bg-dark);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .somi-ai-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    .somi-ai-toggle__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 6px rgba(200, 155, 118, 0.28);
+    }
+
+    .somi-ai-toggle__label {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .somi-ai-window {
+      position: absolute;
+      right: 0;
+      bottom: 72px;
+      width: min(420px, calc(100vw - 32px));
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: none;
+      border: 1px solid var(--border-soft);
+    }
+
+    .somi-ai-window--open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .somi-ai-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .somi-ai-header__title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .somi-ai-header__logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .somi-ai-header__name {
+      font-weight: 700;
+    }
+
+    .somi-ai-header__sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .somi-ai-header__close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px;
+    }
+
+    .somi-ai-messages {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .somi-ai-message {
+      padding: 12px 14px;
+      border-radius: 12px;
+      line-height: 1.5;
+      font-size: 15px;
+      width: fit-content;
+      max-width: 90%;
+    }
+
+    .somi-ai-message--bot {
+      background: var(--bg-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-soft);
+    }
+
+    .somi-ai-message--user {
+      background: var(--bg-dark);
+      color: #fff;
+      margin-left: auto;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .somi-ai-message--typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+    }
+
+    .somi-ai-input {
+      display: flex;
+      gap: 10px;
+      padding: 12px 14px;
+      border-top: 1px solid var(--border-soft);
+      background: #fff;
+    }
+
+    .somi-ai-input__field {
+      flex: 1;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .somi-ai-input__field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(200, 155, 118, 0.18);
+    }
+
+    .somi-ai-input__button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .somi-ai-input__button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(200, 155, 118, 0.35);
+    }
+
+    @media (max-width: 640px) {
+      .somi-ai-widget {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .somi-ai-window {
+        width: min(92vw, 420px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -2139,6 +2332,47 @@
     </div>
   </footer>
 
+  <div class="somi-ai-widget" id="somi-ai-widget">
+    <button class="somi-ai-toggle" id="somi-ai-toggle" aria-label="Åpne SOMI-AI chat">
+      <span class="somi-ai-toggle__dot"></span>
+      <span class="somi-ai-toggle__label">SOMI-AI</span>
+    </button>
+
+    <div class="somi-ai-window" id="somi-ai-window" aria-hidden="true">
+      <header class="somi-ai-header">
+        <div class="somi-ai-header__title">
+          <span class="somi-ai-header__logo">S</span>
+          <div>
+            <div class="somi-ai-header__name">SOMI-AI</div>
+            <div class="somi-ai-header__sub">Din digitale rådgiver hos Somi Klinikken</div>
+          </div>
+        </div>
+        <button class="somi-ai-header__close" id="somi-ai-close" aria-label="Lukk chat">
+          ×
+        </button>
+      </header>
+
+      <div class="somi-ai-messages" id="somi-ai-messages">
+        <div class="somi-ai-message somi-ai-message--bot">
+          Hei 🙋‍♀️ Jeg er SOMI-AI.
+          Jeg kan hjelpe deg med å finne riktig behandling, forklare forskjeller og svare på praktiske spørsmål om Somi Klinikken.
+        </div>
+      </div>
+
+      <form class="somi-ai-input" id="somi-ai-form">
+        <input
+          type="text"
+          id="somi-ai-input-field"
+          class="somi-ai-input__field"
+          placeholder="Skriv spørsmålet ditt her..."
+          autocomplete="off"
+          required
+        />
+        <button class="somi-ai-input__button" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // Mobilmeny
     const burgerBtn = document.getElementById("burgerBtn");
@@ -2167,6 +2401,79 @@
     );
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById("somi-ai-toggle");
+      const windowEl = document.getElementById("somi-ai-window");
+      const closeBtn = document.getElementById("somi-ai-close");
+      const form = document.getElementById("somi-ai-form");
+      const input = document.getElementById("somi-ai-input-field");
+      const messages = document.getElementById("somi-ai-messages");
+
+      function openChat() {
+        windowEl.setAttribute("aria-hidden", "false");
+        windowEl.classList.add("somi-ai-window--open");
+        input.focus();
+      }
+
+      function closeChat() {
+        windowEl.setAttribute("aria-hidden", "true");
+        windowEl.classList.remove("somi-ai-window--open");
+      }
+
+      toggle.addEventListener("click", function () {
+        const isOpen = windowEl.classList.contains("somi-ai-window--open");
+        if (isOpen) {
+          closeChat();
+        } else {
+          openChat();
+        }
+      });
+
+      closeBtn.addEventListener("click", function () {
+        closeChat();
+      });
+
+      function appendMessage(text, from) {
+        const div = document.createElement("div");
+        div.className =
+          "somi-ai-message " +
+          (from === "bot" ? "somi-ai-message--bot" : "somi-ai-message--user");
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        appendMessage(text, "user");
+        input.value = "";
+
+        const thinking = document.createElement("div");
+        thinking.className = "somi-ai-message somi-ai-message--bot somi-ai-message--typing";
+        thinking.textContent = "SOMI-AI tenker…";
+        messages.appendChild(thinking);
+        messages.scrollTop = messages.scrollHeight;
+
+        try {
+          const botReply =
+            "Dette er et eksempel-svar. Her vil SOMI-AI svare når utvikler har koblet meg til backend. 😊";
+
+          messages.removeChild(thinking);
+          appendMessage(botReply, "bot");
+        } catch (err) {
+          messages.removeChild(thinking);
+          appendMessage(
+            "Beklager, noe gikk galt teknisk. Prøv igjen om litt, eller ta kontakt direkte med klinikken.",
+            "bot"
+          );
+        }
+      });
+    })();
   </script>
 </body>
 </html>
