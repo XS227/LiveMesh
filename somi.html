@@ -1194,6 +1194,31 @@
       border: 0;
     }
 
+    .contact-form-standalone {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      border-radius: 28px;
+      padding: 26px 28px;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.06);
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form-standalone h2 {
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+
+    .contact-form-standalone p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 640px;
+    }
+
     /* Footer */
 
     .site-footer {
@@ -1757,7 +1782,7 @@
               <p>PRX, peelinger, klassisk ansiktsbehandling og LED-lys.</p>
             </a>
 
-            <a href="somi-behandling.html#laser-tattoo-removal" class="treatment-card">
+            <a href="somi-behandling.html#laser-tattoo" class="treatment-card">
               <div class="treatment-icon" aria-hidden="true">💫</div>
               <h3>Laser tattoo removal</h3>
               <p>Skånsom fjerning av tatovering og PMU.</p>
@@ -1769,7 +1794,7 @@
               <p>Lipblush, eyeliner, powderbrows og mer.</p>
             </a>
 
-            <a href="somi-behandling.html#harfjerning-voksing" class="treatment-card">
+            <a href="somi-behandling.html#harfjerning" class="treatment-card">
               <div class="treatment-icon" aria-hidden="true">🕯️</div>
               <h3>Hårfjerning &amp; voksing</h3>
               <p>Brasiliansk, ansikt, kroppsvoks og alkaline.</p>
@@ -1781,13 +1806,13 @@
               <p>Gratis veiledning før behandling og hudanalyse.</p>
             </a>
 
-            <a href="somi-behandling.html#laser-pakkepriser" class="treatment-card">
+            <a href="somi-behandling.html#laser-pakke" class="treatment-card">
               <div class="treatment-icon" aria-hidden="true">🎯</div>
               <h3>Laser – pakker</h3>
               <p>Permanent hårfjerning i serier med pakkepris.</p>
             </a>
 
-            <a href="somi-behandling.html#laser-pigmentreduksjon" class="treatment-card">
+            <a href="somi-behandling.html#laser-pigment" class="treatment-card">
               <div class="treatment-icon" aria-hidden="true">🌙</div>
               <h3>Laser pigmentreduksjon</h3>
               <p>Behandling av pigmentflekker og solskader.</p>
@@ -1975,15 +2000,15 @@
 
         <div class="team-grid" aria-labelledby="team-heading">
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
-            <div class="team-image-orbit">
-              <div class="team-image-mask">
-                <img
-                  src="https://somi.setaei.com/img/katarina.png"
-                  alt="Katarina – eier og daglig leder hos SOMI Klinikken"
-                  loading="lazy"
-                  itemprop="image"
-                />
-              </div>
+            <div class="team-photo-wrapper">
+              <img
+                class="team-photo"
+                src="https://somi.setaei.com/img/katarina.png"
+                alt="Katarina – eier og daglig leder hos SOMI Klinikken"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="photo-orbit" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Eier og daglig leder</p>
             <h3 class="team-name" itemprop="name">Katarina</h3>
@@ -2020,15 +2045,15 @@
           </article>
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
-            <div class="team-image-orbit">
-              <div class="team-image-mask">
-                <img
-                  src="https://somi.setaei.com/img/elina.png"
-                  alt="Elina – autorisert sykepleier som tilbyr injeksjonsbehandlinger ved SOMI Klinikken"
-                  loading="lazy"
-                  itemprop="image"
-                />
-              </div>
+            <div class="team-photo-wrapper">
+              <img
+                class="team-photo"
+                src="https://somi.setaei.com/img/elina.png"
+                alt="Elina – autorisert sykepleier som tilbyr injeksjonsbehandlinger ved SOMI Klinikken"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="photo-orbit" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Autorisert sykepleier</p>
             <h3 class="team-name" itemprop="name">Elina</h3>
@@ -2062,15 +2087,15 @@
           </article>
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
-            <div class="team-image-orbit">
-              <div class="team-image-mask">
-                <img
-                  src="https://somi.setaei.com/img/arianna.png"
-                  alt="Arianna – laserspesialist for bryn, voksing og hudbehandlinger ved SOMI Klinikken"
-                  loading="lazy"
-                  itemprop="image"
-                />
-              </div>
+            <div class="team-photo-wrapper">
+              <img
+                class="team-photo"
+                src="https://somi.setaei.com/img/arianna.png"
+                alt="Arianna – laserspesialist for bryn, voksing og hudbehandlinger ved SOMI Klinikken"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="photo-orbit" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Laserspesialist</p>
             <h3 class="team-name" itemprop="name">Arianna</h3>
@@ -2105,15 +2130,15 @@
           </article>
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
-            <div class="team-image-orbit">
-              <div class="team-image-mask">
-                <img
-                  src="https://somi.setaei.com/img/emma.png"
-                  alt="Emma – hudterapeut som tilbyr hudpleie, vipper, brynstyling og permanent makeup"
-                  loading="lazy"
-                  itemprop="image"
-                />
-              </div>
+            <div class="team-photo-wrapper">
+              <img
+                class="team-photo"
+                src="https://somi.setaei.com/img/emma.png"
+                alt="Emma – hudterapeut som tilbyr hudpleie, vipper, brynstyling og permanent makeup"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="photo-orbit" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Hudterapeut</p>
             <h3 class="team-name" itemprop="name">Emma</h3>
@@ -2236,12 +2261,12 @@
               rel="noopener noreferrer"
               >Bestill time</a
             >
-            <a href="#contact-form" class="btn btn-cta-ghost btn">Send oss en melding</a>
+            <a href="#contact-form-section" class="btn btn-cta-ghost btn">Send oss en melding</a>
           </div>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-card reveal" id="contact-form">
+          <div class="contact-card reveal" id="contact-details">
             <h3>Kontakt & åpningstider</h3>
             <div class="contact-row">
               <strong>Adresse</strong>
@@ -2277,42 +2302,6 @@
             </div>
           </div>
 
-          <div class="contact-card contact-form-card reveal">
-            <div>
-              <h3>Send oss en melding</h3>
-              <p>Del litt om hva du trenger hjelp med, så svarer vi så fort vi kan.</p>
-            </div>
-
-            <form
-              class="contact-form"
-              action="https://formsubmit.co/post@somiklinikken.no"
-              method="POST"
-            >
-              <label>
-                Navn
-                <input type="text" name="navn" placeholder="Ditt navn" required />
-              </label>
-
-              <label>
-                E-post
-                <input type="email" name="epost" placeholder="navn@epost.no" required />
-              </label>
-
-              <label>
-                Telefon (valgfritt)
-                <input type="tel" name="telefon" placeholder="+47 999 99 999" />
-                <span class="field-hint">Legg ved nummeret ditt om du ønsker å bli oppringt.</span>
-              </label>
-
-              <label>
-                Hva kan vi hjelpe deg med?
-                <textarea name="melding" placeholder="Fortell kort om ønsket behandling" required></textarea>
-              </label>
-
-              <button type="submit">Send melding</button>
-            </form>
-          </div>
-
           <div class="map-embed reveal">
             <iframe
               src="https://www.google.com/maps?q=Langgata+31,+4306+Sandnes&output=embed"
@@ -2322,6 +2311,46 @@
               allowfullscreen
             ></iframe>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form-section" class="section">
+      <div class="container">
+        <div class="contact-form-standalone reveal">
+          <div>
+            <h2>Send oss en melding</h2>
+            <p>Del litt om hva du trenger hjelp med, så svarer vi så fort vi kan.</p>
+          </div>
+
+          <form
+            class="contact-form"
+            action="https://formsubmit.co/post@somiklinikken.no"
+            method="POST"
+          >
+            <label>
+              Navn
+              <input type="text" name="navn" placeholder="Ditt navn" required />
+            </label>
+
+            <label>
+              E-post
+              <input type="email" name="epost" placeholder="navn@epost.no" required />
+            </label>
+
+            <label>
+              Telefon (valgfritt)
+              <input type="tel" name="telefon" placeholder="+47 999 99 999" />
+              <span class="field-hint">Legg ved nummeret ditt om du ønsker å bli oppringt.</span>
+            </label>
+
+            <label>
+              Hva kan vi hjelpe deg med?
+              <textarea name="melding" placeholder="Fortell kort om ønsket behandling" required></textarea>
+            </label>
+
+            <button type="submit">Send melding</button>
+          </form>
         </div>
       </div>
     </section>
