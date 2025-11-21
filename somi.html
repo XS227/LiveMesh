@@ -490,72 +490,6 @@
       color: var(--text-muted);
     }
 
-    /* Team */
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 40px;
-    }
-
-    .team-card {
-      border-radius: 26px;
-      background: #fff;
-      border: 1px solid rgba(227, 215, 200, 0.9);
-      padding: 16px 16px 18px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .team-photo {
-      width: 100%;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      aspect-ratio: 3 / 4;
-    }
-
-    .team-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .team-name-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .team-name {
-      font-family: "Playfair Display", serif;
-      font-size: 15px;
-      color: var(--text-main);
-    }
-
-    .team-ig {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    .team-ig svg {
-      width: 14px;
-      height: 14px;
-    }
-
     /* Doctor / about */
 
     .about-grid {
@@ -614,6 +548,78 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 8px;
+    }
+
+    /* Team */
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .team-card {
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 16px;
+      background: #ccc;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .team-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .team-meta h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .team-role {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .team-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .team-tag {
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: rgba(200, 155, 118, 0.12);
+      color: #8b623d;
+      font-size: 12px;
+      border: 1px solid rgba(200, 155, 118, 0.2);
     }
 
     /* Testimonials */
@@ -954,6 +960,7 @@
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
+      .team-grid,
       .faq-grid,
       .contact-grid,
       .footer-grid {
@@ -1022,11 +1029,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .usp-grid {
+      .team-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .team-grid {
+      .usp-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -1042,8 +1049,8 @@
       }
 
       .treatment-grid,
-      .usp-grid,
-      .team-grid {
+      .team-grid,
+      .usp-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1073,6 +1080,7 @@
         <a href="#top">Hjem</a>
         <a href="#treatments">Behandlinger & priser</a>
         <a href="#about">Om klinikken</a>
+        <a href="#team">Team</a>
         <a href="#reviews">Erfaringer</a>
         <a href="#faq">Spørsmål</a>
         <a href="#contact">Kontakt</a>
@@ -1378,6 +1386,85 @@
               med ærlighet, tydelig veiledning og oppfølging etter behov.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / EMPLOYEES -->
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Teamet</div>
+            <h2>Et lite team med stor omsorg</h2>
+          </div>
+          <p>
+            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
+            veiledning, presise behandlinger og god oppfølging – fra første kontakt til
+            etterkontroll.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/3825538/pexels-photo-3825538.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Medisinsk ansvarlig</div>
+              <h3>Katarina</h3>
+            </div>
+            <p class="team-desc">
+              Autorisert sykepleier med spesialisering i estetiske injeksjoner. Står for
+              medisinsk vurdering, behandlingsplaner og trygg gjennomføring.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Injeksjoner</span>
+              <span class="team-tag">Konsultasjon</span>
+              <span class="team-tag">Oppfølging</span>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Hudterapeut</div>
+              <h3>Maria</h3>
+            </div>
+            <p class="team-desc">
+              Utfører hudbehandlinger, microneedling og kjemisk peel. Skreddersyr hjemmepleie
+              og kurforløp for å sikre stabile resultater over tid.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Hudhelse</span>
+              <span class="team-tag">Microneedling</span>
+              <span class="team-tag">Peel</span>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Koordinator</div>
+              <h3>Emil</h3>
+            </div>
+            <p class="team-desc">
+              Hjelper deg med booking, påminnelser og praktiske spørsmål. Sørger for smidig
+              flyt mellom konsultasjon, behandling og etterkontroll.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Booking</span>
+              <span class="team-tag">Kundeservice</span>
+              <span class="team-tag">Logistikk</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
