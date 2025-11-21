@@ -2,12 +2,71 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
-  <title>Somi Klinikken – Estetisk medisin i hjertet av Sandnes</title>
+  <title>Somi Klinikken Sandnes – estetisk medisin, injeksjon og hudbehandling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Somi Klinikken tilbyr trygg og moderne estetisk medisin i hjertet av Sandnes. Injeksjonsbehandlinger, hudbehandlinger og medisinsk hudpleie."
+    content="Somi Klinikken i Sandnes tilbyr trygg og moderne estetisk medisin: injeksjonsbehandlinger, hudbehandlinger, permanent makeup og laser. Naturlige resultater utført av autorisert helsepersonell."
   />
+
+  <!-- SEO / Canonical -->
+  <link rel="canonical" href="https://somiklinikken.no/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="Somi Klinikken Sandnes – estetisk medisin, injeksjon og hudbehandling"
+  />
+  <meta
+    property="og:description"
+    content="Naturlige og trygge estetiske behandlinger i hjertet av Sandnes. Injeksjoner, hudbehandling, permanent makeup og laser hos Somi Klinikken."
+  />
+  <meta property="og:url" content="https://somiklinikken.no/" />
+  <meta property="og:site_name" content="Somi Klinikken" />
+  <meta
+    property="og:image"
+    content="https://somiklinikken.no/wp-content/uploads/2023/12/Header-%E2%86%92-Section-%E2%86%92-Link-%E2%86%92-SOMI-LOGO-01-1024x521.png.png"
+  />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Somi Klinikken Sandnes – estetisk medisin, injeksjon og hudbehandling"
+  />
+  <meta
+    name="twitter:description"
+    content="Naturlige og trygge estetiske behandlinger i hjertet av Sandnes. Injeksjoner, hudbehandling, permanent makeup og laser hos Somi Klinikken."
+  />
+  <meta
+    name="twitter:image"
+    content="https://somiklinikken.no/wp-content/uploads/2023/12/Header-%E2%86%92-Section-%E2%86%92-Link-%E2%86%92-SOMI-LOGO-01-1024x521.png.png"
+  />
+
+  <!-- Structured data / Local business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Somi Klinikken",
+    "url": "https://somiklinikken.no/",
+    "image": "https://somiklinikken.no/wp-content/uploads/2023/12/Header-%E2%86%92-Section-%E2%86%92-Link-%E2%86%92-SOMI-LOGO-01-1024x521.png.png",
+    "telephone": "+47 929 39 171",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Langgata 31",
+      "postalCode": "4306",
+      "addressLocality": "Sandnes",
+      "addressCountry": "NO"
+    },
+    "sameAs": [
+      "https://www.instagram.com/somiklinikken",
+      "https://www.facebook.com/SomiByKatarina"
+    ]
+  }
+  </script>
 
   <!-- Google Fonts -->
   <link
@@ -1587,47 +1646,57 @@
     </section>
 
     <!-- TEAM / EMPLOYEES -->
-    <section id="team" class="team-section">
-      <div class="team-container">
-        <div class="team-header reveal">
-          <div class="eyebrow">Teamet</div>
-          <h2>Møt teamet – og se oss i aksjon</h2>
-          <p class="team-intro">
-            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
-            veiledning, presise behandlinger og god oppfølging gjennom hele forløpet.
+    <section id="team" class="somi-team" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="SOMI Klinikken" />
+      <div class="somi-team-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">Teamet</div>
+            <h2 id="team-heading">Møt teamet – og se oss i aksjon</h2>
+          </div>
+          <p itemprop="description">
+            Hos Somi møter du et dedikert fagteam som kombinerer trygg veiledning, presise
+            behandlinger og personlig oppfølging for hud, injeksjoner, permanent makeup og
+            laserbehandlinger.
           </p>
         </div>
 
-        <div class="team-grid">
-          <article class="team-card reveal">
-            <div class="team-photo-wrapper">
-              <div class="photo-orbit"></div>
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/katarina.png"
-                alt="Katarina"
-              />
+        <div class="team-grid" aria-labelledby="team-heading">
+          <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
+            <div class="team-image-orbit">
+              <div class="team-image-mask">
+                <img
+                  src="https://somi.setaei.com/img/katarina.png"
+                  alt="Katarina – eier og daglig leder hos SOMI Klinikken"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
             </div>
-            <div class="team-role">Eier og daglig leder</div>
-            <div class="team-name">Katarina</div>
-            <p class="team-bio">
-              Perfeksjonist med 11 års erfaring i permanent makeup og en sterk lidenskap for faget.
-              Fokuserer på naturlige resultater som smelter sammen med ditt eget utgangspunkt.
+            <p class="team-role" itemprop="jobTitle">Eier og daglig leder</p>
+            <h3 class="team-name" itemprop="name">Katarina</h3>
+            <p class="team-text" itemprop="description">
+              Perfeksjonist med 11 års erfaring i permanent makeup og en sterk lidenskap for
+              faget. Fokuserer på naturlige resultater som smelter sammen med ditt eget
+              utgangspunkt.
             </p>
             <div class="team-actions">
               <a
                 href="https://somi.bestille.no"
-                class="team-btn"
+                class="btn-book"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Bestill time hos Katarina hos SOMI Klinikken"
+                itemprop="url"
                 >Bestill time hos Katarina</a
               >
               <a
                 href="https://www.instagram.com/somiklinikken"
-                class="team-icon-link icon-instagram"
+                class="btn-icon"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Katarina på Instagram"
+                itemprop="sameAs"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -1638,25 +1707,38 @@
             </div>
           </article>
 
-          <article class="team-card reveal">
-            <div class="team-photo-wrapper">
-              <div class="photo-orbit"></div>
-              <img class="team-photo" src="https://somi.setaei.com/img/elina.png" alt="Elina" />
+          <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
+            <div class="team-image-orbit">
+              <div class="team-image-mask">
+                <img
+                  src="https://somi.setaei.com/img/elina.png"
+                  alt="Elina – autorisert sykepleier som tilbyr injeksjonsbehandlinger ved SOMI Klinikken"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
             </div>
-            <div class="team-role">Autorisert sykepleier</div>
-            <div class="team-name">Elina</div>
-            <p class="team-bio">
+            <p class="team-role" itemprop="jobTitle">Autorisert sykepleier</p>
+            <h3 class="team-name" itemprop="name">Elina</h3>
+            <p class="team-text" itemprop="description">
               Sykepleier med 12 års erfaring innen kosmetisk medisin. Prioriterer trygghet,
               presisjon og naturlige resultater i hud- og injeksjonsbehandlinger.
             </p>
             <div class="team-actions">
-              <a href="mailto:post@somiklinikken.no" class="team-btn">Bestill hos Elina</a>
+              <a
+                href="mailto:post@somiklinikken.no"
+                class="btn-book"
+                aria-label="Bestill konsultasjon hos Elina"
+                itemprop="email"
+                >Bestill hos Elina</a
+              >
               <a
                 href="https://www.instagram.com/somiklinikken"
-                class="team-icon-link icon-instagram"
+                class="btn-icon"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Elina på Instagram"
+                itemprop="sameAs"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -1667,30 +1749,39 @@
             </div>
           </article>
 
-          <article class="team-card reveal">
-            <div class="team-photo-wrapper">
-              <div class="photo-orbit"></div>
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/arianna.png"
-                alt="Arianna"
-              />
+          <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
+            <div class="team-image-orbit">
+              <div class="team-image-mask">
+                <img
+                  src="https://somi.setaei.com/img/arianna.png"
+                  alt="Arianna – laserspesialist for bryn, voksing og hudbehandlinger ved SOMI Klinikken"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
             </div>
-            <div class="team-role">Laserspesialist</div>
-            <div class="team-name">Arianna</div>
-            <p class="team-bio">
-              Utdannet helsepersonell med videreutdanning som laserspesialist. Lidenskapelig
-              opptatt av brynstyling, voksing og ansiktsbehandlinger, og utvikler seg kontinuerlig
-              innen flere behandlingsområder.
+            <p class="team-role" itemprop="jobTitle">Laserspesialist</p>
+            <h3 class="team-name" itemprop="name">Arianna</h3>
+            <p class="team-text" itemprop="description">
+              Utdannet helsepersonell med videreutdanning som laserspesialist. Lidenskapelig opptatt
+              av brynstyling, voksing og ansiktsbehandlinger, og utvikler seg kontinuerlig innen
+              flere behandlingsområder.
             </p>
             <div class="team-actions">
-              <a href="mailto:post@somiklinikken.no" class="team-btn">Bestill hos Arianna</a>
+              <a
+                href="mailto:post@somiklinikken.no"
+                class="btn-book"
+                aria-label="Bestill konsultasjon hos Arianna"
+                itemprop="email"
+                >Bestill hos Arianna</a
+              >
               <a
                 href="https://www.instagram.com/somiklinikken"
-                class="team-icon-link icon-instagram"
+                class="btn-icon"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Arianna på Instagram"
+                itemprop="sameAs"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -1701,25 +1792,39 @@
             </div>
           </article>
 
-          <article class="team-card reveal">
-            <div class="team-photo-wrapper">
-              <div class="photo-orbit"></div>
-              <img class="team-photo" src="https://somi.setaei.com/img/emma.png" alt="Emma" />
+          <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
+            <div class="team-image-orbit">
+              <div class="team-image-mask">
+                <img
+                  src="https://somi.setaei.com/img/emma.png"
+                  alt="Emma – hudterapeut som tilbyr hudpleie, vipper, brynstyling og permanent makeup"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
             </div>
-            <div class="team-role">Hudterapeut</div>
-            <div class="team-name">Emma</div>
-            <p class="team-bio">
-              Utdannet hudterapeut med fem års erfaring. Dyktig på vipper, bryn og å forbedre ulike
-              hudtilstander, og tilbyr hudpleie, vipper, brynstyling, permanent makeup og massasje.
+            <p class="team-role" itemprop="jobTitle">Hudterapeut</p>
+            <h3 class="team-name" itemprop="name">Emma</h3>
+            <p class="team-text" itemprop="description">
+              Utdannet hudterapeut med fem års erfaring. Dyktig på vipper, bryn og å forbedre
+              ulike hudtilstander, og tilbyr hudpleie, vipper, brynstyling, permanent makeup og
+              massasje.
             </p>
             <div class="team-actions">
-              <a href="mailto:post@somiklinikken.no" class="team-btn">Bestill hos Emma</a>
+              <a
+                href="mailto:post@somiklinikken.no"
+                class="btn-book"
+                aria-label="Bestill time hos Emma"
+                itemprop="email"
+                >Bestill hos Emma</a
+              >
               <a
                 href="https://www.instagram.com/somiklinikken"
-                class="team-icon-link icon-instagram"
+                class="btn-icon"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Emma på Instagram"
+                itemprop="sameAs"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
