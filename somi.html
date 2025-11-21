@@ -551,138 +551,133 @@
     }
 
     /* Team (SOMI) */
-
-    .somi-team {
-      padding: 80px 20px;
+    .team-section {
+      padding: 60px 20px;
       background: #050505;
-      color: #111;
-    }
-
-    .somi-team-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      gap: 40px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .somi-team-inner .section-header {
-      grid-column: 1 / -1;
       color: #f5f5f5;
     }
 
-    .somi-team-inner .section-header p,
-    .somi-team-inner .eyebrow {
-      color: #cccccc;
-    }
-
-    .team-card {
-      background: #f3f3f3;
-      border-radius: 40px;
-      padding: 32px 26px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
+    .section-title {
+      text-align: center;
+      margin: 0 auto 40px;
+      max-width: 760px;
+      font-size: 2rem;
+      display: grid;
       gap: 12px;
     }
 
-    /* SOMI-formen + tynne bevegelige linjer */
-    .team-image-orbit {
-      width: 230px;
-      height: 270px;
-      position: relative;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .section-title p {
+      color: #d7d7d7;
+      margin: 0;
+      line-height: 1.6;
     }
 
-    /* bevegelig linje rundt formen */
-    .team-image-orbit::before {
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      justify-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      text-align: center;
+      max-width: 350px;
+      display: grid;
+      gap: 12px;
+      color: #f5f5f5;
+    }
+
+    .team-img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* VIDEO-KORT – animert ramme */
+    .animated-border {
+      position: relative;
+      width: 100%;
+      padding: 8px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .animated-border::before {
       content: "";
       position: absolute;
-      inset: 0;
-      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
-      border: 1px solid rgba(0, 0, 0, 0.16);
-      border-top-color: transparent;
-      border-right-color: transparent;
-      animation: orbit-spin 10s linear infinite;
+      inset: -2px;
+      border-radius: 20px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.1)
+      );
+      z-index: -1;
+      animation: borderMove 8s linear infinite;
     }
 
-    /* selve bildet i samme form */
-    .team-image-mask {
-      width: 86%;
-      height: 86%;
-      border-radius: 60% 60% 45% 45% / 80% 80% 40% 40%;
-      overflow: hidden;
-      background: #000;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .team-image-mask img {
-      width: 120%;
-      height: 120%;
-      object-fit: cover;
-      transform: translateY(6%);
-    }
-
-    /* animasjon */
-    @keyframes orbit-spin {
-      from {
+    @keyframes borderMove {
+      0% {
         transform: rotate(0deg);
       }
-      to {
+      100% {
         transform: rotate(360deg);
       }
     }
 
-    /* tekst og knapp */
+    .video-inner {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+    }
+
     .team-name {
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
+      margin: 6px 0 2px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin: 6px 0 4px;
+      color: #f5f5f5;
     }
 
     .team-role {
-      font-size: 0.85rem;
-      letter-spacing: 0.16em;
+      color: #b3b3b3;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #555;
     }
 
     .team-text {
-      font-size: 0.94rem;
-      line-height: 1.7;
-      color: #333;
+      color: #d7d7d7;
+      line-height: 1.6;
       margin: 0;
     }
 
     .btn-book {
-      align-self: stretch;
-      text-align: center;
-      padding: 10px 14px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
       border-radius: 999px;
-      border: 1px solid #111;
+      border: 1px solid #f5f5f5;
       font-size: 0.9rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #111;
+      color: #f5f5f5;
       background: transparent;
       transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
     }
 
     .btn-book:hover {
-      background: #111;
-      color: #f5f5f5;
+      background: #f5f5f5;
+      color: #0f0f0f;
       transform: translateY(-1px);
     }
 
@@ -1455,31 +1450,30 @@
     </section>
 
     <!-- TEAM / EMPLOYEES -->
-    <section id="team" class="somi-team">
-      <div class="somi-team-inner">
-        <div class="section-header reveal">
-          <div>
-            <div class="eyebrow">Teamet</div>
-            <h2>Et lite team med stor omsorg</h2>
-          </div>
-          <p>
-            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
-            veiledning, presise behandlinger og god oppfølging – fra første kontakt til
-            etterkontroll.
-          </p>
-        </div>
+    <section id="team" class="team-section">
+      <div class="section-title reveal">
+        <div class="eyebrow">Teamet</div>
+        <h2>Et lite team med stor omsorg</h2>
+        <p>
+          Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
+          veiledning, presise behandlinger og god oppfølging – fra første kontakt til
+          etterkontroll.
+        </p>
+      </div>
 
+      <div class="team-grid">
         <article class="team-card reveal">
-          <div class="team-image-orbit">
-            <div class="team-image-mask">
+          <div class="animated-border">
+            <div class="video-inner">
               <img
+                class="team-img"
                 src="https://somi.setaei.com/img/katarina.png"
                 alt="Katarina"
               />
             </div>
           </div>
-          <div class="team-role">Eier og daglig leder</div>
           <div class="team-name">Katarina</div>
+          <div class="team-role">Eier og daglig leder</div>
           <p class="team-text">
             Perfeksjonist med 11 års erfaring i permanent makeup og en sterk lidenskap for
             faget. Fokuserer på naturlige resultater som smelter sammen med ditt eget
@@ -1495,16 +1489,13 @@
         </article>
 
         <article class="team-card reveal">
-          <div class="team-image-orbit">
-            <div class="team-image-mask">
-              <img
-                src="https://somi.setaei.com/img/elina.png"
-                alt="Elina"
-              />
+          <div class="animated-border">
+            <div class="video-inner">
+              <img class="team-img" src="https://somi.setaei.com/img/elina.png" alt="Elina" />
             </div>
           </div>
-          <div class="team-role">Autorisert sykepleier</div>
           <div class="team-name">Elina</div>
+          <div class="team-role">Autorisert sykepleier</div>
           <p class="team-text">
             Sykepleier med 12 års erfaring innen kosmetisk medisin. Prioriterer trygghet,
             presisjon og naturlige resultater i hud- og injeksjonsbehandlinger.
@@ -1513,16 +1504,17 @@
         </article>
 
         <article class="team-card reveal">
-          <div class="team-image-orbit">
-            <div class="team-image-mask">
+          <div class="animated-border">
+            <div class="video-inner">
               <img
+                class="team-img"
                 src="https://somi.setaei.com/img/arianna.png"
                 alt="Arianna"
               />
             </div>
           </div>
-          <div class="team-role">Laserspesialist</div>
           <div class="team-name">Arianna</div>
+          <div class="team-role">Laserspesialist</div>
           <p class="team-text">
             Utdannet helsepersonell med videreutdanning som laserspesialist. Lidenskapelig opptatt
             av brynstyling, voksing og ansiktsbehandlinger, og utvikler seg kontinuerlig innen
@@ -1532,16 +1524,13 @@
         </article>
 
         <article class="team-card reveal">
-          <div class="team-image-orbit">
-            <div class="team-image-mask">
-              <img
-                src="https://somi.setaei.com/img/emma.png"
-                alt="Emma"
-              />
+          <div class="animated-border">
+            <div class="video-inner">
+              <img class="team-img" src="https://somi.setaei.com/img/emma.png" alt="Emma" />
             </div>
           </div>
-          <div class="team-role">Hudterapeut</div>
           <div class="team-name">Emma</div>
+          <div class="team-role">Hudterapeut</div>
           <p class="team-text">
             Utdannet hudterapeut med fem års erfaring. Dyktig på vipper, bryn og å forbedre
             ulike hudtilstander, og tilbyr hudpleie, vipper, brynstyling, permanent makeup og
