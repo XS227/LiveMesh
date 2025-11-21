@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Behandlinger & priser – Somi Klinikken</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Full oversikt over behandlinger og priser hos Somi Klinikken. Microblading, bryn og vipper, hudpleie, laserbehandlinger, permanent makeup og mer."
+  />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --bg-alt: #fbf7f2;
+      --bg-dark: #222222;
+      --primary: #c89b76;
+      --primary-soft: #e6cfbb;
+      --text-main: #1f1f1f;
+      --text-muted: #6f6f6f;
+      --border-soft: #e3d7c8;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.08);
+      --max-width: 1120px;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Playfair Display", serif;
+      margin: 0 0 0.4em;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0 0 0.75em;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 242, 236, 0.88);
+      border-bottom: 1px solid rgba(227, 215, 200, 0.7);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--primary);
+      transition: width var(--transition-fast);
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(157, 112, 74, 0.35);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(157, 112, 74, 0.45);
+      background: #b7855d;
+    }
+
+    .burger {
+      display: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-main);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .burger span::before,
+    .burger span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text-main);
+    }
+
+    .burger span::before {
+      top: -6px;
+    }
+
+    .burger span::after {
+      top: 6px;
+    }
+
+    /* HERO / INTRO */
+
+    .hero {
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 3.7vw, 44px);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 520px;
+    }
+
+    .hero-aside {
+      border-radius: 24px;
+      padding: 20px 20px 18px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-aside h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .hero-aside ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .hero-aside li {
+      margin-bottom: 4px;
+    }
+
+    .breadcrumbs {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .breadcrumbs a {
+      color: var(--text-muted);
+    }
+
+    /* FILTER/LINK-BUTTONS */
+
+    .category-filters {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 12px;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .filter-pill:hover {
+      background: #fff;
+      border-color: rgba(0, 0, 0, 0.16);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    /* CATEGORIES */
+
+    .pricing-section {
+      padding-bottom: 90px;
+    }
+
+    .category {
+      border-radius: 26px;
+      background: #fff;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      margin-bottom: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.03);
+    }
+
+    .category-header {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background: linear-gradient(90deg, #fbf7f2, #f1e3d4);
+    }
+
+    .category-title {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .category-toggle {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transform: rotate(0deg);
+      transition: transform var(--transition-fast);
+    }
+
+    .category.open .category-toggle {
+      transform: rotate(90deg);
+    }
+
+    .category-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: #fff;
+    }
+
+    .category.open .category-body {
+      max-height: 900px; /* justert høyt nok – kan økes ved behov */
+    }
+
+    .service-list {
+      padding: 8px 4px 12px;
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(227, 215, 200, 0.6);
+      font-size: 13px;
+    }
+
+    .service-row:last-child {
+      border-bottom: none;
+    }
+
+    .service-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .service-name {
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .service-note {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .service-meta {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .service-meta strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .info-pill {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* FOOTER (enkel versjon) */
+
+    .site-footer {
+      background: #181818;
+      color: #f7f2ec;
+      padding: 32px 0 22px;
+      font-size: 12px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(248, 243, 238, 0.16);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: rgba(248, 243, 238, 0.7);
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 243, 238, 0.3);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .site-header-inner {
+        padding-inline: 16px;
+      }
+
+      .nav {
+        position: fixed;
+        inset: 56px 0 auto 0;
+        padding: 16px 18px 18px;
+        background: rgba(247, 242, 236, 0.98);
+        border-bottom: 1px solid rgba(227, 215, 200, 0.9);
+        flex-direction: column;
+        gap: 12px;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .service-row {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+
+      .service-meta {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .category-title {
+        font-size: 15px;
+        letter-spacing: 0.14em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="somi.html" class="logo">
+        <img
+          src="https://somiklinikken.no/wp-content/uploads/2020/06/logo-for-mobile.png"
+          alt="Somi Klinikken"
+          class="logo-img"
+        />
+      </a>
+
+      <nav class="nav" id="siteNav">
+        <a href="somi.html">Hjem</a>
+        <a href="#top" class="active">Behandlinger</a>
+        <a href="somi.html#about">Om klinikken</a>
+        <a href="somi.html#reviews">Erfaringer</a>
+        <a href="somi.html#faq">Spørsmål</a>
+        <a href="somi.html#contact">Kontakt</a>
+        <a
+          href="https://somi.bestille.no"
+          class="nav-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Bestill time</a
+        >
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Åpne meny">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- INTRO / HERO -->
+    <section class="hero">
+      <div class="container hero-layout">
+        <div>
+          <div class="breadcrumbs">
+            <a href="somi.html">Hjem</a> · Behandlinger & priser
+          </div>
+          <div class="eyebrow">Behandlinger & priser</div>
+          <h1 class="hero-title">Full behandlingsmeny</h1>
+          <p class="hero-text">
+            Nedenfor finner du en oversikt over våre behandlinger. Pris og varighet kan
+            variere noe ut fra utgangspunkt og behandlingsplan. Alle nye kunder anbefales
+            en konsultasjon først.
+          </p>
+
+          <div class="category-filters">
+            <!-- Hurtiglenker – ruller ned til riktig kategori -->
+            <a class="filter-pill" href="#microblading">Microblading</a>
+            <a class="filter-pill" href="#bryn-vipper">Bryn & vipper</a>
+            <a class="filter-pill" href="#hudpleie">Hudpleie & Dermalogica</a>
+            <a class="filter-pill" href="#permanent-makeup">Permanent makeup</a>
+            <a class="filter-pill" href="#laser">Laserbehandlinger</a>
+            <a class="filter-pill" href="#harfjerning">Hårfjerning / voksing</a>
+            <a class="filter-pill" href="#microneedling">Microneedling</a>
+            <a class="filter-pill" href="#elektrolyse">Elektrolyse</a>
+            <a class="filter-pill" href="#konsultasjon">Konsultasjon</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside">
+          <h3>Praktisk info</h3>
+          <p>
+            Prisene på nettsiden er veiledende. Endelig pris og behandlingsopplegg
+            avtales alltid sammen med behandleren din.
+          </p>
+          <ul>
+            <li>Avbestilling innen angitt frist i bookingbekreftelsen.</li>
+            <li>Gi beskjed på forhånd dersom du bruker medisiner eller er gravid.</li>
+            <li>Har du spørsmål? Ta kontakt – vi hjelper deg gjerne.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="pricing-section">
+      <div class="container">
+
+        <!-- MICROBLADING -->
+        <div id="microblading" class="category open">
+          <div class="category-header">
+            <div class="category-title">Microblading</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <!-- FYLL INN PRIS/TID FRA LISTEN DIN -->
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Ny microblading</div>
+                    <div class="service-note">
+                      Manuell brynstatovering som gir hårstråeffekt for et naturlig uttrykk.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 3 t</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Touch up microblading</div>
+                    <div class="service-note">
+                      Etterfyll innen avtalt tid – ofte inkludert i førstegangsbehandling.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1 t 45 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Oppfriskning microblading</div>
+                    <div class="service-note">
+                      For deg som har gjort microblading tidligere og ønsker å friske opp
+                      farge og form.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1 t 45 min</span>
+                </div>
+              </div>
+
+              <!-- legg til flere rader ved behov -->
+            </div>
+          </div>
+        </div>
+
+        <!-- BRYN & VIPPER -->
+        <div id="bryn-vipper" class="category">
+          <div class="category-header">
+            <div class="category-title">Bryn og vipper</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Brynstyling (form, farge, voks)</div>
+                    <div class="service-note">
+                      Inkluderer tilpassing av form, farging og skånsom voksing rundt bryn.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Browlamination</div>
+                    <div class="service-note">
+                      Styling av brynshårene for fyldigere, mer definert uttrykk. Inkluderer
+                      formtilpasning.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 45 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Vippeløft inkl. farge</div>
+                    <div class="service-note">
+                      Permanent bøy av egne vipper for å åpne blikket, med farging som
+                      forsterker resultatet.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1 t</span>
+                </div>
+              </div>
+
+              <!-- legg til flere (bryn for menn, farging av bryn/vipper, kombinasjoner osv.) -->
+            </div>
+          </div>
+        </div>
+
+        <!-- DERMALOGICA / HUDPLEIE -->
+        <div id="hudpleie" class="category">
+          <div class="category-header">
+            <div class="category-title">Dermalogica & hudpleie</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Dermalogica Signaturbehandling</div>
+                    <div class="service-note">
+                      Tilpasses hudtype og hudtilstand. Rens, peel, maske og pleie.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 45 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Kjemisk peeling</div>
+                    <div class="service-note">
+                      Målrettet peel for glød, pigment, akne eller aldringstegn. Velges ut
+                      fra hudens behov.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30–45 min</span>
+                </div>
+              </div>
+
+              <!-- legg til PRX-T33, Somi Klassisk, LED-lysterapi, Dermaplaning osv. -->
+            </div>
+          </div>
+        </div>
+
+        <!-- PERMANENT MAKEUP -->
+        <div id="permanent-makeup" class="category">
+          <div class="category-header">
+            <div class="category-title">Permanent makeup</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Lipblush</div>
+                    <div class="service-note">
+                      Myk pigmentering av leppene som fremhever naturlig farge og form.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 2 t 30 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Ny eyeliner oppe / nede</div>
+                    <div class="service-note">
+                      Diskré forsterkning langs vippekanten som gir inntrykk av fyldigere
+                      vipper.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1–2 t</span>
+                </div>
+              </div>
+
+              <!-- legg til skjÃ¸nnhetsflekk, touch-ups, powderbrows osv. -->
+            </div>
+          </div>
+        </div>
+
+        <!-- LASER / PIGMENT / TATTOO -->
+        <div id="laser" class="category">
+          <div class="category-header">
+            <div class="category-title">Laserbehandlinger</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Laser tattoo removal</div>
+                    <div class="service-note">
+                      Fjerning av mindre tatoveringer eller gamle brynspigmenter med
+                      laser. Antall behandlinger avhenger av pigmenttype.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Laser pigmentreduksjon</div>
+                    <div class="service-note">
+                      Behandling av solskader og pigmentflekker i ansikt eller på
+                      utvalgte områder.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 15–30 min</span>
+                </div>
+              </div>
+
+              <!-- legg til flere rader for ulike områder/størrelser -->
+            </div>
+          </div>
+        </div>
+
+        <!-- HÅRFJERNING / VOKSING -->
+        <div id="harfjerning" class="category">
+          <div class="category-header">
+            <div class="category-title">Hårfjerning / voksing</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Overleppe</div>
+                    <div class="service-note">Rask og skånsom voksing av overleppe.</div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 15 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Brasiliansk voks</div>
+                    <div class="service-note">
+                      Intimvoksing med fokus på hygiene, komfort og diskresjon.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30–45 min</span>
+                </div>
+              </div>
+
+              <!-- legg til hele ben, armer, ansikt, pakkepriser osv. -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MICRONEEDLING -->
+        <div id="microneedling" class="category">
+          <div class="category-header">
+            <div class="category-title">Microneedling</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Microneedling</div>
+                    <div class="service-note">
+                      Nålebehandling som stimulerer kollagenproduksjon, reduserer arr,
+                      porer og fine linjer.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1 t 15 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Microneedling inkl. pakke</div>
+                    <div class="service-note">
+                      Kombineres ofte med peel og LED-lysterapi for optimal effekt (Somi
+                      signaturbehandling).
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 1 t 15 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ELEKTROLYSE -->
+        <div id="elektrolyse" class="category">
+          <div class="category-header">
+            <div class="category-title">Elektrolyse · permanent hårfjerning</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Elektrolyse 15 min</div>
+                    <div class="service-note">
+                      Permanent hårfjerning med tynn nål og svak strøm som ødelegger
+                      hårsekken. Krever flere behandlinger.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>15 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Elektrolyse 30 min</div>
+                    <div class="service-note">
+                      For større områder eller ved behov for lengre behandlingstid.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>30 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KONSULTASJON -->
+        <div id="konsultasjon" class="category">
+          <div class="category-header">
+            <div class="category-title">Konsultasjon</div>
+            <div class="category-toggle">›</div>
+          </div>
+          <div class="category-body">
+            <div class="service-list">
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Konsultasjon estetisk behandling</div>
+                    <div class="service-note">
+                      Gjennomgang av ønsker, medisinsk historikk og anbefaling av
+                      behandlingsplan.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30 min</span>
+                </div>
+              </div>
+
+              <div class="service-row">
+                <div class="service-main">
+                  <div class="info-pill">i</div>
+                  <div>
+                    <div class="service-name">Hudkonsultasjon</div>
+                    <div class="service-note">
+                      Analyse av hudtilstand og tilpasset plan for produkter og
+                      behandlinger.
+                    </div>
+                  </div>
+                </div>
+                <div class="service-meta">
+                  <strong>XXX,-</strong>
+                  <span>ca. 30 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>© Somi Klinikken – Behandlinger & priser</div>
+        <div class="pill">Bestill time på somi.bestille.no</div>
+      </div>
+      <div class="footer-bottom">
+        <span>Estetisk medisin · Sandnes</span>
+        <span>Personvern · Vilkår · Cookies</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobilmeny
+    const burgerBtn = document.getElementById("burgerBtn");
+    const nav = document.getElementById("siteNav");
+
+    burgerBtn.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => nav.classList.remove("open"));
+    });
+
+    // Accordion for categories
+    document.querySelectorAll(".category-header").forEach((header) => {
+      header.addEventListener("click", () => {
+        const category = header.parentElement;
+        category.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
