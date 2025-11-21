@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Behandlinger | Somi Klinikken</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #fdf7f4;
+      --bg-soft: #fff9f6;
+      --accent: #d6a9a0;
+      --accent-strong: #c58d80;
+      --text: #2e2320;
+      --muted: #867675;
+      --card: #ffffff;
+      --border-soft: rgba(214, 169, 160, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at top left, #fff8f4 0, #fdf7f4 40%, #f7f2f0 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAV */
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(253, 247, 244, 0.9);
+      border-bottom: 1px solid rgba(214, 169, 160, 0.12);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 26px;
+      font-size: 0.95rem;
+    }
+
+    .main-nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-strong);
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a.active::after {
+      width: 100%;
+    }
+
+    /* HERO / INTRO – lik referansen */
+
+    .hero {
+      max-width: 720px;
+      margin: 72px auto 40px;
+      padding: 40px 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background:
+        radial-gradient(circle at top left, rgba(214,169,160,0.13) 0, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(214,169,160,0.09) 0, transparent 60%);
+      opacity: 0.75;
+      z-index: -1;
+      mask-image: radial-gradient(circle at center, black 0, transparent 70%);
+    }
+
+    .hero-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 2.8rem);
+      margin-bottom: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-subline {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* IKON-OVERSIKT */
+
+    .treatment-icons {
+      max-width: 1120px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .icon-card {
+      position: relative;
+      background: var(--bg-soft);
+      border-radius: 24px;
+      padding: 18px 16px 16px;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(8, 2, 1, 0.12);
+      border-color: rgba(214,169,160,0.5);
+    }
+
+    .icon-card small {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .icon-card h3 {
+      margin-top: 6px;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .icon-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .somi-icon {
+      width: 34px;
+      height: 34px;
+      margin-bottom: 10px;
+    }
+
+    .somi-icon-ring {
+      fill: none;
+      stroke: rgba(214,169,160,0.5);
+      stroke-width: 1.2;
+    }
+
+    .somi-icon-line {
+      fill: none;
+      stroke: var(--accent-strong);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* KATEGORIER / INNHOLD */
+
+    .treatments-wrapper {
+      max-width: 1120px;
+      margin: 10px auto 80px;
+      padding: 0 20px 20px;
+    }
+
+    .treatment-category {
+      margin-bottom: 40px;
+      padding: 26px 20px 22px;
+      border-radius: 26px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 50px rgba(8, 2, 1, 0.08);
+    }
+
+    .treatment-category + .treatment-category {
+      margin-top: 24px;
+    }
+
+    .treatment-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .treatment-header h2 {
+      font-size: 1.1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .treatment-header p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .treatment-list {
+      margin-top: 12px;
+      border-top: 1px solid rgba(214,169,160,0.2);
+    }
+
+    .treatment-item {
+      display: grid;
+      grid-template-columns: 2fr auto;
+      gap: 4px 12px;
+      padding: 10px 0;
+      font-size: 0.92rem;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(214,169,160,0.12);
+    }
+
+    .treatment-item:last-child {
+      border-bottom: none;
+    }
+
+    .treatment-name {
+      font-weight: 500;
+    }
+
+    .treatment-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .treatment-price-time {
+      text-align: right;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    /* Småskjerm */
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding-inline: 16px;
+      }
+
+      .main-nav ul {
+        gap: 14px;
+        font-size: 0.85rem;
+      }
+
+      .treatment-item {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .treatment-price-time {
+        text-align: left;
+      }
+
+      .treatment-category {
+        padding-inline: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (uten "Hjem") -->
+  <header class="main-header">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">SOMI</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="behandlinger.html" class="active">Behandlinger</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="https://din-booking-lenke.com" target="_blank">Book time</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO – lik referanse: tittel + rolig tekst -->
+  <section class="hero">
+    <div class="hero-label">Somi Klinikken</div>
+    <h1>Behandlinger</h1>
+    <div class="hero-subline">Skreddersydde behandlinger – trygt, rolig og presist</div>
+    <p>
+      Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg veiledning,
+      presise behandlinger og god oppfølging. Under finner du alle våre behandlinger, sortert etter kategori,
+      slik at du enkelt finner det som passer deg.
+    </p>
+  </section>
+
+  <!-- IKONER – SOMI STIL -->
+  <section class="treatment-icons">
+    <!-- Microblading / Bryn -->
+    <article class="icon-card">
+      <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+        <path class="somi-icon-line"
+              d="M18 36c4-5 9-8 14-8 5 0 9 3 14 8" />
+        <path class="somi-icon-line"
+              d="M22 28c3-3 6-5 10-5" />
+      </svg>
+      <small>Bryn & Brows</small>
+      <h3>Microblading & bryn</h3>
+      <p>Naturlige, presise bryn med hårstråteknikk og skreddersydd form.</p>
+    </article>
+
+    <!-- Lepper -->
+    <article class="icon-card">
+      <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+        <path class="somi-icon-line"
+              d="M18 32c4-4 8-6 14-6s10 2 14 6" />
+        <path class="somi-icon-line"
+              d="M20 33c4 4 7 6 12 6s8-2 12-6" />
+      </svg>
+      <small>Lip Blush</small>
+      <h3>Lepper</h3>
+      <p>Myk definisjon og jevn farge for naturlig freshe lepper.</p>
+    </article>
+
+    <!-- Hud / ansikt -->
+    <article class="icon-card">
+      <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+        <path class="somi-icon-line"
+              d="M26 20c2 3 3 6 3 10s-1 7-3 10" />
+        <path class="somi-icon-line"
+              d="M38 20c-2 3-3 6-3 10s1 7 3 10" />
+        <path class="somi-icon-line"
+              d="M22 40c3 2 6 3 10 3s7-1 10-3" />
+      </svg>
+      <small>Hud</small>
+      <h3>Hudbehandlinger</h3>
+      <p>Behandlinger som gir glød, jevn hudtone og fornyet struktur.</p>
+    </article>
+
+    <!-- Injeksjon / medisinsk -->
+    <article class="icon-card">
+      <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+        <path class="somi-icon-line"
+              d="M24 22l16 16" />
+        <path class="somi-icon-line"
+              d="M26 18l6-6 6 6-6 6z" />
+        <path class="somi-icon-line"
+              d="M22 38c2 3 5 4 10 4s8-1 10-4" />
+      </svg>
+      <small>Medisinsk</small>
+      <h3>Injeksjonsbehandlinger</h3>
+      <p>Subtile, medisinske behandlinger tilpasset ansiktets naturlige balanse.</p>
+    </article>
+  </section>
+
+  <!-- SELVE BEHANDLINGENE – lim inn vår eksisterende tekst/HTML -->
+
+  <main class="treatments-wrapper">
+
+    <!-- EKSEMPEL: MICROBLADING – her har jeg fylt inn en av listene vi brukte før -->
+    <section class="treatment-category" id="microblading">
+      <header class="treatment-header">
+        <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+          <path class="somi-icon-line"
+                d="M18 36c4-5 9-8 14-8 5 0 9 3 14 8" />
+        </svg>
+        <div>
+          <h2>Microblading</h2>
+          <p>Naturlig brynforming med hårstråteknikk.</p>
+        </div>
+      </header>
+
+      <div class="treatment-list">
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Touch up microblading (inkludert i prisen)</div>
+            <div class="treatment-meta">Oppfølgingstime for å perfeksjonere formen og fargen.</div>
+          </div>
+          <div class="treatment-price-time">
+            0 kr · 1 t 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Ny microblading</div>
+            <div class="treatment-meta">Førstegangsbehandling med konsultasjon, måling og tilpassing.</div>
+          </div>
+          <div class="treatment-price-time">
+            645 kr · 3 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Ekstra touch up microblading/powderbrows/lip blush</div>
+            <div class="treatment-meta">Ekstra justering ved behov for mer definisjon eller farge.</div>
+          </div>
+          <div class="treatment-price-time">
+            800 kr · 1 t 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Oppfriskning microblading</div>
+            <div class="treatment-meta">For deg som har gjort microblading tidligere og ønsker å friske opp.</div>
+          </div>
+          <div class="treatment-price-time">
+            285 kr · 1 t 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Ny microblading + shading</div>
+            <div class="treatment-meta">Kombinasjon av hårstrå og skygge for mer dybde og fylde.</div>
+          </div>
+          <div class="treatment-price-time">
+            685 kr · 3 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Oppfriskning microblading + shading</div>
+            <div class="treatment-meta">Vedlikehold av tidligere kombinasjonsbryn.</div>
+          </div>
+          <div class="treatment-price-time">
+            375 kr · 1 t 45 min
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRYN & VIPPER -->
+    <section class="treatment-category" id="bryn-vipper">
+      <header class="treatment-header">
+        <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+          <path class="somi-icon-line"
+                d="M18 36c4-5 9-8 14-8 5 0 9 3 14 8" />
+        </svg>
+        <div>
+          <h2>Bryn & vipper</h2>
+          <p>Form, farge og løft for et våkent, friskt blikk.</p>
+        </div>
+      </header>
+
+      <div class="treatment-list">
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Brynstyling (form, farge, voks)</div>
+            <div class="treatment-meta">Tilpassing av form, farging av bryn og skånsom voks rundt brynene.</div>
+          </div>
+          <div class="treatment-price-time">
+            690 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Browlamination</div>
+            <div class="treatment-meta">Former og “løfter” brynshårene for et fyldigere, mer strukturert uttrykk.</div>
+          </div>
+          <div class="treatment-price-time">
+            107 kr · 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Vippeløft inkl. farge og lashfiller</div>
+            <div class="treatment-meta">Permanent bøy av egne vipper, med farge og pleiende lashfiller for ekstra volumfølelse.</div>
+          </div>
+          <div class="treatment-price-time">
+            114 kr · 1 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Browlamination + vippeløft inkl. farge</div>
+            <div class="treatment-meta">Pakke som kombinerer styling av bryn og vippeløft for et komplett blikk-løft.</div>
+          </div>
+          <div class="treatment-price-time">
+            169 kr · 1 t 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Farging av vipper</div>
+            <div class="treatment-meta">Fargebehandling som gir inntrykk av tettere og mørkere vipper.</div>
+          </div>
+          <div class="treatment-price-time">
+            290 kr · 15 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Farging av bryn</div>
+            <div class="treatment-meta">Farge som tilpasses hudtone og hårfarge for naturlig markerte bryn.</div>
+          </div>
+          <div class="treatment-price-time">
+            320 kr · 15 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Brynstyling for menn</div>
+            <div class="treatment-meta">Diskré forming og tilpassing av bryn for maskulint uttrykk.</div>
+          </div>
+          <div class="treatment-price-time">
+            490 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Brynstyling + voks overleppe</div>
+            <div class="treatment-meta">Kombinasjon av full brynstyling og voksing av overleppe.</div>
+          </div>
+          <div class="treatment-price-time">
+            850 kr · 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Forming av bryn</div>
+            <div class="treatment-meta">Rens av form med voks/pinsett – uten farge.</div>
+          </div>
+          <div class="treatment-price-time">
+            490 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Brynstyling + farging av vipper</div>
+            <div class="treatment-meta">Komplett pakke med brynsform, farge og voks kombinert med vippefarge.</div>
+          </div>
+          <div class="treatment-price-time">
+            850 kr · 45 min
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEPPER / LIP BLUSH -->
+    <section class="treatment-category" id="lepper">
+      <header class="treatment-header">
+        <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+          <path class="somi-icon-line"
+                d="M18 32c4-4 8-6 14-6s10 2 14 6" />
+        </svg>
+        <div>
+          <h2>Lepper / Lip Blush</h2>
+          <p>Myk definisjon og naturlig fargeforsterkning.</p>
+        </div>
+      </header>
+
+      <div class="treatment-list">
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Lipblush</div>
+            <div class="treatment-meta">Naturlig leppefarge med jevn dekning for myk definisjon.</div>
+          </div>
+          <div class="treatment-price-time">
+            685 kr · 2 t 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Touch up lipblush (inkl i prisen)</div>
+            <div class="treatment-meta">Inkludert etterkontroll for å finjustere farge og form.</div>
+          </div>
+          <div class="treatment-price-time">
+            0 kr · 2 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Oppfriskning lipblush</div>
+            <div class="treatment-meta">Vedlikeholdstime for å fornye fargen på tidligere lipblush.</div>
+          </div>
+          <div class="treatment-price-time">
+            350 kr · 2 t 30 min
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUD / ANSIKTSBEHANDLINGER -->
+    <section class="treatment-category" id="hud">
+      <header class="treatment-header">
+        <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+          <path class="somi-icon-line"
+                d="M26 20c2 3 3 6 3 10s-1 7-3 10" />
+        </svg>
+        <div>
+          <h2>Hudbehandlinger</h2>
+          <p>Tilpasset hudtype og behov – glød, struktur og jevn tone.</p>
+        </div>
+      </header>
+
+      <div class="treatment-list">
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Signaturbehandling</div>
+            <div class="treatment-meta">Tilpasset klassisk behandling med fokus på rens, glød og komfort.</div>
+          </div>
+          <div class="treatment-price-time">
+            100 kr · 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Kjemisk Peeling</div>
+            <div class="treatment-meta">Målrettet peel for hudfornyelse, glød og jevnere hudtone.</div>
+          </div>
+          <div class="treatment-price-time">
+            120 kr · 45 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Pigmentering 30 min</div>
+            <div class="treatment-meta">Kraftigere behandling mot pigmentflekker på utvalgte områder.</div>
+          </div>
+          <div class="treatment-price-time">
+            790 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Pigmentering 60 min</div>
+            <div class="treatment-meta">For deg som ønsker mer grundig pigmentbehandling kombinert med klassisk pleie.</div>
+          </div>
+          <div class="treatment-price-time">
+            130 kr · 1 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Akne 30 min</div>
+            <div class="treatment-meta">Rensende og balanserende behandling tilpasset akne og uren hud.</div>
+          </div>
+          <div class="treatment-price-time">
+            790 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Akne 60 min</div>
+            <div class="treatment-meta">Utvidet aknebehandling med mer tid til ekstraksjoner og maske.</div>
+          </div>
+          <div class="treatment-price-time">
+            130 kr · 1 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Aldring 30 min</div>
+            <div class="treatment-meta">Fukt- og kollagenstimulerende behandling for hud med aldringstegn.</div>
+          </div>
+          <div class="treatment-price-time">
+            790 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Aldring 60 min</div>
+            <div class="treatment-meta">Utvidet anti-age behandling med ekstra fokus på massasje og næringsrike masker.</div>
+          </div>
+          <div class="treatment-price-time">
+            130 kr · 1 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Sensitivitet 30 min</div>
+            <div class="treatment-meta">Skånsom behandling som roer ned reaktiv og sensitiv hud.</div>
+          </div>
+          <div class="treatment-price-time">
+            790 kr · 30 min
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Dermalogica Målrettet Sensitivitet 60 min</div>
+            <div class="treatment-meta">Mer tid til lag-på-lag-pleie, maske og rolig massasje for sensitiv hud.</div>
+          </div>
+          <div class="treatment-price-time">
+            130 kr · 1 t
+          </div>
+        </div>
+
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Facemapping hudenalyse</div>
+            <div class="treatment-meta">Gratis hudanalyse hvor vi kartlegger hudtilstand og anbefaler riktige produkter og behandlinger.</div>
+          </div>
+          <div class="treatment-price-time">
+            0 kr · 15 min
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INJEKSJON / MEDISINSKE BEHANDLINGER -->
+    <section class="treatment-category" id="injeksjon">
+      <header class="treatment-header">
+        <svg class="somi-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+          <path class="somi-icon-line"
+                d="M24 22l16 16" />
+        </svg>
+        <div>
+          <h2>Injeksjonsbehandlinger</h2>
+          <p>Medisinske behandlinger utført med fokus på balanse og trygghet.</p>
+        </div>
+      </header>
+
+      <div class="treatment-list">
+        <div class="treatment-item">
+          <div>
+            <div class="treatment-name">Konsultasjon</div>
+            <div class="treatment-meta">Individuell vurdering før injeksjonsbehandling; pris settes ved konsultasjon.</div>
+          </div>
+          <div class="treatment-price-time">
+            Etter avtale · 30 min
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- evt. flere kategorier -->
+
+  </main>
+
+</body>
+</html>
