@@ -552,97 +552,74 @@
 
     /* Team */
 
-    .somi-team {
-      margin-top: 32px;
-    }
-
-    .somi-team-inner {
+    .team-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .team-card {
       border-radius: 22px;
       background: #fff;
       border: 1px solid rgba(227, 215, 200, 0.9);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
       padding: 18px 18px 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
 
     .team-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
-    .team-image-orbit {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(200, 155, 118, 0.2), transparent 65%);
-      display: grid;
-      place-items: center;
-    }
-
-    .team-image-orbit::after {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border-radius: 999px;
-      border: 1px solid rgba(200, 155, 118, 0.35);
-    }
-
-    .team-image-mask {
-      width: 92px;
-      height: 92px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: #d7c5b5;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .team-image-mask img {
+    .team-photo {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      aspect-ratio: 4 / 5;
+      border-radius: 16px;
+      background: #ccc;
+      background-size: cover;
+      background-position: center;
     }
 
-    .team-name {
+    .team-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .team-meta h3 {
       font-size: 18px;
-      text-align: center;
-      margin: 4px 0 0;
+      margin: 0;
     }
 
-    .team-text {
+    .team-role {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .team-desc {
       font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.6;
     }
 
-    .btn-book {
-      align-self: flex-start;
-      padding: 10px 16px;
-      border-radius: 999px;
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .team-tag {
+      padding: 6px 10px;
+      border-radius: 12px;
       background: rgba(200, 155, 118, 0.12);
       color: #8b623d;
-      border: 1px solid rgba(200, 155, 118, 0.35);
-      font-weight: 600;
-      font-size: 13px;
-      transition: background var(--transition-fast), color var(--transition-fast),
-        box-shadow var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .btn-book:hover {
-      background: rgba(200, 155, 118, 0.22);
-      box-shadow: 0 12px 26px rgba(200, 155, 118, 0.25);
-      transform: translateY(-1px);
+      font-size: 12px;
+      border: 1px solid rgba(200, 155, 118, 0.2);
     }
 
     /* Testimonials */
@@ -983,6 +960,7 @@
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
+      .team-grid,
       .faq-grid,
       .contact-grid,
       .footer-grid {
@@ -1051,6 +1029,10 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .usp-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1067,7 +1049,7 @@
       }
 
       .treatment-grid,
-      .somi-team-inner,
+      .team-grid,
       .usp-grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -1088,7 +1070,7 @@
     <div class="container site-header-inner">
       <a href="#top" class="logo">
         <img
-          src="https://somiklinikken.no/wp-content/uploads/2020/06/logo-for-mobile.png"
+          src="https://somiklinikken.no/wp-content/uploads/2023/12/Header-%E2%86%92-Section-%E2%86%92-Link-%E2%86%92-SOMI-LOGO-01-1024x521.png.png"
           alt="Somi Klinikken"
           class="logo-img"
         />
@@ -1409,89 +1391,80 @@
     </section>
 
     <!-- TEAM / EMPLOYEES -->
-    <section id="team" class="section section--soft">
+    <section id="team" class="section">
       <div class="container">
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Teamet</div>
-            <h2>Møt menneskene bak Somi</h2>
+            <h2>Et lite team med stor omsorg</h2>
           </div>
           <p>
-            Et erfarent team med felles mål: naturlige resultater, trygg oppfølging og god
-            veiledning. Bli kjent med oss og finn riktig behandler for dine behov.
+            Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
+            veiledning, presise behandlinger og god oppfølging – fra første kontakt til
+            etterkontroll.
           </p>
         </div>
 
-        <div class="somi-team">
-          <div class="somi-team-inner">
-            <!-- Katarina -->
-            <article class="team-card reveal">
-              <div class="team-image-orbit">
-                <div class="team-image-mask">
-                  <img src="bilder/katarina.jpg" alt="Katarina – eier og daglig leder" />
-                </div>
-              </div>
-              <h3 class="team-name">Katarina</h3>
-              <p class="team-text">
-                Er eier og daglig leder av Somi klinikken. Hun har 11 års erfaring med
-                permanent makeup og har en sterk lidenskap for jobben sin. Katarina er
-                perfeksjonist og ønsker å gi kundene sine naturlige resultater som flyter
-                inn med kundens naturlige utgangspunkt.
-              </p>
-              <a href="#booking-katarina" class="btn-book">Book time hos Katarina</a>
-            </article>
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/3825538/pexels-photo-3825538.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Medisinsk ansvarlig</div>
+              <h3>Katarina</h3>
+            </div>
+            <p class="team-desc">
+              Autorisert sykepleier med spesialisering i estetiske injeksjoner. Står for
+              medisinsk vurdering, behandlingsplaner og trygg gjennomføring.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Injeksjoner</span>
+              <span class="team-tag">Konsultasjon</span>
+              <span class="team-tag">Oppfølging</span>
+            </div>
+          </article>
 
-            <!-- Elina -->
-            <article class="team-card reveal">
-              <div class="team-image-orbit">
-                <div class="team-image-mask">
-                  <img src="bilder/elina.jpg" alt="Elina – kosmetisk sykepleier" />
-                </div>
-              </div>
-              <h3 class="team-name">Elina</h3>
-              <p class="team-text">
-                Elina er autorisert sykepleier med 12 års erfaring, spesialisert i kosmetisk
-                medisin. Hun prioriterer trygghet, presisjon og naturlige resultater i alle
-                behandlinger. Elina tilbyr hud- og injeksjonsbehandlinger og skreddersyr
-                løsninger til hver kunde.
-              </p>
-              <a href="#booking-elina" class="btn-book">Book time hos Elina</a>
-            </article>
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Hudterapeut</div>
+              <h3>Maria</h3>
+            </div>
+            <p class="team-desc">
+              Utfører hudbehandlinger, microneedling og kjemisk peel. Skreddersyr hjemmepleie
+              og kurforløp for å sikre stabile resultater over tid.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Hudhelse</span>
+              <span class="team-tag">Microneedling</span>
+              <span class="team-tag">Peel</span>
+            </div>
+          </article>
 
-            <!-- Arianna -->
-            <article class="team-card reveal">
-              <div class="team-image-orbit">
-                <div class="team-image-mask">
-                  <img src="bilder/arianna.jpg" alt="Arianna – laserspesialist" />
-                </div>
-              </div>
-              <h3 class="team-name">Arianna</h3>
-              <p class="team-text">
-                Er utdannet helsepersonell med videreutdanning som laserspesialist, og hennes
-                store lidenskap er brynstyling og voksing. Hun jobber med en rekke
-                ansiktsbehandlinger, voksing, vippeløft og brynstyling, og holder på med
-                videre utdanning i flere behandlinger.
-              </p>
-              <a href="#booking-arianna" class="btn-book">Book time hos Arianna</a>
-            </article>
-
-            <!-- Emma -->
-            <article class="team-card reveal">
-              <div class="team-image-orbit">
-                <div class="team-image-mask">
-                  <img src="bilder/emma.jpg" alt="Emma – hudterapeut" />
-                </div>
-              </div>
-              <h3 class="team-name">Emma</h3>
-              <p class="team-text">
-                Er utdannet hudterapeut og er svært dyktig på vipper og bryn. Hennes store
-                lidenskap ligger i å hjelpe å forbedre forskjellige hudtilstander. Hun har 5
-                års erfaring i bransjen. Emma tilbyr behandlinger innen hudpleie, vipper,
-                brynstyling, permanent makeup og massasje.
-              </p>
-              <a href="#booking-emma" class="btn-book">Book time hos Emma</a>
-            </article>
-          </div>
+          <article class="team-card reveal">
+            <div
+              class="team-photo"
+              style="background-image: url('https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=800');"
+            ></div>
+            <div class="team-meta">
+              <div class="team-role">Koordinator</div>
+              <h3>Emil</h3>
+            </div>
+            <p class="team-desc">
+              Hjelper deg med booking, påminnelser og praktiske spørsmål. Sørger for smidig
+              flyt mellom konsultasjon, behandling og etterkontroll.
+            </p>
+            <div class="team-tags">
+              <span class="team-tag">Booking</span>
+              <span class="team-tag">Kundeservice</span>
+              <span class="team-tag">Logistikk</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
