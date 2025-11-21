@@ -620,17 +620,17 @@
       overflow: hidden;
       background: #000;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       position: relative;
       z-index: 1;
     }
 
     .team-image-mask img {
-      width: 120%;
-      height: 120%;
-      object-fit: cover;
-      transform: translateY(6%);
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: none;
     }
 
     /* animasjon */
@@ -719,56 +719,6 @@
       background: #111;
       color: #f5f5f5;
       transform: translateY(-1px);
-    }
-
-    /* Team video card */
-    .video-card {
-      background: transparent;
-      padding: 0;
-      gap: 16px;
-    }
-
-    .animated-border {
-      width: 100%;
-      border-radius: 30px;
-      padding: 3px;
-      background: conic-gradient(
-        from 180deg,
-        rgba(200, 155, 118, 0.15),
-        rgba(200, 155, 118, 0.55),
-        rgba(200, 155, 118, 0.15)
-      );
-      animation: border-glow 8s linear infinite;
-    }
-
-    .video-inner {
-      background: linear-gradient(160deg, #0f0f0f, #1a1a1a);
-      border-radius: 26px;
-      padding: 12px;
-      aspect-ratio: 16 / 9;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .video-card .team-name,
-    .video-card .team-role {
-      color: #f5f5f5;
-      text-align: center;
-      letter-spacing: 0.08em;
-    }
-
-    .video-card .team-role {
-      color: #d2c5b9;
-    }
-
-    @keyframes border-glow {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
     }
 
     /* Testimonials */
@@ -1298,80 +1248,75 @@
 
         <div class="treatment-grid">
           <article class="treatment-card reveal">
-            <div class="treatment-icon">💉</div>
-            <h3>Botox / muskelavslappende</h3>
+            <div class="treatment-icon">🖋️</div>
+            <h3>Microblading</h3>
             <p>
-              Mykner fine linjer i panne, sinnarynke og øyeparti for et mer opplagt uttrykk.
+              Naturlige hårstrå med manuell teknikk for definert form og langvarig resultat.
             </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+            <span>Fra kr&nbsp;645</span>
           </article>
 
           <article class="treatment-card reveal">
-            <div class="treatment-icon">👄</div>
-            <h3>Leppefiller</h3>
+            <div class="treatment-icon">👁️</div>
+            <h3>Bryn &amp; vipper</h3>
             <p>
-              Skånsom volum- og konturbehandling med fokus på naturlig form og balanse.
+              Styling, farge og løft av bryn og vipper som fremhever øynene på en skånsom måte.
             </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+            <span>Fra kr&nbsp;450</span>
           </article>
 
           <article class="treatment-card reveal">
-            <div class="treatment-icon">💧</div>
-            <h3>Skinbooster / Profhilo</h3>
+            <div class="treatment-icon">🌿</div>
+            <h3>Dermalogica hudpleie</h3>
             <p>
-              Fukt- og kollagenboost som gir jevnere hudstruktur og mer glød over tid.
+              Tilpassede hudprogrammer med profesjonelle produkter for glød, balanse og styrket hudbarriere.
             </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+            <span>Fra kr&nbsp;850</span>
           </article>
 
           <article class="treatment-card reveal">
             <div class="treatment-icon">✨</div>
             <h3>Microneedling</h3>
             <p>
-              Stimulerer hudens egen reparasjon ved arr, porer, fine linjer og ujevn
-              hudtone.
+              Dypvirkende kollagenstimulering som jevner ut arr, porer og fine linjer over tid.
             </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
-          </article>
-
-          <article class="treatment-card reveal">
-            <div class="treatment-icon">🌙</div>
-            <h3>Kjemisk peel</h3>
-            <p>
-              Målrettede peelinger for glød, pigment, akne og aldringstegn – skreddersydd
-              til din hud.
-            </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+            <span>Fra kr&nbsp;1&nbsp;900</span>
           </article>
 
           <article class="treatment-card reveal">
             <div class="treatment-icon">⚡</div>
-            <h3>Laser / hårfjerning</h3>
+            <h3>Laser hårfjerning</h3>
             <p>
-              Langvarig reduksjon av uønsket hår med moderne laserutstyr (tekst tilpasses
-              etter tilbud).
+              Effektiv og skånsom reduksjon av uønsket hår med moderne diodelaser-teknologi.
             </p>
-            <span>Fra kr&nbsp;X&nbsp;XXX</span>
+            <span>Fra kr&nbsp;690</span>
           </article>
 
           <article class="treatment-card reveal">
-            <div class="treatment-icon">👁️</div>
-            <h3>Område-behandlinger</h3>
+            <div class="treatment-icon">🌙</div>
+            <h3>Pigmentreduksjon</h3>
             <p>
-              Skreddersydde kombinasjoner for områder som øyne, munnparti eller hals /
-              bryst.
+              Målrettede laserbehandlinger som lysner ujevn pigmentering og solskader.
             </p>
-            <span>Pris etter konsultasjon</span>
+            <span>Fra kr&nbsp;1&nbsp;200</span>
+          </article>
+
+          <article class="treatment-card reveal">
+            <div class="treatment-icon">🔌</div>
+            <h3>Elektrolyse</h3>
+            <p>
+              Permanent hårfjerning i små områder for presis og varig reduksjon av hårvekst.
+            </p>
+            <span>Fra kr&nbsp;450</span>
           </article>
 
           <article class="treatment-card reveal">
             <div class="treatment-icon">📝</div>
             <h3>Konsultasjon</h3>
             <p>
-              Ny kundekonsultasjon, gjennomgang av helse, forventninger og realistiske
-              resultater.
+              Kartlegging av mål, helse og forventninger slik at vi sammen finner riktig behandlingsplan.
             </p>
-            <span>Fra kr&nbsp;XXX (ofte inkludert ved behandling)</span>
+            <span>Inkludert ved de fleste behandlinger</span>
           </article>
         </div>
 
@@ -1521,15 +1466,6 @@
       </div>
     </section>
 
-    <!-- Facebook SDK for video embed -->
-    <div id="fb-root"></div>
-    <script
-      async
-      defer
-      crossorigin="anonymous"
-      src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"
-    ></script>
-
     <!-- TEAM / EMPLOYEES -->
     <section id="team" class="somi-team">
       <div class="somi-team-inner">
@@ -1540,25 +1476,9 @@
           </div>
           <p>
             Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
-            veiledning, presise behandlinger og god oppfølging – og nå kan du også få et
-            glimt bak kulissene fra klinikken.
+            veiledning, presise behandlinger og god oppfølging gjennom hele forløpet.
           </p>
         </div>
-
-        <article class="team-card video-card reveal">
-          <div class="animated-border">
-            <div class="video-inner">
-              <div
-                class="fb-video"
-                data-href="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1525080575201528%2F"
-                data-show-text="false"
-                data-width="100%"
-              ></div>
-            </div>
-          </div>
-          <div class="team-name">Somi Klinikken</div>
-          <div class="team-role">Et lite innblikk bak kulissene</div>
-        </article>
 
         <article class="team-card reveal">
           <div class="team-image-orbit">
