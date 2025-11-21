@@ -686,6 +686,56 @@
       transform: translateY(-1px);
     }
 
+    /* Team video card */
+    .video-card {
+      background: transparent;
+      padding: 0;
+      gap: 16px;
+    }
+
+    .animated-border {
+      width: 100%;
+      border-radius: 30px;
+      padding: 3px;
+      background: conic-gradient(
+        from 180deg,
+        rgba(200, 155, 118, 0.15),
+        rgba(200, 155, 118, 0.55),
+        rgba(200, 155, 118, 0.15)
+      );
+      animation: border-glow 8s linear infinite;
+    }
+
+    .video-inner {
+      background: linear-gradient(160deg, #0f0f0f, #1a1a1a);
+      border-radius: 26px;
+      padding: 12px;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .video-card .team-name,
+    .video-card .team-role {
+      color: #f5f5f5;
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+
+    .video-card .team-role {
+      color: #d2c5b9;
+    }
+
+    @keyframes border-glow {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     /* Testimonials */
 
     .quote-block {
@@ -1460,14 +1510,29 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Teamet</div>
-            <h2>Et lite team med stor omsorg</h2>
+            <h2>Møt teamet – og se oss i aksjon</h2>
           </div>
           <p>
             Hos Somi møter du et dedikert fagteam som samarbeider tett for å gi deg trygg
-            veiledning, presise behandlinger og god oppfølging – fra første kontakt til
-            etterkontroll.
+            veiledning, presise behandlinger og god oppfølging – og nå kan du også få et
+            glimt bak kulissene fra klinikken.
           </p>
         </div>
+
+        <article class="team-card video-card reveal">
+          <div class="animated-border">
+            <div class="video-inner">
+              <div
+                class="fb-video"
+                data-href="https://www.facebook.com/share/r/14MXkw5h77S/"
+                data-show-text="false"
+                data-width="100%"
+              ></div>
+            </div>
+          </div>
+          <div class="team-name">Somi Klinikken</div>
+          <div class="team-role">Et lite innblikk bak kulissene</div>
+        </article>
 
         <article class="team-card reveal">
           <div class="team-image-orbit">
@@ -1737,6 +1802,14 @@
       </div>
     </div>
   </footer>
+
+  <div id="fb-root"></div>
+  <script
+    async
+    defer
+    crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
+  ></script>
 
   <script>
     // Mobilmeny
