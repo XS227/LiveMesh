@@ -1,5 +1,17 @@
 :root {
   color-scheme: light;
+
+  --somi-ai-bg: #f7f1e8;
+  --somi-ai-accent: #f2a66b;
+  --somi-ai-dark: #202022;
+  --somi-ai-muted: #7a7a7a;
+  --somi-ai-border: rgba(0, 0, 0, 0.08);
+
+  --somi-ai-radius-lg: 20px;
+  --somi-ai-radius-pill: 999px;
+
+  --somi-ai-font-heading: "Playfair Display", serif;
+  --somi-ai-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *,
@@ -41,4 +53,182 @@ canvas {
 ::selection {
   background: rgba(79, 70, 229, 0.18);
   color: #111827;
+}
+
+.somi-ai-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  font-family: var(--somi-ai-font-body);
+}
+
+.somi-ai-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--somi-ai-radius-pill);
+  border: none;
+  background: #111111;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  font-size: 0.9rem;
+}
+
+.somi-ai-toggle__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 6px rgba(74, 222, 128, 0.2);
+}
+
+.somi-ai-toggle__label {
+  font-weight: 500;
+}
+
+.somi-ai-window {
+  position: absolute;
+  bottom: 3.4rem;
+  right: 0;
+  width: 320px;
+  max-height: 480px;
+  background: #ffffff;
+  border-radius: var(--somi-ai-radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.somi-ai-window--open {
+  display: flex;
+}
+
+.somi-ai-header {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--somi-ai-border);
+  background: linear-gradient(135deg, #f8efe4, #fdfbf7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.somi-ai-header__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.somi-ai-header__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #111111;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--somi-ai-font-heading);
+  font-size: 1.1rem;
+}
+
+.somi-ai-header__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.somi-ai-header__sub {
+  font-size: 0.75rem;
+  color: var(--somi-ai-muted);
+}
+
+.somi-ai-header__close {
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--somi-ai-muted);
+}
+
+.somi-ai-messages {
+  flex: 1;
+  padding: 0.75rem 0.75rem 0.4rem;
+  overflow-y: auto;
+  background: var(--somi-ai-bg);
+}
+
+.somi-ai-message {
+  max-width: 85%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.somi-ai-message--bot {
+  background: #ffffff;
+  color: var(--somi-ai-dark);
+  border-bottom-left-radius: 4px;
+}
+
+.somi-ai-message--user {
+  background: #111111;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  margin-left: auto;
+}
+
+.somi-ai-message--typing {
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.somi-ai-input {
+  padding: 0.5rem 0.6rem 0.6rem;
+  border-top: 1px solid var(--somi-ai-border);
+  background: #ffffff;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.somi-ai-input__field {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid var(--somi-ai-border);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.somi-ai-input__field:focus {
+  outline: none;
+  border-color: var(--somi-ai-accent);
+}
+
+.somi-ai-input__button {
+  border-radius: 999px;
+  border: none;
+  background: #111111;
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .somi-ai-widget {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .somi-ai-window {
+    width: 90vw;
+    max-height: 60vh;
+    right: 0;
+  }
 }
