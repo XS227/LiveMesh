@@ -771,34 +771,33 @@
     /* Bilde / orbit */
     .team-photo-wrapper {
       position: relative;
-      width: 180px;
-      height: 240px;
-      margin-bottom: 24px;
+      width: 220px;
+      height: 360px;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
     }
 
-    .team-photo {
+    .team-photo-svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border-radius: 50% / 60%;
+      display: block;
     }
 
-    .photo-orbit {
+    .team-photo-border {
+      fill: none;
+      stroke: rgba(17, 17, 17, 0.22);
+      stroke-width: 2.2;
+      paint-order: stroke;
+    }
+
+    .team-photo-highlight {
       position: absolute;
-      inset: -6px;
+      inset: 10px;
       border-radius: 50% / 60%;
-      border: 1px solid rgba(0, 0, 0, 0.16);
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.65), transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.4), transparent 46%);
       pointer-events: none;
-      animation: orbit 8s linear infinite;
-    }
-
-    @keyframes orbit {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      mix-blend-mode: screen;
     }
 
     /* Tekst i kortet */
@@ -2001,14 +2000,66 @@
         <div class="team-grid" aria-labelledby="team-heading">
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
             <div class="team-photo-wrapper">
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/katarina.png"
-                alt="Katarina – eier og daglig leder hos SOMI Klinikken"
-                loading="lazy"
-                itemprop="image"
-              />
-              <div class="photo-orbit" aria-hidden="true"></div>
+              <svg
+                class="team-photo-svg"
+                viewBox="0 0 400 800"
+                role="img"
+                aria-labelledby="katarina-photo-title"
+              >
+                <defs>
+                  <clipPath id="teamClip-katarina">
+                    <path
+                      d="
+                        M200 15
+                        C 165 18, 135 35, 115 70
+                        C 95 110, 85 155, 88 205
+                        C 90 255, 95 295, 92 340
+                        C 88 395, 75 435, 82 485
+                        C 90 545, 120 595, 155 630
+                        C 185 660, 215 680, 245 690
+                        C 285 702, 320 690, 340 655
+                        C 360 620, 365 580, 360 535
+                        C 355 485, 345 455, 338 420
+                        C 330 380, 332 340, 332 305
+                        C 332 260, 333 220, 325 185
+                        C 315 140, 300 105, 280 80
+                        C 260 55, 235 30, 200 15
+                        Z" />
+                  </clipPath>
+                </defs>
+                <title id="katarina-photo-title">
+                  Katarina – eier og daglig leder hos SOMI Klinikken
+                </title>
+                <image
+                  href="https://somi.setaei.com/img/katarina.png"
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="800"
+                  preserveAspectRatio="xMidYMid slice"
+                  clip-path="url(#teamClip-katarina)"
+                />
+                <path
+                  class="team-photo-border"
+                  d="
+                    M200 15
+                    C 165 18, 135 35, 115 70
+                    C 95 110, 85 155, 88 205
+                    C 90 255, 95 295, 92 340
+                    C 88 395, 75 435, 82 485
+                    C 90 545, 120 595, 155 630
+                    C 185 660, 215 680, 245 690
+                    C 285 702, 320 690, 340 655
+                    C 360 620, 365 580, 360 535
+                    C 355 485, 345 455, 338 420
+                    C 330 380, 332 340, 332 305
+                    C 332 260, 333 220, 325 185
+                    C 315 140, 300 105, 280 80
+                    C 260 55, 235 30, 200 15
+                    Z"
+                />
+              </svg>
+              <div class="team-photo-highlight" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Eier og daglig leder</p>
             <h3 class="team-name" itemprop="name">Katarina</h3>
@@ -2046,14 +2097,66 @@
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
             <div class="team-photo-wrapper">
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/elina.png"
-                alt="Elina – autorisert sykepleier som tilbyr injeksjonsbehandlinger ved SOMI Klinikken"
-                loading="lazy"
-                itemprop="image"
-              />
-              <div class="photo-orbit" aria-hidden="true"></div>
+              <svg
+                class="team-photo-svg"
+                viewBox="0 0 400 800"
+                role="img"
+                aria-labelledby="elina-photo-title"
+              >
+                <defs>
+                  <clipPath id="teamClip-elina">
+                    <path
+                      d="
+                        M200 15
+                        C 165 18, 135 35, 115 70
+                        C 95 110, 85 155, 88 205
+                        C 90 255, 95 295, 92 340
+                        C 88 395, 75 435, 82 485
+                        C 90 545, 120 595, 155 630
+                        C 185 660, 215 680, 245 690
+                        C 285 702, 320 690, 340 655
+                        C 360 620, 365 580, 360 535
+                        C 355 485, 345 455, 338 420
+                        C 330 380, 332 340, 332 305
+                        C 332 260, 333 220, 325 185
+                        C 315 140, 300 105, 280 80
+                        C 260 55, 235 30, 200 15
+                        Z" />
+                  </clipPath>
+                </defs>
+                <title id="elina-photo-title">
+                  Elina – autorisert sykepleier som tilbyr injeksjonsbehandlinger ved SOMI Klinikken
+                </title>
+                <image
+                  href="https://somi.setaei.com/img/elina.png"
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="800"
+                  preserveAspectRatio="xMidYMid slice"
+                  clip-path="url(#teamClip-elina)"
+                />
+                <path
+                  class="team-photo-border"
+                  d="
+                    M200 15
+                    C 165 18, 135 35, 115 70
+                    C 95 110, 85 155, 88 205
+                    C 90 255, 95 295, 92 340
+                    C 88 395, 75 435, 82 485
+                    C 90 545, 120 595, 155 630
+                    C 185 660, 215 680, 245 690
+                    C 285 702, 320 690, 340 655
+                    C 360 620, 365 580, 360 535
+                    C 355 485, 345 455, 338 420
+                    C 330 380, 332 340, 332 305
+                    C 332 260, 333 220, 325 185
+                    C 315 140, 300 105, 280 80
+                    C 260 55, 235 30, 200 15
+                    Z"
+                />
+              </svg>
+              <div class="team-photo-highlight" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Autorisert sykepleier</p>
             <h3 class="team-name" itemprop="name">Elina</h3>
@@ -2088,14 +2191,66 @@
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
             <div class="team-photo-wrapper">
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/arianna.png"
-                alt="Arianna – laserspesialist for bryn, voksing og hudbehandlinger ved SOMI Klinikken"
-                loading="lazy"
-                itemprop="image"
-              />
-              <div class="photo-orbit" aria-hidden="true"></div>
+              <svg
+                class="team-photo-svg"
+                viewBox="0 0 400 800"
+                role="img"
+                aria-labelledby="arianna-photo-title"
+              >
+                <defs>
+                  <clipPath id="teamClip-arianna">
+                    <path
+                      d="
+                        M200 15
+                        C 165 18, 135 35, 115 70
+                        C 95 110, 85 155, 88 205
+                        C 90 255, 95 295, 92 340
+                        C 88 395, 75 435, 82 485
+                        C 90 545, 120 595, 155 630
+                        C 185 660, 215 680, 245 690
+                        C 285 702, 320 690, 340 655
+                        C 360 620, 365 580, 360 535
+                        C 355 485, 345 455, 338 420
+                        C 330 380, 332 340, 332 305
+                        C 332 260, 333 220, 325 185
+                        C 315 140, 300 105, 280 80
+                        C 260 55, 235 30, 200 15
+                        Z" />
+                  </clipPath>
+                </defs>
+                <title id="arianna-photo-title">
+                  Arianna – laserspesialist for bryn, voksing og hudbehandlinger ved SOMI Klinikken
+                </title>
+                <image
+                  href="https://somi.setaei.com/img/arianna.png"
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="800"
+                  preserveAspectRatio="xMidYMid slice"
+                  clip-path="url(#teamClip-arianna)"
+                />
+                <path
+                  class="team-photo-border"
+                  d="
+                    M200 15
+                    C 165 18, 135 35, 115 70
+                    C 95 110, 85 155, 88 205
+                    C 90 255, 95 295, 92 340
+                    C 88 395, 75 435, 82 485
+                    C 90 545, 120 595, 155 630
+                    C 185 660, 215 680, 245 690
+                    C 285 702, 320 690, 340 655
+                    C 360 620, 365 580, 360 535
+                    C 355 485, 345 455, 338 420
+                    C 330 380, 332 340, 332 305
+                    C 332 260, 333 220, 325 185
+                    C 315 140, 300 105, 280 80
+                    C 260 55, 235 30, 200 15
+                    Z"
+                />
+              </svg>
+              <div class="team-photo-highlight" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Laserspesialist</p>
             <h3 class="team-name" itemprop="name">Arianna</h3>
@@ -2131,14 +2286,66 @@
 
           <article class="team-card reveal" itemscope itemprop="member" itemtype="https://schema.org/Person">
             <div class="team-photo-wrapper">
-              <img
-                class="team-photo"
-                src="https://somi.setaei.com/img/emma.png"
-                alt="Emma – hudterapeut som tilbyr hudpleie, vipper, brynstyling og permanent makeup"
-                loading="lazy"
-                itemprop="image"
-              />
-              <div class="photo-orbit" aria-hidden="true"></div>
+              <svg
+                class="team-photo-svg"
+                viewBox="0 0 400 800"
+                role="img"
+                aria-labelledby="emma-photo-title"
+              >
+                <defs>
+                  <clipPath id="teamClip-emma">
+                    <path
+                      d="
+                        M200 15
+                        C 165 18, 135 35, 115 70
+                        C 95 110, 85 155, 88 205
+                        C 90 255, 95 295, 92 340
+                        C 88 395, 75 435, 82 485
+                        C 90 545, 120 595, 155 630
+                        C 185 660, 215 680, 245 690
+                        C 285 702, 320 690, 340 655
+                        C 360 620, 365 580, 360 535
+                        C 355 485, 345 455, 338 420
+                        C 330 380, 332 340, 332 305
+                        C 332 260, 333 220, 325 185
+                        C 315 140, 300 105, 280 80
+                        C 260 55, 235 30, 200 15
+                        Z" />
+                  </clipPath>
+                </defs>
+                <title id="emma-photo-title">
+                  Emma – hudterapeut som tilbyr hudpleie, vipper, brynstyling og permanent makeup
+                </title>
+                <image
+                  href="https://somi.setaei.com/img/emma.png"
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="800"
+                  preserveAspectRatio="xMidYMid slice"
+                  clip-path="url(#teamClip-emma)"
+                />
+                <path
+                  class="team-photo-border"
+                  d="
+                    M200 15
+                    C 165 18, 135 35, 115 70
+                    C 95 110, 85 155, 88 205
+                    C 90 255, 95 295, 92 340
+                    C 88 395, 75 435, 82 485
+                    C 90 545, 120 595, 155 630
+                    C 185 660, 215 680, 245 690
+                    C 285 702, 320 690, 340 655
+                    C 360 620, 365 580, 360 535
+                    C 355 485, 345 455, 338 420
+                    C 330 380, 332 340, 332 305
+                    C 332 260, 333 220, 325 185
+                    C 315 140, 300 105, 280 80
+                    C 260 55, 235 30, 200 15
+                    Z"
+                />
+              </svg>
+              <div class="team-photo-highlight" aria-hidden="true"></div>
             </div>
             <p class="team-role" itemprop="jobTitle">Hudterapeut</p>
             <h3 class="team-name" itemprop="name">Emma</h3>
