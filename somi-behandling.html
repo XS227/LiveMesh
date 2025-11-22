@@ -336,11 +336,35 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.04);
-      font-size: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(200, 155, 118, 0.12);
+      padding: 4px;
+      color: var(--primary);
+    }
+
+    .category-icon .somi-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .somi-icon {
+      display: inline-block;
+    }
+
+    .somi-icon-ring {
+      fill: none;
+      stroke: rgba(200, 155, 118, 0.55);
+      stroke-width: 2;
+    }
+
+    .somi-icon-line {
+      fill: none;
+      stroke: rgba(200, 155, 118, 0.9);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .category-toggle {
@@ -365,10 +389,6 @@
       overflow: hidden;
       transition: max-height 0.35s ease;
       background: #fff;
-    }
-
-    .category.open .category-body {
-      max-height: 900px;
     }
 
     .service-list {
@@ -624,7 +644,15 @@
         <div id="microblading" class="category open">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🖋️</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M40 70 C55 60, 85 55, 115 70" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <path d="M55 90 C60 95, 65 95, 70 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <path d="M75 90 C80 95, 85 95, 90 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <path d="M95 90 C100 95, 105 95, 110 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
+                </svg>
+              </span>
               Microblading
             </div>
             <div class="category-toggle">›</div>
@@ -739,7 +767,16 @@
         <div id="bryn-vipper" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">👁️</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M40 80 C55 70, 105 70, 120 80" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <path d="M50 85 C65 95, 95 95, 110 85 M110 85 C95 75, 65 75, 50 85" stroke="#E8B7A5" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="80" cy="86" r="5" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M60 97 L57 104 M70 100 L68 108 M90 100 L92 108 M100 97 L103 104" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
               Bryn og vipper
             </div>
             <div class="category-toggle">›</div>
@@ -921,7 +958,15 @@
         <div id="dermalogica" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🌿</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="55" y="50" width="25" height="55" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="60" y="40" width="15" height="10" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M95 50 L115 50 L110 95 L100 95 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                  <rect x="100" y="95" width="10" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                </svg>
+              </span>
               Dermalogica
             </div>
             <div class="category-toggle">›</div>
@@ -1125,7 +1170,16 @@
         <div id="permanent-makeup" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">💄</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M55 90 C65 80, 95 80, 105 90 C95 100, 65 100, 55 90 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                  <rect x="95" y="45" width="28" height="10" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="118" y="47" width="10" height="6" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M128 50 L140 55" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="107" cy="87" r="3" fill="#E8B7A5" />
+                </svg>
+              </span>
               Permanent Makeup
             </div>
             <div class="category-toggle">›</div>
@@ -1338,7 +1392,15 @@
         <div id="harfjerning" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🕯️</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M55 50 C70 55, 85 70, 95 90 C100 100, 102 110, 100 120" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <path d="M88 120 C92 125, 98 127, 105 126" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <rect x="95" y="55" width="30" height="7" rx="3" transform="rotate(25 95 55)" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M117 68 C120 72, 120 78, 117 82" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                </svg>
+              </span>
               Hårfjerning / voksing
             </div>
             <div class="category-toggle">›</div>
@@ -1657,7 +1719,14 @@
         <div id="konsultasjon" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🗨️</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M45 60 C45 50, 60 45, 80 45 C100 45, 115 50, 115 60 C115 75, 100 85, 80 85 C70 85, 60 82, 55 78 L48 83 L50 73 C47 70, 45 65, 45 60 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                  <circle cx="80" cy="63" r="4" fill="#E8B7A5" />
+                  <rect x="78.5" y="70" width="3" height="10" rx="1.5" fill="#E8B7A5" />
+                </svg>
+              </span>
               Konsultasjon
             </div>
             <div class="category-toggle">›</div>
@@ -1740,7 +1809,18 @@
         <div id="laser-pakke" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🎯</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="45" y="50" width="38" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="80" y="55" width="15" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <line x1="95" y1="59" x2="130" y2="75" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                  <path d="M120 95 C118 85, 123 78, 125 70 C128 60, 126 50, 124 45" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <circle cx="132" cy="76" r="2" fill="#E8B7A5" />
+                  <circle cx="125" cy="80" r="1.7" fill="#E8B7A5" />
+                  <circle cx="135" cy="72" r="1.7" fill="#E8B7A5" />
+                </svg>
+              </span>
               Laser – permanent hårfjerning (pakker ×4)
             </div>
             <div class="category-toggle">›</div>
@@ -2057,7 +2137,19 @@
         <div id="laser-pigment" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🌙</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M55 50 C70 55, 80 70, 80 85 C80 100, 72 112, 60 120" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <circle cx="76" cy="78" r="4" fill="#E8B7A5" />
+                  <rect x="95" y="45" width="30" height="16" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="120" y="49" width="10" height="8" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <line x1="130" y1="53" x2="82" y2="78" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="69" cy="74" r="1.4" fill="#E8B7A5" />
+                  <circle cx="83" cy="72" r="1.4" fill="#E8B7A5" />
+                  <circle cx="72" cy="82" r="1.4" fill="#E8B7A5" />
+                </svg>
+              </span>
               Laser – pigmentreduksjon
             </div>
             <div class="category-toggle">›</div>
@@ -2126,7 +2218,18 @@
         <div id="laser-harfjerning" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">⚡</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="45" y="50" width="38" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="80" y="55" width="15" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <line x1="95" y1="59" x2="130" y2="75" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                  <path d="M120 95 C118 85, 123 78, 125 70 C128 60, 126 50, 124 45" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <circle cx="132" cy="76" r="2" fill="#E8B7A5" />
+                  <circle cx="125" cy="80" r="1.7" fill="#E8B7A5" />
+                  <circle cx="135" cy="72" r="1.7" fill="#E8B7A5" />
+                </svg>
+              </span>
               Laser – permanent hårfjerning
             </div>
             <div class="category-toggle">›</div>
@@ -2273,7 +2376,20 @@
         <div id="microneedling" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🪡</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="50" y="40" width="18" height="45" rx="4" transform="rotate(-25 50 40)" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="60" y="75" width="8" height="12" rx="2" transform="rotate(-25 60 75)" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <circle cx="88" cy="88" r="4" fill="#E8B7A5" />
+                  <path d="M55 105 C70 100, 90 100, 110 105 C115 110, 115 118, 110 122 C90 125, 70 125, 55 122 C50 118, 50 110, 55 105 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                  <circle cx="70" cy="112" r="1.4" fill="#E8B7A5" />
+                  <circle cx="78" cy="115" r="1.4" fill="#E8B7A5" />
+                  <circle cx="86" cy="112" r="1.4" fill="#E8B7A5" />
+                  <circle cx="94" cy="115" r="1.4" fill="#E8B7A5" />
+                  <circle cx="102" cy="112" r="1.4" fill="#E8B7A5" />
+                </svg>
+              </span>
               Microneedling
             </div>
             <div class="category-toggle">›</div>
@@ -2319,7 +2435,12 @@
         <div id="elektrolyse" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">🔌</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 64 64">
+                  <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
+                  <path class="somi-icon-line" d="M18 36c4-5 9-8 14-8 5 0 9 3 14 8" />
+                </svg>
+              </span>
               Elektrolyse – permanent hårfjerning
             </div>
             <div class="category-toggle">›</div>
@@ -2345,7 +2466,18 @@
         <div id="laser-tattoo" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">💫</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="45" y="45" width="35" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <rect x="75" y="50" width="18" height="8" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <line x1="93" y1="54" x2="115" y2="76" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
+                  <path d="M115 80 L119 88 L128 89 L121 95 L123 104 L115 99 L107 104 L109 95 L102 89 L111 88 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                  <circle cx="130" cy="78" r="1.8" fill="#E8B7A5" />
+                  <circle cx="100" cy="76" r="1.8" fill="#E8B7A5" />
+                  <circle cx="125" cy="102" r="1.8" fill="#E8B7A5" />
+                </svg>
+              </span>
               Laser – Tattoo removal
             </div>
             <div class="category-toggle">›</div>
@@ -2426,7 +2558,14 @@
         <div id="hudpleie" class="category">
           <div class="category-header">
             <div class="category-title">
-              <span class="category-icon" aria-hidden="true">✨</span>
+              <span class="category-icon" aria-hidden="true">
+                <svg class="somi-icon" viewBox="0 0 160 160">
+                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
+                  <path d="M60 55 C70 60, 75 70, 75 80 C75 90, 70 100, 60 105" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <path d="M65 82 C68 84, 72 84, 75 82" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
+                  <path d="M95 70 C110 60, 125 75, 110 90 C100 100, 90 95, 95 70 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
+                </svg>
+              </span>
               Hudpleie
             </div>
             <div class="category-toggle">›</div>
@@ -2599,13 +2738,68 @@
       link.addEventListener("click", () => nav.classList.remove("open"));
     });
 
-    // Accordion for categories
+    const categories = Array.from(document.querySelectorAll(".category"));
+
+    const setCategoryState = (category, shouldOpen) => {
+      const body = category.querySelector(".category-body");
+      if (shouldOpen) {
+        category.classList.add("open");
+        body.style.maxHeight = `${body.scrollHeight}px`;
+      } else {
+        category.classList.remove("open");
+        body.style.maxHeight = "0px";
+      }
+    };
+
+    const openCategory = (targetCategory) => {
+      categories.forEach((category) => {
+        setCategoryState(category, category === targetCategory);
+      });
+    };
+
+    const refreshOpenHeights = () => {
+      categories.forEach((category) => {
+        if (category.classList.contains("open")) {
+          const body = category.querySelector(".category-body");
+          body.style.maxHeight = `${body.scrollHeight}px`;
+        }
+      });
+    };
+
+    // Initialize heights based on existing open state
+    categories.forEach((category) => {
+      setCategoryState(category, category.classList.contains("open"));
+    });
+
+    // Accordion behavior with single open category
     document.querySelectorAll(".category-header").forEach((header) => {
       header.addEventListener("click", () => {
         const category = header.parentElement;
-        category.classList.toggle("open");
+        const isOpen = category.classList.contains("open");
+        if (isOpen) {
+          setCategoryState(category, false);
+        } else {
+          openCategory(category);
+        }
       });
     });
+
+    // Open target category from filter pills
+    document.querySelectorAll(".filter-pill").forEach((pill) => {
+      pill.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = pill.getAttribute("href").replace("#", "");
+        const targetCategory = document.getElementById(targetId);
+
+        if (targetCategory) {
+          openCategory(targetCategory);
+          targetCategory.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    // Ensure heights stay correct on resize
+    window.addEventListener("resize", refreshOpenHeights);
   </script>
 </body>
 </html>
