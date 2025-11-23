@@ -14,6 +14,31 @@
 
 <body>
 
+  <header class="somi-header">
+    <div class="container somi-header-inner">
+      <a href="/" class="somi-logo">
+        <span class="somi-logo-line-1">SOMI</span>
+        <span class="somi-logo-line-2">Klinikk</span>
+      </a>
+
+      <nav class="somi-nav" aria-label="Hovedmeny">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Åpne meny">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+
+        <ul class="nav-list">
+          <li><a href="#behandlinger">Behandlinger</a></li>
+          <li><a href="#fordeler">Hvorfor SOMI</a></li>
+          <li><a href="#about">Om klinikken</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#faq">Spørsmål &amp; svar</a></li>
+          <li><a href="#contact" class="nav-cta">Bestill time</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <!-- HERO -------------------------------------------------------------->
   <section class="hero">
     <div class="hero-text">
@@ -119,7 +144,7 @@
     </section>
 
     <!-- WHY SOMI + TESTIMONIALS -->
-    <section id="reviews" class="section">
+    <section id="fordeler" class="section">
       <div class="container">
         <div class="section-header reveal">
           <div>
@@ -937,6 +962,25 @@
   <footer class="footer">
     <p>© 2025 SOMI Klinikk – Alle rettigheter reservert.</p>
   </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.nav-list');
+
+    if (navToggle && navList) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = document.body.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navList.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLElement && event.target.tagName === 'A') {
+          document.body.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
