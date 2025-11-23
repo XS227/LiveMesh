@@ -661,13 +661,34 @@ p {
   background-repeat: no-repeat;
 }
 
-/* Hvis du vil sette faktiske bilder: */
-/*
-.team-photo-katarina { background-image: url("bilder/katarina.jpg"); }
-.team-photo-elina    { background-image: url("bilder/elina.jpg"); }
-.team-photo-arianna  { background-image: url("bilder/arianna.jpg"); }
-.team-photo-emma     { background-image: url("bilder/emma.jpg"); }
-*/
+/* Team-bilder */
+.team-photo-katarina {
+  background-image: url("https://somi.setaei.com/img/katarina.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-photo-elina {
+  background-image: url("https://somi.setaei.com/img/elina.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-photo-arianna {
+  background-image: url("https://somi.setaei.com/img/arianna.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-photo-emma {
+  background-image: url("https://somi.setaei.com/img/emma.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .about-visual {
   display: flex;
