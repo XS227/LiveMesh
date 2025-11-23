@@ -430,6 +430,33 @@ p {
   border-color: rgba(56, 56, 56, 0.14);
 }
 
+.price-list {
+  list-style: none;
+  padding: 0.4rem 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.price-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(56, 56, 56, 0.08);
+}
+
+.price-item:last-child {
+  border-bottom: none;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
 /* Ikon-placeholders – du kan bytte til SVG senere */
 
 .treatment-icon {
@@ -461,6 +488,69 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.6rem;
+}
+
+/* ============================
+   Prisoversikt / cards
+   ============================ */
+
+.price-section {
+  background: #fff;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+
+.price-card {
+  background: linear-gradient(140deg, #ffffff 0%, #f4e3dc 65%, #f8f3f0 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(56, 56, 56, 0.08);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.price-card-header p {
+  margin: 0.35rem 0 0;
+}
+
+.price-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.4rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(56, 56, 56, 0.08);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.price-name {
+  font-weight: 600;
+}
+
+.price-note {
+  font-size: 0.9rem;
+  color: rgba(56, 56, 56, 0.8);
+}
+
+.price-amount {
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .benefit-item {
