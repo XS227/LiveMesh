@@ -12,6 +12,9 @@
   --color-accent-soft: #f4e3dc;
   --color-white: #ffffff;
 
+  --spacing-lg: 1.5rem;
+  --spacing-md: 2.4rem;
+
   /* Stater */
   --color-border-subtle: rgba(56, 56, 56, 0.08);
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.06);
@@ -711,10 +714,10 @@ p {
 }
 
 .team-grid {
-  margin-top: 2.4rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
 }
 
 .team-card {
