@@ -648,69 +648,6 @@
       </div>
     </section>
 
-    <!-- CTA + CONTACT -->
-    <section id="contact" class="section contact">
-      <div class="container contact-grid">
-        <div class="contact-cta">
-          <p class="eyebrow">Kontakt</p>
-          <h2>Klar for neste steg?</h2>
-          <p>
-            Bestill time direkte i vår online booking, eller send oss en melding hvis du ønsker hjelp
-            til å velge riktig behandling. Ingen spørsmål er for små.
-          </p>
-
-          <div class="contact-actions">
-            <a href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              Bestill time
-            </a>
-            <a href="#contact-form-section" class="btn btn-ghost">
-              Send oss en melding
-            </a>
-          </div>
-
-          <div class="contact-info">
-            <p><strong>Adresse:</strong> Langgata 31, 4306 Sandnes</p>
-            <p><strong>E-post:</strong> <a href="mailto:post@somiklinikken.no">post@somiklinikken.no</a></p>
-            <p><strong>Følg oss:</strong> 
-              <a href="https://www.facebook.com/SomiByKatarina" target="_blank" rel="noopener noreferrer">Facebook</a> ·
-              <a href="https://www.instagram.com/somiklinikken" target="_blank" rel="noopener noreferrer">Instagram</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="contact-form-and-map">
-          <div id="contact-form-section" class="contact-form-wrapper">
-            <h3>Send oss en melding</h3>
-            <form action="https://formsubmit.co/post@somiklinikken.no" method="POST">
-              <div class="form-row">
-                <label for="name">Navn</label>
-                <input id="name" name="Navn" type="text" required>
-              </div>
-              <div class="form-row">
-                <label for="email">E-post</label>
-                <input id="email" name="E-post" type="email" required>
-              </div>
-              <div class="form-row">
-                <label for="message">Melding</label>
-                <textarea id="message" name="Melding" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Send melding</button>
-            </form>
-          </div>
-
-          <div class="contact-map">
-            <iframe
-              title="SOMI Klinikk i Langgata 31, Sandnes"
-              src="https://www.google.com/maps?q=Langgata+31,+4306+Sandnes&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
   <!-- KATEGORIER -------------------------------------------------------------->
   <section id="behandlinger" class="section treatments">
     <div class="container">
@@ -856,6 +793,135 @@
             Bestill konsultasjon hos Emma
           </a>
         </article>
+      </div>
+  </div>
+</section>
+
+
+  <!-- KONTAKT – INFO & KART -->
+  <section id="contact" class="section section--soft contact">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2>Klar for neste steg?</h2>
+          <p>
+            Bestill time direkte i vår online booking, eller ta kontakt hvis du ønsker hjelp
+            til å velge riktig behandling. Ingen spørsmål er for små.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a
+            href="https://somi.bestille.no"
+            class="btn btn-cta-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bestill time
+          </a>
+          <a href="#contact-form-section" class="btn btn-cta-ghost">
+            Send oss en melding
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal" id="contact-details">
+          <h3>Kontakt & åpningstider</h3>
+
+          <div class="contact-row">
+            <strong>Adresse</strong>
+            <span>Langgata 31, 4306 Sandnes</span>
+          </div>
+
+          <div class="contact-row">
+            <strong>E-post</strong>
+            <a href="mailto:post@somiklinikken.no">post@somiklinikken.no</a>
+          </div>
+
+          <div class="contact-row">
+            <strong>Telefon</strong>
+            <a href="tel:+4792939171">+47&nbsp;929&nbsp;39&nbsp;171</a>
+          </div>
+
+          <div class="contact-row">
+            <strong>Åpent</strong>
+            <span>Klinikken er åpen etter avtale.</span>
+          </div>
+
+          <p class="contact-note">
+            Klinikken er åpen etter avtale. Se alle tilgjengelige tider i
+            <a href="https://somi.bestille.no/" target="_blank" rel="noopener">onlinebooking</a>
+            eller ta kontakt for timebestilling.
+          </p>
+
+          <div class="contact-row">
+            <strong>Følg oss</strong>
+            <div class="contact-social-links">
+              <a href="https://www.facebook.com/SomiByKatarina" target="_blank" rel="noopener">
+                Facebook
+              </a>
+              <span aria-hidden="true">·</span>
+              <a href="https://www.instagram.com/somiklinikken" target="_blank" rel="noopener">
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-embed reveal">
+          <iframe
+            src="https://www.google.com/maps?q=Langgata+31,+4306+Sandnes&output=embed"
+            title="SOMI Klinikk i Langgata 31, Sandnes"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT – SKJEMA -->
+  <section id="contact-form-section" class="section contact-form">
+    <div class="container">
+      <div class="section-header center">
+        <p class="eyebrow">Send oss en melding</p>
+        <h2>Har du spørsmål?</h2>
+        <p>
+          Fyll inn skjemaet under, så svarer vi deg så snart vi kan. Legg gjerne igjen
+          telefonnummer hvis du ønsker å bli oppringt.
+        </p>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form
+          action="https://formsubmit.co/post@somiklinikken.no"
+          method="POST"
+        >
+          <!-- Valgfritt: beskytte mot spam -->
+          <input type="hidden" name="_subject" value="Ny henvendelse fra somi.setaei.com" />
+          <input type="text" name="_honey" style="display:none" />
+          <input type="hidden" name="_captcha" value="false" />
+
+          <div class="form-row">
+            <label for="name">Navn</label>
+            <input id="name" name="Navn" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">E-post</label>
+            <input id="email" name="E-post" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="message">Melding</label>
+            <textarea id="message" name="Melding" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-cta-primary">
+            Send melding
+          </button>
+        </form>
       </div>
     </div>
   </section>
