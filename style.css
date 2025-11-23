@@ -366,6 +366,107 @@ p {
   pointer-events: none;
 }
 
+.section {
+  padding: 80px 10vw;
+}
+
+.section--soft {
+  background: #fbf7f2;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 38px;
+}
+
+.section-header.center {
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary);
+}
+
+.benefits .section-header h2 {
+  font-size: clamp(28px, 3.2vw, 36px);
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.benefit-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.benefit-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(195, 139, 101, 0.18), rgba(195, 139, 101, 0.05));
+  border: 1px solid var(--border);
+}
+
+.testimonial-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-mark {
+  font-size: 42px;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.quote-mark::before {
+  content: "“";
+}
+
+.quote-text {
+  font-size: 18px;
+  color: var(--text);
+}
+
+.quote-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.quote-stars {
+  color: var(--primary);
+}
+
 .categories, .team {
   padding: 60px 10vw;
 }
