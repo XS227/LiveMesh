@@ -2,2806 +2,349 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
-  <title>Behandlinger & priser – Somi Klinikken</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Oversikt over behandlinger og priser hos Somi Klinikken. Microblading, bryn og vipper, Dermalogica behandlinger."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behandlinger & priser – SOMI Klinikk</title>
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #f7f2ec;
-      --bg-alt: #fbf7f2;
-      --bg-dark: #222222;
-      --primary: #c89b76;
-      --primary-soft: #e6cfbb;
-      --text-main: #1f1f1f;
-      --text-muted: #6f6f6f;
-      --border-soft: #e3d7c8;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.08);
-      --max-width: 1120px;
-      --transition-fast: 0.25s ease;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .section {
-      padding: 70px 0;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: "Playfair Display", serif;
-      margin: 0 0 0.4em;
-      letter-spacing: 0.01em;
-    }
-
-    p {
-      margin: 0 0 0.75em;
-      line-height: 1.6;
-    }
-
-    /* HEADER */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(247, 242, 236, 0.88);
-      border-bottom: 1px solid rgba(227, 215, 200, 0.7);
-    }
-
-    .site-header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-img {
-      height: 40px;
-      width: auto;
-    }
-
-    .nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      font-size: 14px;
-    }
-
-    .nav a {
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--primary);
-      transition: width var(--transition-fast);
-    }
-
-    .nav a:hover::after,
-    .nav a:focus-visible::after {
-      width: 100%;
-    }
-
-    .nav a.active::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 12px 30px rgba(157, 112, 74, 0.35);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast);
-      text-decoration: none;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(157, 112, 74, 0.45);
-      background: #b7855d;
-    }
-
-    .burger {
-      display: none;
-      border: none;
-      background: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .burger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text-main);
-      border-radius: 2px;
-      position: relative;
-    }
-
-    .burger span::before,
-    .burger span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 22px;
-      height: 2px;
-      border-radius: 2px;
-      background: var(--text-main);
-    }
-
-    .burger span::before {
-      top: -6px;
-    }
-
-    .burger span::after {
-      top: 6px;
-    }
-
-    /* HERO / INTRO */
-
-    .hero {
-      padding-top: 80px;
-      padding-bottom: 40px;
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: clamp(34px, 3.7vw, 44px);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .hero-text {
-      color: var(--text-muted);
-      font-size: 15px;
-      max-width: 520px;
-    }
-
-    .hero-aside {
-      border-radius: 24px;
-      padding: 20px 20px 18px;
-      background: #fff;
-      border: 1px solid rgba(227, 215, 200, 0.9);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-aside h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .hero-aside ul {
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-
-    .hero-aside li {
-      margin-bottom: 4px;
-    }
-
-    .breadcrumbs {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .breadcrumbs a {
-      color: var(--text-muted);
-    }
-
-    /* FILTER-LINKER */
-
-    .category-filters {
-      margin-top: 32px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-pill {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 12px;
-      cursor: pointer;
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .filter-pill:hover {
-      background: #fff;
-      border-color: rgba(0, 0, 0, 0.16);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
-    }
-
-    /* CATEGORIES */
-
-    .pricing-section {
-      padding-bottom: 90px;
-    }
-
-    .category {
-      border-radius: 26px;
-      background: #fff;
-      border: 1px solid rgba(227, 215, 200, 0.9);
-      margin-bottom: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.03);
-    }
-
-    .category-header {
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      background: linear-gradient(90deg, #fbf7f2, #f1e3d4);
-    }
-
-    .category-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: "Playfair Display", serif;
-      font-size: 18px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .category-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(200, 155, 118, 0.12);
-      padding: 4px;
-      color: var(--primary);
-    }
-
-    .category-icon .somi-icon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .somi-icon {
-      display: inline-block;
-    }
-
-    .somi-icon-ring {
-      fill: none;
-      stroke: rgba(200, 155, 118, 0.55);
-      stroke-width: 2;
-    }
-
-    .somi-icon-line {
-      fill: none;
-      stroke: rgba(200, 155, 118, 0.9);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .category-toggle {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      transform: rotate(0deg);
-      transition: transform var(--transition-fast);
-    }
-
-    .category.open .category-toggle {
-      transform: rotate(90deg);
-    }
-
-    .category-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-      background: #fff;
-    }
-
-    .service-list {
-      padding: 8px 4px 12px;
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-      gap: 14px;
-      align-items: center;
-      padding: 8px 16px;
-      border-bottom: 1px solid rgba(227, 215, 200, 0.6);
-      font-size: 13px;
-    }
-
-    .service-row:last-child {
-      border-bottom: none;
-    }
-
-    .service-main {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .service-name {
-      font-weight: 500;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
-
-    .service-note {
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-
-    .service-meta {
-      text-align: right;
-      font-size: 12px;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .service-meta strong {
-      display: block;
-      font-size: 13px;
-      color: var(--text-main);
-    }
-
-    .info-pill {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    /* FOOTER (enkel) */
-
-    .site-footer {
-      background: #181818;
-      color: #f7f2ec;
-      padding: 32px 0 22px;
-      font-size: 12px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-bottom {
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(248, 243, 238, 0.16);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: rgba(248, 243, 238, 0.7);
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 243, 238, 0.3);
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-      .hero-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero {
-        padding-top: 70px;
-      }
-    }
-
-    @media (max-width: 780px) {
-      .site-header-inner {
-        padding-inline: 16px;
-      }
-
-      .nav {
-        position: fixed;
-        inset: 56px 0 auto 0;
-        padding: 16px 18px 18px;
-        background: rgba(247, 242, 236, 0.98);
-        border-bottom: 1px solid rgba(227, 215, 200, 0.9);
-        flex-direction: column;
-        gap: 12px;
-        transform: translateY(-120%);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 0.25s ease, opacity 0.25s ease;
-      }
-
-      .nav.open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .nav-cta {
-        width: 100%;
-        justify-content: center;
-        margin-top: 4px;
-      }
-
-      .burger {
-        display: block;
-      }
-
-      .service-row {
-        grid-template-columns: minmax(0, 1fr);
-        text-align: left;
-      }
-
-      .service-meta {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .section {
-        padding: 60px 0;
-      }
-
-      .category-title {
-        font-size: 15px;
-        letter-spacing: 0.14em;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container site-header-inner">
-      <a href="somi.html" class="logo">
-        <img
-          src="https://somiklinikken.no/wp-content/uploads/2020/06/logo-for-mobile.png"
-          alt="Somi Klinikken"
-          class="logo-img"
-        />
+  <header class="somi-header">
+    <div class="container somi-header-inner">
+      <a href="/" class="somi-logo">
+        <span class="somi-logo-line-1">SOMI</span>
+        <span class="somi-logo-line-2">Klinikk</span>
       </a>
 
-      <nav class="nav" id="siteNav">
-        <a href="somi.html">Hjem</a>
-        <a href="#top" class="active">Behandlinger</a>
-        <a href="somi.html#about">Om klinikken</a>
-        <a href="somi.html#fordeler">Erfaringer</a>
-        <a href="somi.html#faq">Spørsmål</a>
-        <a href="somi.html#contact">Kontakt</a>
-        <a
-          href="https://somi.bestille.no"
-          class="nav-cta"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Bestill time</a
-        >
-      </nav>
+      <nav class="somi-nav" aria-label="Hovedmeny">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Åpne meny">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
 
-      <button class="burger" id="burgerBtn" aria-label="Åpne meny">
-        <span></span>
-      </button>
+        <ul class="nav-list">
+          <li><a href="#behandlinger">Behandlinger</a></li>
+          <li><a href="#priser">Priser</a></li>
+          <li><a href="#fordeler">Hvorfor SOMI</a></li>
+          <li><a href="#kontakt" class="nav-cta">Bestill time</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main id="top">
-    <!-- INTRO / HERO -->
-    <section class="hero">
-      <div class="container hero-layout">
-        <div>
-          <div class="breadcrumbs">
-            <a href="somi.html">Hjem</a> · Behandlinger & priser
-          </div>
-          <div class="eyebrow">Behandlinger & priser</div>
-          <h1 class="hero-title">Behandlinger – bryn, vipper & hud</h1>
-          <p class="hero-text">
-            Her finner du oppdatert behandlingsmeny for microblading, bryn og vipper samt
-            Dermalogica-hudbehandlinger. Pris og varighet avtales endelig med behandler
-            ved konsultasjon.
-          </p>
+  <!-- HERO -------------------------------------------------------------->
+  <section id="hero" class="section hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">SOMI Klinikk · Behandlinger</p>
+        <h1>Naturlige bryn, vipper og hudbehandlinger</h1>
+        <p class="hero-text">
+          Vi tilbyr skreddersydde behandlinger innen permanent makeup, brynsdesign, vippeløft og hudpleie.
+          Velg behandlingen som passer deg – eller bestill en uforpliktende konsultasjon.
+        </p>
 
-          <div class="category-filters">
-            <a class="filter-pill" href="#microblading">Microblading</a>
-            <a class="filter-pill" href="#bryn-vipper">Bryn & vipper</a>
-            <a class="filter-pill" href="#dermalogica">Dermalogica</a>
-            <a class="filter-pill" href="#permanent-makeup">Permanent makeup</a>
-            <a class="filter-pill" href="#harfjerning">Hårfjerning</a>
-            <a class="filter-pill" href="#konsultasjon">Konsultasjon</a>
-            <a class="filter-pill" href="#laser-pakke">Laserpakker</a>
-            <a class="filter-pill" href="#laser-pigment">Pigmentreduksjon</a>
-            <a class="filter-pill" href="#laser-harfjerning">Laser hårfjerning</a>
-            <a class="filter-pill" href="#laser-tattoo">Laser tatoveringsfjerning</a>
-            <a class="filter-pill" href="#microneedling">Microneedling</a>
-            <a class="filter-pill" href="#elektrolyse">Elektrolyse</a>
-            <a class="filter-pill" href="#hudpleie">Hudpleie</a>
-          </div>
+        <div class="hero-actions">
+          <a href="#priser" class="btn btn-primary">Se priser</a>
+          <a href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            Bestill time
+          </a>
         </div>
 
-        <aside class="hero-aside">
-          <h3>Praktisk info</h3>
-          <p>
-            Prisene er veiledende og kan justeres ved spesielle tilpasninger eller
-            kombinasjonsbehandlinger.
-          </p>
-          <ul>
-            <li>Avbestilling innen frist oppgitt i bookingbekreftelsen.</li>
-            <li>Gi beskjed på forhånd dersom du bruker medisiner eller er gravid.</li>
-            <li>Har du spørsmål? Ta kontakt – vi hjelper deg å velge riktig behandling.</li>
-          </ul>
-        </aside>
+        <div class="hero-meta">
+          <span>Permanent makeup · Bryn & vipper · Hudpleie</span>
+          <span>Trygg medisinsk oppfølging</span>
+        </div>
       </div>
-    </section>
 
-    <!-- CATEGORIES -->
-    <section class="pricing-section">
-      <div class="container">
-
-        <!-- MICROBLADING -->
-        <div id="microblading" class="category open">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M40 70 C55 60, 85 55, 115 70" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
-                  <path d="M55 90 C60 95, 65 95, 70 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
-                  <path d="M75 90 C80 95, 85 95, 90 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
-                  <path d="M95 90 C100 95, 105 95, 110 90" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
-                </svg>
-              </span>
-              Microblading
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Touch up microblading (inkludert i prisen)</div>
-                    <div class="service-note">
-                      Etterbehandling som normalt inngår i førstegangs microblading.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>1 t 45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Ny microblading</div>
-                    <div class="service-note">
-                      Manuell brynsbehandling som gir hårstråeffekt og naturlig form.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>645 kr</strong>
-                  <span>3 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Ekstra touch up microblading / powderbrows / lip blush
-                    </div>
-                    <div class="service-note">
-                      Ekstra etterfyll utenom inkludert touch up, ved behov for justering.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>800 kr</strong>
-                  <span>1 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Oppfriskning microblading</div>
-                    <div class="service-note">
-                      For deg som tidligere har gjort microblading og ønsker å friske opp
-                      farge og form.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>285 kr</strong>
-                  <span>1 t 45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Ny microblading + shading</div>
-                    <div class="service-note">
-                      Kombinasjon av hårstråeffekt og myk skygge for mer definert uttrykk.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>685 kr</strong>
-                  <span>3 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Oppfriskning microblading + shading</div>
-                    <div class="service-note">
-                      Oppfriskning av tidligere kombinasjonsbryn med både strå og skygge.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>375 kr</strong>
-                  <span>1 t 45 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-arch">
+          <div class="hero-photo-placeholder"></div>
         </div>
-
-        <!-- BRYN & VIPPER -->
-        <div id="bryn-vipper" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M40 80 C55 70, 105 70, 120 80" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linecap="round" />
-                  <path d="M50 85 C65 95, 95 95, 110 85 M110 85 C95 75, 65 75, 50 85" stroke="#E8B7A5" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                  <circle cx="80" cy="86" r="5" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M60 97 L57 104 M70 100 L68 108 M90 100 L92 108 M100 97 L103 104" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
-              Bryn og vipper
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brynstyling (form, farge, voks)</div>
-                    <div class="service-note">
-                      Tilpassing av form, farging av bryn og skånsom voks rundt brynene.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>690 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Browlamination</div>
-                    <div class="service-note">
-                      Former og “løfter” brynshårene for et fyldigere, mer strukturert
-                      uttrykk.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>107 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Vippeløft inkl. farge og lashfiller</div>
-                    <div class="service-note">
-                      Permanent bøy av egne vipper, med farge og pleiende lashfiller for
-                      ekstra volumfølelse.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>114 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Browlamination + vippeløft inkl. farge
-                    </div>
-                    <div class="service-note">
-                      Pakke som kombinerer styling av bryn og vippeløft for et komplett
-                      blikk-løft.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>169 kr</strong>
-                  <span>1 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Farging av vipper</div>
-                    <div class="service-note">
-                      Fargebehandling som gir inntrykk av tettere og mørkere vipper.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>290 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Farging av bryn</div>
-                    <div class="service-note">
-                      Farge som tilpasses hudtone og hårfarge for naturlig markerte bryn.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>320 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brynstyling for menn</div>
-                    <div class="service-note">
-                      Diskré forming og tilpassing av bryn for maskulint uttrykk.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>490 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brynstyling + voks overleppe</div>
-                    <div class="service-note">
-                      Kombinasjon av full brynstyling og voksing av overleppe.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>850 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Forming av bryn</div>
-                    <div class="service-note">
-                      Rens av form med voks/pinsett – uten farge.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>490 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brynstyling + farging av vipper</div>
-                    <div class="service-note">
-                      Komplett pakke med brynsform, farge og voks kombinert med
-                      vippefarge.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>850 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- DERMALOGICA -->
-        <div id="dermalogica" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="55" y="50" width="25" height="55" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="60" y="40" width="15" height="10" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M95 50 L115 50 L110 95 L100 95 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                  <rect x="100" y="95" width="10" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                </svg>
-              </span>
-              Dermalogica
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Signaturbehandling</div>
-                    <div class="service-note">
-                      Tilpasset klassisk behandling med fokus på rens, glød og komfort.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>100 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Kjemisk Peeling</div>
-                    <div class="service-note">
-                      Målrettet peel for hudfornyelse, glød og jevnere hudtone.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>120 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Dermalogica Målrettet Pigmentering 30 min
-                    </div>
-                    <div class="service-note">
-                      Kraftigere behandling mot pigmentflekker på utvalgte områder.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>790 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Dermalogica Målrettet Pigmentering 60 min
-                    </div>
-                    <div class="service-note">
-                      For deg som ønsker mer grundig pigmentbehandling kombinert med
-                      klassisk pleie.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>130 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Målrettet Akne 30 min</div>
-                    <div class="service-note">
-                      Rensende og balanserende behandling tilpasset akne og uren hud.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>790 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Målrettet Akne 60 min</div>
-                    <div class="service-note">
-                      Utvidet aknebehandling med mer tid til ekstraksjoner og maske.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>130 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Målrettet Aldring 30 min</div>
-                    <div class="service-note">
-                      Fukt- og kollagenstimulerende behandling for hud med aldringstegn.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>790 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermalogica Målrettet Aldring 60 min</div>
-                    <div class="service-note">
-                      Utvidet anti-age behandling med ekstra fokus på massasje og
-                      næringsrike masker.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>130 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Dermalogica Målrettet Sensitivitet 30 min
-                    </div>
-                    <div class="service-note">
-                      Skånsom behandling som roer ned reaktiv og sensitiv hud.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>790 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Dermalogica Målrettet Sensitivitet 60 min
-                    </div>
-                    <div class="service-note">
-                      Mer tid til lag-på-lag-pleie, maske og rolig massasje for
-                      sensitiv hud.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>130 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Facemapping hudenalyse</div>
-                    <div class="service-note">
-                      Gratis hudanalyse hvor vi kartlegger hudtilstand og anbefaler
-                      riktige produkter og behandlinger.
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- PERMANENT MAKEUP -->
-        <div id="permanent-makeup" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M55 90 C65 80, 95 80, 105 90 C95 100, 65 100, 55 90 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                  <rect x="95" y="45" width="28" height="10" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="118" y="47" width="10" height="6" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M128 50 L140 55" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                  <circle cx="107" cy="87" r="3" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Permanent Makeup
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Ny eyeliner oppe med vipp/shading</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>560 kr</strong>
-                  <span>2 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Touch up eyeliner oppe og nede</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>2 t 15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Touch up eyeliner oppe eller nede</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>1 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Eyeliner kun nede</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>300 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">eyeliner nede</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>140 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Oppfriskning lipblush</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>350 kr</strong>
-                  <span>2 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Skjønnhetsflekk</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>850 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Oppfriskning eyeliner oppe og nede</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>350 kr</strong>
-                  <span>1 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Lipblush</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>685 kr</strong>
-                  <span>2 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Touch up lipblush (inkl i prisen)</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>2 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Oppfriskning eyeliner oppe eller nede
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>315 kr</strong>
-                  <span>1 t 15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Powderbrows</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>675 kr</strong>
-                  <span>2 t 30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Fregner</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>200 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Oppfriskning powderbrows/shading</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>325 kr</strong>
-                  <span>1 t 45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Touch up powderbrows</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>1 t 30 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- HÅRFJERNING / VOKSING -->
-        <div id="harfjerning" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M55 50 C70 55, 85 70, 95 90 C100 100, 102 110, 100 120" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <path d="M88 120 C92 125, 98 127, 105 126" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <rect x="95" y="55" width="30" height="7" rx="3" transform="rotate(25 95 55)" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M117 68 C120 72, 120 78, 117 82" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                </svg>
-              </span>
-              Hårfjerning / voksing
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Overleppe</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>200 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brasiliansk</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>690 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Armhuler</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>300 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Legger</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>350 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hele ben</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>600 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hele armer</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>350 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Halve armer</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>290 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hake</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>200 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Overleppe + hake</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>400 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hele ansiktet</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>500 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Nesebor</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>200 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + armhuler</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>900 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Brasiliansk + armhuler + legger
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1250 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Brasiliansk + armhuler + armer + hele ben
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1650 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Bikinilinje</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>450 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Bikini klassisk</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>450 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Legger + bakside lår</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>450 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + hele ben</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1100 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + legger</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>900 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">A</div>
-                  <div>
-                    <div class="service-name">Alkaline – hele ansiktet</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1690 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">A</div>
-                  <div>
-                    <div class="service-name">Alkaline – halve ansikt</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1320 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">A</div>
-                  <div>
-                    <div class="service-name">Alkaline – overleppe</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>950 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">A</div>
-                  <div>
-                    <div class="service-name">Alkaline – hake</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>950 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- KONSULTASJON -->
-        <div id="konsultasjon" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M45 60 C45 50, 60 45, 80 45 C100 45, 115 50, 115 60 C115 75, 100 85, 80 85 C70 85, 60 82, 55 78 L48 83 L50 73 C47 70, 45 65, 45 60 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                  <circle cx="80" cy="63" r="4" fill="#E8B7A5" />
-                  <rect x="78.5" y="70" width="3" height="10" rx="1.5" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Konsultasjon
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">
-                      Microblading / powderbrows konsultasjon
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Lipblush konsultasjon</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Konsultasjon</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hudkonsultasjon</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Laser konsultasjon</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- LASER – PERMANENT HÅRFJERNING (PAKKEPRISER x4) -->
-        <div id="laser-pakke" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="45" y="50" width="38" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="80" y="55" width="15" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <line x1="95" y1="59" x2="130" y2="75" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                  <path d="M120 95 C118 85, 123 78, 125 70 C128 60, 126 50, 124 45" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <circle cx="132" cy="76" r="2" fill="#E8B7A5" />
-                  <circle cx="125" cy="80" r="1.7" fill="#E8B7A5" />
-                  <circle cx="135" cy="72" r="1.7" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Laser – permanent hårfjerning (pakker ×4)
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Overleppe ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>2370 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Hake ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>2370 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Overleppe + hake ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>4470 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Ansikt ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>5070 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Nakke ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>3570 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Skjeggline ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>2970 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Armhuler ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>3570 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Hele armer ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>5400 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Halve armer ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>4470 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Mage ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>3600 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Bryst ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>4200 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Rygg ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>8970 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Rygg og skuldre ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>10500 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Brasiliansk ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>5970 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Bikini klassisk ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>4490 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Bikinilinje ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>3570 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Legger ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>5990 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Lår ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>7500 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Legger + lår ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>11700 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + overleppe ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>5970 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + armhuler ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>8240 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">Brasiliansk + hele ansiktet ×4</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>9570 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">4x</div>
-                  <div>
-                    <div class="service-name">
-                      Brasiliansk + armhuler + hele ben ×4
-                    </div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>19500 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- LASER – PIGMENTREDUKSJON -->
-        <div id="laser-pigment" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M55 50 C70 55, 80 70, 80 85 C80 100, 72 112, 60 120" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <circle cx="76" cy="78" r="4" fill="#E8B7A5" />
-                  <rect x="95" y="45" width="30" height="16" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="120" y="49" width="10" height="8" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <line x1="130" y1="53" x2="82" y2="78" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                  <circle cx="69" cy="74" r="1.4" fill="#E8B7A5" />
-                  <circle cx="83" cy="72" r="1.4" fill="#E8B7A5" />
-                  <circle cx="72" cy="82" r="1.4" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Laser – pigmentreduksjon
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Pigmentflekk overleppe</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>990 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">1×1 cm flekk</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>790 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Panne eller kinn</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>1990 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Hele ansiktet</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>2990 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        <!-- LASER – PERMANENT HÅRFJERNING -->
-        <div id="laser-harfjerning" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="45" y="50" width="38" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="80" y="55" width="15" height="8" rx="2" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <line x1="95" y1="59" x2="130" y2="75" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                  <path d="M120 95 C118 85, 123 78, 125 70 C128 60, 126 50, 124 45" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <circle cx="132" cy="76" r="2" fill="#E8B7A5" />
-                  <circle cx="125" cy="80" r="1.7" fill="#E8B7A5" />
-                  <circle cx="135" cy="72" r="1.7" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Laser – permanent hårfjerning
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Overleppe</div></div></div>
-                <div class="service-meta"><strong>790 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Hake</div></div></div>
-                <div class="service-meta"><strong>790 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Overleppe + hake</div></div></div>
-                <div class="service-meta"><strong>1490 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Ansikt</div></div></div>
-                <div class="service-meta"><strong>1690 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Nakke</div></div></div>
-                <div class="service-meta"><strong>1190 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Skjeggline</div></div></div>
-                <div class="service-meta"><strong>990 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Armhuler</div></div></div>
-                <div class="service-meta"><strong>1190 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Hele armer</div></div></div>
-                <div class="service-meta"><strong>1800 kr</strong><span>45 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">1/2 arm</div></div></div>
-                <div class="service-meta"><strong>1490 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Mage</div></div></div>
-                <div class="service-meta"><strong>1200 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Bryst</div></div></div>
-                <div class="service-meta"><strong>1400 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Rygg</div></div></div>
-                <div class="service-meta"><strong>2990 kr</strong><span>45 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Rygg og skuldre</div></div></div>
-                <div class="service-meta"><strong>3500 kr</strong><span>45 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Bikini brasiliansk</div></div></div>
-                <div class="service-meta"><strong>1690 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Bikini klassisk</div></div></div>
-                <div class="service-meta"><strong>1490 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Bikini linje</div></div></div>
-                <div class="service-meta"><strong>1190 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Legger</div></div></div>
-                <div class="service-meta"><strong>1990 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Lår</div></div></div>
-                <div class="service-meta"><strong>2500 kr</strong><span>30 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div><div class="service-name">Legger og lår</div></div>
-                </div>
-                <div class="service-meta">
-                  <strong>3900 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Brasiliansk + armhuler</div></div></div>
-                <div class="service-meta"><strong>2740 kr</strong><span>45 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Brasiliansk + overleppe</div></div></div>
-                <div class="service-meta"><strong>1990 kr</strong><span>45 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">Brasiliansk + hele ansiktet</div></div>
-                </div>
-                <div class="service-meta">
-                  <strong>3190 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">Brasiliansk + armhuler + hele ben</div></div>
-                </div>
-                <div class="service-meta">
-                  <strong>6500 kr</strong>
-                  <span>1 t 15 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- MICRONEEDLING -->
-        <div id="microneedling" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="50" y="40" width="18" height="45" rx="4" transform="rotate(-25 50 40)" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="60" y="75" width="8" height="12" rx="2" transform="rotate(-25 60 75)" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <circle cx="88" cy="88" r="4" fill="#E8B7A5" />
-                  <path d="M55 105 C70 100, 90 100, 110 105 C115 110, 115 118, 110 122 C90 125, 70 125, 55 122 C50 118, 50 110, 55 105 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                  <circle cx="70" cy="112" r="1.4" fill="#E8B7A5" />
-                  <circle cx="78" cy="115" r="1.4" fill="#E8B7A5" />
-                  <circle cx="86" cy="112" r="1.4" fill="#E8B7A5" />
-                  <circle cx="94" cy="115" r="1.4" fill="#E8B7A5" />
-                  <circle cx="102" cy="112" r="1.4" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Microneedling
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">Microneedling</div></div>
-                </div>
-                <div class="service-meta"><strong>2490 kr</strong><span>1 t 15 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">Microneedling inkl. i pakke</div></div>
-                </div>
-                <div class="service-meta"><strong>0 kr</strong><span>1 t 15 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">
-                    Somi Signature Face (peel + needling + brynsform)
-                  </div></div>
-                </div>
-                <div class="service-meta"><strong>3490 kr</strong><span>1 t 15 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div><div><div class="service-name">Microneedling + exosomer</div></div>
-                </div>
-                <div class="service-meta"><strong>4600 kr</strong><span>1 t</span></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- ELEKTROLYSE -->
-        <div id="elektrolyse" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 64 64">
-                  <circle class="somi-icon-ring" cx="32" cy="32" r="22" />
-                  <path class="somi-icon-line" d="M18 36c4-5 9-8 14-8 5 0 9 3 14 8" />
-                </svg>
-              </span>
-              Elektrolyse – permanent hårfjerning
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Elektrolyse 15 min</div></div></div>
-                <div class="service-meta"><strong>550 kr</strong><span>15 min</span></div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main"><div class="info-pill">i</div><div><div class="service-name">Elektrolyse 30 min</div></div></div>
-                <div class="service-meta"><strong>990 kr</strong><span>30 min</span></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- LASER TATTOO REMOVAL -->
-        <div id="laser-tattoo" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="45" y="45" width="35" height="18" rx="4" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <rect x="75" y="50" width="18" height="8" rx="3" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <line x1="93" y1="54" x2="115" y2="76" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" />
-                  <path d="M115 80 L119 88 L128 89 L121 95 L123 104 L115 99 L107 104 L109 95 L102 89 L111 88 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                  <circle cx="130" cy="78" r="1.8" fill="#E8B7A5" />
-                  <circle cx="100" cy="76" r="1.8" fill="#E8B7A5" />
-                  <circle cx="125" cy="102" r="1.8" fill="#E8B7A5" />
-                </svg>
-              </span>
-              Laser – Tattoo removal
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Saline removal (gule pigmenter i bryn)</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>140 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Laserfjerning bryn</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>139 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Laserfjerning tatovering 10×10 cm</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>139 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Konsultasjon</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>0 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Laserfjerning tatovering 5×5 cm</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>990 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- HUDPLEIE -->
-        <div id="hudpleie" class="category">
-          <div class="category-header">
-            <div class="category-title">
-              <span class="category-icon" aria-hidden="true">
-                <svg class="somi-icon" viewBox="0 0 160 160">
-                  <circle cx="80" cy="80" r="70" stroke="#E8B7A5" stroke-width="2" fill="none" />
-                  <path d="M60 55 C70 60, 75 70, 75 80 C75 90, 70 100, 60 105" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <path d="M65 82 C68 84, 72 84, 75 82" stroke="#E8B7A5" stroke-width="2" stroke-linecap="round" fill="none" />
-                  <path d="M95 70 C110 60, 125 75, 110 90 C100 100, 90 95, 95 70 Z" stroke="#E8B7A5" stroke-width="2" fill="none" stroke-linejoin="round" />
-                </svg>
-              </span>
-              Hudpleie
-            </div>
-            <div class="category-toggle">›</div>
-          </div>
-          <div class="category-body">
-            <div class="service-list">
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">PRX-T33</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>199 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Somi Klassisk anti-age hudpleie</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>129 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Somi Peel for acne og urenhet</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>850 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">LED-lysterapi</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>695 kr</strong>
-                  <span>30 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Somi Dyprens</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>129 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Fjerning av skintags/vorter</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>150 kr</strong>
-                  <span>15 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Laser skin rejuvenation + PRX-T33</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>299 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">TCA-Peel</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>199 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Dermaplaning</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>990 kr</strong>
-                  <span>45 min</span>
-                </div>
-              </div>
-
-              <div class="service-row">
-                <div class="service-main">
-                  <div class="info-pill">i</div>
-                  <div>
-                    <div class="service-name">Carbon peel laser</div>
-                  </div>
-                </div>
-                <div class="service-meta">
-                  <strong>149 kr</strong>
-                  <span>1 t</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
+        <div class="hero-lines"></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
+  <!-- OVERVIEW ---------------------------------------------------------->
+  <section id="behandlinger" class="section treatments">
     <div class="container">
-      <div class="footer-top">
-        <div>© Somi Klinikken – Behandlinger & priser</div>
-        <div class="pill">Bestill time på somi.bestille.no</div>
+      <div class="section-header">
+        <p class="eyebrow">Behandlinger</p>
+        <h2>Velg området du vil forbedre</h2>
+        <p>Alle behandlinger tilpasses dine mål, hudtype og eventuelle tidligere behandlinger.</p>
       </div>
-      <div class="footer-bottom">
-        <span>Estetisk medisin · Sandnes</span>
-        <span>Personvern · Vilkår · Cookies</span>
+
+      <div class="treatment-grid">
+        <article class="treatment-card">
+          <div class="treatment-icon" aria-hidden="true"></div>
+          <h3>Permanente bryn</h3>
+          <p>Microblading eller powder brows med fokus på naturlig form, myke overganger og skreddersydde fargetoner.</p>
+          <ul class="price-list">
+            <li class="price-item"><span>Microblading bryn (inkl. touch up)</span><span class="price">4500 kr</span></li>
+            <li class="price-item"><span>Powder/ombre brows</span><span class="price">4000 kr</span></li>
+            <li class="price-item"><span>Årlig etterfyll 12–18 mnd</span><span class="price">2200 kr</span></li>
+            <li class="price-item"><span>Konsultasjon 15 min</span><span class="price">0 kr</span></li>
+          </ul>
+          <a class="link-arrow" href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer">Book bryn</a>
+        </article>
+
+        <article class="treatment-card">
+          <div class="treatment-icon" aria-hidden="true"></div>
+          <h3>Bryn & vipper</h3>
+          <p>Skånsomme stylinger som løfter blikket – perfekt før ferie, fest eller som del av din faste rutine.</p>
+          <ul class="price-list">
+            <li class="price-item"><span>Brow lamination inkl. farge & form</span><span class="price">990 kr</span></li>
+            <li class="price-item"><span>Vippeløft inkl. farge</span><span class="price">1090 kr</span></li>
+            <li class="price-item"><span>Forming + farge bryn & vipper</span><span class="price">790 kr</span></li>
+            <li class="price-item"><span>Herreform bryn</span><span class="price">490 kr</span></li>
+          </ul>
+          <a class="link-arrow" href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer">Book bryn & vipper</a>
+        </article>
+
+        <article class="treatment-card">
+          <div class="treatment-icon" aria-hidden="true"></div>
+          <h3>Hud & klinikkbehandlinger</h3>
+          <p>Hudprogrammer fra Dermalogica, microneedling og skreddersydde kurpakker – alltid med grundig vurdering.</p>
+          <ul class="price-list">
+            <li class="price-item"><span>ProSkin 60 (Dermalogica)</span><span class="price">1490 kr</span></li>
+            <li class="price-item"><span>ProSkin 30 (Dermalogica)</span><span class="price">990 kr</span></li>
+            <li class="price-item"><span>Microneedling ansikt</span><span class="price">2490 kr</span></li>
+            <li class="price-item"><span>Konsultasjon hud</span><span class="price">0 kr</span></li>
+          </ul>
+          <a class="link-arrow" href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer">Book hudtime</a>
+        </article>
       </div>
+    </div>
+  </section>
+
+  <!-- PRISER ------------------------------------------------------------>
+  <section id="priser" class="section price-section">
+    <div class="container">
+      <div class="section-header center">
+        <p class="eyebrow">Priser & pakker</p>
+        <h2>Transparent prisbilde og fleksible pakker</h2>
+        <p>Alle priser inkluderer konsultasjon og trygg oppfølging. Kombinasjonsbehandlinger tilbys etter avtale.</p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <header class="price-card-header">
+            <p class="eyebrow">Permanent makeup</p>
+            <h3>Bryn</h3>
+            <p>Naturlige resultater med nøye pigmentvalg og etterfyll inkludert.</p>
+          </header>
+          <div class="price-rows">
+            <div class="price-row">
+              <div>
+                <div class="price-name">Microblading bryn</div>
+                <div class="price-note">Inkluderer touch up 6–8 uker</div>
+              </div>
+              <div class="price-amount">4500 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Powder/ombre brows</div>
+                <div class="price-note">Myke overganger for et pudderaktig uttrykk</div>
+              </div>
+              <div class="price-amount">4000 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Etterfyll 12–18 måneder</div>
+                <div class="price-note">Tilpasset din hudtype og tidligere behandling</div>
+              </div>
+              <div class="price-amount">2200 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Konsultasjon bryn</div>
+                <div class="price-note">Kartlegging av form, farge og forventninger</div>
+              </div>
+              <div class="price-amount">0 kr</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="price-card">
+          <header class="price-card-header">
+            <p class="eyebrow">Styling</p>
+            <h3>Bryn & vipper</h3>
+            <p>Skånsomme løft, forming og fargebehandlinger for et friskt blikk.</p>
+          </header>
+          <div class="price-rows">
+            <div class="price-row">
+              <div>
+                <div class="price-name">Brow lamination</div>
+                <div class="price-note">Inkluderer farge og presis forming</div>
+              </div>
+              <div class="price-amount">990 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Vippeløft inkl. farge</div>
+                <div class="price-note">Naturlig løft som varer i 6–8 uker</div>
+              </div>
+              <div class="price-amount">1090 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Forming + farge bryn & vipper</div>
+                <div class="price-note">Perfekt kombinasjon for vedlikehold</div>
+              </div>
+              <div class="price-amount">790 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Herreform bryn</div>
+                <div class="price-note">Diskré justering med naturlig resultat</div>
+              </div>
+              <div class="price-amount">490 kr</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="price-card">
+          <header class="price-card-header">
+            <p class="eyebrow">Hud</p>
+            <h3>Hudpleie & medisinske behandlinger</h3>
+            <p>Kliniske behandlinger fra Dermalogica og målrettet microneedling.</p>
+          </header>
+          <div class="price-rows">
+            <div class="price-row">
+              <div>
+                <div class="price-name">ProSkin 60</div>
+                <div class="price-note">Dypgående Dermalogica-behandling</div>
+              </div>
+              <div class="price-amount">1490 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">ProSkin 30</div>
+                <div class="price-note">Effektiv glowbehandling på 30 min</div>
+              </div>
+              <div class="price-amount">990 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Microneedling ansikt</div>
+                <div class="price-note">For jevnere hudtone og glød</div>
+              </div>
+              <div class="price-amount">2490 kr</div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="price-name">Konsultasjon hud</div>
+                <div class="price-note">Analyse og behandlingsplan</div>
+              </div>
+              <div class="price-amount">0 kr</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS ---------------------------------------------------------->
+  <section id="fordeler" class="section benefits">
+    <div class="container">
+      <div class="section-header center">
+        <p class="eyebrow">Hvorfor velge SOMI</p>
+        <h2>Rolig atmosfære, medisinsk trygghet</h2>
+        <p>Vi kombinerer dokumenterte produkter med presise teknikker for et naturlig uttrykk.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon"></div>
+          <h3>Nøyaktig kartlegging</h3>
+          <p>Vi starter alltid med konsultasjon og en behandlingsplan som følger deg fra start til mål.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"></div>
+          <h3>Naturlige resultater</h3>
+          <p>Myke overganger, skreddersydde pigmenter og fokus på balanse i ansiktet.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"></div>
+          <h3>Trygg oppfølging</h3>
+          <p>Etterbehandling og kontrolltime er inkludert der det er nødvendig.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT ----------------------------------------------------->
+  <section id="kontakt" class="section contact">
+    <div class="container contact-grid">
+      <div class="contact-cta">
+        <p class="eyebrow">Klar for time?</p>
+        <h2>Bestill konsultasjon eller behandling</h2>
+        <p>Velg ønsket behandling direkte i timeboken, eller send oss en melding dersom du er usikker på hva som passer.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://somi.bestille.no" target="_blank" rel="noopener noreferrer">Bestill time</a>
+          <a class="btn btn-ghost" href="mailto:post@somiklinikken.no">Send e‑post</a>
+        </div>
+        <div class="contact-info">
+          <p><strong>Telefon:</strong> <a href="tel:+4740608000">+47 406 08 000</a></p>
+          <p><strong>E‑post:</strong> <a href="mailto:post@somiklinikken.no">post@somiklinikken.no</a></p>
+          <p><strong>Adresse:</strong> SOMI Klinikk, Sandnes</p>
+        </div>
+      </div>
+
+      <div class="contact-form-and-map">
+        <div class="contact-form-wrapper">
+          <h3>Send oss en melding</h3>
+          <form>
+            <div class="form-row">
+              <label for="name">Navn</label>
+              <input id="name" name="name" type="text" placeholder="Ditt navn" required />
+            </div>
+            <div class="form-row">
+              <label for="email">E‑post</label>
+              <input id="email" name="email" type="email" placeholder="din@epost.no" required />
+            </div>
+            <div class="form-row">
+              <label for="message">Melding</label>
+              <textarea id="message" name="message" rows="4" placeholder="Hva kan vi hjelpe deg med?"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="contact-map" aria-hidden="true">
+          <iframe src="https://maps.google.com/maps?q=Sandnes&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 SOMI Klinikk – Alle rettigheter reservert.</p>
     </div>
   </footer>
 
   <script>
-    // Mobilmeny
-    const burgerBtn = document.getElementById("burgerBtn");
-    const nav = document.getElementById("siteNav");
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.nav-list');
 
-    burgerBtn.addEventListener("click", () => {
-      nav.classList.toggle("open");
-    });
-
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => nav.classList.remove("open"));
-    });
-
-    const categories = Array.from(document.querySelectorAll(".category"));
-
-    const setCategoryState = (category, shouldOpen) => {
-      const body = category.querySelector(".category-body");
-      if (shouldOpen) {
-        category.classList.add("open");
-        body.style.maxHeight = `${body.scrollHeight}px`;
-      } else {
-        category.classList.remove("open");
-        body.style.maxHeight = "0px";
-      }
-    };
-
-    const openCategory = (targetCategory) => {
-      categories.forEach((category) => {
-        setCategoryState(category, category === targetCategory);
+    if (navToggle && navList) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = document.body.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
       });
-    };
 
-    const refreshOpenHeights = () => {
-      categories.forEach((category) => {
-        if (category.classList.contains("open")) {
-          const body = category.querySelector(".category-body");
-          body.style.maxHeight = `${body.scrollHeight}px`;
+      navList.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLElement && event.target.tagName === 'A') {
+          document.body.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
         }
       });
-    };
-
-    // Initialize heights based on existing open state
-    categories.forEach((category) => {
-      setCategoryState(category, category.classList.contains("open"));
-    });
-
-    // Accordion behavior with single open category
-    document.querySelectorAll(".category-header").forEach((header) => {
-      header.addEventListener("click", () => {
-        const category = header.parentElement;
-        const isOpen = category.classList.contains("open");
-        if (isOpen) {
-          setCategoryState(category, false);
-        } else {
-          openCategory(category);
-        }
-      });
-    });
-
-    // Open target category from filter pills
-    document.querySelectorAll(".filter-pill").forEach((pill) => {
-      pill.addEventListener("click", (event) => {
-        event.preventDefault();
-        const targetId = pill.getAttribute("href").replace("#", "");
-        const targetCategory = document.getElementById(targetId);
-
-        if (targetCategory) {
-          openCategory(targetCategory);
-          targetCategory.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-
-    // Ensure heights stay correct on resize
-    window.addEventListener("resize", refreshOpenHeights);
+    }
   </script>
 </body>
 </html>
