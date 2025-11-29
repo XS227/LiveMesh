@@ -4,14 +4,14 @@ import Script from "next/script";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "LiveMesh",
-  description: "Chat-first site builder concept UI",
+  title: "CV Card | LiveMesh",
+  description: "Compact CV card layout with anchored navigation and clean blocks.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-white antialiased">
+      <body className="antialiased">
         <Script id="tailwind-config" strategy="beforeInteractive">
           {`
             tailwind.config = {
@@ -19,6 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 extend: {
                   fontFamily: {
                     sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+                    display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
+                  },
+                  colors: {
+                    accent: "#3b82f6",
+                    midnight: "#0f172a",
                   },
                 },
               },
