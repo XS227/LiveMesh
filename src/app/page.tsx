@@ -146,6 +146,8 @@ const quickFacts = [
 
 export default function Home() {
   const [active, setActive] = useState(navLinks[0].href);
+  const [colorMode, setColorMode] = useState<"light" | "dark">("light");
+  const [importDemo, setImportDemo] = useState(true);
 
   const handleScroll = (href: string) => {
     setActive(href);
@@ -190,7 +192,7 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
+            </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {heroActions.map((action) => (
@@ -221,6 +223,23 @@ export default function Home() {
             ))}
           </div>
 
+          <div className="mt-8 space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Navigate</p>
+            <nav className="flex flex-wrap gap-2">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  className="anchor-link"
+                  aria-current={active === link.href}
+                  onClick={() => handleScroll(link.href)}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+
           <div className="mt-6 space-y-3 text-sm">
             <a className="flex items-center gap-2 text-slate-800 transition hover:text-slate-950" href="mailto:ryan@example.com">
               <Mail size={16} /> ryan@example.com
@@ -246,20 +265,6 @@ export default function Home() {
         </aside>
 
         <main className="section-shell w-full border border-white/60 p-6 shadow-2xl shadow-blue-500/10 lg:p-8">
-          <div className="sticky top-4 z-20 -mx-4 -mt-4 mb-6 flex flex-wrap gap-2 bg-gradient-to-r from-white/90 via-white/80 to-white/70 px-4 py-3 backdrop-blur lg:-mx-6 lg:px-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                className="anchor-link"
-                aria-current={active === link.href}
-                onClick={() => handleScroll(link.href)}
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
-                {link.label}
-              </button>
-            ))}
-          </div>
-
           <section id="hero" className="space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Hello</p>
             <div className="flex flex-wrap items-center gap-3">
@@ -290,6 +295,65 @@ export default function Home() {
                 </button>
               ))}
             </div>
+          </section>
+
+          <section className="mt-10 rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm" aria-labelledby="setup-wizard">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Install</p>
+                <h3 id="setup-wizard" className="font-display text-2xl font-semibold text-slate-900">
+                  Ready-to-install CV template wizard
+                </h3>
+              </div>
+              <span className="glow-pill">Your CV is ready</span>
+            </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
+              <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 1</p>
+                <p className="mt-2 font-semibold text-slate-900">Choose mode</p>
+                <div className="mt-3 flex gap-2">
+                  {(["light", "dark"] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setColorMode(mode)}
+                      className={`flex-1 rounded-full border px-3 py-2 text-sm font-semibold capitalize transition ${
+                        colorMode === mode
+                          ? "border-slate-900 bg-slate-900 text-white"
+                          : "border-slate-200 bg-white text-slate-800"
+                      }`}
+                    >
+                      {mode} mode
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 2</p>
+                <p className="mt-2 font-semibold text-slate-900">Import demo content?</p>
+                <div className="mt-3 flex items-center justify-between rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-800">
+                  <span>{importDemo ? "Demo content included" : "Start blank"}</span>
+                  <button
+                    onClick={() => setImportDemo((val) => !val)}
+                    className="rounded-full bg-white px-3 py-1 text-xs font-semibold shadow-sm transition hover:-translate-y-[1px]"
+                  >
+                    {importDemo ? "Disable" : "Enable"}
+                  </button>
+                </div>
+              </div>
+              <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 3</p>
+                <p className="mt-2 font-semibold text-slate-900">Launch your CV card</p>
+                <p className="mt-2 text-sm text-slate-700">Tailored download bundle based on your choices.</p>
+                <button
+                  onClick={() => handleScroll("#hero")}
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-[1px] hover:shadow-xl"
+                >
+                  Show my CV
+                  <ArrowUpRight size={16} />
+                </button>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-slate-600">Download-ready ZIP will respect {colorMode} mode with {importDemo ? "demo sections" : "your blank canvas"} enabled.</p>
           </section>
 
           <section id="about" className="mt-12 grid gap-6 md:grid-cols-[1.2fr_0.9fr]">
