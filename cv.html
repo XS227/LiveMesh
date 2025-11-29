@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Khabat Setaei – PhD Portfolio</title>
+
+  <style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --surface-soft: #f9fafb;
+    --accent: #16a34a; /* lime/green */
+    --accent-soft: rgba(22, 163, 74, 0.08);
+    --accent-alt: #a855f7; /* lilac/purple */
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-subtle: #e5e7eb;
+    --radius-lg: 18px;
+    --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+    --transition-fast: 150ms ease-out;
+    --transition-med: 260ms ease-out;
+  }
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left, #e5e7eb 0, transparent 55%),
+      radial-gradient(circle at bottom right, #e5e7eb 0, transparent 55%),
+      var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+  }
+
+  .nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #111827, #16a34a);
+  }
+
+  .brand-name {
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #020617;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 0.2rem;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--accent), var(--accent-alt));
+    transition: width var(--transition-med);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-main);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+  }
+
+  .pill {
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid #d4d4d8;
+    color: var(--text-main);
+    text-decoration: none;
+    background: #ffffff;
+    transition: all var(--transition-med);
+  }
+
+  .pill span.icon {
+    font-size: 1rem;
+  }
+
+  .pill.primary {
+    border-color: transparent;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #022c22;
+    font-weight: 600;
+    box-shadow: 0 14px 30px rgba(22, 163, 74, 0.35);
+  }
+
+  .pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(148, 163, 184, 0.3);
+  }
+
+  .pill.primary:hover {
+    box-shadow: 0 18px 38px rgba(22, 163, 74, 0.45);
+    transform: translateY(-1.5px) scale(1.01);
+  }
+
+  main {
+    flex: 1;
+  }
+
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.2rem 1.5rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+    gap: 3rem;
+    align-items: center;
+    padding-top: 2.4rem;
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 999px;
+    background: #f9fafb;
+    border: 1px solid var(--border-subtle);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .hero-kicker-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    line-height: 1.05;
+    margin: 0 0 0.9rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-title span.gradient {
+    background: linear-gradient(120deg, #16a34a, #22c55e);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .hero-sub {
+    max-width: 32rem;
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.7rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(22, 163, 74, 0.3);
+    color: #166534;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-footnote {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    padding: 1.5rem 1.4rem 1.6rem;
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .hero-orbit {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 10% 0, rgba(22, 163, 74, 0.08), transparent 55%),
+      radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.08), transparent 55%);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero-avatar {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #111827, #16a34a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #f9fafb;
+    margin-bottom: 1rem;
+  }
+
+  .hero-meta {
+    position: relative;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-meta strong {
+    color: var(--text-main);
+  }
+
+  .hero-badges {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-badge {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #111827;
+  }
+
+  .hero-highlight {
+    position: relative;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+  }
+
+  .hero-highlight span {
+    color: var(--text-main);
+  }
+
+  .section-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 35rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card {
+    position: relative;
+    padding: 1.3rem 1.2rem 1.3rem;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: transform var(--transition-med), box-shadow var(--transition-med),
+      border-color var(--transition-med);
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(
+      circle at 10% 0,
+      rgba(22, 163, 74, 0.14),
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-med), transform var(--transition-med);
+    transform: translate3d(-12px, -18px, 0);
+    pointer-events: none;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(148, 163, 184, 0.7);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+  }
+
+  .card:hover::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .card-eyebrow {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin-bottom: 0.45rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    margin: 0 0 0.4rem;
+    color: var(--text-main);
+  }
+
+  .card-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+  }
+
+  .chip {
+    font-size: 0.74rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    background: #f9fafb;
+  }
+
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    align-items: center;
+  }
+
+  .card-link {
+    font-size: 0.8rem;
+    color: #111827;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0.9;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .card-link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .card-link span {
+    font-size: 0.9rem;
+  }
+
+  .card-link.card-cta {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: #111827;
+    color: #f9fafb;
+  }
+
+  .card-link.card-cta span:first-child {
+    font-size: 0.9rem;
+  }
+
+  .timeline {
+    border-left: 1px dashed #e5e7eb;
+    padding-left: 1.1rem;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 1.2rem;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -1.47rem;
+    top: 0.2rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 2px solid var(--accent);
+    background: #ffffff;
+  }
+
+  .tl-title {
+    font-size: 0.94rem;
+    color: var(--text-main);
+    margin-bottom: 0.1rem;
+  }
+
+  .tl-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-body {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .contact-box {
+    display: grid;
+    grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+    gap: 1.5rem;
+    padding: 1.7rem 1.6rem 1.8rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #111827, #020617);
+    box-shadow: var(--shadow-soft);
+    color: #f9fafb;
+  }
+
+  .contact-title {
+    margin: 0 0 0.4rem;
+    font-size: 1.25rem;
+  }
+
+  .contact-sub {
+    font-size: 0.9rem;
+    max-width: 24rem;
+    color: #e5e7eb;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .contact-pill {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: #020617;
+    color: #e5e7eb;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: transform var(--transition-fast),
+      box-shadow var(--transition-fast), background var(--transition-fast);
+  }
+
+  .contact-pill:hover {
+    transform: translateY(-2px);
+    background: #111827;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.3rem 1rem 1.8rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 550ms ease-out, transform 550ms ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      padding-top: 2rem;
+    }
+
+    .hero-right {
+      order: -1;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .contact-box {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      padding-inline: 1rem;
+    }
+
+    section {
+      padding-inline: 1rem;
+    }
+
+    .hero-card {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo-circle"></div>
+          <div class="brand-name">Khabat Setaei</div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#books">Books</a>
+          <a href="#roles">Roles</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="pill primary" href="#contact">
+            <span class="icon">🎓</span><span>PhD Collaboration</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="hero">
+        <div class="hero-left reveal">
+          <div class="hero-kicker">
+            <span class="hero-kicker-dot"></span>
+            PhD-ready | AI · Robotics · Security
+          </div>
+          <h1 class="hero-title">
+            Bridging <span class="gradient">AI, Robotics &amp; Security</span>
+            with cultural and mathematical insight.
+          </h1>
+          <p class="hero-sub">
+            Khabat Setaei is a researcher and systems architect working at the
+            intersection of machine learning, mobile robotics, IoT security,
+            and narrative systems. His work connects mathematical structures,
+            ancient epics, and modern intelligent infrastructures.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Mobile Robotics</span>
+            <span class="tag">IoT &amp; Cyber-Physical Systems</span>
+            <span class="tag">Neuro-symbolic AI</span>
+            <span class="tag">Blockchain &amp; Token Economies</span>
+          </div>
+          <div class="hero-buttons">
+            <a class="pill primary" href="#research">
+              <span class="icon">📚</span>
+              <span>View research profile</span>
+            </a>
+            <a class="pill" href="#projects">
+              <span class="icon">🧪</span>
+              <span>Explore projects</span>
+            </a>
+          </div>
+          <div class="hero-footnote">
+            Currently based in Norway (permanent resident) and actively
+            exploring PhD opportunities in Spain and Scandinavia.
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <article class="hero-card">
+            <div class="hero-orbit"></div>
+            <div class="hero-avatar">KΣ</div>
+            <div class="hero-meta">
+              <strong>Research Focus:</strong> AI for secure, autonomous and
+              interpretable systems across robotics, IoT, and digital
+              economies.
+            </div>
+            <div class="hero-badges">
+              <div class="hero-badge">MSc Artificial Intelligence</div>
+              <div class="hero-badge">Author &amp; Researcher</div>
+              <div class="hero-badge">Founder – Shahnameh Project</div>
+            </div>
+            <div class="hero-highlight">
+              Latest work: <span>Ontology-Enhanced Neuro-Symbolic Defense
+              for IoT-enabled cyber-physical systems</span> and the
+              <span>RealShahnameh (REAL)</span> token experiment in
+              Play-to-Earn ecosystems.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="reveal">
+        <div class="section-label">Research &amp; Publications</div>
+        <h2 class="section-title">Towards trustworthy intelligent infrastructures</h2>
+        <p class="section-sub">
+          From neuro-symbolic defense mechanisms for IoT, to semantic image
+          retrieval and cost prediction in cloud environments, Khabat’s work
+          focuses on how AI can stay robust, explainable, and secure while
+          interacting with the physical world.
+        </p>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-eyebrow">Journal paper</div>
+            <h3 class="card-title">
+              Ontology-Enhanced Neuro-Symbolic Defense for Adversarial Attacks
+            </h3>
+            <p class="card-body">
+              A hybrid framework combining deep learning with ontology-based
+              reasoning to protect IoT-enabled cyber-physical systems deployed
+              in smart-campus environments. Improves detection accuracy and
+              reduces false positives while keeping decisions explainable.
+            </p>
+            <div class="chip-row">
+              <span class="chip">IoT Security</span>
+              <span class="chip">Neuro-symbolic AI</span>
+              <span class="chip">Smart Campus</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-eyebrow">Ongoing research</div>
+            <h3 class="card-title">
+              Mobile Robotics, Perception &amp; Secure Autonomy
+            </h3>
+            <p class="card-body">
+              Exploring how machine learning, sensor fusion and
+              security-aware control can support robust navigation and
+              decision-making in mobile robotic systems operating in uncertain,
+              dynamic environments.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Mobile Robotics</span>
+              <span class="chip">SLAM &amp; Perception</span>
+              <span class="chip">Safe Autonomy</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-label">Selected Projects</div>
+        <h2 class="section-title">Experiments at the edge of AI, games &amp; culture</h2>
+        <p class="section-sub">
+          Khabat builds systems that blend mathematical insight, narrative
+          structure and real-world interaction – from numerology engines and
+          cultural P2E ecosystems to family-friendly gaming communities.
+        </p>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-eyebrow">Experimental AI · Web</div>
+            <h3 class="card-title">Numerologist</h3>
+            <p class="card-body">
+              A numerology-driven exploration engine that combines symbolic
+              systems, personal data and AI-powered narratives to generate
+              reflective, structured readings about life path, timing and
+              inner dynamics.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Python / JS</span>
+              <span class="chip">Symbolic Systems</span>
+              <span class="chip">Narrative AI</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-eyebrow">P2E · Token economy</div>
+            <h3 class="card-title">Shahnameh &amp; REAL Token</h3>
+            <p class="card-body">
+              A Play-to-Earn, clicker-style experience inspired by the
+              Persian epic Shahnameh, powered by the REAL utility token
+              (linked to the Iranian Rial). Focused on community, cultural
+              storytelling and experimental tokenomics.
+            </p>
+            <div class="chip-row">
+              <span class="chip">TON Blockchain</span>
+              <span class="chip">Game Economy</span>
+              <span class="chip">Community Design</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-eyebrow">Community tech</div>
+            <h3 class="card-title">FjOlsenbanden Infrastructure</h3>
+            <p class="card-body">
+              Supporting one of Norway’s most inclusive gaming communities,
+              FjOlsenbanden, with digital tools, integrations and backend
+              infrastructure – enabling safe, scalable events for thousands
+              of families and young gamers.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Community Platforms</span>
+              <span class="chip">Scalable Infra</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="books" class="reveal">
+        <div class="section-label">Books</div>
+        <h2 class="section-title">From epic poetry to mathematical cosmology</h2>
+        <p class="section-sub">
+          Writing is the space where Khabat weaves together Persian
+          storytelling, modern AI, and the deep structures of numbers,
+          time and consciousness.
+        </p>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-eyebrow">Published</div>
+            <h3 class="card-title">
+              Shahnameh: AI, Blockchain &amp; Real Token Economy
+            </h3>
+            <p class="card-body">
+              A conceptual bridge between the Shahnameh epic and modern
+              digital infrastructures – exploring token economies,
+              decentralized governance and AI-driven systems as new arenas
+              for justice, myth and human creativity.
+            </p>
+            <div class="chip-row">
+              <span class="chip">AI &amp; Blockchain</span>
+              <span class="chip">Token Economies</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-eyebrow">In progress</div>
+            <h3 class="card-title">The Black &amp; White Universe</h3>
+            <p class="card-body">
+              A philosophical and mathematical exploration of reality as a
+              play of light, silence and discrete structures – combining
+              numerology, physics and contemplative practice into a unified
+              narrative of how consciousness navigates the cosmos.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Philosophy of Physics</span>
+              <span class="chip">Mathematics &amp; Meaning</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="roles" class="reveal">
+        <div class="section-label">Entrepreneurial roles</div>
+        <h2 class="section-title">Where research meets practice</h2>
+        <p class="section-sub">
+          Alongside academic work, Khabat has founded and advised companies
+          in Norway and Iran, focusing on digital media, intelligent
+          infrastructures and emerging technologies.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">XS22 Staee – Oslo, Norway</div>
+              <div class="tl-meta">Founder · Digital media &amp; technology studio</div>
+              <div class="tl-body">
+                Working across visual storytelling, interactive experiences and
+                experimental AI tools – including setaei.com and Numerologist.
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Board roles – Iran</div>
+              <div class="tl-meta">
+                Chair &amp; board member in technology and trade companies
+              </div>
+              <div class="tl-body">
+                Supporting strategic direction on digital transformation,
+                security, and data-driven decision making for organizations
+                operating at the intersection of commerce and technology.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-eyebrow">Languages &amp; context</div>
+            <h3 class="card-title">Multilingual &amp; cross-cultural</h3>
+            <p class="card-body">
+              Fluent in English, Norwegian, Persian and Kurdish, with
+              additional proficiency in Swedish and Turkish. Comfortable
+              collaborating across academic, industrial and cultural
+              environments in Europe and the Middle East.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Oslo · Tehran · Barcelona</span>
+              <span class="chip">Intercultural collaboration</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <div class="contact-box">
+          <div>
+            <h2 class="contact-title">Let’s build the next experiment together.</h2>
+            <p class="contact-sub">
+              Open to PhD positions, research collaborations and experimental
+              projects in AI, robotics, IoT security and cultural/game
+              ecosystems. If your lab or team is exploring these intersections,
+              Khabat would be glad to connect.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a class="contact-pill" href="mailto:khabat.setaei@gmail.com">
+              <span>✉️</span><span>Email</span>
+            </a>
+            <a
+              class="contact-pill"
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>in</span><span>LinkedIn</span>
+            </a>
+            <a
+              class="contact-pill"
+              href="https://x.com/TheXebat"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>𝕏</span><span>@TheXebat</span>
+            </a>
+            <a
+              class="contact-pill"
+              href="https://github.com/XS227"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>💻</span><span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Khabat Setaei · Designed for research, games &amp;
+      future infrastructures.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
