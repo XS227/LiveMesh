@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>SOMI Klinikken</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root{
+      --bg:#efefee;
+      --card:#ffffffcc;
+      --line:#e8e6e4;
+      --pink:#ddb3b3;
+      --ink:#383838;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg,#f1f1f0,#dcdcdb);
+      color:var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main{
+      min-height:100vh;
+    }
+
+    /* GENERELLE SEKSJONER */
+
+    .section{
+      padding: clamp(48px, 8vw, 96px) 16px;
+    }
+
+    .section-inner{
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Myk overgang mellom seksjoner */
+
+    .section-transition{
+      height: 70px;
+      background:
+        radial-gradient(circle at 0 0, rgba(221,179,179,.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(0,0,0,.06), transparent 60%);
+      mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    }
+
+    /* SCROLL-LENKET ANIMASJON – Chromium */
+
+    .reveal{
+      opacity:1;
+      transform:none;
+    }
+
+    @supports (animation-timeline: view()){
+      @keyframes section-reveal{
+        from{
+          opacity:0;
+          transform: translateY(40px);
+          filter: blur(6px);
+        }
+        to{
+          opacity:1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      .reveal{
+        opacity:0;
+        transform: translateY(40px);
+        animation-name: section-reveal;
+        animation-duration: 1ms; /* styres av scroll */
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 0% 35%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{
+        opacity:1 !important;
+        transform:none !important;
+        filter:none !important;
+        animation:none !important;
+      }
+    }
+
+    /* HERO / SOMI-KORT */
+
+    .section-hero{
+      padding-top: clamp(72px, 12vw, 120px);
+    }
+
+    .somi-card{
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border:1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(28px, 6vw, 48px);
+      box-shadow: 0 28px 60px rgba(0,0,0,.08);
+      text-align:center;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .somi-card::before{
+      content:"";
+      position:absolute; inset:10%;
+      border-radius: 999px;
+      border:1px solid rgba(221,179,179,.45);
+      pointer-events:none;
+    }
+
+    .logo-wrap{
+      width: min(220px, 45vw);
+      margin: 0 auto 16px;
+      aspect-ratio: 1/1;
+      position: relative;
+      display:grid; place-items:center;
+    }
+
+    .logo-wrap::after{
+      content:"";
+      position:absolute; inset:-6%;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 0deg, rgba(221,179,179,.65), transparent 40% 60%, rgba(221,179,179,.65));
+      filter: blur(8px);
+      animation: ring-spin 18s linear infinite;
+      opacity:.45;
+    }
+
+    .logo-wrap::before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius:50%;
+      border:1px solid rgba(56,56,56,.06);
+    }
+
+    @keyframes ring-spin{
+      to{ transform: rotate(360deg); }
+    }
+
+    .somi-logo{
+      width: 100%;
+      height: auto;
+      display:block;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .nav-links{
+      display:flex; flex-wrap:wrap; justify-content:center;
+      gap:.7rem 1.3rem;
+      margin-top: 10px;
+      font-size:.9rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .nav-links a{
+      color: var(--ink);
+      text-decoration:none;
+      padding-bottom:2px;
+      border-bottom: 1px solid transparent;
+      opacity:.85;
+      transition: opacity .15s ease, border-color .15s ease;
+    }
+
+    .nav-links a:hover{
+      opacity:1;
+      border-color: rgba(221,179,179,.9);
+    }
+
+    .cta-row{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem;
+      margin-top:14px;
+    }
+
+    .btn{
+      border-radius:999px; border:1px solid rgba(56,56,56,.08);
+      background: rgba(244,227,220,.35);
+      padding:.62rem 1.2rem;
+      font-size:.85rem; letter-spacing:.14em; text-transform:uppercase;
+      text-decoration:none; color:var(--ink);
+      transition: transform .12s ease, background-color .15s ease, box-shadow .15s ease;
+      white-space:nowrap;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(244,227,220,.6);
+    }
+
+    .helper{
+      margin-top: 12px;
+      font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+      color:#888;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .logo-wrap::after{ animation:none; }
+      .btn:hover{ transform:none; }
+    }
+
+    /* ABOUT-SEKSJON */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: clamp(24px, 5vw, 40px);
+      align-items:flex-start;
+    }
+
+    .section-label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#8a8580;
+      margin-bottom:6px;
+    }
+
+    .section-title{
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+      letter-spacing:.03em;
+      margin-bottom: 16px;
+    }
+
+    .section-text{
+      font-size:.98rem;
+      line-height:1.7;
+      color:#555;
+    }
+
+    .about-highlight{
+      border-radius:24px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      padding:20px 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.04);
+      font-size:.9rem;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem .6rem;
+      margin-top: 10px;
+    }
+
+    .pill{
+      border-radius:999px;
+      border:1px solid rgba(56,56,56,.08);
+      padding:.25rem .75rem;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      background:#f7f3f1;
+      color:#5d5550;
+    }
+
+    @media (max-width: 800px){
+      .about-grid{
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ANSATTE / TEAM */
+
+    .team-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    @media (max-width: 720px){
+      .team-grid{
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .team-card{
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:#f9f7f6;
+      padding:18px 18px 20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      box-shadow: 0 18px 36px rgba(0,0,0,.04);
+    }
+
+    .team-header{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .avatar-wrap{
+      width:70px;
+      height:70px;
+      border-radius:999px;
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(circle at 30% 0, #f4e3dc, #e3d8d2);
+    }
+
+    .avatar-wrap::before{
+      content:"";
+      position:absolute; inset:8%;
+      border-radius:inherit;
+      border:1px solid rgba(221,179,179,.7);
+      opacity:.8;
+    }
+
+    .avatar{
+      width: 90%;
+      height: 90%;
+      border-radius:50%;
+      object-fit:cover;
+      filter: grayscale(.08);
+    }
+
+    .team-name{
+      font-weight:600;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .team-role{
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#8c867f;
+      margin-top:2px;
+    }
+
+    .team-text{
+      font-size:.9rem;
+      color:#555;
+      line-height:1.6;
+    }
+
+    .team-cta{
+      margin-top:auto;
+      font-size:.85rem;
+    }
+
+    .team-cta a{
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:.8rem;
+      color:var(--ink);
+      border-bottom:1px solid rgba(221,179,179,.7);
+      padding-bottom:2px;
+    }
+
+    /* KONTAKTSEKSJON */
+
+    .contact-layout{
+      display:grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: clamp(24px, 5vw, 40px);
+      align-items:flex-start;
+    }
+
+    @media (max-width: 820px){
+      .contact-layout{
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-card{
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:#f9f7f6;
+      padding:20px 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.04);
+    }
+
+    .contact-item{
+      margin-bottom:12px;
+      font-size:.95rem;
+      color:#555;
+    }
+
+    .contact-label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#8b857f;
+      margin-bottom:3px;
+    }
+
+    .contact-item a{
+      color:var(--ink);
+      text-decoration:none;
+      border-bottom:1px solid rgba(221,179,179,.7);
+      padding-bottom:1px;
+    }
+
+    form.contact-form{
+      display:grid;
+      gap: 10px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      font-size:.9rem;
+    }
+
+    .field label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#8a847f;
+    }
+
+    .field input,
+    .field textarea{
+      border-radius:999px;
+      border:1px solid var(--line);
+      padding:9px 14px;
+      font: inherit;
+      background:#fff;
+      outline:none;
+      transition:border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+    }
+
+    .field textarea{
+      border-radius:18px;
+      min-height:120px;
+      resize:vertical;
+      padding-top:10px;
+    }
+
+    .field input:focus,
+    .field textarea:focus{
+      border-color:rgba(221,179,179,.9);
+      box-shadow:0 0 0 1px rgba(221,179,179,.4);
+      background:#fffaf7;
+    }
+
+    .submit-row{
+      margin-top:8px;
+    }
+
+    .btn-submit{
+      border:none;
+      cursor:pointer;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:20px 16px 28px;
+      font-size:.8rem;
+      text-align:center;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#8b8580;
+    }
+  </style>
+</head>
+<body>
+
+<main>
+
+  <!-- HERO / SOMI -->
+  <section id="hero" class="section section-hero reveal">
+    <div class="somi-card" aria-labelledby="somi-hero">
+      <div class="logo-wrap" aria-hidden="true">
+        <img class="somi-logo"
+             src="https://somi.setaei.com/SomiKlinikkenLogo.png"
+             alt="SOMI Klinikken logo">
+      </div>
+
+      <nav class="nav-links" aria-label="Hovedmeny">
+        <a href="#about">Om SOMI</a>
+        <a href="#team">Ansatte</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt">Finn time</a>
+      </nav>
+
+      <div class="cta-row">
+        <a class="btn" href="#kontakt">Book konsultasjon</a>
+      </div>
+
+      <p class="helper">© SOMI Klinikken</p>
+    </div>
+  </section>
+
+  <div class="section-transition" aria-hidden="true"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section reveal">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="section-label">Om klinikken</div>
+          <h2 class="section-title">Rolig estetikk, naturlige resultater</h2>
+          <p class="section-text">
+            SOMI Klinikken er et rolig sted for deg som ønsker estetiske behandlinger
+            med et naturlig uttrykk. Vi kombinerer medisinsk kompetanse med et varmt
+            og personlig møte – målet er at du skal kjenne deg igjen, bare mer utvilt.
+          </p>
+          <br>
+          <p class="section-text">
+            Klinikken er innredet med myke former, speil og varme toner. Nettløsningen
+            vår er designet for å speile den samme følelsen: ren, luftig og uten støy.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Naturlig fokus</span>
+            <span class="pill">Trygge behandlinger</span>
+            <span class="pill">Personlig plan</span>
+          </div>
+        </div>
+
+        <aside class="about-highlight">
+          <strong style="font-size:.95rem; display:block; margin-bottom:6px;">
+            Første gang hos SOMI?
+          </strong>
+          <p>
+            Vi starter alltid med en grundig konsultasjon der vi går gjennom hud,
+            ønsker og eventuelle tidligere behandlinger. Du får en tydelig plan og
+            realistiske anbefalinger – uten press.
+          </p>
+          <br>
+          <p style="font-size:.86rem; color:#7a736d;">
+            Du kan enkelt sende oss en forespørsel via kontaktskjemaet, så finner vi
+            et tidspunkt som passer.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-transition" aria-hidden="true"></div>
+
+  <!-- ANSATTE -->
+  <section id="team" class="section reveal">
+    <div class="section-inner">
+      <div class="section-label">Ansatte</div>
+      <h2 class="section-title" style="margin-bottom:16px;">Møt teamet hos SOMI</h2>
+      <p class="section-text" style="margin-bottom:26px; max-width:640px;">
+        Vi tror på små, nøye utførte justeringer fremfor store endringer. Teamet vårt
+        består av terapeuter og behandlere som brenner for estetikk, hudhelse og
+        trygg oppfølging.
+      </p>
+
+      <div class="team-grid">
+        <!-- Ansatt 1 -->
+        <article class="team-card">
+          <div class="team-header">
+            <div class="avatar-wrap">
+              <!-- Bytt gjerne ut src med faktisk portrett -->
+              <img class="avatar" src="https://somi.setaei.com/SomiKlinikkenLogo.png" alt="Ansattportrett 1">
+            </div>
+            <div>
+              <div class="team-name">Navn 1</div>
+              <div class="team-role">Kosmetisk dermatologisk sykepleier</div>
+            </div>
+          </div>
+          <p class="team-text">
+            Spesialist på injeksjonsbehandlinger og helhetlige ansiktsplaner med fokus
+            på et mykt, naturlig uttrykk.
+          </p>
+          <div class="team-cta">
+            <a href="#kontakt">Book time hos denne behandleren</a>
+          </div>
+        </article>
+
+        <!-- Ansatt 2 -->
+        <article class="team-card">
+          <div class="team-header">
+            <div class="avatar-wrap">
+              <img class="avatar" src="https://somi.setaei.com/SomiKlinikkenLogo.png" alt="Ansattportrett 2">
+            </div>
+            <div>
+              <div class="team-name">Navn 2</div>
+              <div class="team-role">Hudterapeut</div>
+            </div>
+          </div>
+          <p class="team-text">
+            Jobber med hudprogrammer, peelinger og medisinske hudpleiebehandlinger tilpasset din hverdag.
+          </p>
+          <div class="team-cta">
+            <a href="#kontakt">Book hudkonsultasjon</a>
+          </div>
+        </article>
+
+        <!-- Ansatt 3 -->
+        <article class="team-card">
+          <div class="team-header">
+            <div class="avatar-wrap">
+              <img class="avatar" src="https://somi.setaei.com/SomiKlinikkenLogo.png" alt="Ansattportrett 3">
+            </div>
+            <div>
+              <div class="team-name">Navn 3</div>
+              <div class="team-role">Bryn- og vippeekspert</div>
+            </div>
+          </div>
+          <p class="team-text">
+            Skaper skreddersydde bryn og vipper som fremhever ansiktstrekk uten å ta over.
+          </p>
+          <div class="team-cta">
+            <a href="#kontakt">Book bryn & vipper</a>
+          </div>
+        </article>
+
+        <!-- Ansatt 4 -->
+        <article class="team-card">
+          <div class="team-header">
+            <div class="avatar-wrap">
+              <img class="avatar" src="https://somi.setaei.com/SomiKlinikkenLogo.png" alt="Ansattportrett 4">
+            </div>
+            <div>
+              <div class="team-name">Navn 4</div>
+              <div class="team-role">Klinikkansvarlig</div>
+            </div>
+          </div>
+          <p class="team-text">
+            Sørger for at besøket ditt føles sømløst – fra første kontakt til oppfølging.
+          </p>
+          <div class="team-cta">
+            <a href="#kontakt">Send forespørsel</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-transition" aria-hidden="true"></div>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="section reveal">
+    <div class="section-inner">
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title" style="margin-bottom:16px;">Book konsultasjon eller still spørsmål</h2>
+      <p class="section-text" style="margin-bottom:24px; max-width:640px;">
+        Fyll inn skjemaet, så kommer vi tilbake til deg med forslag til tidspunkt.
+        Du kan også kontakte oss direkte på telefon eller e-post.
+      </p>
+
+      <div class="contact-layout">
+        <!-- Kontaktinfo -->
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-label">Adresse</div>
+            <div>SOMI Klinikken<br>Eksempelgate 12, 0000 Oslo</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">Telefon</div>
+            <div><a href="tel:+4700000000">+47 00 00 00 00</a></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">E-post</div>
+            <div><a href="mailto:post@somi-klinikken.no">post@somi-klinikken.no</a></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">Åpningstider</div>
+            <div>Man–fre: 10–18<br>Lør: Etter avtale</div>
+          </div>
+        </div>
+
+        <!-- Skjema -->
+        <div>
+          <form class="contact-form">
+            <div class="field">
+              <label for="navn">Navn</label>
+              <input type="text" id="navn" name="navn" placeholder="Ditt fulle navn">
+            </div>
+            <div class="field">
+              <label for="epost">E-post</label>
+              <input type="email" id="epost" name="epost" placeholder="din@epost.no">
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="+47 …">
+            </div>
+            <div class="field">
+              <label for="melding">Hva kan vi hjelpe deg med?</label>
+              <textarea id="melding" name="melding" placeholder="Skriv kort om ønsket behandling eller spørsmål"></textarea>
+            </div>
+            <div class="submit-row">
+              <button type="submit" class="btn btn-submit">
+                Send forespørsel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © SOMI Klinikken
+</footer>
+
+</body>
+</html>
