@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>FULL SOMI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ink: #383838;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      background: #000;
+      color: var(--ink);
+    }
+
+    /* Fullscreen hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    /* Bakgrunnsbilde */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://static.vecteezy.com/system/resources/previews/038/023/311/non_2x/ai-generated-beautiful-smiling-50s-mid-aged-mature-woman-on-white-background-skin-care-beauty-photo.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
+
+    /* Lett slør over bildet for å matche SOMI-stil */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.2), transparent 55%),
+                  linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0.2));
+      mix-blend-mode: lighten;
+    }
+
+    /* Topplinje med logo + burger */
+    .hero-header {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: inline-block;
+    }
+
+    .logo img {
+      display: block;
+      width: 190px;
+      height: auto;
+    }
+
+    .burger {
+      width: 40px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 56, 56, 0.12);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+    }
+
+    .burger:hover {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+      transform: translateY(-1px);
+    }
+
+    .burger-lines {
+      width: 18px;
+      height: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .burger-line {
+      height: 2px;
+      border-radius: 999px;
+      background: #555;
+    }
+
+    /* En liten mørkere topp-gradient for lesbarhet */
+    .hero-top-fade {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 40%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Enkel skjult placeholder-undertekst (valgfritt) */
+    .hero-bottom {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 0 32px 32px;
+    }
+
+    .hero-caption {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+      background: rgba(255,255,255,0.8);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 640px) {
+      .hero-header {
+        padding: 18px 18px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      .hero-bottom {
+        padding: 0 18px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-top-fade" aria-hidden="true"></div>
+
+    <!-- Topp: logo + burger -->
+    <header class="hero-header">
+      <a href="#" class="logo" aria-label="SOMI Klinikken">
+        <img src="https://somi.setaei.com/SomiKlinikkenLogo.png" alt="SOMI Klinikken logo">
+      </a>
+
+      <button class="burger" aria-label="Åpne meny">
+        <span class="burger-lines" aria-hidden="true">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </span>
+      </button>
+    </header>
+
+    <!-- Bunntekst (kan fjernes om du vil ha helt rent) -->
+    <div class="hero-bottom">
+      <div class="hero-caption">
+        © SOMI Klinikken
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
