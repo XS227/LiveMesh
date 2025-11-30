@@ -7,7 +7,7 @@
     name="description"
     content="Portfolio of Khabat Setaei, showcasing AI, robotics, IoT security research, cultural tech projects, and collaboration opportunities."
   />
-  <title>Khabat Setaei – PhD Portfolio</title>
+  <title>Khabat Setaei – Research &amp; Design Portfolio</title>
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
@@ -15,19 +15,19 @@
 
   <style>
   :root {
-    --bg: #0a1a2f;
-    --bg-2: #0f2741;
-    --surface: rgba(15, 39, 65, 0.75);
-    --surface-strong: rgba(15, 39, 65, 0.95);
-    --surface-soft: rgba(255, 255, 255, 0.05);
-    --accent: #2ec7c5;
-    --accent-alt: #a5e6ff;
-    --accent-warm: #ff6f6f;
-    --text-main: #e8f5ff;
-    --text-muted: #9fb6d4;
-    --border-subtle: rgba(46, 199, 197, 0.25);
-    --radius-lg: 18px;
-    --shadow-soft: 0 20px 70px rgba(0, 0, 0, 0.35);
+    --bg: #0b1020;
+    --bg-2: #10172b;
+    --surface: rgba(18, 24, 42, 0.78);
+    --surface-strong: rgba(18, 24, 42, 0.92);
+    --surface-soft: rgba(255, 255, 255, 0.04);
+    --accent: #7cf7d4;
+    --accent-alt: #9bc5ff;
+    --accent-warm: #ffb4a2;
+    --text-main: #f5f7fb;
+    --text-muted: #b1bed8;
+    --border-subtle: rgba(124, 247, 212, 0.25);
+    --radius-lg: 20px;
+    --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.4);
     --transition-fast: 150ms ease-out;
     --transition-med: 260ms ease-out;
   }
@@ -41,10 +41,11 @@
     margin: 0;
     font-family: "Sora", system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
-    background: radial-gradient(circle at 20% 20%, rgba(46, 199, 197, 0.18), transparent 35%),
-      radial-gradient(circle at 80% 10%, rgba(165, 230, 255, 0.18), transparent 32%),
-      radial-gradient(circle at 70% 70%, rgba(255, 111, 111, 0.12), transparent 32%),
-      linear-gradient(145deg, var(--bg), var(--bg-2));
+    background:
+      radial-gradient(circle at 18% 22%, rgba(124, 247, 212, 0.12), transparent 35%),
+      radial-gradient(circle at 82% 12%, rgba(155, 197, 255, 0.12), transparent 32%),
+      radial-gradient(circle at 70% 70%, rgba(255, 180, 162, 0.08), transparent 32%),
+      linear-gradient(150deg, var(--bg), var(--bg-2));
     color: var(--text-main);
     line-height: 1.65;
     min-height: 100vh;
@@ -58,8 +59,8 @@
     inset: 0;
     pointer-events: none;
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
-    background-size: 26px 26px;
-    opacity: 0.3;
+    background-size: 20px 20px;
+    opacity: 0.22;
   }
 
   .page {
@@ -73,8 +74,8 @@
     top: 0;
     z-index: 50;
     backdrop-filter: blur(16px);
-    background: rgba(10, 26, 47, 0.9);
-    border-bottom: 1px solid rgba(46, 199, 197, 0.18);
+    background: rgba(12, 16, 32, 0.92);
+    border-bottom: 1px solid rgba(124, 247, 212, 0.16);
   }
 
   .nav {
@@ -95,42 +96,59 @@
 
   .logo-circle {
     position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 65% 30%, rgba(46, 199, 197, 0.45), rgba(10, 26, 47, 0.5)),
-      linear-gradient(145deg, rgba(46, 199, 197, 0.85), rgba(165, 230, 255, 0.55));
-    border: 1px solid rgba(165, 230, 255, 0.5);
-    box-shadow: 0 0 16px rgba(46, 199, 197, 0.45);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(124, 247, 212, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(135deg, rgba(124, 247, 212, 0.2), rgba(155, 197, 255, 0.2));
   }
 
-  .logo-circle::before {
-    content: "";
-    position: absolute;
-    inset: 18%;
-    border: 1.8px solid rgba(232, 245, 255, 0.8);
-    clip-path: polygon(50% 0, 0 100%, 100% 100%);
-    transform: translateY(-1px);
+  .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05);
   }
 
   .logo-circle::after {
     content: "";
     position: absolute;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 1.4px solid rgba(232, 245, 255, 0.7);
-    top: 6px;
-    right: -6px;
-    box-shadow: 0 0 8px rgba(46, 199, 197, 0.5);
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity var(--transition-med);
+  }
+
+  .logo-circle:hover::after {
+    opacity: 1;
   }
 
   .brand-name {
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.92rem;
     text-transform: uppercase;
     color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand-name::after {
+    content: "Modern Systems";
+    display: inline-flex;
+    align-items: center;
+    padding: 0.16rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(124, 247, 212, 0.12);
+    border: 1px solid rgba(124, 247, 212, 0.3);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
   }
 
   .nav-links {
@@ -144,7 +162,7 @@
     text-decoration: none;
     position: relative;
     padding-bottom: 0.2rem;
-    transition: color var(--transition-fast);
+    transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
   .nav-links a::after {
@@ -167,10 +185,8 @@
     width: 100%;
   }
 
-  .nav-cta {
-    display: flex;
-    gap: 0.7rem;
-    align-items: center;
+  .nav-links a:hover {
+    transform: translateY(-1px);
   }
 
   .pill {
@@ -244,11 +260,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.25rem 0.8rem;
+    padding: 0.25rem 0.9rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(46, 199, 197, 0.3);
-    box-shadow: 0 14px 38px rgba(46, 199, 197, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(124, 247, 212, 0.35);
+    box-shadow: 0 14px 38px rgba(124, 247, 212, 0.12);
     font-size: 0.78rem;
     color: var(--accent-alt);
     margin-bottom: 1rem;
@@ -260,7 +276,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, rgba(46, 199, 197, 0.12), rgba(165, 230, 255, 0.18));
+    background: linear-gradient(120deg, rgba(124, 247, 212, 0.14), rgba(155, 197, 255, 0.18));
     opacity: 0.35;
     pointer-events: none;
   }
@@ -274,9 +290,9 @@
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 4vw, 3rem);
+    font-size: clamp(2.4rem, 4vw, 3.1rem);
     line-height: 1.05;
-    margin: 0 0 0.9rem;
+    margin: 0 0 1rem;
     letter-spacing: 0.01em;
   }
 
@@ -297,28 +313,30 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    margin-bottom: 1.7rem;
+    margin-bottom: 1.4rem;
   }
 
   .tag {
     font-size: 0.8rem;
     padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-    background: rgba(46, 199, 197, 0.12);
-    border: 1px solid rgba(46, 199, 197, 0.35);
+    border-radius: 10px;
+    background: rgba(124, 247, 212, 0.14);
+    border: 1px solid rgba(124, 247, 212, 0.35);
     color: var(--accent-alt);
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-bottom: 1.4rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   }
 
   .hero-footnote {
-    font-size: 0.8rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(155, 197, 255, 0.2);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.25);
   }
 
   .hero-right {
@@ -331,21 +349,29 @@
     position: relative;
     width: 100%;
     max-width: 360px;
-    padding: 1.5rem 1.4rem 1.6rem;
-    border-radius: 24px;
+    padding: 1.6rem 1.4rem 1.8rem;
+    border-radius: 26px;
     background: var(--surface);
     box-shadow: var(--shadow-soft);
     overflow: hidden;
     border: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
+    transition: transform var(--transition-med), border-color var(--transition-med),
+      box-shadow var(--transition-med);
+  }
+
+  .hero-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(124, 247, 212, 0.4);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
   }
 
   .hero-orbit {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 12% 12%, rgba(46, 199, 197, 0.16), transparent 55%),
-      radial-gradient(circle at 90% 90%, rgba(165, 230, 255, 0.16), transparent 55%);
+      radial-gradient(circle at 12% 12%, rgba(124, 247, 212, 0.18), transparent 55%),
+      radial-gradient(circle at 90% 90%, rgba(155, 197, 255, 0.18), transparent 55%);
     opacity: 0.9;
     pointer-events: none;
   }
@@ -354,16 +380,16 @@
     position: relative;
     width: 78px;
     height: 78px;
-    border-radius: 999px;
-    background: radial-gradient(circle at 30% 20%, rgba(46, 199, 197, 0.7), rgba(10, 26, 47, 0.95));
+    border-radius: 16px;
+    background: radial-gradient(circle at 30% 20%, rgba(124, 247, 212, 0.7), rgba(16, 23, 43, 0.95));
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     color: #e8f5ff;
     margin-bottom: 1rem;
-    border: 1.4px solid rgba(165, 230, 255, 0.55);
-    box-shadow: 0 0 18px rgba(46, 199, 197, 0.55);
+    border: 1.4px solid rgba(155, 197, 255, 0.55);
+    box-shadow: 0 0 18px rgba(124, 247, 212, 0.55);
   }
 
   .hero-meta {
@@ -507,10 +533,10 @@
   .chip {
     font-size: 0.74rem;
     padding: 0.15rem 0.55rem;
-    border-radius: 999px;
-    border: 1px solid rgba(46, 199, 197, 0.35);
+    border-radius: 10px;
+    border: 1px solid rgba(124, 247, 212, 0.35);
     color: var(--accent-alt);
-    background: rgba(46, 199, 197, 0.12);
+    background: rgba(124, 247, 212, 0.12);
   }
 
   .card-links {
@@ -519,6 +545,16 @@
     gap: 0.5rem;
     margin-top: 0.5rem;
     align-items: center;
+  }
+
+  .book-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(155, 197, 255, 0.25);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
   }
 
   .token-widget {
@@ -735,7 +771,9 @@
     <header>
       <div class="nav">
         <div class="nav-left">
-          <div class="logo-circle"></div>
+          <div class="logo-circle">
+            <img src="https://setaei.com/file_00000000e04471f4803f0b2770eb8594.png" alt="Setaei monogram" />
+          </div>
           <div class="brand-name">SETAEI // Trinity Orbit</div>
         </div>
         <nav class="nav-links">
@@ -746,11 +784,6 @@
           <a href="#roles">Roles</a>
           <a href="#contact">Contact</a>
         </nav>
-        <div class="nav-cta">
-          <a class="pill primary" href="#contact">
-            <span class="icon">🎓</span><span>PhD Collaboration</span>
-          </a>
-        </div>
       </div>
     </header>
 
@@ -759,7 +792,7 @@
         <div class="hero-left reveal">
           <div class="hero-kicker">
             <span class="hero-kicker-dot"></span>
-            PhD-ready | AI · Robotics · Security
+            Systems Research | AI · Robotics · Security
           </div>
           <h1 class="hero-title">
             Bridging <span class="gradient">AI, Robotics &amp; Security</span>
@@ -778,19 +811,8 @@
             <span class="tag">Neuro-symbolic AI</span>
             <span class="tag">Blockchain &amp; Token Economies</span>
           </div>
-          <div class="hero-buttons">
-            <a class="pill primary" href="#research">
-              <span class="icon">📚</span>
-              <span>View research profile</span>
-            </a>
-            <a class="pill" href="#projects">
-              <span class="icon">🧪</span>
-              <span>Explore projects</span>
-            </a>
-          </div>
           <div class="hero-footnote">
-            Currently based in Norway (permanent resident) and actively
-            exploring PhD opportunities in Spain and Scandinavia.
+            Currently based in Norway and collaborating across Scandinavia and Spain.
           </div>
         </div>
 
@@ -1002,6 +1024,11 @@
           <article class="card">
             <div class="card-eyebrow">In progress</div>
             <h3 class="card-title">The Black &amp; White Universe</h3>
+            <img
+              class="book-cover"
+              src="https://setaei.com/file_00000000e04471f4803f0b2770eb8594.png"
+              alt="Cover for The Black &amp; White Universe"
+            />
             <p class="card-body">
               A philosophical and mathematical exploration of reality as a
               play of light, silence and discrete structures – combining
@@ -1012,9 +1039,7 @@
               <span class="chip">Philosophy of Physics</span>
               <span class="chip">Mathematics &amp; Meaning</span>
             </div>
-            <div class="card-links">
-              <a class="card-link card-cta" href="#contact"><span>→</span><span>Collaborate on this</span></a>
-            </div>
+            <div class="card-links"></div>
           </article>
         </div>
       </section>
@@ -1076,10 +1101,10 @@
           <div>
             <h2 class="contact-title">Let’s build the next experiment together.</h2>
             <p class="contact-sub">
-              Open to PhD positions, research collaborations and experimental
-              projects in AI, robotics, IoT security and cultural/game
-              ecosystems. If your lab or team is exploring these intersections,
-              Khabat would be glad to connect.
+              Open to research collaborations and experimental projects in AI,
+              robotics, IoT security and cultural/game ecosystems. If your lab
+              or team is exploring these intersections, Khabat would be glad to
+              connect.
             </p>
           </div>
           <div class="contact-links">
