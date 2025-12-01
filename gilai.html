@@ -4,19 +4,17 @@
   <meta charset="UTF-8" />
   <title>GILai | مرکز هوش مصنوعی گیلان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GILai مرکز آموزش و توسعه مهارت‌های هوش مصنوعی در گیلان؛ از ایده تا وبسایت، اپلیکیشن و گواهینامه‌ی معتبر." />
+  <meta name="description" content="GILai مرکز آموزش و توسعه مهارت‌های هوش مصنوعی در گیلان؛ دوره‌های سه‌سطحی برای دانشجویان، اساتید و سرمایه‌گذاران." />
 
-  <!-- فونت (در صورت اتصال به اینترنت) -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* برند GILai – رنگ‌های الهام گرفته از جنگل، باران و دریای گیلان */
     :root {
-      --bg: #020617;          /* آسمان شب انزلی */
-      --bg-soft: #050b18;     /* مه صبح در جنگل */
-      --accent: #16a34a;      /* سبز شالیزار */
-      --accent-soft: rgba(22, 163, 74, 0.12);
-      --accent-sea: #0ea5e9;  /* آبی خزر برای دی‌تِیل‌ها در صورت نیاز */
+      --bg: #020617;
+      --bg-soft: #050b18;
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.14);
+      --accent-sea: #0ea5e9;
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
       --border-soft: rgba(148, 163, 184, 0.25);
@@ -44,12 +42,12 @@
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 1.5rem 1.25rem 4rem;
     }
 
-    /* ناوبری */
+    /* NAVBAR */
     .nav {
       display: flex;
       justify-content: space-between;
@@ -58,7 +56,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(18px);
     }
 
     .nav-logo {
@@ -67,17 +65,21 @@
       gap: 0.6rem;
     }
 
-    .nav-mark {
+    .nav-logo-img {
       width: 40px;
       height: 40px;
-      border-radius: 1.25rem;
-      background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a 45%, #0f172a 90%);
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a 40%, #0f172a 90%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.45);
-      font-weight: 800;
-      font-size: 1.1rem;
+      overflow: hidden;
+    }
+
+    .nav-logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .nav-title {
@@ -86,76 +88,136 @@
       font-size: 1.05rem;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.9rem;
+    .nav-subtitle {
+      font-size: 0.72rem;
       color: var(--text-muted);
     }
 
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     .nav-links a {
-      padding: 0.25rem 0.4rem;
+      padding: 0.2rem 0.5rem;
       border-radius: 999px;
       transition: var(--transition-fast);
     }
 
     .nav-links a:hover {
       color: var(--text-main);
-      background: rgba(148, 163, 184, 0.12);
+      background: rgba(148, 163, 184, 0.14);
     }
 
-    /* هدر / هیرو */
-    .hero {
+    /* GENERIC */
+    section {
+      padding: 2.7rem 0 1.3rem;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 1.3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    .grid-2 {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 2rem;
-      align-items: center;
-      padding: 2.5rem 0 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.8rem;
     }
 
-    .hero-kicker {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--bg-soft);
+      border-radius: 1.2rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      font-size: 0.86rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 55%);
+      opacity: 0;
+      transition: var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      font-size: 0.7rem;
       display: inline-flex;
       align-items: center;
+      gap: 0.25rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: grid;
       gap: 0.4rem;
-      padding: 0.15rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.8);
-      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 1.4rem;
+      font-size: 0.86rem;
     }
 
-    .hero-kicker span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 4vw, 2.8rem);
-      line-height: 1.25;
-      margin: 0 0 0.75rem;
-    }
-
-    .hero-title span {
+    .bullets li::before {
+      content: "•";
       color: var(--accent);
-    }
-
-    .hero-subtitle {
-      color: var(--text-muted);
-      font-size: 0.98rem;
-      max-width: 32rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.4rem;
+      margin-left: 0.4rem;
     }
 
     .btn {
@@ -194,12 +256,66 @@
       background: rgba(15, 23, 42, 1);
     }
 
+    /* 1. HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2.5rem 0 2rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-kicker span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      line-height: 1.25;
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.1rem;
+    }
+
     .hero-note {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    .hero-visual {
+    .hero-video {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-soft);
       background: radial-gradient(circle at top right, var(--accent-soft), #020617 55%);
@@ -207,166 +323,55 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .hero-badge {
-      font-size: 0.85rem;
-      padding: 0.35rem 0.6rem;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      display: inline-flex;
-      gap: 0.4rem;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-badge strong {
-      color: var(--accent);
-    }
-
-    .prompt-flow {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 1.2rem;
-      padding: 0.8rem 0.9rem;
-      border: 1px solid rgba(55, 65, 81, 0.8);
-      display: grid;
-      gap: 0.8rem;
-      font-size: 0.78rem;
-    }
-
-    .prompt-flow-row {
-      display: flex;
-      gap: 0.4rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 0.22rem 0.7rem;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      white-space: nowrap;
-    }
-
-    .tag-accent {
-      border-color: rgba(34, 197, 94, 0.6);
-      background: rgba(21, 128, 61, 0.08);
-      color: #bbf7d0;
-    }
-
-    .prompt-flow-arrow {
-      font-size: 1rem;
-      opacity: 0.8;
-    }
-
-    /* بخش‌ها */
-    section {
-      padding: 2.7rem 0 1.3rem;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-header {
-      margin-bottom: 1.3rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.8rem;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      margin: 0 0 0.4rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 36rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      gap: 1.2rem;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .card {
-      background: var(--bg-soft);
-      border-radius: 1.2rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 1rem;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
-      font-size: 0.86rem;
+    .video-placeholder {
       position: relative;
+      border-radius: 1.1rem;
       overflow: hidden;
+      background: linear-gradient(135deg, #16a34a 0%, #0ea5e9 40%, #020617 100%);
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .card::after {
-      content: "";
+    .video-layer {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 55%);
-      opacity: 0;
-      transition: var(--transition-fast);
-      pointer-events: none;
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.7));
     }
 
-    .card:hover::after {
-      opacity: 1;
-    }
-
-    .card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 0.98rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--text-muted);
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.15rem 0.6rem;
+    .video-play {
+      position: relative;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 2px solid rgba(248, 250, 252, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .video-play::before {
+      content: "";
+      border-style: solid;
+      border-width: 8px 0 8px 14px;
+      border-color: transparent transparent transparent #f9fafb;
+      margin-right: 3px;
+    }
+
+    .video-caption {
+      margin-top: 0.65rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 0.6rem;
     }
 
-    /* لیست‌ها */
-    .bullets {
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.86rem;
-      padding: 0;
-      list-style: none;
-      margin: 0.4rem 0 0;
-      color: var(--text-muted);
-    }
-
-    .bullets li::before {
-      content: "•";
-      color: var(--accent);
-      margin-left: 0.4rem;
-    }
-
-    /* شبکه ابزارها / پارتنرها */
+    /* 2. TOOL LOGOS */
     .tool-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 0.7rem;
-      margin-top: 0.8rem;
+      margin-top: 0.9rem;
     }
 
     .tool-pill {
@@ -394,7 +399,78 @@
       color: #e5e7eb;
     }
 
-    /* تماس */
+    /* 3. PACKAGES */
+    .packages {
+      margin-top: 1rem;
+    }
+
+    .package-card {
+      position: relative;
+      padding-top: 1.1rem;
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 0.4rem;
+      left: 0.8rem;
+      font-size: 0.72rem;
+      background: rgba(22, 163, 74, 0.1);
+      color: #bbf7d0;
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      border: 1px solid rgba(22, 163, 74, 0.5);
+    }
+
+    .price {
+      margin-top: 0.4rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f97316;
+    }
+
+    .price span {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .package-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .package-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .btn-secondary {
+      background: #0b1120;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+
+    /* AUDIENCE SECTIONS */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* CONTACT & CHIPS */
     .contact-card {
       background: var(--bg-soft);
       border-radius: var(--radius-xl);
@@ -402,10 +478,6 @@
       border: 1px solid rgba(31, 41, 55, 0.9);
       box-shadow: var(--shadow-soft);
       font-size: 0.86rem;
-    }
-
-    .contact-card strong {
-      color: var(--accent);
     }
 
     .chips {
@@ -424,6 +496,46 @@
       color: var(--text-muted);
     }
 
+    /* 9. FAQ */
+    .faq-list {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    details {
+      background: var(--bg-soft);
+      border-radius: 1rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.86rem;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: left;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    details[open] summary::after {
+      content: "－";
+    }
+
+    details p {
+      margin-top: 0.4rem;
+      color: var(--text-muted);
+    }
+
     footer {
       padding-top: 2.2rem;
       font-size: 0.78rem;
@@ -439,15 +551,16 @@
       font-weight: 500;
     }
 
-    /* ریسپانسیو */
-    @media (max-width: 860px) {
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-visual {
+      .hero-video {
         order: -1;
       }
-      .grid-3 {
+      .grid-3,
+      .audience-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -460,9 +573,9 @@
       }
       .nav-links {
         font-size: 0.8rem;
-        flex-wrap: wrap;
       }
-      .grid-3 {
+      .grid-3,
+      .audience-grid {
         grid-template-columns: minmax(0, 1fr);
       }
       .hero {
@@ -474,328 +587,426 @@
 
 <body>
   <div class="page">
-    <!-- ناوبری -->
+    <!-- NAV -->
     <header class="nav">
       <div class="nav-logo">
-        <div class="nav-mark">Gi</div>
+        <div class="nav-logo-img">
+          <!-- لوگوی جدید GILai -->
+          <img src="assets/gilai-logo.svg" alt="GILai logo" />
+        </div>
         <div>
           <div class="nav-title">GILai</div>
-          <div style="font-size: 0.72rem; color: #9ca3af;">مرکز هوش مصنوعی گیلان</div>
+          <div class="nav-subtitle">مرکز هوش مصنوعی گیلان</div>
         </div>
       </div>
       <nav class="nav-links" aria-label="ناوبری اصلی">
+        <a href="#hero">شروع</a>
+        <a href="#tools">ابزارها</a>
+        <a href="#packages">پکج‌ها</a>
+        <a href="#students">برای دانشجویان</a>
+        <a href="#teachers">برای اساتید</a>
+        <a href="#partners">سرمایه‌گذاران</a>
         <a href="#about">درباره GILai</a>
-        <a href="#who">مخاطبان</a>
-        <a href="#program">دوره اصلی</a>
-        <a href="#partners">همکاری و ابزارها</a>
         <a href="#contact">تماس</a>
+        <a href="#faq">سؤالات</a>
       </nav>
     </header>
 
-    <!-- هیرو -->
     <main>
-      <section class="hero" aria-labelledby="hero-heading">
+      <!-- 1. HERO -->
+      <section class="hero" id="hero" aria-labelledby="hero-heading">
         <div>
           <div class="hero-kicker">
             <span></span>
-            <div>اولین هاب آموزش هوش مصنوعیِ بومی‌سازی‌شده برای گیلان</div>
+            <div>دوره‌های سه‌سطحی هوش مصنوعی – ویژه گیلان</div>
           </div>
           <h1 class="hero-title" id="hero-heading">
-            با <span>GILai</span>،
-            از گیلان برای دنیا؛ ایده‌ات را به وبسایت و اپلیکیشن هوشمند تبدیل کن.
+            با <span>GILai</span> به سازنده‌ی وبسایت‌ها و اپلیکیشن‌های هوشمند تبدیل شو.
           </h1>
           <p class="hero-subtitle">
-            در GILai یاد می‌گیری چطور بدون پیش‌نیاز سنگین برنامه‌نویسی، با کمک
-            هوش مصنوعی از یک <strong>پرامپت ساده</strong> به
-            <strong>کد، وبسایت، اپلیکیشن و محصول دیجیتال</strong> برسی —
-            با مثال‌ها و پروژه‌هایی که از دل کسب‌وکارهای گیلان می‌آید.
+            سه دوره‌ی پله‌به‌پله از سطح ۱ تا فوق‌حرفه‌ای؛ بدون نیاز به پیش‌نیاز سنگین برنامه‌نویسی.
+            با کمک GPT، Codex، GitHub و VPS یاد می‌گیری چطور ایده‌ات را به محصول واقعی تبدیل کنی
+            و در پایان مسیر، برای آزمون‌های فنی و حرفه‌ای و گواهینامه‌های بین‌المللی آماده بشوی.
           </p>
           <div class="hero-ctas">
-            <a href="#contact" class="btn btn-primary">هماهنگی و پیش‌ثبت‌نام تلفنی</a>
-            <a href="#partners" class="btn btn-ghost">همکاری اساتید و سرمایه‌گذاران</a>
+            <a href="#packages" class="btn btn-primary">مشاهده سه پکج GILai</a>
+            <a href="#contact" class="btn btn-ghost">هماهنگی و پیش‌ثبت‌نام تلفنی</a>
           </div>
           <div class="hero-note">
-            🔔 ظرفیت دوره‌ی مقدماتی محدود است؛ اولویت با تماس‌ها و پیام‌های زودتر خواهد بود.
+            🔔 ظرفیت هر دوره محدود است. اولویت با ثبت‌نام‌ها و تماس‌های زودتر خواهد بود.
           </div>
         </div>
 
-        <aside class="hero-visual" aria-label="نمای کلی روند یادگیری در GILai">
-          <div class="hero-badge">
-            <span>🌧️</span>
-            <span>مسیر «از ایده تا محصول» – با طعم گیلان</span>
+        <aside class="hero-video" aria-label="ویدیو معرفی GILai">
+          <div class="video-placeholder">
+            <div class="video-layer"></div>
+            <div class="video-play"></div>
           </div>
-          <div class="prompt-flow">
-            <div class="prompt-flow-row">
-              <div class="tag">«برای اقامتگاه ساحلی‌ام یک سایت ساده می‌خوام…»</div>
-              <div class="prompt-flow-arrow">⬅️</div>
-              <div class="tag tag-accent">پرامپت هوشمند</div>
-            </div>
-            <div class="prompt-flow-row">
-              <div class="tag">تحلیل ایده و طراحی صفحه</div>
-              <div class="prompt-flow-arrow">⬅️</div>
-              <div class="tag">تولید HTML / CSS / JS</div>
-              <div class="prompt-flow-arrow">⬅️</div>
-              <div class="tag">اتصال به دامنه و سرور (VPS)</div>
-            </div>
-            <div class="prompt-flow-row">
-              <div class="tag tag-accent">نتیجه: وبسایت، اپلیکیشن، محتوای دیجیتال</div>
-            </div>
-          </div>
-          <div style="margin-top: 0.8rem; font-size: 0.76rem; color: var(--text-muted);">
-            در طول دوره، با ابزارهایی مثل GPT/Codex، GitHub، سرور مجازی (VPS)،
-            HTML/CSS/JS و وردپرس کار می‌کنی و قدم‌به‌قدم پروژه‌ی واقعی خودت را
-            روی اینترنت منتشر می‌کنی.
+          <div class="video-caption">
+            در نسخه نهایی می‌توانی این بخش را به ویدیو معرفی خودت در آپارات/یوتیوب متصل کنی.
+            فعلاً به‌عنوان کاور و موشن ساده استفاده شود.
           </div>
         </aside>
       </section>
 
-      <!-- درباره -->
-      <section id="about" aria-labelledby="about-heading">
+      <!-- 2. TOOL LOGOS -->
+      <section id="tools" aria-labelledby="tools-heading">
         <div class="section-header">
-          <div class="section-eyebrow">GILai چیست؟</div>
-          <h2 class="section-title" id="about-heading">مرکز آموزش و توسعه هوش مصنوعی در گیلان</h2>
+          <div class="section-eyebrow">ابزارها و تکنولوژی‌های GILai</div>
+          <h2 class="section-title" id="tools-heading">با همان ابزارهایی کار می‌کنیم که بازار کار استفاده می‌کند</h2>
           <p class="section-subtitle">
-            GILai یک پروژه آموزشی–توسعه‌ای در گیلان است که هدفش این است افراد و کسب‌وکارهای
-            استان را مجهز کند تا بتوانند از هوش مصنوعی برای ساخت وبسایت، اپلیکیشن، سیستم‌های
-            اتوماسیون و محصولات دیجیتال استفاده کنند؛ از رشت و انزلی تا لاهیجان و تالش.
+            در تمام دوره‌ها هنرجوها با ابزارهای واقعی توسعه و هوش مصنوعی کار می‌کنند تا خروجی دوره قابل ارائه به کارفرما و سرمایه‌گذار باشد.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="pill">🎯 مأموریت GILai</div>
-            <h3>ترجمه هوش مصنوعی به مهارت و درآمد</h3>
-            <p>
-              تمرکز ما روی آموزش تئوری‌های سنگین نیست؛ روی این است که چطور
-              <strong>از امروز</strong>
-              بتوانی با هوش مصنوعی، پروژه‌ی واقعی بسازی و آن را تبدیل به نمونه‌کار
-              یا منبع درآمد در گیلان و فراتر از آن کنی.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="pill">⚙️ رویکرد آموزشی</div>
-            <h3>یادگیری پروژه‌محور و کاملاً عملی</h3>
-            <p>
-              از همان جلسه اول با GPT، Codex، GitHub، VPS و ابزارهای توسعه وب کار
-              می‌کنی و نتیجه را روی وب واقعی می‌بینی؛ قدم به قدم، با منتورینگ نزدیک.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="pill">📍 هویت گیلانی</div>
-            <h3>برند و تجربه‌ی بومی‌شده برای گیلان</h3>
-            <p>
-              هویت بصری، مثال‌ها و پروژه‌ها، همه با الهام از جنگل، باران و فرهنگ
-              مهمان‌نواز گیلان طراحی شده؛ یک برند تکنولوژیک اما ریشه‌دار در این خاک.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- مخاطبان -->
-      <section id="who" aria-labelledby="who-heading">
-        <div class="section-header">
-          <div class="section-eyebrow">مخاطبان GILai</div>
-          <h2 class="section-title" id="who-heading">این مرکز برای چه کسانی مناسب است؟</h2>
-          <p class="section-subtitle">
-            اگر می‌خواهی در موج هوش مصنوعی عقب نمانی، احتمالاً در یکی از این دسته‌ها هستی:
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>دانشجویان و علاقه‌مندان به تکنولوژی</h3>
-            <ul class="bullets">
-              <li>ورود ساده‌تر به دنیای برنامه‌نویسی با کمک AI</li>
-              <li>ساخت نمونه‌کار قوی برای رزومه، مهاجرت شغلی یا ادامه تحصیل</li>
-              <li>آشنایی با روندهای روز دنیا در هوش مصنوعی</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>فریلنسرها و طراحان وب</h3>
-            <ul class="bullets">
-              <li>طراحی و توسعه سریع‌تر سایت برای مشتریان گیلانی و غیرگیلانی</li>
-              <li>استفاده از AI برای تولید متن، تصویر و ایده</li>
-              <li>افزایش درآمد با خدمات «هوش مصنوعی‌محور»</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>صاحبان کسب‌وکار در گیلان</h3>
-            <ul class="bullets">
-              <li>راه‌اندازی سایت و سیستم‌های ساده اتوماسیون</li>
-              <li>تبلیغات و تولید محتوای هوشمند برای شبکه‌های اجتماعی</li>
-              <li>کاهش هزینه و افزایش بهره‌وری با ابزارهای AI</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- برنامه پرچمدار + مجوزها -->
-      <section id="program" aria-labelledby="program-heading">
-        <div class="section-header">
-          <div class="section-eyebrow">دوره‌ی پرچمدار GILai</div>
-          <h2 class="section-title" id="program-heading">مسیر «از صفر تا ساخت اپلیکیشن AI»</h2>
-          <p class="section-subtitle">
-            یک دوره‌ی فشرده و کاملاً عملی که در آن از آشنایی با هوش مصنوعی شروع می‌کنی و در پایان،
-            یک وبسایت یا اپلیکیشن هوشمند واقعی در اینترنت خواهی داشت؛ همراه با مسیر دریافت گواهینامه‌ی معتبر.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <div class="pill">فصل ۱</div>
-            <h3>پایه‌گذاری: هوش مصنوعی در عمل</h3>
-            <ul class="bullets">
-              <li>آشنایی با مدل‌های زبانی (GPT و…)</li>
-              <li>نوشتن پرامپت حرفه‌ای و کارآمد</li>
-              <li>تبدیل ایده به سناریو و نقشه راه پروژه</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="pill">فصل ۲</div>
-            <h3>از پرامپت تا کد و وبسایت</h3>
-            <ul class="bullets">
-              <li>تولید HTML / CSS / JS با کمک AI</li>
-              <li>اتصال به Git و استقرار روی VPS</li>
-              <li>کار با قالب‌ها و افزونه‌های آماده (مثلاً وردپرس)</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="pill">فصل ۳</div>
-            <h3>پروژه نهایی، آزمون و گواهینامه</h3>
-            <ul class="bullets">
-              <li>انتخاب یک ایده واقعی (شخصی یا تجاری)</li>
-              <li>ساخت نسخه اولیه محصول (MVP)</li>
-              <li>برنامه‌ریزی برای شرکت در آزمون‌های
-                <strong>فنی و حرفه‌ای</strong> و امکان دریافت گواهینامه‌های
-                رسمی و بین‌المللی (از جمله MPT اتریش)</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- همکاری + ابزارها/پارتنر -->
-      <section id="partners" aria-labelledby="partners-heading">
-        <div class="section-header">
-          <div class="section-eyebrow">فراخوان همکاری</div>
-          <h2 class="section-title" id="partners-heading">اساتید، سرمایه‌گذاران و ابزارهای همراه GILai</h2>
-          <p class="section-subtitle">
-            برای ساختن یک مرکز قدرتمند به همراهی متخصصان، سرمایه‌گذاران و ابزارهای درست نیاز داریم.
-            اگر فکر می‌کنی می‌توانیم با هم کاری بسازیم که برای گیلان ماندگار باشد،
-            منتظر پیام تو هستیم.
-          </p>
-        </div>
-
-        <div class="grid-3" style="margin-bottom: 1.3rem;">
-          <article class="card">
-            <h3>اساتید و مربیان</h3>
-            <p>
-              اگر در حوزه‌های برنامه‌نویسی، علوم کامپیوتر، هوش مصنوعی، طراحی وب،
-              توسعه فردی یا مهارت‌های کسب‌وکار تجربه دارید، می‌توانید به‌عنوان مدرس،
-              منتور یا طراح دوره به GILai بپیوندید.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>سرمایه‌گذاران و حامیان</h3>
-            <p>
-              مدل همکاری می‌تواند به‌صورت مشارکت در راه‌اندازی مرکز، تجهیزات،
-              توسعه دوره‌ها و یا سرمایه‌گذاری روی تیم‌های برتر دانشجویان باشد.
-              قراردادها می‌توانند مرحله‌ای و شفاف طراحی شوند.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>سازمان‌ها و مراکز آموزشی</h3>
-            <p>
-              دانشگاه‌ها، آموزشگاه‌ها و مجموعه‌های خصوصی در گیلان می‌توانند با
-              GILai برای برگزاری دوره‌های مشترک، بوت‌کمپ و رویدادهای تخصصی هوش
-              مصنوعی همکاری کنند؛ حضوری یا ترکیبی.
-            </p>
-          </article>
-        </div>
-
-        <!-- ابزارها و تکنولوژی‌های مورد استفاده -->
-        <div class="card">
-          <div class="pill">🧩 Tech Stack GILai</div>
-          <h3>ابزارها و پارتنرهای تکنولوژیک که با آن‌ها کار می‌کنیم</h3>
-          <p style="margin-bottom: 0.4rem;">
-            در GILai روی جدیدترین ابزارهای توسعه و هوش مصنوعی کار می‌کنیم تا
-            هنرجوها همان چیزی را یاد بگیرند که در بازار کار امروز استفاده می‌شود:
-          </p>
-          <div class="tool-grid">
-            <!-- نکته: لوگوها را از صفحات رسمی برند دانلود کرده و در پوشه assets سایت قرار دهید -->
-            <div class="tool-pill">
-              <img src="assets/github-logo.png" alt="لوگوی GitHub" />
-              <span class="tool-name">GitHub</span>
-              <span>کنترل نسخه و همکاری روی کد</span>
-            </div>
-            <div class="tool-pill">
-              <img src="assets/openai-logo.png" alt="لوگوی OpenAI / Codex" />
-              <span class="tool-name">OpenAI / Codex</span>
-              <span>تولید کد و محتوای هوشمند</span>
-            </div>
-            <div class="tool-pill">
-              <img src="assets/wordpress-logo.png" alt="لوگوی WordPress" />
-              <span class="tool-name">WordPress</span>
-              <span>سایت‌سازی سریع برای کسب‌وکارها</span>
-            </div>
-            <div class="tool-pill">
-              <img src="assets/vscode-logo.png" alt="لوگوی VS Code" />
-              <span class="tool-name">VS Code</span>
-              <span>محیط توسعه‌ی سبک و قدرتمند</span>
-            </div>
-            <div class="tool-pill">
-              <img src="assets/linux-logo.png" alt="لوگوی Linux / VPS" />
-              <span class="tool-name">Linux VPS</span>
-              <span>میزبانی و استقرار پروژه‌ها</span>
-            </div>
+        <div class="tool-grid">
+          <!-- فقط کافی است لوگوها را در assets قرار دهی -->
+          <div class="tool-pill">
+            <img src="assets/openai-logo.png" alt="OpenAI / GPT" />
+            <span class="tool-name">GPT / ChatGPT</span>
+            <span>تولید متن، سناریو و تحلیل</span>
+          </div>
+          <div class="tool-pill">
+            <img src="assets/codex-logo.png" alt="Codex" />
+            <span class="tool-name">Codex</span>
+            <span>تولید و اصلاح کد</span>
+          </div>
+          <div class="tool-pill">
+            <img src="assets/github-logo.png" alt="GitHub" />
+            <span class="tool-name">GitHub</span>
+            <span>کنترل نسخه و همکاری تیمی</span>
+          </div>
+          <div class="tool-pill">
+            <img src="assets/wordpress-logo.png" alt="WordPress" />
+            <span class="tool-name">WordPress</span>
+            <span>سایت‌سازی سریع برای کسب‌وکارها</span>
+          </div>
+          <div class="tool-pill">
+            <img src="assets/linux-logo.png" alt="Linux VPS" />
+            <span class="tool-name">Linux VPS</span>
+            <span>میزبانی و استقرار پروژه‌ها</span>
+          </div>
+          <div class="tool-pill">
+            <img src="assets/mpt-logo.png" alt="MPT" />
+            <span class="tool-name">MPT Austria</span>
+            <span>گواهینامه‌های بین‌المللی</span>
           </div>
         </div>
       </section>
 
-      <!-- تماس (بدون فرم) -->
+      <!-- 3. PACKAGES -->
+      <section id="packages" aria-labelledby="packages-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">سه سطح دوره</div>
+          <h2 class="section-title" id="packages-heading">پکج‌های GILai – از شروع تا فوق‌حرفه‌ای</h2>
+          <p class="section-subtitle">
+            قیمت‌ها بر اساس دوره‌های جامع مشابه بازار (نزدیک به ۲۳,۹۰۰,۰۰۰ تومان) طراحی شده‌اند و قابل
+            تنظیم نهایی هستند. هر پکج می‌تواند به‌صورت نقدی یا اقساطی ثبت‌نام شود.
+          </p>
+        </div>
+
+        <div class="grid-3 packages">
+          <!-- سطح ۱ -->
+          <article class="card package-card">
+            <div class="package-badge">سطح ۱ – شروع مسیر</div>
+            <h3>دوره مقدماتی «از صفر تا وبسایت AI»</h3>
+            <p class="package-meta">
+              ۶ هفته · ۱۲ جلسه · ۳۶ ساعت آموزش + تمرین هدایت‌شده
+            </p>
+            <ul class="bullets">
+              <li>آشنایی با GPT، پرامپت‌نویسی و تولید کد ساده</li>
+              <li>یادگیری HTML/CSS/JS با کمک هوش مصنوعی</li>
+              <li>ساخت اولین Landing Page و استقرار روی VPS</li>
+              <li>پروژه نهایی: سایت شخصی یا کسب‌وکار کوچک</li>
+            </ul>
+            <div class="price">
+              ۱۸,۹۰۰,۰۰۰ <span>تومان</span>
+            </div>
+            <div class="price-old">۲۲,۹۰۰,۰۰۰ تومان</div>
+            <div class="package-actions">
+              <a href="#contact" class="btn btn-primary">ثبت‌نام نقدی</a>
+              <a href="#contact" class="btn btn-secondary btn">ثبت‌نام اقساطی</a>
+            </div>
+          </article>
+
+          <!-- سطح ۲ -->
+          <article class="card package-card" style="border-color:#22c55e; box-shadow:0 16px 40px rgba(34,197,94,0.35);">
+            <div class="package-badge">سطح ۲ – تکمیلی (پیشنهادی)</div>
+            <h3>دوره تکمیلی «از وبسایت تا اپلیکیشن AI»</h3>
+            <p class="package-meta">
+              ۸ هفته · ۱۴ جلسه · حدود ۴۲ ساعت آموزش + پروژه
+            </p>
+            <ul class="bullets">
+              <li>پروژه‌های پیشرفته‌تر با JS و APIها</li>
+              <li>وردپرس پیشرفته + ساخت افزونه/قالب ساده با Codex</li>
+              <li>کار حرفه‌ای با GitHub، ساخت Portfolio واقعی</li>
+              <li>آماده‌سازی برای ورود به بازار کار و فریلنس</li>
+            </ul>
+            <div class="price">
+              ۲۳,۹۰۰,۰۰۰ <span>تومان</span>
+            </div>
+            <div class="price-old">۲۹,۹۰۰,۰۰۰ تومان</div>
+            <div class="package-actions">
+              <a href="#contact" class="btn btn-primary">ثبت‌نام نقدی</a>
+              <a href="#contact" class="btn btn-secondary btn">ثبت‌نام اقساطی</a>
+            </div>
+          </article>
+
+          <!-- سطح ۳ -->
+          <article class="card package-card">
+            <div class="package-badge">سطح ۳ – فوق حرفه‌ای</div>
+            <h3>آکادمی پیشرفته «پروژه‌های واقعی و گواهینامه»</h3>
+            <p class="package-meta">
+              ۱۰ هفته · منتورینگ گروهی + پروژه‌های واقعی مشتری
+            </p>
+            <ul class="bullets">
+              <li>کار روی پروژه‌های واقعی کسب‌وکارهای گیلان</li>
+              <li>آماده‌سازی برای آزمون‌های رسمی فنی‌وحرفه‌ای</li>
+              <li>مسیر دریافت گواهینامه MPT اتریش برای نفرات منتخب</li>
+              <li>کوچینگ شغلی، ساخت رزومه، آماده‌سازی برای مصاحبه</li>
+            </ul>
+            <div class="price">
+              ۳۱,۹۰۰,۰۰۰ <span>تومان</span>
+            </div>
+            <div class="price-old">۳۸,۹۰۰,۰۰۰ تومان</div>
+            <div class="package-actions">
+              <a href="#contact" class="btn btn-primary">درخواست مشاوره ثبت‌نام</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. FOR STUDENTS -->
+      <section id="students" aria-labelledby="students-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">برای دانشجویان و علاقه‌مندان</div>
+          <h2 class="section-title" id="students-heading">اگر دانشجو یا خودآموز هستی، GILai چه کمکی می‌کند؟</h2>
+          <p class="section-subtitle">
+            تمرکز ما روی نمونه‌کار، پروژه واقعی و ساخت رزومه است؛ نه فقط تئوری. از هر رشته‌ای می‌توانی شروع کنی.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card">
+            <h3>ورود ساده به دنیای برنامه‌نویسی</h3>
+            <ul class="bullets">
+              <li>استفاده از AI برای نوشتن و فهمیدن کد</li>
+              <li>تمرین‌های گام‌به‌گام و پروژه‌محور</li>
+              <li>منتورینگ برای رفع اشکال و مسیر شغلی</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>ساخت Portfolio واقعی</h3>
+            <ul class="bullets">
+              <li>ریپازیتوری GitHub مرتب و حرفه‌ای</li>
+              <li>یک یا چند وبسایت/اپلیکیشن آنلاین</li>
+              <li>استفاده از این پروژه‌ها در رزومه و لینکدین</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>آمادگی برای آزمون و مهاجرت شغلی</h3>
+            <ul class="bullets">
+              <li>آشنایی با استانداردهای فنی‌وحرفه‌ای</li>
+              <li>معرفی مسیرهای بین‌المللی (مثل MPT)</li>
+              <li>کارگاه رزومه و مصاحبه شغلی</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. FOR TEACHERS -->
+      <section id="teachers" aria-labelledby="teachers-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">برای اساتید و مربیان</div>
+          <h2 class="section-title" id="teachers-heading">چطور می‌توانی به‌عنوان استاد با GILai همکاری کنی؟</h2>
+          <p class="section-subtitle">
+            اگر در حوزه‌های برنامه‌نویسی، علوم کامپیوتر، هوش مصنوعی یا مهارت‌های کسب‌وکار تجربه داری،
+            می‌توانی بخشی از هسته آموزشی GILai باشی.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card">
+            <h3>تدریس در دوره‌های سه‌سطحی</h3>
+            <ul class="bullets">
+              <li>همکاری در طراحی و به‌روزرسانی سرفصل‌ها</li>
+              <li>برگزاری جلسات حضوری یا آنلاین در گیلان</li>
+              <li>دریافت سهم شفاف از درآمد دوره</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>منتورینگ پروژه‌های نهایی</h3>
+            <ul class="bullets">
+              <li>کوچینگ تیم‌ها روی پروژه‌های واقعی</li>
+              <li>ارزیابی فنی برای معرفی به بازار کار</li>
+              <li>همکاری در آماده‌سازی هنرجوها برای آزمون‌ها</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>توسعه دوره‌های جدید</h3>
+            <ul class="bullets">
+              <li>پیشنهاد و مالکیت دوره‌های تخصصی جدید</li>
+              <li>امکان برندسازی شخصی در کنار برند GILai</li>
+              <li>دسترسی به زیرساخت آموزشگاه و مجوزها</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. FOR INVESTORS / PARTNERS -->
+      <section id="partners" aria-labelledby="partners-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">برای سرمایه‌گذاران و پارتنرها</div>
+          <h2 class="section-title" id="partners-heading">چرا سرمایه‌گذاری روی GILai منطقی است؟</h2>
+          <p class="section-subtitle">
+            GILai ترکیبی است از آموزش، محصول دیجیتال و برند بومی گیلان. مدل درآمدی شامل دوره‌ها، پروژه‌های سازمانی و
+            همکاری‌های بین‌المللی است.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card">
+            <h3>مدل درآمدی آموزشگاه</h3>
+            <ul class="bullets">
+              <li>دوره‌های سه‌سطحی با ظرفیت محدود و شهریه مشخص</li>
+              <li>بوت‌کمپ‌های فشرده برای سازمان‌ها و شرکت‌ها</li>
+              <li>کارگاه‌های کوتاه‌مدت برای عموم</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>پروژه‌های B2B در گیلان</h3>
+            <ul class="bullets">
+              <li>اتوماسیون کسب‌وکارهای محلی (گردشگری، خدمات، فروش)</li>
+              <li>قراردادهای پشتیبانی و توسعه سیستم‌های AI</li>
+              <li>تیم‌های برگزیده هنرجو برای اجرای پروژه‌ها</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>مجوزها و اعتبارنامه‌ها</h3>
+            <ul class="bullets">
+              <li>برنامه‌ریزی برای اخذ مجوز آموزشگاه آزاد</li>
+              <li>مسیر رسمی برای آزمون‌های فنی‌وحرفه‌ای</li>
+              <li>امکان دریافت گواهینامه‌های MPT اتریش برای دانش‌آموختگان منتخب</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 7. ABOUT GILai -->
+      <section id="about" aria-labelledby="about-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">بیشتر درباره GILai</div>
+          <h2 class="section-title" id="about-heading">برند گیلانی با نگاه جهانی</h2>
+          <p class="section-subtitle">
+            GILai فقط یک دوره آموزشی نیست؛ یک برند گیلانی در حوزه هوش مصنوعی است که می‌خواهد از دل جنگل، باران و دریا،
+            متخصصانی بسازد که بتوانند در بازار محلی و بین‌المللی کار کنند.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <div class="pill">هویت گیلانی</div>
+            <h3>هوش مصنوعی، ریشه‌دار در گیلان</h3>
+            <p>
+              نام، هویت بصری و مثال‌های دوره‌ها همگی با الهام از گیلان طراحی شده‌اند؛
+              از سایت اقامتگاه‌های ساحلی تا فروشگاه‌های محلی و استارتاپ‌های کوچک.
+            </p>
+          </article>
+          <article class="card">
+            <div class="pill">چشم‌انداز</div>
+            <h3>از آموزش تا اکوسیستم</h3>
+            <p>
+              هدف نهایی GILai ایجاد یک اکوسیستم است: جایی که دانشجو، استاد و سرمایه‌گذار
+              کنار هم پروژه‌های واقعی AI بسازند و خروجی آن به شکل کسب‌وکار، محصول و شغل
+              در گیلان دیده شود.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 8. CONTACT -->
       <section id="contact" aria-labelledby="contact-heading">
         <div class="section-header">
           <div class="section-eyebrow">ارتباط و پیش‌ثبت‌نام</div>
           <h2 class="section-title" id="contact-heading">تماس فقط از طریق تلفن و واتساپ</h2>
           <p class="section-subtitle">
-            برای هماهنگی دوره‌ها، مشاوره، همکاری به عنوان استاد یا سرمایه‌گذار
-            کافی است مستقیماً تماس بگیرید یا در واتساپ پیام بدهید.
+            برای اطلاعات کامل درباره دوره‌ها، شرایط همکاری و سرمایه‌گذاری، مستقیم تماس بگیر یا در واتساپ پیام بده.
           </p>
         </div>
 
         <div class="contact-card">
           <p style="margin-top: 0;">
-            <strong>شماره تماس و واتساپ:</strong>
-            <br />
+            <strong>شماره تماس و واتساپ:</strong><br />
             گلشاهی – <strong>۰۹۱۱۱۴۴۹۱۱۷</strong>
           </p>
           <div class="chips">
-            <div class="chip">هماهنگی شرکت در دوره‌ها و بوت‌کمپ‌ها</div>
+            <div class="chip">هماهنگی شرکت در دوره‌های سطح ۱، ۲ و ۳</div>
             <div class="chip">جلسه معارفه برای اساتید و سرمایه‌گذاران</div>
-            <div class="chip">اطلاعات کامل درباره مجوزها و گواهینامه‌ها</div>
+            <div class="chip">اطلاعات درباره مجوزها و گواهینامه‌ها</div>
           </div>
           <p style="margin-top: 0.9rem;">
-            📌 پس از برگزاری هر دوره، هنرجویان می‌توانند برای شرکت در آزمون‌های
-            <strong>سازمان فنی و حرفه‌ای</strong> و دریافت گواهینامه رسمی آماده شوند
-            و همچنین امکان اخذ
-            <strong>گواهینامه بین‌المللی MPT اتریش</strong>
-            برای دانش‌آموختگان منتخب در نظر گرفته خواهد شد.
+            امکان برگزاری جلسات حضوری در رشت و سایر شهرهای گیلان وجود دارد. زمان و مکان دقیق
+            بعد از تماس هماهنگ خواهد شد.
           </p>
+        </div>
+      </section>
+
+      <!-- 9. FAQ -->
+      <section id="faq" aria-labelledby="faq-heading">
+        <div class="section-header">
+          <div class="section-eyebrow">سؤالات پرتکرار</div>
+          <h2 class="section-title" id="faq-heading">چند سؤال که معمولاً قبل از ثبت‌نام پرسیده می‌شود</h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>آیا برای شرکت در سطح ۱ باید برنامه‌نویسی بلد باشم؟</summary>
+            <p>
+              خیر. در سطح ۱ فرض می‌کنیم هیچ تجربه‌ای در برنامه‌نویسی نداری. با کمک AI
+              قدم‌به‌قدم با مفاهیم و کدهای ساده آشنا می‌شوی.
+            </p>
+          </details>
+
+          <details>
+            <summary>دوره‌ها حضوری است یا آنلاین؟</summary>
+            <p>
+              مدل ترکیبی است: بخشی از جلسات می‌تواند حضوری در گیلان (رشت و شهرهای دیگر)
+              برگزار شود و بخشی آنلاین. جزئیات هر دوره هنگام ثبت‌نام اعلام می‌شود.
+            </p>
+          </details>
+
+          <details>
+            <summary>چطور می‌توانم به‌صورت اقساطی ثبت‌نام کنم؟</summary>
+            <p>
+              بعد از تماس تلفنی، شرایط اقساط (پیش‌پرداخت، تعداد قسط و تاریخ‌ها) به‌صورت
+              شفاف با شما هماهنگ و در قرارداد ثبت می‌شود.
+            </p>
+          </details>
+
+          <details>
+            <summary>گواهینامه فنی‌وحرفه‌ای و MPT دقیقاً چگونه صادر می‌شود؟</summary>
+            <p>
+              پس از پایان دوره و پروژه نهایی، در صورت آمادگی، برای شرکت در آزمون‌های
+              فنی‌وحرفه‌ای راهنمایی می‌شوی. برای گواهینامه‌های MPT اتریش نیز هنرجویان
+              منتخب طبق فرآیند مشخص معرفی خواهند شد.
+            </p>
+          </details>
+
+          <details>
+            <summary>آیا بعد از دوره، معرفی به کار هم انجام می‌دهید؟</summary>
+            <p>
+              تمرکز ما روی ساخت نمونه‌کار واقعی و ارتباط با کسب‌وکارهای گیلان است.
+              در سطح تکمیلی و فوق‌حرفه‌ای، تلاش می‌کنیم بهترین هنرجوها را به کارفرماها
+              و پروژه‌های واقعی معرفی کنیم؛ تضمین شغل نمی‌دهیم اما مسیر را هموار می‌کنیم.
+            </p>
+          </details>
         </div>
       </section>
     </main>
 
-    <!-- فوتر -->
     <footer>
-      <div>© <span>GILai</span> – مرکز هوش مصنوعی گیلان</div>
-      <div>طراحی اولیه این صفحه با کمک هوش مصنوعی و با الهام از طبیعت گیلان انجام شده است.</div>
+      <div>© GILai – مرکز هوش مصنوعی گیلان</div>
+      <div>برند گیلانی با تمرکز بر آموزش، پروژه‌های واقعی و گواهینامه‌های معتبر.</div>
     </footer>
   </div>
 </body>
