@@ -22,7 +22,7 @@
     .page {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 24px 16px 80px; /* فضای بیشتر پایین برای دکمه چسبان */
     }
     .hero {
       margin-bottom: 32px;
@@ -265,6 +265,48 @@
       font-size: 0.78rem;
       color: #6b7280;
     }
+
+    /* دکمه چسبان تماس در پایین صفحه */
+    .sticky-cta {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 12px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .sticky-cta a {
+      pointer-events: auto;
+      border-radius: 999px;
+      padding: 10px 28px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 18px 45px rgba(22,163,74,0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(187,247,208,0.9);
+    }
+    .sticky-cta span.icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #022c22;
+      box-shadow: 0 0 0 3px rgba(21,128,61,0.5);
+      position: relative;
+    }
+    .sticky-cta span.icon::before,
+    .sticky-cta span.icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      border: 1px solid rgba(22,163,74,0.7);
+    }
   </style>
 </head>
 <body>
@@ -318,7 +360,7 @@
     <p>
       این دوره برای معلمان طراحی شده است، نه برنامه‌نویس‌ها. هدف دوره این است که
       <strong>هر معلم</strong> بتواند بدون درگیر شدن با جزئیات فنی مدل‌ها، برای خودش
-      یک دستیار هوشمند طراحی و راه‌اندازی کند که:
+      یک دستیار هوش مصنوعی طراحی و راه‌اندازی کند که:
     </p>
     <ul>
       <li>با کتاب درسی، جزوه و شیوه‌ی تدریس همان معلم تنظیم شده باشد،</li>
@@ -364,6 +406,23 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <!-- Section: Instructor -->
+  <section class="section">
+    <h3>مدرس دوره: خباط ستائی</h3>
+    <p>
+      این دوره توسط <strong>خبات ستائی</strong> اجرا می‌شود؛
+      با زمینه‌ی تخصصی در <strong>علوم کامپیوتر، هوش مصنوعی و رباتیک</strong> و
+      تجربه‌ی تحصیل و کار در اروپا.
+    </p>
+    <p>
+      خباط ستائی بیش از <strong>۳۰ سال سابقه‌ی تحصیل، فعالیت حرفه‌ای و همکاری</strong>
+      در حوزه‌های فناوری، آموزش و پروژه‌های بین‌المللی دارد و تمرکز او بر
+      آوردن هوش مصنوعی به مدرسه و کلاس درس به‌صورتی عملی، امن و منطبق با
+      نیازهای واقعی معلمان است؛ به‌طوری‌که معلم‌ها نه فقط «مصرف‌کننده»، بلکه
+      «طراح دستیار هوشمند خودشان» باشند.
+    </p>
   </section>
 
   <!-- Section: Course structure -->
@@ -458,19 +517,26 @@
         نام مدرسه، شهر و تعداد معلمان موردنظر را ارسال کنید تا برنامه‌ی پیشنهادی اختصاصی برای شما تنظیم شود.
       </div>
       <div>
-        <!-- این قسمت را با اطلاعات واقعی خودتان پر کنید -->
         <div style="font-size:0.85rem; text-align:right;">
-          ایمیل: <strong>info@example.com</strong><br>
-          تلفن/واتس‌اپ: <strong>+47 000 00 000</strong>
+          تلفن / واتس‌اپ: <strong>09177010448</strong>
         </div>
       </div>
     </div>
   </section>
 
   <div class="footer">
-    این صفحه معرفی را می‌توان به‌عنوان لندینگ، PDF یا پرینت برای معرفی دوره به معلمان و مدیران مدارس استفاده کرد.
+    <!-- عمداً بدون متن توضیحی طبق درخواست -->
   </div>
 
 </div>
+
+<!-- دکمه چسبان تماس در پایین صفحه -->
+<div class="sticky-cta">
+  <a href="tel:09177010448">
+    <span class="icon"></span>
+    تماس
+  </a>
+</div>
+
 </body>
 </html>
