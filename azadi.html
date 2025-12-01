@@ -2,634 +2,475 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>دموی دستیار هوش مصنوعی آموزشی - سطح ۱</title>
+  <title>دوره ساخت دستیار هوش مصنوعی اختصاصی برای معلمان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.1);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --card-bg: #020617;
-      --border: #1f2937;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
-    }
-
     * {
       box-sizing: border-box;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
     body {
       margin: 0;
-      padding: 24px;
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 45%, #020617 100%);
-      color: var(--text-main);
+      background: #020617;
+      color: #e5e7eb;
+      line-height: 1.8;
     }
-
-    .app {
-      max-width: 980px;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .page {
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 24px 16px 40px;
     }
-
-    header {
-      margin-bottom: 24px;
-      display: flex;
-      flex-wrap: wrap;
+    .hero {
+      margin-bottom: 32px;
+      padding: 24px 20px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
+      border: 1px solid rgba(148,163,184,0.6);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 24px;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
     }
-
-    .title-block h1 {
-      margin: 0 0 6px;
-      font-size: 1.7rem;
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+      }
     }
-
-    .title-block p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .badge {
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.12);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      font-size: 0.8rem;
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      white-space: nowrap;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(191, 219, 254, 0.8);
+      color: #bfdbfe;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
     }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.23);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
     }
-
-    .shell {
-      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.98));
-      border-radius: 28px;
-      padding: 18px;
-      border: 1px solid rgba(148,163,184,0.25);
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
-      gap: 14px;
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
     }
-
-    @media (max-width: 820px) {
-      .shell {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    /* Sidebar / Mode selector */
-
-    .mode-panel {
-      background: radial-gradient(circle at top, rgba(56,189,248,0.15), rgba(15,23,42,1));
-      border-radius: 22px;
-      padding: 14px;
-      border: 1px solid rgba(148,163,184,0.35);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .mode-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .mode-tab {
-      border-radius: 999px;
-      padding: 7px 10px;
-      border: 1px solid rgba(148,163,184,0.35);
-      background: rgba(15,23,42,0.95);
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.16s ease-out;
-      user-select: none;
-    }
-
-    .mode-tab span {
-      display: block;
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      color: #bfdbfe;
       font-weight: 500;
     }
-
-    .mode-tab small {
-      font-size: 0.65rem;
-      opacity: 0.8;
-    }
-
-    .mode-tab.active {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, var(--accent-soft), rgba(15,23,42,0.98));
-      color: #f9fafb;
-      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
-    }
-
-    .mode-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px dashed rgba(148,163,184,0.5);
-    }
-
-    .mode-meta strong {
+    .hero p {
+      margin: 0 0 16px;
+      font-size: 0.95rem;
       color: #e5e7eb;
-      font-weight: 600;
     }
-
-    /* Form */
-
-    .form {
+    .hero-actions {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 10px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--text-muted);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      background: var(--card-bg);
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      color: var(--text-main);
-      outline: none;
-      font-size: 0.85rem;
-      transition: border-color 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s ease-out;
-    }
-
-    .field textarea {
-      border-radius: 16px;
-      min-height: 70px;
-      resize: vertical;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
-      background: #020617;
-    }
-
-    .inline-fields {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 8px;
-    }
-
-    @media (max-width: 540px) {
-      .inline-fields {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    .btn-primary {
       margin-top: 4px;
+    }
+    .btn-primary {
       border-radius: 999px;
-      padding: 9px 14px;
+      padding: 9px 18px;
       border: none;
       background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #0b1120;
+      color: #020617;
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      box-shadow: 0 14px 30px rgba(8,47,73,0.6);
-      transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, filter 0.1s ease-out;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(8,47,73,0.9);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.04);
-      box-shadow: 0 18px 40px rgba(8,47,73,0.85);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 10px 20px rgba(8,47,73,0.7);
-    }
-
-    .btn-primary svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* Output panel */
-
-    .output-panel {
-      background: radial-gradient(circle at top right, rgba(56,189,248,0.12), rgba(15,23,42,0.98));
-      border-radius: 22px;
-      padding: 14px 14px 10px;
-      border: 1px solid rgba(148,163,184,0.3);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .output-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-    }
-
-    .pill {
+    .btn-secondary {
       border-radius: 999px;
-      padding: 4px 9px;
-      border: 1px solid rgba(148,163,184,0.6);
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      padding: 9px 16px;
+      border: 1px solid rgba(191,219,254,0.8);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+      font-size: 0.87rem;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
     }
-
-    .pill span {
-      font-weight: 500;
-      color: #e5e7eb;
+    .hero-visual {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.24), rgba(15,23,42,0.98));
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 16px 16px 14px;
+      font-size: 0.8rem;
     }
-
-    .output-box {
-      flex: 1;
-      background: rgba(2,6,23,0.9);
-      border-radius: 16px;
-      border: 1px solid rgba(15,23,42,0.9);
-      padding: 12px 14px;
-      font-size: 0.83rem;
-      line-height: 1.8;
-      overflow-y: auto;
-      max-height: 440px;
-    }
-
-    .output-box h3 {
-      margin-top: 0;
-      margin-bottom: 4px;
-      font-size: 0.95rem;
-    }
-
-    .output-box h4 {
-      margin: 8px 0 4px;
-      font-size: 0.9rem;
-    }
-
-    .output-box ul {
-      padding-right: 18px;
-      margin: 0 0 2px;
-    }
-
-    .output-box li {
-      margin-bottom: 2px;
-    }
-
-    .output-placeholder {
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .footer-note {
-      margin-top: 10px;
-      font-size: 0.7rem;
-      color: var(--text-muted);
+    .hero-visual-header {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: #cbd5f5;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 3px 8px;
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 0.75rem;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-visual-body {
+      background: rgba(2,6,23,0.95);
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,0.9);
+      padding: 12px 12px 10px;
+      max-height: 220px;
+      overflow: hidden;
+    }
+    .hero-visual-body p {
+      margin: 0 0 6px;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+    .hero-visual-body small {
+      color: #9ca3af;
+      font-size: 0.72rem;
     }
 
-    .footer-note strong {
+    .section {
+      margin-bottom: 26px;
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: #020617;
+      border: 1px solid rgba(31,41,55,0.9);
+    }
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+    .section p {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+    .section small {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    @media (max-width: 780px) {
+      .columns {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+    ul {
+      padding-right: 20px;
+      margin: 6px 0 0;
+      font-size: 0.9rem;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .tag {
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: #020617;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-right: 2px solid rgba(55,65,81,0.9);
+      padding-right: 14px;
+    }
+    .timeline-item {
+      margin-bottom: 10px;
+      position: relative;
+      padding-right: 6px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      right: -15px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.25);
+    }
+    .timeline-item h4 {
+      margin: 0 0 3px;
+      font-size: 0.9rem;
+    }
+    .timeline-item p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: #d1d5db;
+    }
+
+    .highlight {
+      background: rgba(15,23,42,0.92);
+      border-radius: 16px;
+      border: 1px dashed rgba(148,163,184,0.7);
+      padding: 10px 12px;
+      font-size: 0.88rem;
       color: #e5e7eb;
-      font-weight: 500;
+    }
+    .cta-box {
+      margin-top: 10px;
+      padding: 14px 12px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.18), rgba(15,23,42,0.96));
+      border: 1px solid rgba(37,99,235,0.8);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .cta-box strong {
+      font-weight: 600;
+    }
+    .footer {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #6b7280;
     }
   </style>
 </head>
 <body>
-<div class="app">
-  <header>
-    <div class="title-block">
-      <h1>دموی دستیار هوش مصنوعی آموزشی – سطح ۱</h1>
-      <p>طرح درس، آزمون و توضیح مفاهیم درسی؛ آفلاین و مخصوص کلاس درس.</p>
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        دوره ویژه معلمان و مدارس – AI Teaching Agent
+      </div>
+      <h1>هر معلم، یک دستیار هوش مصنوعی برای کلاس خودش</h1>
+      <h2>دوره «ساخت دستیار هوش مصنوعی اختصاصی برای هر درس»</h2>
+      <p>
+        در این دوره عملی، هر معلم یاد می‌گیرد برای درس و پایه خودش
+        یک <strong>عامل هوشمند (AI Agent)</strong> بسازد که طبق قوانین مدرسه و سبک تدریس او
+        در آماده‌سازی درس، طراحی آزمون، تمرین و توضیح مفاهیم به دانش‌آموزان کمک کند.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary">
+          درخواست برگزاری دوره برای مدرسه
+        </button>
+        <button class="btn-secondary">
+          دریافت سرفصل تفصیلی دوره
+        </button>
+      </div>
     </div>
-    <div class="badge">
-      <span class="badge-dot"></span>
-      نسخه نمایشی – بدون نیاز به اینترنت
+
+    <!-- Visual: mini mock of the agent -->
+    <div class="hero-visual">
+      <div class="hero-visual-header">
+        <span>نمونه تعامل معلم با دستیار هوش مصنوعی</span>
+        <span class="pill">Math Agent – Grade 9</span>
+      </div>
+      <div class="hero-visual-body">
+        <p><strong>معلم:</strong> برای فصل «قضیه فیثاغورس» یک طرح درس ۳ جلسه‌ای می‌خواهم، با تمرکز روی حل مسئله.</p>
+        <p><strong>دستیار هوشمند:</strong></p>
+        <small>
+          ✔ جلسه ۱: معرفی شهودی قضیه + مثال‌های تصویری ساده<br>
+          ✔ جلسه ۲: حل گام‌به‌گام ۳ مسئله استاندارد با مشارکت دانش‌آموزان<br>
+          ✔ جلسه ۳: تمرین‌های ترکیبی + جمع‌بندی و آزمون کوتاه ۱۰ دقیقه‌ای
+        </small>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main class="shell">
-    <!-- LEFT: Mode + form -->
-    <section class="mode-panel">
-      <div class="mode-tabs" id="modeTabs">
-        <button class="mode-tab active" data-mode="lesson">
-          <span>طرح درس</span>
-          <small>Lesson Plan</small>
-        </button>
-        <button class="mode-tab" data-mode="exam">
-          <span>آزمون هوشمند</span>
-          <small>Smart Quiz</small>
-        </button>
-        <button class="mode-tab" data-mode="explain">
-          <span>توضیح مفاهیم</span>
-          <small>Concept Explain</small>
-        </button>
+  <!-- Section: What is this course -->
+  <section class="section">
+    <h3>این دوره دقیقاً چیست؟</h3>
+    <p>
+      این دوره برای معلمان طراحی شده است، نه برنامه‌نویس‌ها. هدف دوره این است که
+      <strong>هر معلم</strong> بتواند بدون درگیر شدن با جزئیات فنی مدل‌ها، برای خودش
+      یک دستیار هوشمند طراحی و راه‌اندازی کند که:
+    </p>
+    <ul>
+      <li>با کتاب درسی، جزوه و شیوه‌ی تدریس همان معلم تنظیم شده باشد،</li>
+      <li>از قوانین و خط‌مشی مدرسه پیروی کند،</li>
+      <li>در طراحی برنامه درسی، تولید آزمون و تمرین، و توضیح مفاهیم به‌صورت مرحله‌به‌مرحله کمک کند،</li>
+      <li>به عنوان یک «همکار دیجیتال» کنار معلم عمل کند، نه جایگزین او.</li>
+    </ul>
+
+    <div class="tag-row">
+      <span class="tag">ویژه: مدارس، هنرستان‌ها، آموزشگاه‌ها</span>
+      <span class="tag">مناسب: ریاضی، علوم، زبان، تاریخ، جغرافیا و…</span>
+      <span class="tag">فرمت: کارگاه عملی + تمرین</span>
+    </div>
+  </section>
+
+  <!-- Section: Who is it for & outcomes -->
+  <section class="section">
+    <div class="columns">
+      <div>
+        <h3>این دوره برای چه کسانی مناسب است؟</h3>
+        <ul>
+          <li>معلمان مقاطع مختلف (ابتدایی، متوسطه اول و دوم)</li>
+          <li>سرگروه‌های آموزشی و مسئولان فناوری آموزشی مدارس</li>
+          <li>مدیرانی که می‌خواهند هوش مصنوعی را به‌صورت کنترل‌شده وارد کلاس‌ها کنند</li>
+        </ul>
+        <p>
+          نیاز به دانش برنامه‌نویسی پیشرفته نیست؛ تمرکز دوره روی
+          <strong>طراحی Agent آموزشی</strong> و استفاده درست و امن از هوش مصنوعی در کلاس است.
+        </p>
       </div>
-
-      <div class="mode-meta">
-        <div>حالت فعال: <strong id="modeLabel">طرح درس هوشمند</strong></div>
-        <div>سطح: <strong>۱ (آفلاین ساده)</strong></div>
+      <div>
+        <h3>خروجی ملموس دوره برای هر معلم</h3>
+        <ul>
+          <li>یک دستیار هوش مصنوعی شخصی‌سازی‌شده برای درس و پایه‌ی خودش</li>
+          <li>قالب‌های آماده برای:
+            <ul>
+              <li>طرح درس استاندارد</li>
+              <li>آزمون و سوالات تشریحی/چهارگزینه‌ای</li>
+              <li>تمرین‌های مرحله‌به‌مرحله</li>
+            </ul>
+          </li>
+          <li>راهنمای مکتوب استفاده روزمره از Agent در تدریس</li>
+        </ul>
       </div>
+    </div>
+  </section>
 
-      <form class="form" id="assistantForm">
-        <div class="inline-fields">
-          <div class="field">
-            <label for="grade">پایه / سطح</label>
-            <input id="grade" type="text" placeholder="مثلاً: هفتم، نهم، متوسطه دوم">
-          </div>
-          <div class="field">
-            <label for="time">مدت زمان جلسه</label>
-            <input id="time" type="text" placeholder="مثلاً: ۴۵ دقیقه">
-          </div>
-        </div>
+  <!-- Section: Course structure -->
+  <section class="section">
+    <h3>ساختار دوره – گام به گام برای ساخت Agent اختصاصی هر معلم</h3>
+    <p>این دوره معمولاً در قالب یک کارگاه ۸ تا ۱۲ ساعته (قابل تنظیم با مدرسه) برگزار می‌شود و شامل مراحل زیر است:</p>
 
-        <div class="field">
-          <label for="topic">موضوع / نام فصل</label>
-          <input id="topic" type="text" placeholder="مثلاً: قضیه فیثاغورس، فصل ۳ ریاضی هفتم">
-        </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>گام ۱ – آشنایی با مفهوم AI Agent در آموزش</h4>
+        <p>
+          تفاوت چت‌بات ساده با عامل هوشمند (Agent)، نقش معلم در طراحی Agent،
+          مثال‌های عملی از استفاده‌ی Agent در کلاس ریاضی، علوم و زبان.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>گام ۲ – تعریف نقش و هویت دستیار هوشمند</h4>
+        <p>
+          هر معلم نقش Agent خودش را تعریف می‌کند:
+          درس، پایه، نوع دانش‌آموزان، لحن و سبک توضیح.
+          نتیجه این گام: «پروفایل اختصاصی Agent برای هر معلم».
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>گام ۳ – تنظیم قوانین و خط‌مشی آموزشی</h4>
+        <p>
+          چگونه Agent را مطابق قوانین مدرسه و سیاست‌های آموزشی تنظیم کنیم؟
+          چه کارهایی مجاز است و چه چیزهایی را باید حتماً به معلم ارجاع دهد؟
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>گام ۴ – اتصال Agent به محتوای درسی معلم</h4>
+        <p>
+          بارگذاری کتاب درسی، جزوه، فایل‌های آموزشی و نمونه سؤالات.
+          در این گام، Agent یاد می‌گیرد براساس محتوای واقعی کلاس آن معلم پاسخ بدهد.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>گام ۵ – فعال‌کردن قابلیت‌ها (Skills)</h4>
+        <p>
+          هر معلم انتخاب می‌کند Agent او چه کارهایی بتواند انجام دهد:
+          تولید طرح درس، آزمون، تمرین، توضیح مفاهیم سخت، بازخورد به پاسخ‌ها و…
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>گام ۶ – تمرین و استفاده در سناریوهای واقعی کلاس</h4>
+        <p>
+          معلم‌ها با نقش «دانش‌آموز» و «معلم» با Agent خود تمرین می‌کنند:
+          طرح یک فصل، طراحی آزمون میان‌ترم، آماده‌سازی کلاس فردا و…
+        </p>
+      </div>
+    </div>
+  </section>
 
-        <div class="field">
-          <label for="details">توضیحات اضافی (اختیاری)</label>
-          <textarea id="details" placeholder="مثلاً: تمرکز روی حل مسئله، سطح سوال‌ها متوسط باشد، مناسب آزمون میان‌ترم و ..."></textarea>
-        </div>
-
-        <div class="field" id="examSettings" style="display:none;">
-          <label for="questionCount">تعداد سوال (برای آزمون)</label>
-          <input id="questionCount" type="number" min="3" max="30" value="8">
-        </div>
-
-        <button type="submit" class="btn-primary">
-          تولید خروجی
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M3 10h9.5M11 5L16 10l-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </form>
-    </section>
-
-    <!-- RIGHT: Output -->
-    <section class="output-panel">
-      <div class="output-header">
-        <div class="pill">
-          نوع خروجی:
-          <span id="outputTypeLabel">طرح درس پیشنهادی</span>
-        </div>
-        <div class="pill">
-          حالت نمایش:
-          <span>خوانش معلم</span>
+  <!-- Section: Benefits for school -->
+  <section class="section">
+    <h3>مزایای این دوره برای مدرسه و نظام آموزشی</h3>
+    <div class="columns">
+      <div>
+        <ul>
+          <li>توانمندسازی معلمان در استفاده‌ی هوشمند و مسئولانه از AI</li>
+          <li>افزایش کیفیت طرح درس‌ها و آزمون‌ها در کل مدرسه</li>
+          <li>ایجاد یک زیرساخت مشترک برای استفاده از Agent در درس‌های مختلف</li>
+          <li>کاهش زمان آماده‌سازی محتوا برای معلمان، بدون کاهش کیفیت آموزشی</li>
+        </ul>
+      </div>
+      <div>
+        <div class="highlight">
+          <strong>ایده‌ی کلیدی:</strong><br>
+          به‌جای یک دستیار هوشمند عمومی برای همه، هر معلم یک دستیار اختصاصی دارد که
+          فقط با محتوای همان درس، همان پایه و همان مدرسه کار می‌کند و
+          از سبک شخصی تدریس همان معلم یاد می‌گیرد.
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="output-box" id="outputBox">
-        <div class="output-placeholder">
-          برای شروع، موضوع و پایه درس را وارد کنید و روی «تولید خروجی» کلیک کنید.  
-          این نسخه‌ی نمایشی بدون اینترنت کار می‌کند و از قالب‌های هوشمند استفاده می‌کند. بعداً می‌توانید این بخش را به مدل آفلاین واقعی متصل کنید.
+  <!-- Section: Practical info / CTA -->
+  <section class="section">
+    <h3>اطلاعات اجرایی و نحوه همکاری با مدارس</h3>
+    <p>جزئیات دوره قابل تنظیم براساس نیاز هر مدرسه است، اما پیشنهاد عمومی به این شکل است:</p>
+    <ul>
+      <li>مدت دوره: ۸ تا ۱۲ ساعت (به‌صورت فشرده یا در چند جلسه)</li>
+      <li>محل برگزاری: در مدرسه یا به‌صورت آنلاین (ویژگی‌های سامانه قبل از دوره هماهنگ می‌شود)</li>
+      <li>پیش‌نیاز شرکت‌کنندگان: آشنایی عمومی با کامپیوتر و اینترنت، بدون نیاز به مهارت برنامه‌نویسی</li>
+      <li>خروجی مدرسه: مجموعه‌ای از Agentهای فعال، هرکدام برای یک درس/پایه مشخص</li>
+    </ul>
+
+    <div class="cta-box">
+      <div>
+        <strong>برای رزرو دوره یا دریافت اطلاعات بیشتر:</strong><br>
+        نام مدرسه، شهر و تعداد معلمان موردنظر را ارسال کنید تا برنامه‌ی پیشنهادی اختصاصی برای شما تنظیم شود.
+      </div>
+      <div>
+        <!-- این قسمت را با اطلاعات واقعی خودتان پر کنید -->
+        <div style="font-size:0.85rem; text-align:right;">
+          ایمیل: <strong>info@example.com</strong><br>
+          تلفن/واتس‌اپ: <strong>+47 000 00 000</strong>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="footer-note">
-        <span><strong>نکته:</strong> منطق تولید متن در تابع <code>callLocalAI</code> پیاده‌سازی شده است؛ آن را به مدل LLM آفلاین خود متصل کنید.</span>
-        <span>طراحی شده برای نمایش در کارگاه سطح ۱ معلمان.</span>
-      </div>
-    </section>
-  </main>
+  <div class="footer">
+    این صفحه معرفی را می‌توان به‌عنوان لندینگ، PDF یا پرینت برای معرفی دوره به معلمان و مدیران مدارس استفاده کرد.
+  </div>
+
 </div>
-
-<script>
-  const modeTabs = document.querySelectorAll('.mode-tab');
-  const modeLabel = document.getElementById('modeLabel');
-  const outputTypeLabel = document.getElementById('outputTypeLabel');
-  const examSettings = document.getElementById('examSettings');
-  const form = document.getElementById('assistantForm');
-  const outputBox = document.getElementById('outputBox');
-
-  let currentMode = 'lesson';
-
-  const modeNames = {
-    lesson: 'طرح درس هوشمند',
-    exam: 'آزمون هوشمند',
-    explain: 'توضیح مفاهیم درسی'
-  };
-
-  const outputNames = {
-    lesson: 'طرح درس پیشنهادی',
-    exam: 'برگه آزمون و پاسخ‌نامه',
-    explain: 'توضیح مفهومی و مثال'
-  };
-
-  modeTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      modeTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      currentMode = tab.dataset.mode;
-      modeLabel.textContent = modeNames[currentMode];
-      outputTypeLabel.textContent = outputNames[currentMode];
-      examSettings.style.display = currentMode === 'exam' ? 'block' : 'none';
-    });
-  });
-
-  // DEMO ENGINE (بدون LLM)
-  function callLocalAI({ mode, topic, grade, time, details, count }) {
-    const safeTopic = topic || 'مبحث موردنظر';
-    const safeGrade = grade || 'پایه هدف';
-    const safeTime = time || '۴۵ دقیقه';
-    const extra = details ? `\n\nتوضیحات معلم:\n- ${details.trim()}` : '';
-
-    if (mode === 'lesson') {
-      return `
-<h3>طرح درس ${safeTopic} – ${safeGrade}</h3>
-<p><strong>مدت زمان پیشنهادی:</strong> ${safeTime}</p>
-
-<h4>۱. اهداف رفتاری / آموزشی</h4>
-<ul>
-  <li>دانش‌آموز بتواند مفهوم اصلی «${safeTopic}» را با کلمات خودش توضیح دهد.</li>
-  <li>دانش‌آموز بتواند حداقل ۳ مثال عددی از این مبحث را حل کند.</li>
-  <li>دانش‌آموز بتواند خطاهای رایج در این مبحث را تشخیص دهد.</li>
-</ul>
-
-<h4>۲. شروع درس (فعال‌سازی پیش‌دانسته‌ها – ۵ دقیقه)</h4>
-<ul>
-  <li>پرسش شفاهی کوتاه درباره مفاهیم پایه مرتبط با «${safeTopic}».</li>
-  <li>نمایش یک مثال ساده روی تخته و پرسیدن ادامه آن از دانش‌آموزان.</li>
-</ul>
-
-<h4>۳. ارائه‌ی مفهوم (۲۰ دقیقه)</h4>
-<ul>
-  <li>تعریف ساده‌ی «${safeTopic}» با یک مثال روزمره.</li>
-  <li>حل دو مثال عددی مرحله‌به‌مرحله روی تخته.</li>
-  <li>توضیح یک اشتباه رایج و نشان دادن راه‌حل صحیح.</li>
-</ul>
-
-<h4>۴. فعالیت کلاسی (۱۵ دقیقه)</h4>
-<ul>
-  <li>تقسیم کلاس به گروه‌های کوچک و دادن یک مسئله‌ی مشترک.</li>
-  <li>درخواست از هر گروه برای نوشتن راه‌حل و توضیح شفاهی.</li>
-</ul>
-
-<h4>۵. جمع‌بندی و تکلیف (۵ دقیقه)</h4>
-<ul>
-  <li>خلاصه‌برداری روی تخته در ۳ نکته‌ی کلیدی.</li>
-  <li>تکلیف: حل ۳ سوال از کتاب درسی + ۲ سوال طراحی معلم.</li>
-</ul>
-${extra}
-      `.trim();
-    }
-
-    if (mode === 'exam') {
-      const n = Math.min(Math.max(parseInt(count || '8', 10), 3), 30);
-      const half = Math.floor(n / 2);
-      let html = `
-<h3>آزمون ${safeTopic} – ${safeGrade}</h3>
-<p><strong>تعداد سوال:</strong> ${n} &nbsp;|&nbsp; <strong>زمان پیشنهادی:</strong> ${safeTime}</p>
-
-<h4>بخش اول – سوالات چهارگزینه‌ای (${half} سوال)</h4>
-<ol>
-      `;
-      for (let i = 1; i <= half; i++) {
-        html += `
-<li>
-  در مبحث «${safeTopic}»، سوال مفهومی شماره ${i} را طوری طراحی کنید که یک خطای رایج دانش‌آموز را هدف بگیرد.
-  <br>
-  <em>گزینه‌ها:</em> (الف)، (ب)، (ج)، (د) – فقط یک گزینه صحیح باشد.
-</li>
-        `;
-      }
-      html += `</ol>
-<h4>بخش دوم – سوالات تشریحی (${n - half} سوال)</h4>
-<ol start="${half + 1}">
-      `;
-      for (let i = half + 1; i <= n; i++) {
-        html += `
-<li>
-  یک سوال تشریحی طراحی کنید که دانش‌آموز مجبور شود همه‌ی مراحل حل «${safeTopic}» را بنویسد
-  و در انتها پاسخ خود را <strong>توضیح دهد</strong>.
-</li>
-        `;
-      }
-      html += `</ol>
-
-<h4>راهنمای تصحیح (کلید مفهومی)</h4>
-<ul>
-  <li>برای هر سوال چهارگزینه‌ای ۱ نمره؛ ۰.۵ نمره برای انتخاب گزینه صحیح، ۰.۵ نمره برای استدلال (در صورت درخواست).</li>
-  <li>برای هر سوال تشریحی ۲ نمره؛ ۱ نمره برای روند حل، ۱ نمره برای نتیجه‌گیری و توضیح کلامی.</li>
-  <li>به استفاده از نمادها، واحدها و رسم شکل در سوالات مربوط به «${safeTopic}» توجه ویژه شود.</li>
-</ul>
-${extra}
-      `;
-      return html.trim();
-    }
-
-    // explain
-    return `
-<h3>توضیح مفهومی: ${safeTopic}</h3>
-<p><strong>مناسب برای:</strong> ${safeGrade} &nbsp;|&nbsp; <strong>زمان پیشنهادی توضیح:</strong> ${safeTime}</p>
-
-<h4>۱. تعریف ساده</h4>
-<p>
-«${safeTopic}» را می‌توان به زبان ساده این‌طور گفت: مفهومی که به ما کمک می‌کند یک نوع رابطه‌ی مشخص بین مقادیر را
-درک کنیم و بتوانیم آن را در مسائل مختلف به‌کار ببریم. در اینجا روی مثال‌های عددی و تصویری تمرکز می‌کنیم.
-</p>
-
-<h4>۲. یک مثال عددی ساده</h4>
-<p>
-مثال: صورت‌مسئله‌ای از «${safeTopic}» انتخاب کنید که با اعداد کوچک و قابل‌فهم برای دانش‌آموزان ${safeGrade} نوشته شده باشد.
-از دانش‌آموز بخواهید ابتدا <strong>حدس</strong> بزند، سپس با کمک معلم آن را مرحله‌به‌مرحله حل کند.
-</p>
-
-<h4>۳. تصویرسازی ذهنی</h4>
-<ul>
-  <li>روی تخته شکلی بکشید که مفهوم «${safeTopic}» را نشان دهد (نمودار، مثلث، جدول و ...).</li>
-  <li>از دانش‌آموزان بخواهید شکل مشابه را در دفتر خود رسم کنند و قسمت‌های مهم را رنگ‌آمیزی کنند.</li>
-</ul>
-
-<h4>۴. اشتباهات رایج</h4>
-<ul>
-  <li>دانش‌آموز عددها را اشتباه جاگذاری می‌کند.</li>
-  <li>به واحدها (مثلاً سانتی‌متر / متر) توجه نمی‌کند.</li>
-  <li>فقط فرمول را حفظ می‌کند ولی نمی‌داند چه زمانی از آن استفاده کند.</li>
-</ul>
-
-<h4>۵. جمع‌بندی برای معلم</h4>
-<ul>
-  <li>ابتدا با یک مثال شهودی شروع کنید، نه با فرمول.</li>
-  <li>از دانش‌آموز بخواهید خودش مسئله‌ای مشابه طراحی کند.</li>
-  <li>در پایان درس، از او بخواهید با کلمات خودش «${safeTopic}» را برای همکلاسی‌اش توضیح دهد.</li>
-</ul>
-${extra}
-    `.trim();
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const topic = document.getElementById('topic').value.trim();
-    const grade = document.getElementById('grade').value.trim();
-    const time = document.getElementById('time').value.trim();
-    const details = document.getElementById('details').value.trim();
-    const count = document.getElementById('questionCount').value;
-
-    if (!topic) {
-      alert('لطفاً موضوع یا نام فصل را وارد کنید.');
-      return;
-    }
-
-    const html = callLocalAI({
-      mode: currentMode,
-      topic,
-      grade,
-      time,
-      details,
-      count
-    });
-
-    outputBox.innerHTML = html;
-    outputBox.scrollTop = 0;
-  });
-</script>
 </body>
 </html>
