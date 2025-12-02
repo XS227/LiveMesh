@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>دوره ساخت دستیار هوشمند برای معلمان – سطح یک</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #020617;
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 16px 80px;
+    }
+
+    .slide {
+      min-height: 90vh;
+      margin-bottom: 24px;
+      padding: 22px 18px;
+      border-radius: 24px;
+      background: #020617;
+      border: 1px solid rgba(31,41,55,0.9);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.9);
+    }
+    .slide.hero {
+      background: radial-gradient(circle at top right, #1d4ed8 0, #0f172a 40%, #020617 100%);
+      border-color: rgba(148,163,184,0.7);
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .slide.hero {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(191,219,254,0.9);
+      color: #bfdbfe;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+    }
+    h1, h2, h3, h4 {
+      margin-top: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #bfdbfe;
+      font-weight: 500;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+    p {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+    ul {
+      margin: 6px 0 0;
+      padding-right: 20px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .muted {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn-main {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(8,47,73,0.9);
+    }
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 9px 16px;
+      border: 1px solid rgba(191,219,254,0.85);
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-card {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.26), rgba(15,23,42,0.98));
+      border: 1px solid rgba(148,163,184,0.7);
+      padding: 14px 14px 12px;
+      font-size: 0.84rem;
+    }
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-card-body {
+      background: rgba(2,6,23,0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,0.9);
+      padding: 10px 12px 8px;
+    }
+    .hero-card-body p {
+      font-size: 0.85rem;
+    }
+    .hero-card-body small {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    @media (max-width: 820px) {
+      .columns {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .slide {
+        min-height: auto;
+      }
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .tag {
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: #020617;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-right: 2px solid rgba(55,65,81,0.9);
+      padding-right: 14px;
+    }
+    .timeline-item {
+      margin-bottom: 12px;
+      position: relative;
+      padding-right: 6px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      right: -15px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.3);
+    }
+    .timeline-item h4 {
+      margin-bottom: 3px;
+      font-size: 0.95rem;
+    }
+    .timeline-item p {
+      font-size: 0.88rem;
+    }
+
+    .highlight {
+      background: rgba(15,23,42,0.97);
+      border-radius: 16px;
+      border: 1px dashed rgba(148,163,184,0.8);
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .sticky-cta a {
+      pointer-events: auto;
+      border-radius: 999px;
+      padding: 9px 26px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 18px 46px rgba(22,163,74,0.9);
+      border: 1px solid rgba(187,247,208,0.92);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sticky-cta span.icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #022c22;
+      box-shadow: 0 0 0 3px rgba(21,128,61,0.5);
+      position: relative;
+    }
+    .sticky-cta span.icon::before,
+    .sticky-cta span.icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      border: 1px solid rgba(22,163,74,0.7);
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- اسلاید ۱: معرفی کلی دوره -->
+  <section class="slide hero">
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        دوره پایه برای معلمان در استفاده از هوش مصنوعی در تدریس
+      </div>
+      <h1>هر معلم، یک دستیار هوشمند برای کلاس خودش</h1>
+      <h2>دوره سطح یک: آشنایی کاربردی با هوش مصنوعی و ساخت دستیار هوشمند ساده برای هر درس</h2>
+      <p>
+        در این دوره، معلمان با هر سطحی از آشنایی با فناوری یاد می‌گیرند
+        چگونه از هوش مصنوعی به‌عنوان یک دستیار هوشمند استفاده کنند؛
+        دستیاری که جای معلم را نمی‌گیرد، بلکه آماده‌سازی درس، طراحی آزمون،
+        تحلیل پاسخ‌های دانش‌آموزان و توضیح مفاهیم را آسان‌تر، دقیق‌تر و منظم‌تر می‌کند.
+      </p>
+      <p class="muted">
+        هدف اصلی: هوش مصنوعی در خدمت معلم، نه در جای معلم.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-main">
+          درخواست برگزاری دوره برای مدرسه
+        </button>
+        <button class="btn-secondary">
+          مشاهده سرفصل‌های سطح یک
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <span>نمونه استفاده‌ی روزمره در کلاس</span>
+        <span class="pill">دستیار هوشمند معلم ریاضی</span>
+      </div>
+      <div class="hero-card-body">
+        <p><strong>درخواست معلم:</strong></p>
+        <small>
+          برای فصل «قضیه فیثاغورس» یک طرح درس دو جلسه‌ای می‌خواهم، همراه با
+          چند تمرین برای دانش‌آموزان قوی و چند تمرین برای دانش‌آموزان ضعیف‌تر.
+        </small>
+        <p style="margin-top:8px;"><strong>پاسخ دستیار هوشمند:</strong></p>
+        <small>
+          جلسه یک: معرفی شهودی قضیه، رسم شکل روی تخته، حل دو مثال ساده همراه با مشارکت دانش‌آموزان.<br>
+          جلسه دو: حل چند مسئله‌ی ترکیبی، یک آزمون کوتاه ده دقیقه‌ای و دادن تمرین خانگی سطح‌بندی‌شده.
+        </small>
+      </div>
+    </div>
+  </section>
+
+  <!-- اسلاید ۲: مخاطبان و نگاه کلی سطح یک -->
+  <section class="slide">
+    <h3>این دوره برای چه کسانی است و سطح یک چه نگاهی دارد؟</h3>
+    <div class="columns">
+      <div>
+        <p>
+          این دوره ویژه‌ی معلمانی است که می‌خواهند با آرامش و بدون پیچیدگی‌های فنی
+          با دنیای هوش مصنوعی آشنا شوند و آن را مستقیماً در کار روزانه‌ی خود به کار بگیرند.
+        </p>
+        <ul>
+          <li>معلمان دبستان، راهنمایی و دبیرستان در همه‌ی رشته‌ها</li>
+          <li>سرگروه‌های آموزشی و مسئولان آموزشی مدارس</li>
+          <li>مدیرانی که می‌خواهند هوش مصنوعی را به شکل کنترل‌شده وارد مدرسه کنند</li>
+        </ul>
+        <p class="muted">
+          در سطح یک هیچ نیازی به برنامه‌نویسی، سرور، تنظیمات فنی یا واژه‌های پیچیده نیست.
+          همه چیز با مثال‌های ساده و زبانی آموزشی برای معلمان توضیح داده می‌شود.
+        </p>
+      </div>
+      <div>
+        <h4>آنچه در سطح یک یاد می‌گیرید</h4>
+        <ul>
+          <li>شناخت ساده و روشن از این‌که «هوش مصنوعی در آموزش» یعنی چه.</li>
+          <li>چگونه یک درخواست خوب از هوش مصنوعی بخواهیم تا پاسخ مناسب بگیریم.</li>
+          <li>استفاده از هوش مصنوعی برای:
+            <ul>
+              <li>طراحی طرح درس برای یک فصل یا چند جلسه‌ی کلاس</li>
+              <li>نوشتن سوال امتحان و آزمونک‌های کوتاه</li>
+              <li>ساخت تمرین‌های مرحله‌به‌مرحله برای سطح‌های مختلف کلاس</li>
+              <li>توضیح مفاهیم سخت با زبان ساده برای دانش‌آموزان</li>
+            </ul>
+          </li>
+          <li>ساخت یک دستیار هوشمند ساده ویژه‌ی هر معلم برای درس خودش.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">بدون نیاز به پیش‌زمینه‌ی فنی</span>
+          <span class="tag">مناسب تمام رشته‌ها</span>
+          <span class="tag">قابل اجرا در کلاس‌های واقعی</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- اسلاید ۳: ساختار پروژه‌ی سه‌ماهه سطح یک -->
+  <section class="slide">
+    <h3>سطح یک به‌عنوان یک پروژه‌ی سه‌ماهه در کلاس واقعی</h3>
+    <p>
+      این دوره فقط یک کارگاه کوتاه نیست. سطح یک به‌گونه‌ای طراحی شده است که
+      هر معلم در مدت حدود سه ماه بتواند آنچه یاد می‌گیرد را در کلاس خودش امتحان کند
+      و نتیجه را در عمل ببیند.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>مرحله‌ی یک – آشنایی و تمرین هدایت‌شده</h4>
+        <p>
+          در چند جلسه‌ی آموزشی، معلمان با نمونه‌های آماده کار می‌کنند:
+          طراحی طرح درس، ساخت سوال، تولید تمرین و توضیح مفاهیم.
+          همه‌ی مثال‌ها روی یک یا دو فصل مشخص از کتاب انتخاب می‌شود.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>مرحله‌ی دو – اجرای آزمایشی در کلاس</h4>
+        <p>
+          هر معلم یک فصل یا موضوع مشخص را در کلاس خودش انتخاب می‌کند.
+          با کمک دستیار هوشمند، سوال امتحان یا تمرین‌های کلاسی را طراحی می‌کند
+          و آن‌ها را در کلاس اجرا می‌کند. سپس پاسخ‌های دانش‌آموزان جمع‌آوری می‌شود.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h4>مرحله‌ی سه – تحلیل پاسخ‌ها و بهبود روش تدریس</h4>
+        <p>
+          معلم یاد می‌گیرد چگونه پاسخ‌های دانش‌آموزان را به دستیار هوشمند بدهد تا
+          الگوهای ضعف و قوت آن‌ها را پیدا کند؛ مثلاً:
+          در کدام نوع سوال‌ها بیشتر اشتباه می‌کنند، کدام قسمت فصل نیاز به توضیح دوباره دارد،
+          و چگونه می‌توان جلسه‌ی بعدی را بهتر طراحی کرد.
+        </p>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:12px;">
+      در پایان این سه ماه، هر معلم یک دستیار هوشمند عملی برای درس خود دارد
+      و تجربه کرده است که این ابزار در شرایط واقعی کلاس چه کمکی می‌تواند بکند.
+    </div>
+  </section>
+
+  <!-- اسلاید ۴: همراهی سه‌ماهه و حساب کاربری ویژه -->
+  <section class="slide">
+    <h3>همراهی سه‌ماهه و حساب کاربری ویژه برای شرکت‌کنندگان</h3>
+    <div class="columns">
+      <div>
+        <p>
+          برای این‌که معلمان در این سه ماه تنها نباشند، به هر شرکت‌کننده در دوره
+          یک دسترسی ویژه در حساب کاربری حرفه‌ای ما داده می‌شود تا بتواند به‌صورت
+          برخط با سامانه‌ی هوش مصنوعی کار کند.
+        </p>
+        <ul>
+          <li>هر معلم یک جایگاه اختصاصی در حساب حرفه‌ای ما دریافت می‌کند.</li>
+          <li>برای هر معلم «اعتبار کارکرد» کافی در نظر گرفته می‌شود تا بتواند
+            در طول سه ماه، طرح درس، آزمون و تحلیل‌های لازم را انجام دهد.</li>
+          <li>امکان گفت‌وگوی مستقیم با تیم دوره از طریق گفت‌وگوی نوشتاری برخط
+            برای پرسش و پاسخ و راهنمایی.</li>
+        </ul>
+        <p class="muted">
+          در طول این مدت، معلمان هر زمان که در استفاده از دستیار هوشمند به سوالی برخورد کنند،
+          می‌توانند با ما در ارتباط باشند و راهنمایی بگیرند.
+        </p>
+      </div>
+      <div>
+        <h4>ساده‌سازی تجربه‌ی کار با هوش مصنوعی</h4>
+        <p>
+          در این دوره، چند سامانه‌ی مختلف هوش مصنوعی معرفی می‌شود،
+          اما تمرین‌های اصلی با یک سامانه‌ی قدرتمند و بین‌المللی انجام می‌شود
+          که از سوی ما پیکربندی و آماده شده است. معلم لازم نیست نگران تنظیمات
+          فنی، هزینه‌ها یا انتخاب ابزار مناسب باشد؛ همه‌ی این‌ها از قبل برای او
+          آماده شده است.
+        </p>
+        <p>
+          تمرکز کامل دوره بر این است که معلم یاد بگیرد:
+        </p>
+        <ul>
+          <li>چگونه درخواست درست بنویسد.</li>
+          <li>چگونه پاسخ را نقد و اصلاح کند.</li>
+          <li>چگونه نتیجه را در کلاس به‌صورت عملی به کار بگیرد.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- اسلاید ۵: نمونه سناریوی واقعی برای معلم و دانش‌آموز -->
+  <section class="slide">
+    <h3>نمونه سناریو: از طرح سوال تا تحلیل پاسخ‌های دانش‌آموزان</h3>
+    <p>
+      یکی از بخش‌های مهم سطح یک این است که معلم ببیند دستیار هوشمند فقط برای
+      تولید متن نیست، بلکه می‌تواند در تحلیل و تصمیم‌گیری آموزشی هم کمک کند.
+    </p>
+    <div class="columns">
+      <div>
+        <h4>گام‌های نمونه برای یک فصل درسی</h4>
+        <ul>
+          <li>انتخاب یک فصل مشخص از کتاب؛ مثلاً «قضیه فیثاغورس» یا «چرخه‌ی آب».</li>
+          <li>درخواست از دستیار هوشمند برای:
+            <ul>
+              <li>پیشنهاد طرح درس برای چند جلسه‌ی متوالی</li>
+              <li>نوشتن آزمون کوتاه با سوال‌های مفهومی و محاسباتی</li>
+            </ul>
+          </li>
+          <li>اجرای آزمون در کلاس و جمع‌آوری پاسخ‌های دانش‌آموزان.</li>
+          <li>دادن خلاصه‌ای از پاسخ‌ها به دستیار هوشمند برای تحلیل.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>آنچه دستیار هوشمند به معلم نشان می‌دهد</h4>
+        <ul>
+          <li>در چه نوع سوال‌هایی بیشترین خطا رخ داده است.</li>
+          <li>کدام بخش از توضیح معلم برای دانش‌آموزان مبهم بوده است.</li>
+          <li>پیشنهاد برای این‌که جلسه‌ی بعدی چگونه طراحی شود
+            تا این ضعف‌ها پوشش داده شود.</li>
+          <li>پیشنهاد تمرین‌های تکمیلی برای گروه‌های مختلف کلاس
+            (دانش‌آموزان قوی، متوسط و نیازمند پشتیبانی بیشتر).</li>
+        </ul>
+        <div class="highlight">
+          نتیجه این است که معلم به‌جای حدس و گمان، با تکیه بر داده‌ی واقعی کلاس
+          تصمیم می‌گیرد کجا بیشتر توضیح بدهد و چگونه روش تدریس را اصلاح کند.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- اسلاید ۶: معرفی مدرس دوره -->
+  <section class="slide">
+    <h3>مدرس دوره: خبات ستائی</h3>
+    <div class="columns">
+      <div>
+        <p>
+          این دوره توسط <strong>خبات ستائی</strong> اجرا می‌شود؛
+          پژوهشگر و طراح سامانه‌های هوش مصنوعی و زنجیره‌بلوکی با زمینه‌ی
+          دانشگاهی در علوم رایانه، هوش مصنوعی و رباتیک و تجربه‌ی طولانی
+          در پروژه‌های آموزشی و فناوری در اروپا.
+        </p>
+        <p>
+          خبات ستائی طی سال‌های متمادی در حوزه‌های گوناگون از
+          طراحی سامانه‌های وب و یکپارچه‌سازی سامانه‌ها گرفته تا مشاوره در
+          زمینه‌ی فناوری‌های نو، آموزش تیم‌ها و برگزاری کارگاه‌های آشنایی با
+          هوش مصنوعی برای گروه‌های مختلف فعالیت کرده است.
+        </p>
+      </div>
+      <div>
+        <p>
+          رویکرد او در این دوره این است که هوش مصنوعی را از فضای
+          خشک و پیچیده‌ی فنی بیرون بیاورد و آن را به ابزاری ساده، قابل فهم و
+          روزمره برای معلمان تبدیل کند؛ ابزاری که:
+        </p>
+        <ul>
+          <li>زمان آماده‌سازی درس را کاهش می‌دهد،</li>
+          <li>کیفیت سوال‌ها و تمرین‌ها را افزایش می‌دهد،</li>
+          <li>به معلم کمک می‌کند تصویر شفاف‌تری از وضعیت یادگیری کلاس داشته باشد.</li>
+        </ul>
+        <p class="muted">
+          هدف نهایی این است که معلم احساس نکند با یک موج ترسناک روبه‌رو است،
+          بلکه بداند این ابزار می‌تواند همکار جدید او در کلاس باشد.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- اسلاید ۷: جمع‌بندی و دعوت به همکاری با مدارس -->
+  <section class="slide">
+    <h3>جمع‌بندی سطح یک و پیشنهاد برای مدارس</h3>
+    <p>
+      سطح یک این دوره به‌گونه‌ای طراحی شده که برای تمام معلمان،
+      حتی کسانی که احساس می‌کنند با فناوری راحت نیستند، قابل استفاده باشد.
+      زبان دوره آموزشی است، مثال‌ها واقعی و از دل کلاس‌ها انتخاب شده‌اند
+      و در طول سه ماه فرصت کافی برای آزمودن آموخته‌ها در محیط واقعی مدرسه وجود دارد.
+    </p>
+    <ul>
+      <li>آشنایی امن و تدریجی با هوش مصنوعی در آموزش.</li>
+      <li>ساخت یک دستیار هوشمند ساده برای هر معلم، متناسب با درس خودش.</li>
+      <li>امکان آزمودن ابزار در کلاس و تحلیل داده‌های واقعی دانش‌آموزان.</li>
+      <li>همراهی و پشتیبانی برخط در تمام دوره‌ی سه‌ماهه.</li>
+    </ul>
+    <p class="highlight">
+      اگر مدرسه‌ی شما علاقه‌مند است معلمانش با روشی ساده، کنترل‌شده و مرحله‌به‌مرحله
+      با هوش مصنوعی آشنا شوند و از آن برای بهبود کیفیت تدریس استفاده کنند،
+      می‌توانید برای تنظیم زمان‌بندی و جزئیات متناسب با شرایط خودتان با ما در تماس باشید.
+    </p>
+    <p class="muted">
+      برای هماهنگی، لطفاً نام مدرسه، شهر و تقریبی تعداد معلمان علاقه‌مند را همراه با
+      راه ارتباطی مناسب ارسال کنید تا پیشنهاد ویژه‌ی مدرسه‌ی شما آماده شود.
+    </p>
+  </section>
+
+</div>
+
+<!-- دکمه‌ی چسبان تماس در پایین صفحه -->
+<div class="sticky-cta">
+  <a href="tel:09177010448">
+    <span class="icon"></span>
+    تماس
+  </a>
+</div>
+
+</body>
+</html>
