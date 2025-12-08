@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>drive.seataei.com - ارزیابی سطح رانندگی تئوری</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            margin-top: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .btn-primary {
+            background: #1976d2;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #125ca3;
+        }
+        .btn-secondary {
+            background: #eeeeee;
+        }
+        .question {
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            margin-right: 4px;
+            background: #e0f2f1;
+        }
+        .badge-topic {
+            background: #fff3cd;
+        }
+        .status-pass {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .status-fail {
+            color: #c62828;
+            font-weight: bold;
+        }
+        .summary-item {
+            margin-bottom: 4px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card" id="welcome-card">
+        <h1>به drive.seataei.com خوش آمدید</h1>
+        <p>
+            این صفحه برای ارزیابی سریع سطح شما در آزمون تئوری رانندگی طراحی شده است.
+            چند سؤال به صورت تصادفی از بانک سؤالات انتخاب می‌شود و بر اساس پاسخ‌های شما:
+        </p>
+        <ul>
+            <li>تعداد پاسخ‌های غلط شما محاسبه می‌شود</li>
+            <li>مشخص می‌شود که قبول می‌شوید یا نه</li>
+            <li>به شما گفته می‌شود روی کدام فصل‌ها/بخش‌های کتاب بیشتر تمرکز کنید</li>
+            <li>یک پیشنهاد یادگیری شخصی‌سازی شده دریافت می‌کنید</li>
+        </ul>
+        <button class="btn-primary" id="start-btn">شروع تست</button>
+    </div>
+
+    <div class="card hidden" id="quiz-card">
+        <h2>تست سطح رانندگی</h2>
+        <p id="quiz-info"></p>
+        <form id="quiz-form"></form>
+        <button class="btn-primary" id="submit-btn">ثبت پاسخ‌ها</button>
+        <button class="btn-secondary" id="restart-btn" style="margin-right:8px;">تست مجدد</button>
+    </div>
+
+    <div class="card hidden" id="result-card">
+        <h2>نتیجه ارزیابی</h2>
+        <p id="score-summary"></p>
+        <div id="topic-feedback"></div>
+        <h3 style="margin-top:16px;">پیشنهاد یادگیری برای شما</h3>
+        <p id="learning-suggestion"></p>
+        <button class="btn-secondary" id="retry-btn">انجام دوباره تست</button>
+    </div>
+
+    <div class="footer">
+        &copy; <span id="year"></span> drive.seataei.com - نسخه آزمایشی ارزیابی سطح
+    </div>
+</div>
+
+<script>
+    // ۱) اینجا بانک سؤالات را تعریف می‌کنی
+    // هر سؤال:
+    //  text: متن سؤال
+    //  options: گزینه‌ها
+    //  correctIndex: شماره گزینه درست (از 0 شروع می‌شود) -> همان‌هایی که در PDF زرد کرده‌ای
+    //  topic: فصل یا بخش کتاب (برای تحلیل نقاط ضعف)
+    const questions = [
+        {
+            id: 1,
+            text: "در تقاطع بدون چراغ و بدون تابلو، حق تقدم با کدام وسیله است؟",
+            options: [
+                "وسیله‌ای که از سمت چپ می‌آید",
+                "وسیله‌ای که از سمت راست می‌آید",
+                "وسیله‌ای که سریع‌تر حرکت می‌کند",
+                "وسیله نقلیه سنگین‌تر"
+            ],
+            correctIndex: 1,
+            topic: "حق تقدم و تقاطع‌ها"
+        },
+        {
+            id: 2,
+            text: "رعایت فاصله طولی مناسب با خودرو جلویی در کدام شرایط مهم‌تر است؟",
+            options: [
+                "فقط در هوای صاف",
+                "فقط در شب",
+                "در باران، برف و جاده‌های لغزنده",
+                "در سرعت‌های زیر ۳۰ کیلومتر"
+            ],
+            correctIndex: 2,
+            topic: "ایمنی و فاصله طولی"
+        },
+        {
+            id: 3,
+            text: "علامت مثلث قرمز حاشیه‌دار نشان‌دهنده چیست؟",
+            options: [
+                "تابلوی راهنما",
+                "تابلوی اخطاری",
+                "تابلوی بازدارنده",
+                "تابلوی محلی"
+            ],
+            correctIndex: 1,
+            topic: "تابلوهای راهنمایی و رانندگی"
+        },
+        {
+            id: 4,
+            text: "استفاده از کمربند ایمنی برای چه کسانی الزامی است؟",
+            options: [
+                "فقط راننده",
+                "راننده و سرنشین جلو",
+                "تمام سرنشینان خودرو",
+                "فقط در جاده‌های بین‌شهری"
+            ],
+            correctIndex: 2,
+            topic: "ایمنی سرنشینان"
+        },
+        {
+            id: 5,
+            text: "در کدام حالت سبقت گرفتن به طور کلی ممنوع است؟",
+            options: [
+                "۲۵۰ متر مانده به پیچ‌های تند",
+                "در جاده‌های دوطرفه",
+                "در روزهای بارانی",
+                "وقتی خودروی پشت سر به شما نزدیک است"
+            ],
+            correctIndex: 0,
+            topic: "سبقت و سبقت ممنوع"
+        }
+        // اینجا می‌توانی بقیه سؤالات کتاب را اضافه کنی
+    ];
+
+    // تنظیمات کلی تست
+    const NUM_QUESTIONS_PER_TEST = 5;      // چند سؤال در هر تست
+    const MAX_WRONG_FOR_PASS = 1;          // حداکثر چند غلط برای قبولی
+    const welcomeCard = document.getElementById("welcome-card");
+    const quizCard = document.getElementById("quiz-card");
+    const resultCard = document.getElementById("result-card");
+    const quizForm = document.getElementById("quiz-form");
+    const quizInfo = document.getElementById("quiz-info");
+    const startBtn = document.getElementById("start-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const retryBtn = document.getElementById("retry-btn");
+    const scoreSummary = document.getElementById("score-summary");
+    const topicFeedback = document.getElementById("topic-feedback");
+    const learningSuggestion = document.getElementById("learning-suggestion");
+
+    let currentTestQuestions = [];
+
+    function shuffle(array) {
+        return array
+            .map(v => ({ v, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ v }) => v);
+    }
+
+    function pickRandomQuestions() {
+        const shuffled = shuffle(questions);
+        return shuffled.slice(0, Math.min(NUM_QUESTIONS_PER_TEST, shuffled.length));
+    }
+
+    function renderQuiz() {
+        currentTestQuestions = pickRandomQuestions();
+        quizForm.innerHTML = "";
+
+        quizInfo.textContent = `در این تست ${currentTestQuestions.length} سؤال از بین بانک سؤالات به صورت تصادفی انتخاب شده است.`;
+
+        currentTestQuestions.forEach((q, index) => {
+            const qDiv = document.createElement("div");
+            qDiv.className = "question";
+
+            const qTitle = document.createElement("h3");
+            qTitle.textContent = `سؤال ${index + 1}: ${q.text}`;
+            qDiv.appendChild(qTitle);
+
+            const topicBadge = document.createElement("span");
+            topicBadge.className = "badge badge-topic";
+            topicBadge.textContent = q.topic;
+            qDiv.appendChild(topicBadge);
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.className = "options";
+
+            q.options.forEach((opt, optIndex) => {
+                const id = `q${q.id}_opt${optIndex}`;
+                const label = document.createElement("label");
+                const input = document.createElement("input");
+                input.type = "radio";
+                input.name = `q_${q.id}`;
+                input.value = optIndex.toString();
+                input.id = id;
+
+                label.setAttribute("for", id);
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(" " + opt));
+                optionsDiv.appendChild(label);
+            });
+
+            qDiv.appendChild(optionsDiv);
+            quizForm.appendChild(qDiv);
+        });
+    }
+
+    function evaluateQuiz() {
+        let correctCount = 0;
+        let wrongCount = 0;
+
+        // شمارش اشتباه‌ها بر اساس topic
+        const topicStats = {}; // topic -> { wrong: number, total: number }
+
+        currentTestQuestions.forEach(q => {
+            const selected = Array.from(
+                document.querySelectorAll(`input[name="q_${q.id}"]`)
+            ).find(input => input.checked);
+
+            const topic = q.topic;
+            if (!topicStats[topic]) {
+                topicStats[topic] = { wrong: 0, total: 0 };
+            }
+            topicStats[topic].total += 1;
+
+            if (!selected) {
+                // بدون پاسخ = اشتباه
+                wrongCount++;
+                topicStats[topic].wrong += 1;
+            } else {
+                const chosenIndex = parseInt(selected.value, 10);
+                if (chosenIndex === q.correctIndex) {
+                    correctCount++;
+                } else {
+                    wrongCount++;
+                    topicStats[topic].wrong += 1;
+                }
+            }
+        });
+
+        const total = currentTestQuestions.length;
+        const scorePercent = Math.round((correctCount / total) * 100);
+
+        // تعیین قبولی/ردی
+        const isPass = wrongCount <= MAX_WRONG_FOR_PASS;
+
+        let scoreText = `شما از ${total} سؤال، تعداد ${correctCount} پاسخ صحیح و ${wrongCount} پاسخ غلط داشته‌اید. `;
+        scoreText += `درصد موفقیت شما: ${scorePercent}٪. `;
+        if (isPass) {
+            scoreText += `\n\nنتیجه: `;
+            scoreText += `<span class="status-pass">قبول هستید (در این سطح)</span>.`;
+        } else {
+            scoreText += `\n\nنتیجه: `;
+            scoreText += `<span class="status-fail">در این تست قبول نشدید</span>.`;
+        }
+        scoreSummary.innerHTML = scoreText;
+
+        // تحلیل فصل‌ها / topic ها
+        topicFeedback.innerHTML = "";
+        const topics = Object.keys(topicStats);
+        if (topics.length > 0) {
+            const title = document.createElement("h3");
+            title.textContent = "روی کدام بخش‌های کتاب بیشتر تمرکز کنید؟";
+            topicFeedback.appendChild(title);
+
+            topics.forEach(topic => {
+                const stat = topicStats[topic];
+                const item = document.createElement("div");
+                item.className = "summary-item";
+                const wrong = stat.wrong;
+                const totalTopic = stat.total;
+
+                let levelText;
+                if (wrong === 0) {
+                    levelText = "وضعیت خوب";
+                } else if (wrong === 1) {
+                    levelText = "نیاز به مرور کوتاه";
+                } else {
+                    levelText = "نیاز به تمرکز بیشتر";
+                }
+
+                item.innerHTML = `<span class="badge badge-topic">${topic}</span> - ${wrong} غلط از ${totalTopic} سؤال (${levelText})`;
+                topicFeedback.appendChild(item);
+            });
+        }
+
+        // پیشنهاد یادگیری بر اساس نقاط ضعف
+        const weakTopics = topics
+            .map(topic => ({
+                topic,
+                wrong: topicStats[topic].wrong,
+                total: topicStats[topic].total
+            }))
+            .filter(t => t.wrong > 0)
+            .sort((a, b) => b.wrong - a.wrong);
+
+        let suggestionText = "";
+        if (weakTopics.length === 0) {
+            suggestionText =
+                "عملکرد شما در این تست بسیار خوب بوده است. پیشنهاد می‌شود برای تثبیت مطالب، یک مرور سریع روی خلاصه فصل‌ها داشته باشید و تست‌های بیشتری حل کنید.";
+        } else {
+            const topTopic = weakTopics[0];
+            suggestionText =
+                `پیشنهاد می‌شود ابتدا فصل/بخش «${topTopic.topic}» را از کتاب با دقت مرور کنید، ` +
+                "مثال‌ها و شکل‌ها را دوباره ببینید و سپس دوباره از خودتان تست بگیرید. " +
+                "بعد از آن، به سراغ بخش‌های دیگری که در آن‌ها ۱ یا چند اشتباه داشتید بروید و سؤالات بیشتری از آن‌ها حل کنید.";
+        }
+
+        learningSuggestion.textContent = suggestionText;
+    }
+
+    function show(el) { el.classList.remove("hidden"); }
+    function hide(el) { el.classList.add("hidden"); }
+
+    function startTest() {
+        hide(welcomeCard);
+        hide(resultCard);
+        show(quizCard);
+        renderQuiz();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showResult() {
+        hide(quizCard);
+        show(resultCard);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // رویدادها
+    startBtn.addEventListener("click", startTest);
+    restartBtn.addEventListener("click", () => {
+        renderQuiz();
+    });
+    retryBtn.addEventListener("click", startTest);
+
+    submitBtn.addEventListener("click", () => {
+        evaluateQuiz();
+        showResult();
+    });
+
+    // تنظیم سال فوتر
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
