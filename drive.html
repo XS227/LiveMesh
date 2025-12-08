@@ -2,8 +2,9 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>drive.seataei.com - ارزیابی سطح رانندگی تئوری</title>
+    <title>DriveLab | آموزشگاه آنلاین رانندگی</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         body {
             font-family: sans-serif;
@@ -12,7 +13,7 @@
             padding: 0;
         }
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 24px 16px 40px;
         }
@@ -43,15 +44,8 @@
         .btn-secondary {
             background: #eeeeee;
         }
-        .question {
-            margin-bottom: 18px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eee;
-        }
-        .options label {
-            display: block;
-            margin-bottom: 4px;
-            cursor: pointer;
+        .btn-secondary:hover {
+            background: #e0e0e0;
         }
         .hidden {
             display: none;
@@ -60,12 +54,15 @@
             display: inline-block;
             padding: 2px 8px;
             border-radius: 999px;
-            font-size: 12px;
+            font-size: 11px;
             margin-right: 4px;
             background: #e0f2f1;
         }
         .badge-topic {
             background: #fff3cd;
+        }
+        .badge-stage {
+            background: #e3f2fd;
         }
         .status-pass {
             color: #2e7d32;
@@ -75,8 +72,56 @@
             color: #c62828;
             font-weight: bold;
         }
-        .summary-item {
+        .question-box {
+            margin-top: 12px;
+        }
+        .options label {
+            display: block;
             margin-bottom: 4px;
+            cursor: pointer;
+        }
+        .timer-wrapper {
+            margin: 12px 0;
+        }
+        .timer-text {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eeeeee;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-inner {
+            height: 100%;
+            width: 100%;
+            background: #1976d2;
+            transition: width 0.4s linear;
+        }
+        .wrong-question {
+            border-radius: 10px;
+            border: 1px solid #eee;
+            padding: 10px 12px;
+            margin-top: 10px;
+        }
+        .wrong-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .wrong-header-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .explanation-box {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px dashed #ddd;
+            font-size: 13px;
+            line-height: 1.6;
         }
         .footer {
             margin-top: 30px;
@@ -84,58 +129,97 @@
             color: #888;
             text-align: center;
         }
+
+        @media (max-width: 600px) {
+            .wrong-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="container">
+
+    <!-- کارت خوش‌آمد -->
     <div class="card" id="welcome-card">
-        <h1>به drive.seataei.com خوش آمدید</h1>
+        <h1>DriveLab – آموزشگاه آنلاین رانندگی</h1>
         <p>
-            این صفحه برای ارزیابی سریع سطح شما در آزمون تئوری رانندگی طراحی شده است.
-            چند سؤال به صورت تصادفی از بانک سؤالات انتخاب می‌شود و بر اساس پاسخ‌های شما:
+            این آزمون آنلاین برای نسل جدید طراحی شده تا سریع، هوشمند و شخصی‌سازی شده
+            سطح تئوری رانندگی شما را بسنجد.
         </p>
         <ul>
-            <li>تعداد پاسخ‌های غلط شما محاسبه می‌شود</li>
-            <li>مشخص می‌شود که قبول می‌شوید یا نه</li>
-            <li>به شما گفته می‌شود روی کدام فصل‌ها/بخش‌های کتاب بیشتر تمرکز کنید</li>
-            <li>یک پیشنهاد یادگیری شخصی‌سازی شده دریافت می‌کنید</li>
+            <li>مرحله اول: ۱۰ سؤال تصادفی از بانک سؤالات</li>
+            <li>مرحله دوم: سؤالات تمرکزی بر اساس اشتباه‌های مرحله اول</li>
+            <li>هر سؤال ۱ دقیقه زمان – با نوار پیشرفت زمان باقی‌مانده</li>
+            <li>در پایان، روی بخش‌های ضعیف‌تر تمرکز می‌کنی و برای هر سؤال غلط توضیح آموزشی می‌بینی</li>
         </ul>
         <button class="btn-primary" id="start-btn">شروع تست</button>
     </div>
 
+    <!-- کارت آزمون -->
     <div class="card hidden" id="quiz-card">
-        <h2>تست سطح رانندگی</h2>
-        <p id="quiz-info"></p>
-        <form id="quiz-form"></form>
-        <button class="btn-primary" id="submit-btn">ثبت پاسخ‌ها</button>
-        <button class="btn-secondary" id="restart-btn" style="margin-right:8px;">تست مجدد</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+            <h2 style="margin-bottom:0;">آزمون سطح رانندگی</h2>
+            <div>
+                <span class="badge badge-stage" id="stage-label"></span>
+                <span class="badge" id="question-counter"></span>
+            </div>
+        </div>
+
+        <p id="quiz-info" style="margin-top:8px;"></p>
+
+        <div class="timer-wrapper">
+            <div class="timer-text" id="timer-text"></div>
+            <div class="progress-bar">
+                <div class="progress-inner" id="progress-inner"></div>
+            </div>
+        </div>
+
+        <div id="question-area" class="question-box"></div>
+
+        <div style="margin-top: 16px;">
+            <button class="btn-primary" id="next-btn">ثبت پاسخ و سوال بعدی</button>
+            <button class="btn-secondary" id="skip-btn" style="margin-right:8px;">رد شدن از این سؤال</button>
+        </div>
     </div>
 
+    <!-- کارت نتیجه نهایی -->
     <div class="card hidden" id="result-card">
-        <h2>نتیجه ارزیابی</h2>
+        <h2>نتیجه ارزیابی شخصی</h2>
         <p id="score-summary"></p>
+
         <div id="topic-feedback"></div>
+
         <h3 style="margin-top:16px;">پیشنهاد یادگیری برای شما</h3>
         <p id="learning-suggestion"></p>
-        <button class="btn-secondary" id="retry-btn">انجام دوباره تست</button>
+
+        <h3 style="margin-top:16px;">سؤال‌هایی که نیاز به یادگیری دارند</h3>
+        <div id="wrong-questions-list"></div>
+
+        <button class="btn-secondary" id="retry-btn" style="margin-top:16px;">انجام دوباره تست از ابتدا</button>
     </div>
 
     <div class="footer">
-        &copy; <span id="year"></span> drive.seataei.com - نسخه آزمایشی ارزیابی سطح
+        &copy; <span id="year"></span> DriveLab – آموزشگاه آنلاین رانندگی
     </div>
 </div>
 
 <script>
-    // ۱) اینجا بانک سؤالات را تعریف می‌کنی
-    // هر سؤال:
-    //  text: متن سؤال
-    //  options: گزینه‌ها
-    //  correctIndex: شماره گزینه درست (از 0 شروع می‌شود) -> همان‌هایی که در PDF زرد کرده‌ای
-    //  topic: فصل یا بخش کتاب (برای تحلیل نقاط ضعف)
-    const questions = [
+    /***********************
+     * ۱) بانک سؤالات
+     * این بخش را با سؤالات واقعی کتاب خودت پر کن
+     * هر سؤال:
+     *  - text: متن سؤال
+     *  - options: آرایه گزینه‌ها
+     *  - correctIndex: شماره گزینه درست (۰،۱،۲،۳) – بر اساس جواب‌های زرد
+     *  - topic: نام فصل/بخش (برای تحلیل نقاط ضعف)
+     *  - explanation: توضیح آموزشی کوتاه
+     ***********************/
+    const allQuestions = [
         {
             id: 1,
-            text: "در تقاطع بدون چراغ و بدون تابلو، حق تقدم با کدام وسیله است؟",
+            text: "در تقاطع بدون چراغ و تابلو، حق تقدم با کدام وسیله است؟",
             options: [
                 "وسیله‌ای که از سمت چپ می‌آید",
                 "وسیله‌ای که از سمت راست می‌آید",
@@ -143,77 +227,90 @@
                 "وسیله نقلیه سنگین‌تر"
             ],
             correctIndex: 1,
-            topic: "حق تقدم و تقاطع‌ها"
+            topic: "حق تقدم و تقاطع‌ها",
+            explanation: "در تقاطع‌های هم‌عرض بدون تابلو و چراغ، همیشه وسیله‌ای که از سمت راست می‌آید حق تقدم دارد، مگر اینکه تابلو یا قانون خاصی خلاف این را مشخص کرده باشد."
         },
         {
             id: 2,
-            text: "رعایت فاصله طولی مناسب با خودرو جلویی در کدام شرایط مهم‌تر است؟",
+            text: "در راه‌های لغزنده (باران، برف، یخ‌زدگی) رعایت کدام مورد مهم‌تر است؟",
             options: [
-                "فقط در هوای صاف",
-                "فقط در شب",
-                "در باران، برف و جاده‌های لغزنده",
-                "در سرعت‌های زیر ۳۰ کیلومتر"
+                "کم کردن فاصله طولی با خودروی جلویی",
+                "افزایش فاصله طولی با خودروی جلویی",
+                "حرکت روی شانه خاکی",
+                "خاموش کردن چراغ‌ها"
             ],
-            correctIndex: 2,
-            topic: "ایمنی و فاصله طولی"
+            correctIndex: 1,
+            topic: "ایمنی و فاصله طولی",
+            explanation: "در جاده‌های لغزنده، مسافت ترمزگیری بیشتر می‌شود؛ بنابراین باید فاصله طولی را زیاد کنید تا فرصت کافی برای واکنش داشته باشید."
         },
         {
             id: 3,
-            text: "علامت مثلث قرمز حاشیه‌دار نشان‌دهنده چیست؟",
+            text: "تابلوی مثلث قرمز حاشیه‌دار معمولاً چه نوع تابلویی است؟",
             options: [
-                "تابلوی راهنما",
-                "تابلوی اخطاری",
-                "تابلوی بازدارنده",
-                "تابلوی محلی"
+                "راهنمایی",
+                "اخطاری",
+                "بازدارنده",
+                "محلی"
             ],
             correctIndex: 1,
-            topic: "تابلوهای راهنمایی و رانندگی"
-        },
-        {
-            id: 4,
-            text: "استفاده از کمربند ایمنی برای چه کسانی الزامی است؟",
-            options: [
-                "فقط راننده",
-                "راننده و سرنشین جلو",
-                "تمام سرنشینان خودرو",
-                "فقط در جاده‌های بین‌شهری"
-            ],
-            correctIndex: 2,
-            topic: "ایمنی سرنشینان"
-        },
-        {
-            id: 5,
-            text: "در کدام حالت سبقت گرفتن به طور کلی ممنوع است؟",
-            options: [
-                "۲۵۰ متر مانده به پیچ‌های تند",
-                "در جاده‌های دوطرفه",
-                "در روزهای بارانی",
-                "وقتی خودروی پشت سر به شما نزدیک است"
-            ],
-            correctIndex: 0,
-            topic: "سبقت و سبقت ممنوع"
+            topic: "تابلوهای راهنمایی و رانندگی",
+            explanation: "تابلوهای اخطاری معمولاً به شکل مثلث قرمز هستند و راننده را از خطرات و شرایط خاص پیش رو آگاه می‌کنند."
         }
-        // اینجا می‌توانی بقیه سؤالات کتاب را اضافه کنی
+        // TODO: بقیه سؤالات کتاب را اینجا اضافه کن
+        // {
+        //   id: 4,
+        //   text: "...",
+        //   options: ["...", "...", "...", "..."],
+        //   correctIndex: 2,
+        //   topic: "نام فصل",
+        //   explanation: "توضیح کوتاه آموزشی..."
+        // }
     ];
 
-    // تنظیمات کلی تست
-    const NUM_QUESTIONS_PER_TEST = 5;      // چند سؤال در هر تست
-    const MAX_WRONG_FOR_PASS = 1;          // حداکثر چند غلط برای قبولی
-    const welcomeCard = document.getElementById("welcome-card");
-    const quizCard = document.getElementById("quiz-card");
-    const resultCard = document.getElementById("result-card");
-    const quizForm = document.getElementById("quiz-form");
-    const quizInfo = document.getElementById("quiz-info");
-    const startBtn = document.getElementById("start-btn");
-    const submitBtn = document.getElementById("submit-btn");
-    const restartBtn = document.getElementById("restart-btn");
-    const retryBtn = document.getElementById("retry-btn");
-    const scoreSummary = document.getElementById("score-summary");
+    /***********************
+     * ۲) تنظیمات آزمون
+     ***********************/
+    const QUESTIONS_STAGE1 = 10;     // مرحله اول: ۱۰ سؤال
+    const QUESTIONS_STAGE2 = 5;      // مرحله دوم: ۵ سؤال تمرکزی (در صورت وجود)
+    const SECONDS_PER_QUESTION = 60; // هر سؤال ۱ دقیقه
+
+    const welcomeCard   = document.getElementById("welcome-card");
+    const quizCard      = document.getElementById("quiz-card");
+    const resultCard    = document.getElementById("result-card");
+    const startBtn      = document.getElementById("start-btn");
+    const retryBtn      = document.getElementById("retry-btn");
+    const nextBtn       = document.getElementById("next-btn");
+    const skipBtn       = document.getElementById("skip-btn");
+
+    const stageLabel    = document.getElementById("stage-label");
+    const questionCounter = document.getElementById("question-counter");
+    const quizInfo      = document.getElementById("quiz-info");
+    const timerText     = document.getElementById("timer-text");
+    const progressInner = document.getElementById("progress-inner");
+    const questionArea  = document.getElementById("question-area");
+
+    const scoreSummary  = document.getElementById("score-summary");
     const topicFeedback = document.getElementById("topic-feedback");
     const learningSuggestion = document.getElementById("learning-suggestion");
+    const wrongQuestionsList = document.getElementById("wrong-questions-list");
 
-    let currentTestQuestions = [];
+    let stage = 1;
+    let stage1Questions = [];
+    let stage2Questions = [];
+    let currentStageQuestions = [];
+    let currentIndex = 0;
 
+    let totalStageSeconds = 0;
+    let remainingStageSeconds = 0;
+    let remainingQuestionSeconds = 0;
+    let timerInterval = null;
+
+    // answers: {question, selectedIndex, isCorrect, stage}
+    let answers = [];
+
+    /***********************
+     * ۳) توابع کمکی
+     ***********************/
     function shuffle(array) {
         return array
             .map(v => ({ v, sort: Math.random() }))
@@ -221,104 +318,295 @@
             .map(({ v }) => v);
     }
 
-    function pickRandomQuestions() {
-        const shuffled = shuffle(questions);
-        return shuffled.slice(0, Math.min(NUM_QUESTIONS_PER_TEST, shuffled.length));
+    function pad(num) {
+        return num < 10 ? "0" + num : num.toString();
     }
 
-    function renderQuiz() {
-        currentTestQuestions = pickRandomQuestions();
-        quizForm.innerHTML = "";
+    function formatSeconds(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return pad(m) + ":" + pad(s);
+    }
 
-        quizInfo.textContent = `در این تست ${currentTestQuestions.length} سؤال از بین بانک سؤالات به صورت تصادفی انتخاب شده است.`;
+    function show(el) { el.classList.remove("hidden"); }
+    function hide(el) { el.classList.add("hidden"); }
 
-        currentTestQuestions.forEach((q, index) => {
-            const qDiv = document.createElement("div");
-            qDiv.className = "question";
+    function clearTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+    }
 
-            const qTitle = document.createElement("h3");
-            qTitle.textContent = `سؤال ${index + 1}: ${q.text}`;
-            qDiv.appendChild(qTitle);
+    /***********************
+     * ۴) شروع مرحله‌ها
+     ***********************/
+    function startStage1() {
+        stage = 1;
+        answers = [];
+        stage1Questions = shuffle(allQuestions).slice(0, Math.min(QUESTIONS_STAGE1, allQuestions.length));
+        stage2Questions = [];
+        currentStageQuestions = stage1Questions;
+        currentIndex = 0;
 
-            const topicBadge = document.createElement("span");
-            topicBadge.className = "badge badge-topic";
-            topicBadge.textContent = q.topic;
-            qDiv.appendChild(topicBadge);
+        totalStageSeconds = currentStageQuestions.length * SECONDS_PER_QUESTION;
+        remainingStageSeconds = totalStageSeconds;
+        remainingQuestionSeconds = SECONDS_PER_QUESTION;
 
-            const optionsDiv = document.createElement("div");
-            optionsDiv.className = "options";
+        stageLabel.textContent = "مرحله ۱ از ۲";
+        quizInfo.textContent   = `از بین بانک سؤالات، ${currentStageQuestions.length} سؤال تصادفی برای مرحله اول انتخاب شده است.`;
 
-            q.options.forEach((opt, optIndex) => {
-                const id = `q${q.id}_opt${optIndex}`;
-                const label = document.createElement("label");
-                const input = document.createElement("input");
-                input.type = "radio";
-                input.name = `q_${q.id}`;
-                input.value = optIndex.toString();
-                input.id = id;
+        hide(welcomeCard);
+        hide(resultCard);
+        show(quizCard);
 
-                label.setAttribute("for", id);
-                label.appendChild(input);
-                label.appendChild(document.createTextNode(" " + opt));
-                optionsDiv.appendChild(label);
-            });
+        renderCurrentQuestion();
+        startTimer();
+    }
 
-            qDiv.appendChild(optionsDiv);
-            quizForm.appendChild(qDiv);
+    function startStage2() {
+        stage = 2;
+        currentStageQuestions = stage2Questions;
+        currentIndex = 0;
+
+        totalStageSeconds = currentStageQuestions.length * SECONDS_PER_QUESTION;
+        remainingStageSeconds = totalStageSeconds;
+        remainingQuestionSeconds = SECONDS_PER_QUESTION;
+
+        stageLabel.textContent = "مرحله ۲ از ۲";
+        quizInfo.textContent   = `این مرحله بر اساس نقاط ضعف مرحله اول طراحی شده و شامل ${currentStageQuestions.length} سؤال تمرکزی است.`;
+
+        show(quizCard);
+        renderCurrentQuestion();
+        startTimer();
+    }
+
+    /***********************
+     * ۵) رندر سؤال فعلی
+     ***********************/
+    function renderCurrentQuestion() {
+        clearTimer(); // برای اینکه زمان سؤال قبلی روی این تأثیر نگذارد
+        remainingQuestionSeconds = SECONDS_PER_QUESTION;
+
+        const totalQuestions = currentStageQuestions.length;
+        const q = currentStageQuestions[currentIndex];
+
+        questionCounter.textContent = `سؤال ${currentIndex + 1} از ${totalQuestions}`;
+
+        const htmlParts = [];
+        htmlParts.push(`<h3 style="margin-bottom:6px;">${q.text}</h3>`);
+        htmlParts.push(`<span class="badge badge-topic">${q.topic}</span>`);
+
+        htmlParts.push('<div class="options" style="margin-top:10px;">');
+        q.options.forEach((opt, idx) => {
+            const inputId = `q_${q.id}_opt${idx}`;
+            htmlParts.push(`
+                <label for="${inputId}">
+                    <input type="radio" name="current-question" id="${inputId}" value="${idx}">
+                    ${opt}
+                </label>
+            `);
         });
+        htmlParts.push("</div>");
+
+        questionArea.innerHTML = htmlParts.join("");
+        updateTimerUI(); // برای مقدار اولیه
+        startTimer();
     }
 
-    function evaluateQuiz() {
-        let correctCount = 0;
-        let wrongCount = 0;
+    /***********************
+     * ۶) تایمر و Progress Bar
+     ***********************/
+    function startTimer() {
+        clearTimer();
+        timerInterval = setInterval(() => {
+            remainingQuestionSeconds = Math.max(remainingQuestionSeconds - 1, 0);
+            remainingStageSeconds = Math.max(remainingStageSeconds - 1, 0);
+            updateTimerUI();
 
-        // شمارش اشتباه‌ها بر اساس topic
-        const topicStats = {}; // topic -> { wrong: number, total: number }
+            // اگر زمان کل مرحله تمام شد
+            if (remainingStageSeconds === 0) {
+                clearTimer();
+                // همه‌ی سؤالات باقی‌مانده به‌عنوان بدون پاسخ (غلط) ثبت می‌شوند
+                autoFinishStageDueToTime();
+            } else if (remainingQuestionSeconds === 0) {
+                // زمان این سؤال تمام شد => مثل skip
+                handleAnswer(null); // بدون انتخاب
+            }
+        }, 1000);
+    }
 
-        currentTestQuestions.forEach(q => {
-            const selected = Array.from(
-                document.querySelectorAll(`input[name="q_${q.id}"]`)
-            ).find(input => input.checked);
+    function updateTimerUI() {
+        timerText.textContent = `زمان باقی‌مانده این مرحله: ${formatSeconds(remainingStageSeconds)} (حداکثر ۱ دقیقه برای هر سؤال)`;
+        const percent = totalStageSeconds > 0 ? (remainingStageSeconds / totalStageSeconds) * 100 : 0;
+        progressInner.style.width = percent + "%";
+    }
 
-            const topic = q.topic;
+    /***********************
+     * ۷) ثبت پاسخ و رفتن به سؤال بعدی
+     ***********************/
+    function handleNextButton() {
+        const selected = document.querySelector('input[name="current-question"]:checked');
+        if (!selected) {
+            // اگر چیزی انتخاب نشده، می‌توانی قبل از رفتن، هشدار بدهی یا مثل skip رفتار کنی
+            handleAnswer(null);
+        } else {
+            handleAnswer(parseInt(selected.value, 10));
+        }
+    }
+
+    function handleSkipButton() {
+        handleAnswer(null);
+    }
+
+    function handleAnswer(selectedIndex) {
+        clearTimer();
+
+        const q = currentStageQuestions[currentIndex];
+        const isCorrect = (selectedIndex !== null && selectedIndex === q.correctIndex);
+
+        answers.push({
+            question: q,
+            selectedIndex: selectedIndex,
+            isCorrect: isCorrect,
+            stage: stage
+        });
+
+        // رفتن به سؤال بعدی یا پایان مرحله
+        currentIndex++;
+        if (currentIndex < currentStageQuestions.length && remainingStageSeconds > 0) {
+            renderCurrentQuestion();
+        } else {
+            // پایان این مرحله
+            if (stage === 1) {
+                prepareStage2FromStage1();
+            } else {
+                finishAllStages();
+            }
+        }
+    }
+
+    function autoFinishStageDueToTime() {
+        // برای سؤال فعلی که ممکن است هنوز پاسخ نداشته باشد
+        const q = currentStageQuestions[currentIndex];
+        answers.push({
+            question: q,
+            selectedIndex: null,
+            isCorrect: false,
+            stage: stage
+        });
+
+        // بقیه‌ی سؤالات باقیمانده هم بدون پاسخ فرض می‌شوند
+        for (let i = currentIndex + 1; i < currentStageQuestions.length; i++) {
+            const qq = currentStageQuestions[i];
+            answers.push({
+                question: qq,
+                selectedIndex: null,
+                isCorrect: false,
+                stage: stage
+            });
+        }
+
+        if (stage === 1) {
+            prepareStage2FromStage1();
+        } else {
+            finishAllStages();
+        }
+    }
+
+    /***********************
+     * ۸) ساخت مرحله دوم براساس اشتباه‌های مرحله اول
+     ***********************/
+    function prepareStage2FromStage1() {
+        // محاسبه اشتباه‌ها براساس topic
+        const stage1Answers = answers.filter(a => a.stage === 1);
+        const topicWrongCount = {};
+        stage1Answers.forEach(a => {
+            const topic = a.question.topic;
+            if (!topicWrongCount[topic]) {
+                topicWrongCount[topic] = 0;
+            }
+            if (!a.isCorrect) {
+                topicWrongCount[topic] += 1;
+            }
+        });
+
+        // انتخاب topicهایی که حداقل ۱ اشتباه دارند
+        const weakTopics = Object.keys(topicWrongCount)
+            .filter(topic => topicWrongCount[topic] > 0)
+            .sort((a, b) => topicWrongCount[b] - topicWrongCount[a]);
+
+        // انتخاب سؤالات مرحله دوم از topicهای ضعیف
+        let candidateQuestions = [];
+        if (weakTopics.length > 0) {
+            const stage1Ids = new Set(stage1Questions.map(q => q.id));
+            candidateQuestions = allQuestions.filter(q =>
+                weakTopics.includes(q.topic) && !stage1Ids.has(q.id)
+            );
+        }
+
+        // اگر چیزی پیدا نشد، یا هیچ اشتباهی نداشت => مرحله دوم را حذف کن و مستقیم برو به نتیجه
+        if (candidateQuestions.length === 0) {
+            finishAllStages();
+            return;
+        }
+
+        stage2Questions = shuffle(candidateQuestions).slice(0, Math.min(QUESTIONS_STAGE2, candidateQuestions.length));
+
+        // اگر تعداد سؤالات مرحله دوم خیلی کم بود، می‌توانی با چند سؤال تصادفی دیگر پر کنی (اختیاری)
+        if (stage2Questions.length < QUESTIONS_STAGE2) {
+            const usedIds = new Set([...stage1Questions, ...stage2Questions].map(q => q.id));
+            const extra = shuffle(allQuestions.filter(q => !usedIds.has(q.id)))
+                .slice(0, QUESTIONS_STAGE2 - stage2Questions.length);
+            stage2Questions = stage2Questions.concat(extra);
+        }
+
+        // شروع مرحله دوم
+        if (stage2Questions.length > 0) {
+            startStage2();
+        } else {
+            finishAllStages();
+        }
+    }
+
+    /***********************
+     * ۹) محاسبه نتیجه نهایی و ساخت صفحه نتیجه
+     ***********************/
+    function finishAllStages() {
+        clearTimer();
+        hide(quizCard);
+        show(resultCard);
+
+        const totalQuestions = answers.length;
+        const correctCount  = answers.filter(a => a.isCorrect).length;
+        const wrongCount    = totalQuestions - correctCount;
+        const scorePercent  = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+
+        const MAX_WRONG_FOR_PASS = 1; // می‌توانی بر اساس سیاست خودت تغییر دهی
+        const isPass = wrongCount <= MAX_WRONG_FOR_PASS;
+
+        let scoreText = `در مجموع دو مرحله، از ${totalQuestions} سؤال، تعداد ${correctCount} پاسخ صحیح و ${wrongCount} پاسخ غلط داشته‌اید. `;
+        scoreText += `درصد موفقیت شما: ${scorePercent}٪. `;
+        scoreText += `<br><br>نتیجه کلی: `;
+        scoreText += isPass
+            ? `<span class="status-pass">در این سطح، قابل قبول هستید.</span>`
+            : `<span class="status-fail">برای قبولی نیاز به تمرین بیشتر دارید.</span>`;
+
+        scoreSummary.innerHTML = scoreText;
+
+        // تحلیل فصل‌ها / topicها
+        const topicStats = {};
+        answers.forEach(a => {
+            const topic = a.question.topic;
             if (!topicStats[topic]) {
                 topicStats[topic] = { wrong: 0, total: 0 };
             }
             topicStats[topic].total += 1;
-
-            if (!selected) {
-                // بدون پاسخ = اشتباه
-                wrongCount++;
+            if (!a.isCorrect) {
                 topicStats[topic].wrong += 1;
-            } else {
-                const chosenIndex = parseInt(selected.value, 10);
-                if (chosenIndex === q.correctIndex) {
-                    correctCount++;
-                } else {
-                    wrongCount++;
-                    topicStats[topic].wrong += 1;
-                }
             }
         });
 
-        const total = currentTestQuestions.length;
-        const scorePercent = Math.round((correctCount / total) * 100);
-
-        // تعیین قبولی/ردی
-        const isPass = wrongCount <= MAX_WRONG_FOR_PASS;
-
-        let scoreText = `شما از ${total} سؤال، تعداد ${correctCount} پاسخ صحیح و ${wrongCount} پاسخ غلط داشته‌اید. `;
-        scoreText += `درصد موفقیت شما: ${scorePercent}٪. `;
-        if (isPass) {
-            scoreText += `\n\nنتیجه: `;
-            scoreText += `<span class="status-pass">قبول هستید (در این سطح)</span>.`;
-        } else {
-            scoreText += `\n\nنتیجه: `;
-            scoreText += `<span class="status-fail">در این تست قبول نشدید</span>.`;
-        }
-        scoreSummary.innerHTML = scoreText;
-
-        // تحلیل فصل‌ها / topic ها
         topicFeedback.innerHTML = "";
         const topics = Object.keys(topicStats);
         if (topics.length > 0) {
@@ -328,27 +616,22 @@
 
             topics.forEach(topic => {
                 const stat = topicStats[topic];
-                const item = document.createElement("div");
-                item.className = "summary-item";
                 const wrong = stat.wrong;
                 const totalTopic = stat.total;
 
                 let levelText;
-                if (wrong === 0) {
-                    levelText = "وضعیت خوب";
-                } else if (wrong === 1) {
-                    levelText = "نیاز به مرور کوتاه";
-                } else {
-                    levelText = "نیاز به تمرکز بیشتر";
-                }
+                if (wrong === 0) levelText = "وضعیت خوب";
+                else if (wrong === 1) levelText = "نیاز به مرور کوتاه";
+                else levelText = "نیاز به تمرکز بیشتر";
 
+                const item = document.createElement("div");
                 item.innerHTML = `<span class="badge badge-topic">${topic}</span> - ${wrong} غلط از ${totalTopic} سؤال (${levelText})`;
                 topicFeedback.appendChild(item);
             });
         }
 
-        // پیشنهاد یادگیری بر اساس نقاط ضعف
-        const weakTopics = topics
+        // پیشنهاد یادگیری
+        const weakTopicsSorted = topics
             .map(topic => ({
                 topic,
                 wrong: topicStats[topic].wrong,
@@ -358,50 +641,75 @@
             .sort((a, b) => b.wrong - a.wrong);
 
         let suggestionText = "";
-        if (weakTopics.length === 0) {
+        if (weakTopicsSorted.length === 0) {
             suggestionText =
-                "عملکرد شما در این تست بسیار خوب بوده است. پیشنهاد می‌شود برای تثبیت مطالب، یک مرور سریع روی خلاصه فصل‌ها داشته باشید و تست‌های بیشتری حل کنید.";
+                "عملکرد شما بسیار خوب بوده است. برای تثبیت یادگیری، فصل‌ها را مرور کنید و چند سری تست کامل دیگر بزنید.";
         } else {
-            const topTopic = weakTopics[0];
+            const topTopic = weakTopicsSorted[0];
             suggestionText =
-                `پیشنهاد می‌شود ابتدا فصل/بخش «${topTopic.topic}» را از کتاب با دقت مرور کنید، ` +
-                "مثال‌ها و شکل‌ها را دوباره ببینید و سپس دوباره از خودتان تست بگیرید. " +
-                "بعد از آن، به سراغ بخش‌های دیگری که در آن‌ها ۱ یا چند اشتباه داشتید بروید و سؤالات بیشتری از آن‌ها حل کنید.";
+                `پیشنهاد می‌شود ابتدا فصل/بخش «${topTopic.topic}» را با دقت از کتاب مطالعه کنید، ` +
+                "مثال‌ها و شکل‌های آن را دوباره ببینید و سپس تست‌های بیشتری از همین بخش حل کنید. " +
+                "بعد از آن، به سراغ سایر بخش‌هایی بروید که در آن‌ها اشتباه بیشتری داشته‌اید.";
+        }
+        learningSuggestion.textContent = suggestionText;
+
+        // ساخت لیست سؤال‌های غلط + دکمه «توضیح / یادگیری»
+        wrongQuestionsList.innerHTML = "";
+        const wrongAnswers = answers.filter(a => !a.isCorrect);
+        if (wrongAnswers.length === 0) {
+            wrongQuestionsList.textContent = "شما در این آزمون هیچ سؤال غلطی نداشتید.";
+        } else {
+            wrongAnswers.forEach((a, idx) => {
+                const q = a.question;
+                const container = document.createElement("div");
+                container.className = "wrong-question";
+
+                const header = document.createElement("div");
+                header.className = "wrong-header";
+
+                const title = document.createElement("div");
+                title.className = "wrong-header-title";
+                title.innerHTML = `سؤال ${idx + 1}: ${q.text}`;
+
+                const btn = document.createElement("button");
+                btn.className = "btn-secondary";
+                btn.textContent = "توضیح / یادگیری";
+                btn.type = "button";
+
+                const explanationBox = document.createElement("div");
+                explanationBox.className = "explanation-box hidden";
+
+                const correctOptionText = q.options[q.correctIndex] || "";
+                explanationBox.innerHTML = `
+                    <div><strong>پاسخ درست:</strong> ${correctOptionText}</div>
+                    <div style="margin-top:4px;"><strong>توضیح:</strong> ${q.explanation || "برای این سؤال هنوز توضیح ثبت نشده است."}</div>
+                `;
+
+                btn.addEventListener("click", () => {
+                    explanationBox.classList.toggle("hidden");
+                });
+
+                header.appendChild(title);
+                header.appendChild(btn);
+                container.appendChild(header);
+                container.appendChild(explanationBox);
+
+                wrongQuestionsList.appendChild(container);
+            });
         }
 
-        learningSuggestion.textContent = suggestionText;
-    }
-
-    function show(el) { el.classList.remove("hidden"); }
-    function hide(el) { el.classList.add("hidden"); }
-
-    function startTest() {
-        hide(welcomeCard);
-        hide(resultCard);
-        show(quizCard);
-        renderQuiz();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function showResult() {
-        hide(quizCard);
-        show(resultCard);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    /***********************
+     * ۱۰) رویدادها
+     ***********************/
+    startBtn.addEventListener("click", startStage1);
+    retryBtn.addEventListener("click", startStage1);
+    nextBtn.addEventListener("click", handleNextButton);
+    skipBtn.addEventListener("click", handleSkipButton);
 
-    // رویدادها
-    startBtn.addEventListener("click", startTest);
-    restartBtn.addEventListener("click", () => {
-        renderQuiz();
-    });
-    retryBtn.addEventListener("click", startTest);
-
-    submitBtn.addEventListener("click", () => {
-        evaluateQuiz();
-        showResult();
-    });
-
-    // تنظیم سال فوتر
+    // سال فوتر
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
