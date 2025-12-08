@@ -2,135 +2,375 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>DriveLab | آموزشگاه آنلاین رانندگی</title>
+    <title>DriveNext | آکادمی آنلاین رانندگی نسل Z</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top, #1e293b, #020617);
+            --card-bg: rgba(15,23,42,0.88);
+            --accent: #38bdf8;
+            --accent-soft: rgba(56,189,248,0.18);
+            --danger: #f97373;
+            --success: #4ade80;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: rgba(148,163,184,0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: sans-serif;
-            background: #f5f5f5;
             margin: 0;
             padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "IRANSans", sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
         }
+
         .container {
-            max-width: 960px;
+            max-width: 1040px;
             margin: 0 auto;
             padding: 24px 16px 40px;
         }
+
         .card {
-            background: #ffffff;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 18px;
             padding: 24px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             margin-top: 20px;
+            box-shadow:
+                0 18px 45px rgba(15,23,42,0.8),
+                0 0 0 1px rgba(148,163,184,0.2);
+            backdrop-filter: blur(22px);
         }
+
         h1, h2, h3 {
             margin-top: 0;
+            font-weight: 700;
         }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-top: 0;
+        }
+
+        ul {
+            margin-top: 8px;
+            padding-right: 22px;
+            color: var(--text-muted);
+        }
+
+        .brand-title {
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .pill {
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 0.78rem;
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
+        }
+
         button {
             border: none;
-            border-radius: 8px;
+            border-radius: 999px;
             padding: 10px 18px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
+
         .btn-primary {
-            background: #1976d2;
-            color: #fff;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: #0f172a;
+            box-shadow: 0 12px 25px rgba(56,189,248,0.4);
         }
+
         .btn-primary:hover {
-            background: #125ca3;
+            filter: brightness(1.07);
         }
+
         .btn-secondary {
-            background: #eeeeee;
+            background: rgba(15,23,42,0.85);
+            color: var(--text-main);
+            border: 1px solid var(--border-soft);
         }
+
         .btn-secondary:hover {
-            background: #e0e0e0;
+            background: rgba(15,23,42,0.95);
         }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px dashed var(--border-soft);
+        }
+
         .hidden {
             display: none;
         }
+
         .badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             padding: 2px 8px;
             border-radius: 999px;
-            font-size: 11px;
-            margin-right: 4px;
-            background: #e0f2f1;
+            font-size: 0.72rem;
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
         }
+
         .badge-topic {
-            background: #fff3cd;
+            background: rgba(250,204,21,0.08);
+            border-color: rgba(250,204,21,0.4);
+            color: #facc15;
         }
-        .badge-stage {
-            background: #e3f2fd;
+
+        .badge-soft {
+            background: rgba(56,189,248,0.1);
+            color: var(--accent);
+            border-color: rgba(56,189,248,0.4);
         }
+
         .status-pass {
-            color: #2e7d32;
-            font-weight: bold;
+            color: var(--success);
+            font-weight: 600;
         }
+
         .status-fail {
-            color: #c62828;
-            font-weight: bold;
+            color: var(--danger);
+            font-weight: 600;
         }
+
         .question-box {
             margin-top: 12px;
         }
+
         .options label {
-            display: block;
-            margin-bottom: 4px;
-            cursor: pointer;
-        }
-        .timer-wrapper {
-            margin: 12px 0;
-        }
-        .timer-text {
-            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
             margin-bottom: 6px;
+            cursor: pointer;
+            padding: 7px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(148,163,184,0.22);
+            transition: background 0.15s, border-color 0.15s, transform 0.05s;
         }
+
+        .options label:hover {
+            background: rgba(15,23,42,0.9);
+            border-color: var(--accent-soft);
+            transform: translateY(-1px);
+        }
+
+        .options input[type="radio"] {
+            margin-top: 3px;
+            accent-color: var(--accent);
+        }
+
+        .timer-wrapper {
+            margin: 14px 0;
+        }
+
+        .timer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .timer-text-strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
         .progress-bar {
             width: 100%;
-            height: 10px;
-            background: #eeeeee;
+            height: 9px;
+            background: rgba(15,23,42,0.9);
             border-radius: 999px;
             overflow: hidden;
+            margin-top: 6px;
+            border: 1px solid rgba(30,64,175,0.5);
         }
+
         .progress-inner {
             height: 100%;
             width: 100%;
-            background: #1976d2;
-            transition: width 0.4s linear;
+            background: linear-gradient(90deg, #22c55e, #eab308, #f97316, #ef4444);
+            background-size: 200% 100%;
+            animation: gradientShift 12s ease infinite;
+            transform-origin: right center;
         }
+
+        @keyframes gradientShift {
+            0%   { background-position: 0%   50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0%   50%; }
+        }
+
         .wrong-question {
-            border-radius: 10px;
-            border: 1px solid #eee;
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
             padding: 10px 12px;
             margin-top: 10px;
+            background: rgba(15,23,42,0.9);
         }
+
         .wrong-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 8px;
         }
+
         .wrong-header-title {
-            font-size: 14px;
+            font-size: 0.9rem;
             font-weight: 600;
         }
+
         .explanation-box {
             margin-top: 8px;
             padding-top: 6px;
-            border-top: 1px dashed #ddd;
-            font-size: 13px;
-            line-height: 1.6;
+            border-top: 1px dashed rgba(148,163,184,0.4);
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--text-muted);
         }
+
+        .summary-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .summary-chip {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.5);
+            font-size: 0.8rem;
+        }
+
+        .summary-chip strong {
+            color: var(--accent);
+        }
+
+        .topics-list .topic-item {
+            margin-bottom: 4px;
+            font-size: 0.86rem;
+        }
+
+        .topics-list .topic-item span {
+            color: var(--text-muted);
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .price-tag small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.8rem;
+        }
+
+        .form-field label {
+            color: var(--text-muted);
+        }
+
+        .form-field input {
+            background: rgba(15,23,42,0.9);
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            padding: 8px 10px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .form-field input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+        }
+
+        .error-text {
+            color: var(--danger);
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+
+        .plan-box {
+            margin-top: 14px;
+            padding: 12px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(34,197,94,0.4);
+            background: rgba(22,163,74,0.05);
+            font-size: 0.86rem;
+        }
+
+        .plan-box ul {
+            margin: 6px 0 0;
+        }
+
         .footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #888;
+            margin-top: 32px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
             text-align: center;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 720px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
             .wrong-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -141,36 +381,51 @@
 <body>
 <div class="container">
 
-    <!-- کارت خوش‌آمد -->
+    <!-- خوش‌آمد -->
     <div class="card" id="welcome-card">
-        <h1>DriveLab – آموزشگاه آنلاین رانندگی</h1>
+        <div class="brand-title">DRIVENEXT · ONLINE DRIVING ACADEMY</div>
+        <h1>آزمون آیین‌نامه با طعم نسل Z</h1>
         <p>
-            این آزمون آنلاین برای نسل جدید طراحی شده تا سریع، هوشمند و شخصی‌سازی شده
-            سطح تئوری رانندگی شما را بسنجد.
+            اینجا می‌توانی سطح واقعی خودت را در <strong>آیین‌نامه راهنمایی و رانندگی ایران</strong> بسنجی؛
+            بر اساس نتیجه، یک برنامه یادگیری هوشمند برایت ساخته می‌شود تا دقیقاً همان جاهایی را تقویت کنی که ضعف داری.
         </p>
         <ul>
-            <li>مرحله اول: ۱۰ سؤال تصادفی از بانک سؤالات</li>
-            <li>مرحله دوم: سؤالات تمرکزی بر اساس اشتباه‌های مرحله اول</li>
-            <li>هر سؤال ۱ دقیقه زمان – با نوار پیشرفت زمان باقی‌مانده</li>
-            <li>در پایان، روی بخش‌های ضعیف‌تر تمرکز می‌کنی و برای هر سؤال غلط توضیح آموزشی می‌بینی</li>
+            <li>۱۰ سؤال تستی مطابق منطق کتاب و قوانین روز ایران</li>
+            <li>برای هر سؤال ۱ دقیقه زمان + نوار پیشرفت کل آزمون</li>
+            <li>تحلیل فصل‌ها و نمایش سؤالات غلط با جواب و توضیح آموزشی</li>
+            <li>امکان فعال‌سازی پکیج یادگیری هوشمند فقط با ۲۲۷,۰۰۰ تومان</li>
         </ul>
-        <button class="btn-primary" id="start-btn">شروع تست</button>
+
+        <div class="pill-row">
+            <div class="pill">بر اساس آیین‌نامه و مقررات رسمی</div>
+            <div class="pill">تحلیل هوشمند نقاط ضعف</div>
+            <div class="pill">مخصوص هنرجویان پرمشغله</div>
+        </div>
+
+        <div style="margin-top:18px; display:flex; flex-wrap:wrap; gap:10px;">
+            <button class="btn-primary" id="start-btn">شروع آزمون سطح</button>
+            <button class="btn-ghost" type="button">نمایش دمو (به‌زودی)</button>
+        </div>
     </div>
 
-    <!-- کارت آزمون -->
+    <!-- آزمون -->
     <div class="card hidden" id="quiz-card">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-            <h2 style="margin-bottom:0;">آزمون سطح رانندگی</h2>
             <div>
-                <span class="badge badge-stage" id="stage-label"></span>
+                <span class="badge badge-soft">آزمون سطح اولیه</span>
+                <h2 style="margin-bottom:4px; margin-top:6px;">سؤالات آیین‌نامه تئوری</h2>
+                <p id="quiz-info" style="font-size:0.85rem; color:var(--text-muted); margin-top:0;"></p>
+            </div>
+            <div style="text-align:left;">
                 <span class="badge" id="question-counter"></span>
             </div>
         </div>
 
-        <p id="quiz-info" style="margin-top:8px;"></p>
-
         <div class="timer-wrapper">
-            <div class="timer-text" id="timer-text"></div>
+            <div class="timer-row">
+                <div>زمان کل آزمون: <span class="timer-text-strong" id="timer-text"></span></div>
+                <div style="font-size:0.78rem;">۱۰ سؤال · هر سؤال حداکثر ۶۰ ثانیه</div>
+            </div>
             <div class="progress-bar">
                 <div class="progress-inner" id="progress-inner"></div>
             </div>
@@ -178,48 +433,91 @@
 
         <div id="question-area" class="question-box"></div>
 
-        <div style="margin-top: 16px;">
-            <button class="btn-primary" id="next-btn">ثبت پاسخ و سوال بعدی</button>
-            <button class="btn-secondary" id="skip-btn" style="margin-right:8px;">رد شدن از این سؤال</button>
+        <div style="margin-top: 16px; display:flex; flex-wrap:wrap; gap:8px;">
+            <button class="btn-primary" id="next-btn">ثبت پاسخ و سؤال بعدی</button>
+            <button class="btn-secondary" id="skip-btn" type="button">رد شدن از این سؤال</button>
         </div>
     </div>
 
-    <!-- کارت نتیجه نهایی -->
+    <!-- نتیجه و پکیج یادگیری -->
     <div class="card hidden" id="result-card">
-        <h2>نتیجه ارزیابی شخصی</h2>
+        <h2>کارنامه هوشمند آیین‌نامه</h2>
         <p id="score-summary"></p>
 
-        <div id="topic-feedback"></div>
+        <div class="summary-row" id="summary-row"></div>
 
-        <h3 style="margin-top:16px;">پیشنهاد یادگیری برای شما</h3>
-        <p id="learning-suggestion"></p>
+        <div id="topic-feedback" class="topics-list" style="margin-top:10px;"></div>
 
-        <h3 style="margin-top:16px;">سؤال‌هایی که نیاز به یادگیری دارند</h3>
+        <h3 style="margin-top:18px;">سؤال‌هایی که نیاز به مرور دارند</h3>
         <div id="wrong-questions-list"></div>
 
-        <button class="btn-secondary" id="retry-btn" style="margin-top:16px;">انجام دوباره تست از ابتدا</button>
+        <hr style="margin:22px 0; border-color:rgba(148,163,184,0.28);">
+
+        <!-- پکیج پرداخت -->
+        <div>
+            <h3>پکیج یادگیری هوشمند DriveNext</h3>
+            <p style="font-size:0.9rem; color:var(--text-muted);">
+                اگر می‌خواهی کل کتاب را هوشمند و هدف‌مند جمع‌بندی کنی، هوش مصنوعی DriveNext
+                براساس <strong>سن، سطح فعلی و نقاط ضعف</strong> برایت برنامه تست‌زنی و مرور طراحی می‌کند.
+            </p>
+
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;">
+                <div class="price-tag">
+                    ۲۲۷,۰۰۰ <span>تومان</span>
+                    <br><small>پرداخت یک‌باره · دسترسی کامل به پکیج تست و تحلیل</small>
+                </div>
+                <div class="pill-row">
+                    <div class="pill">طراحی خودکار آزمون‌های تمرینی</div>
+                    <div class="pill">فوکوس روی فصل‌های ضعیف</div>
+                    <div class="pill">گزارش پیشرفت هفتگی (نسخه بعدی)</div>
+                </div>
+            </div>
+
+            <div class="form-grid" style="margin-top:14px;">
+                <div class="form-field">
+                    <label for="name-input">نام و نام‌خانوادگی</label>
+                    <input id="name-input" type="text" placeholder="مثلاً: آرش رضایی">
+                </div>
+                <div class="form-field">
+                    <label for="birth-input">سال تولد (مثلاً ۱۳۸۳)</label>
+                    <input id="birth-input" type="number" inputmode="numeric" placeholder="۱۳۸۳">
+                </div>
+                <div class="form-field">
+                    <label for="mobile-input">شماره موبایل</label>
+                    <input id="mobile-input" type="tel" placeholder="09xxxxxxxxx">
+                </div>
+            </div>
+            <div id="purchase-error" class="error-text hidden"></div>
+
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+                <button class="btn-primary" id="build-plan-btn" type="button">
+                    ساخت برنامه یادگیری هوشمند
+                </button>
+                <button class="btn-ghost" type="button" id="retry-btn">تست دوباره از اول</button>
+                <span style="font-size:0.78rem; color:var(--text-muted);">
+                    (پرداخت آنلاین و ارسال لینک تمرین‌ها در نسخه بعدی متصل به سرور انجام می‌شود.)
+                </span>
+            </div>
+
+            <div id="learning-plan" class="plan-box hidden"></div>
+        </div>
     </div>
 
     <div class="footer">
-        &copy; <span id="year"></span> DriveLab – آموزشگاه آنلاین رانندگی
+        &copy; <span id="year"></span> DriveNext · آکادمی آنلاین رانندگی نسل Z
     </div>
 </div>
 
 <script>
-    /***********************
+    /*******************************
      * ۱) بانک سؤالات
-     * این بخش را با سؤالات واقعی کتاب خودت پر کن
-     * هر سؤال:
-     *  - text: متن سؤال
-     *  - options: آرایه گزینه‌ها
-     *  - correctIndex: شماره گزینه درست (۰،۱،۲،۳) – بر اساس جواب‌های زرد
-     *  - topic: نام فصل/بخش (برای تحلیل نقاط ضعف)
-     *  - explanation: توضیح آموزشی کوتاه
-     ***********************/
+     * سؤالات براساس قوانین و منطق آیین‌نامه ایران طراحی شده‌اند.
+     * می‌توانی بعداً آن‌ها را زیاد/کم یا ویرایش کنی.
+     *******************************/
     const allQuestions = [
         {
             id: 1,
-            text: "در تقاطع بدون چراغ و تابلو، حق تقدم با کدام وسیله است؟",
+            text: "در تقاطع هم‌عرض بدون چراغ و تابلو، حق تقدم معمولاً با کدام وسیله است؟",
             options: [
                 "وسیله‌ای که از سمت چپ می‌آید",
                 "وسیله‌ای که از سمت راست می‌آید",
@@ -228,89 +526,331 @@
             ],
             correctIndex: 1,
             topic: "حق تقدم و تقاطع‌ها",
-            explanation: "در تقاطع‌های هم‌عرض بدون تابلو و چراغ، همیشه وسیله‌ای که از سمت راست می‌آید حق تقدم دارد، مگر اینکه تابلو یا قانون خاصی خلاف این را مشخص کرده باشد."
+            explanation: "در تقاطع‌های هم‌سطح و هم‌عرض که علامت خاصی وجود ندارد، در آیین‌نامه حق تقدم با وسیله‌ای است که از سمت راست می‌آید؛ مگر اینکه تابلو یا مأمور خلاف آن را مشخص کند."
         },
         {
             id: 2,
-            text: "در راه‌های لغزنده (باران، برف، یخ‌زدگی) رعایت کدام مورد مهم‌تر است؟",
+            text: "وظیفه راننده هنگام مشاهده چراغ چشمک‌زن زرد در تقاطع چیست؟",
             options: [
-                "کم کردن فاصله طولی با خودروی جلویی",
-                "افزایش فاصله طولی با خودروی جلویی",
-                "حرکت روی شانه خاکی",
-                "خاموش کردن چراغ‌ها"
+                "ایست کامل و عبور بعد از توقف طولانی",
+                "افزایش سرعت برای عبور سریع‌تر",
+                "کاهش سرعت و عبور با احتیاط",
+                "تغییر مسیر به خیابان فرعی"
             ],
-            correctIndex: 1,
-            topic: "ایمنی و فاصله طولی",
-            explanation: "در جاده‌های لغزنده، مسافت ترمزگیری بیشتر می‌شود؛ بنابراین باید فاصله طولی را زیاد کنید تا فرصت کافی برای واکنش داشته باشید."
+            correctIndex: 2,
+            topic: "چراغ‌ها و علائم برقی",
+            explanation: "چراغ چشمک‌زن زرد یعنی تقاطع پرخطر؛ باید سرعت را کم کرده و با دقت و آمادگی برای توقف از تقاطع عبور کنید."
         },
         {
             id: 3,
-            text: "تابلوی مثلث قرمز حاشیه‌دار معمولاً چه نوع تابلویی است؟",
+            text: "چراغ چشمک‌زن قرمز در تقاطع چه مفهومی دارد؟",
             options: [
-                "راهنمایی",
-                "اخطاری",
-                "بازدارنده",
-                "محلی"
+                "همان مفهوم چراغ زرد چشمک‌زن را دارد",
+                "مانند توقف کامل در تابلو ایست",
+                "فقط برای عابران پیاده است",
+                "یعنی عبور آزاد بدون توجه به سایر علائم"
+            ],
+            correctIndex: 1,
+            topic: "چراغ‌ها و علائم برقی",
+            explanation: "چراغ قرمز چشمک‌زن مانند تابلو «ایست» است؛ راننده باید توقف کامل کرده، پس از اطمینان از ایمنی، با احتیاط عبور کند."
+        },
+        {
+            id: 4,
+            text: "در میدان بدون تابلو راهنمایی، حق تقدم با کدام وسیله است؟",
+            options: [
+                "خودرویی که داخل میدان است",
+                "خودرویی که در آستانه ورود به میدان است",
+                "خودرویی که سرعت بیشتری دارد",
+                "فرقی نمی‌کند؛ هر کس زودتر برسد"
+            ],
+            correctIndex: 0,
+            topic: "حق تقدم و میادین",
+            explanation: "در میادینی که علامت خاصی نصب نشده، معمولاً حق تقدم با وسیله‌ای است که در داخل میدان در حال گردش است، مگر تابلو چیز دیگری بگوید."
+        },
+        {
+            id: 5,
+            text: "کدام گزینه یکی از محل‌های «ممنوعیت سبقت» برای خودروی سواری است؟",
+            options: [
+                "راه مستقیم با خط‌کشی منقطع و دید کافی",
+                "پنجاه متر قبل و بعد از پیچ‌های تند",
+                "آزادراه کاملاً مستقیم و خلوت",
+                "مسیر یک‌طرفه با دو خط عبوری"
+            ],
+            correctIndex: 1,
+            topic: "سبقت و سبقت ممنوع",
+            explanation: "در آیین‌نامه آمده است که در نزدیکی پیچ‌های تند، سربالایی‌هایی که دید محدود است، تقاطع‌ها، روی پل‌ها و در محل خط ممتد، سبقت گرفتن ممنوع است."
+        },
+        {
+            id: 6,
+            text: "در راهی مستقیم با خط‌کشی منقطع و میدان دید کافی، سبقت مجاز است به شرط اینکه:",
+            options: [
+                "سرعت خودروی جلویی را افزایش دهیم",
+                "با فاصله طولی بسیار کم از خودروی جلویی عبور کنیم",
+                "از آزاد بودن مسیر مقابل و نداشتن خط ممتد مطمئن شویم",
+                "فقط از شانه خاکی عبور کنیم"
+            ],
+            correctIndex: 2,
+            topic: "سبقت و سبقت ممنوع",
+            explanation: "برای سبقت ایمن باید از آزاد بودن مسیر روبه‌رو، فاصله کافی، نبود خط ممتد و نداشتن مانع در جلو و عقب اطمینان پیدا کنید و سپس با راهنما اقدام کنید."
+        },
+        {
+            id: 7,
+            text: "حداکثر سرعت مجاز خودروی سواری در «بزرگراه درون‌شهری» در صورت نبود تابلو محدودیت سرعت چقدر است؟",
+            options: [
+                "۸۰ کیلومتر در ساعت",
+                "۹۰ کیلومتر در ساعت",
+                "۱۰۰ کیلومتر در ساعت",
+                "۱۲۰ کیلومتر در ساعت"
+            ],
+            correctIndex: 2,
+            topic: "سرعت‌های مجاز",
+            explanation: "طبق ماده ۱۲۶ و جداول سرعت، در بزرگراه‌های درون‌شهری حداکثر سرعت مجاز سواری معمولاً ۱۰۰ کیلومتر در ساعت در نظر گرفته می‌شود، مگر اینکه تابلو دیگری نصب شده باشد."
+        },
+        {
+            id: 8,
+            text: "حداکثر سرعت مجاز خودروی سواری در «آزادراه برون‌شهری» (بدون تابلو محدودیت) چقدر است؟",
+            options: [
+                "۹۵ کیلومتر در ساعت",
+                "۱۰۰ کیلومتر در ساعت",
+                "۱۱۰ کیلومتر در ساعت",
+                "۱۲۰ کیلومتر در ساعت"
+            ],
+            correctIndex: 3,
+            topic: "سرعت‌های مجاز",
+            explanation: "برای خودروهای سواری در آزادراه‌های برون‌شهری، حداکثر سرعت مجاز معمولاً ۱۲۰ کیلومتر در ساعت و حداقل سرعت ۷۰ کیلومتر در ساعت است؛ مگر با تابلو متفاوت."
+        },
+        {
+            id: 9,
+            text: "حداکثر سرعت مجاز خودروی سواری در «جاده اصلی برون‌شهری» در روز، در صورت نبود تابلو محدودیت سرعت، معمولاً چند کیلومتر در ساعت است؟",
+            options: [
+                "۸۵ کیلومتر در ساعت",
+                "۹۵ کیلومتر در ساعت",
+                "۱۱۰ کیلومتر در ساعت",
+                "۷۵ کیلومتر در ساعت"
+            ],
+            correctIndex: 1,
+            topic: "سرعت‌های مجاز",
+            explanation: "طبق جمع‌بندی منابع آموزشی آیین‌نامه، در بسیاری از جاده‌های اصلی برون‌شهری حداکثر سرعت مجاز سواری حدود ۹۵ کیلومتر در ساعت در نظر گرفته می‌شود اگر علامت دیگری نباشد."
+        },
+        {
+            id: 10,
+            text: "در هوای بارانی و سطح خیس جاده، برای رانندگی ایمن چه کاری باید انجام شود؟",
+            options: [
+                "حفظ همان سرعت عادی و نزدیک شدن بیشتر به خودروی جلویی",
+                "کاهش سرعت و افزایش فاصله طولی با خودروی جلویی",
+                "استفاده مداوم از بوق برای هشدار",
+                "حرکت در شانه خاکی به‌جای خط عبور"
+            ],
+            correctIndex: 1,
+            topic: "ایمنی و شرایط خاص",
+            explanation: "در باران و جاده لغزنده، مسافت ترمزگیری بیشتر می‌شود؛ بنابراین باید سرعت را کم کرده و فاصله طولی را نسبت به شرایط عادی افزایش دهید."
+        },
+        {
+            id: 11,
+            text: "قانون معروف فاصله طولی حداقل در شرایط عادی چیست؟",
+            options: [
+                "حداقل ۱ ثانیه فاصله با خودروی جلویی",
+                "حداقل ۲ ثانیه فاصله با خودروی جلویی",
+                "حداقل ۵ متر در هر سرعتی",
+                "فاصله مهم نیست؛ فقط ترمز خوب کافی است"
+            ],
+            correctIndex: 1,
+            topic: "فاصله طولی",
+            explanation: "در آموزش‌ها معمولاً قانون دو ثانیه برای فاصله طولی حداقل توصیه می‌شود؛ در باران، مه و برف این فاصله باید بیشتر نیز بشود."
+        },
+        {
+            id: 12,
+            text: "در تقاطع راه‌آهن بدون درب‌بند و نگهبان، راننده چه باید بکند؟",
+            options: [
+                "اگر چراغی نیست بدون توقف عبور کند",
+                "فقط سرعت را کمی کاهش دهد",
+                "توقف، نگاه به دو سمت ریل و گوش دادن، سپس عبور با احتیاط",
+                "فقط به صدای بوق قطار توجه کند"
+            ],
+            correctIndex: 2,
+            topic: "راه‌آهن و محل‌های ویژه",
+            explanation: "عبور از تقاطع راه‌آهن بدون حفاظ نیاز به توقف، نگاه و گوش دادن دارد؛ پس از اطمینان از نبود قطار، می‌توان با احتیاط عبور کرد."
+        },
+        {
+            id: 13,
+            text: "در نزدیکی خط عابر پیاده در تقاطع، حق تقدم با چه کسی است؟",
+            options: [
+                "همیشه با وسیله نقلیه",
+                "اگر چراغ سبز است با خودرو",
+                "با عابر پیاده‌ای که در حال عبور است",
+                "فقط با خودروهای خدماتی"
+            ],
+            correctIndex: 2,
+            topic: "عابر پیاده و خط عابر",
+            explanation: "در محل خط عابر، راننده موظف است در صورت حضور عابران توقف کرده و حق تقدم را به عابر بدهد، حتی اگر عجله دارد."
+        },
+        {
+            id: 14,
+            text: "استفاده از بوق در شهر چه زمانی مجازتر و منطقی است؟",
+            options: [
+                "هر زمان که راننده عصبانی باشد",
+                "برای هشدار در مواقع خطر و جلوگیری از تصادف",
+                "برای سرعت دادن به خودرو جلویی در ترافیک",
+                "برای سلام و احوالپرسی با دوستان"
+            ],
+            correctIndex: 1,
+            topic: "فرهنگ رانندگی",
+            explanation: "طبق فرهنگ صحیح و توصیه‌های آیین‌نامه، بوق فقط برای هشدار و پیشگیری از خطر استفاده می‌شود، نه برای عجله، عصبانیت یا مزاحمت."
+        },
+        {
+            id: 15,
+            text: "استفاده از کمربند ایمنی برای چه کسانی در خودرو الزامی است؟",
+            options: [
+                "فقط راننده",
+                "راننده و سرنشین صندلی جلو",
+                "تمام سرنشینان خودرو",
+                "فقط در جاده‌های برون‌شهری"
+            ],
+            correctIndex: 2,
+            topic: "ایمنی سرنشینان",
+            explanation: "در مقررات جدید بر استفاده از کمربند برای تمام سرنشینان تأکید شده است؛ حتی سرنشینان عقب نیز باید کمربند داشته باشند."
+        },
+        {
+            id: 16,
+            text: "در صورت ترکیدن ناگهانی لاستیک هنگام حرکت با سرعت بالا، بهترین واکنش چیست؟",
+            options: [
+                "ترمز شدید و ناگهانی",
+                "رها کردن فرمان و گرفتن ترمز دستی",
+                "گرفتن فرمان با دو دست، حفظ آرامش و کاهش تدریجی سرعت",
+                "خاموش کردن موتور بلافاصله"
+            ],
+            correctIndex: 2,
+            topic: "ایمنی و کنترل خودرو",
+            explanation: "در ترکیدن لاستیک، ترمز ناگهانی می‌تواند باعث انحراف و واژگونی شود. باید فرمان را محکم بگیرید و به آرامی سرعت را کم کرده و در محل امن توقف کنید."
+        },
+        {
+            id: 17,
+            text: "هنگام احساس خواب‌آلودگی در رانندگی طولانی چه باید کرد؟",
+            options: [
+                "افزایش سرعت برای رسیدن سریع‌تر",
+                "باز کردن شیشه و گوش دادن به موسیقی با صدای بلند برای چند ساعت",
+                "توقف در محل امن و استراحت کوتاه یا تعویض راننده",
+                "نوشیدن قهوه و ادامه با همان وضعیت"
+            ],
+            correctIndex: 2,
+            topic: "خستگی و خواب‌آلودگی",
+            explanation: "خواب‌آلودگی یکی از عوامل اصلی تصادفات است. بهترین راه توقف در محل امن و استراحت یا تعویض راننده است؛ ترفندهای موقتی جایگزین آن نمی‌شود."
+        },
+        {
+            id: 18,
+            text: "وقتی خودروی امدادی (آمبولانس، آتش‌نشانی، پلیس) با آژیر و چراغ نزدیک می‌شود، راننده چه باید بکند؟",
+            options: [
+                "سرعت خود را حفظ کند تا مزاحم نشود",
+                "در وسط راه متوقف شود",
+                "در صورت امکان به سمت راست رفته و مسیر را برای عبور آزاد کند",
+                "از مسیر خودروی امدادی پشت سر آن حرکت کند"
+            ],
+            correctIndex: 2,
+            topic: "خودروهای امدادی",
+            explanation: "در برابر خودروی امدادی با آژیر و چراغ، راننده وظیفه دارد در صورت امکان با احتیاط به سمت راست رفته و مسیر را برای عبور سریع آن باز کند."
+        },
+        {
+            id: 19,
+            text: "کدام مورد درباره تابلو مثلثی شکل با حاشیه قرمز و زمینه سفید صحیح است؟",
+            options: [
+                "تابلوی راهنمای مسیر",
+                "تابلوی اخطاری (هشدار خطر)",
+                "تابلوی بازدارنده (ممنوعیت)",
+                "تابلوی خدمات رفاهی"
             ],
             correctIndex: 1,
             topic: "تابلوهای راهنمایی و رانندگی",
-            explanation: "تابلوهای اخطاری معمولاً به شکل مثلث قرمز هستند و راننده را از خطرات و شرایط خاص پیش رو آگاه می‌کنند."
+            explanation: "تابلوهای اخطاری در ایران معمولاً به صورت مثلث متساوی‌الاضلاع با حاشیه قرمز هستند و راننده را از خطر یا وضعیت خاص پیش رو آگاه می‌کنند."
+        },
+        {
+            id: 20,
+            text: "عبور از روی خط سفید ممتد بین خطوط حرکت چه حکمی دارد؟",
+            options: [
+                "مجاز است، اگر عجله داشته باشیم",
+                "در صورت نبود خودرو مقابل مجاز است",
+                "به طور کلی ممنوع است مگر در موارد خاص اعلام‌شده",
+                "فقط برای خودروهای عمومی مجاز است"
+            ],
+            correctIndex: 2,
+            topic: "علائم افقی و خط‌کشی",
+            explanation: "خط سفید ممتد معمولاً به معنی ممنوعیت عبور از آن (تغییر خط یا سبقت) است؛ چون نشان‌دهنده نبود ایمنی کافی برای این کار است."
+        },
+        {
+            id: 21,
+            text: "پارک کردن خودرو در چند متری تقاطع معمولاً ممنوع است؟",
+            options: [
+                "کمتر از ۲ متر مانده به تقاطع",
+                "کمتر از ۵ متر مانده به تقاطع",
+                "کمتر از ۱۰ متر مانده به تقاطع",
+                "فقط دقیقا روی تقاطع ممنوع است"
+            ],
+            correctIndex: 1,
+            topic: "توقف و پارک",
+            explanation: "در آموزش‌ها معمولاً تأکید می‌شود پارک کردن در فاصله بسیار نزدیک تقاطع خطرناک است و اغلب فاصله‌ای در حدود ۵ متر به عقب از گوشه تقاطع در نظر گرفته می‌شود."
+        },
+        {
+            id: 22,
+            text: "تابلوهای دایره‌ای با زمینه سفید و حاشیه قرمز معمولاً چه چیزی را نشان می‌دهند؟",
+            options: [
+                "محدوده خدماتی",
+                "اخطار عمومی",
+                "ممنوعیت یا محدودیت (بازدارنده)",
+                "مسیرهای کمکی"
+            ],
+            correctIndex: 2,
+            topic: "تابلوهای راهنمایی و رانندگی",
+            explanation: "تابلوهای بازدارنده (ممنوعیت‌ها مانند ممنوع‌الورود، ممنوع توقف، محدودیت سرعت) اغلب به صورت دایره سفید با حاشیه قرمز طراحی می‌شوند."
         }
-        // TODO: بقیه سؤالات کتاب را اینجا اضافه کن
-        // {
-        //   id: 4,
-        //   text: "...",
-        //   options: ["...", "...", "...", "..."],
-        //   correctIndex: 2,
-        //   topic: "نام فصل",
-        //   explanation: "توضیح کوتاه آموزشی..."
-        // }
     ];
 
-    /***********************
+    /*******************************
      * ۲) تنظیمات آزمون
-     ***********************/
-    const QUESTIONS_STAGE1 = 10;     // مرحله اول: ۱۰ سؤال
-    const QUESTIONS_STAGE2 = 5;      // مرحله دوم: ۵ سؤال تمرکزی (در صورت وجود)
-    const SECONDS_PER_QUESTION = 60; // هر سؤال ۱ دقیقه
+     *******************************/
+    const QUESTIONS_PER_TEST = 10;
+    const SECONDS_PER_QUESTION = 60;
 
     const welcomeCard   = document.getElementById("welcome-card");
     const quizCard      = document.getElementById("quiz-card");
     const resultCard    = document.getElementById("result-card");
+
     const startBtn      = document.getElementById("start-btn");
-    const retryBtn      = document.getElementById("retry-btn");
     const nextBtn       = document.getElementById("next-btn");
     const skipBtn       = document.getElementById("skip-btn");
+    const retryBtn      = document.getElementById("retry-btn");
+    const buildPlanBtn  = document.getElementById("build-plan-btn");
 
-    const stageLabel    = document.getElementById("stage-label");
-    const questionCounter = document.getElementById("question-counter");
     const quizInfo      = document.getElementById("quiz-info");
-    const timerText     = document.getElementById("timer-text");
-    const progressInner = document.getElementById("progress-inner");
+    const questionCounter = document.getElementById("question-counter");
     const questionArea  = document.getElementById("question-area");
 
+    const timerText     = document.getElementById("timer-text");
+    const progressInner = document.getElementById("progress-inner");
+
     const scoreSummary  = document.getElementById("score-summary");
+    const summaryRow    = document.getElementById("summary-row");
     const topicFeedback = document.getElementById("topic-feedback");
-    const learningSuggestion = document.getElementById("learning-suggestion");
     const wrongQuestionsList = document.getElementById("wrong-questions-list");
 
-    let stage = 1;
-    let stage1Questions = [];
-    let stage2Questions = [];
-    let currentStageQuestions = [];
-    let currentIndex = 0;
+    const nameInput     = document.getElementById("name-input");
+    const birthInput    = document.getElementById("birth-input");
+    const mobileInput   = document.getElementById("mobile-input");
+    const purchaseError = document.getElementById("purchase-error");
+    const learningPlan  = document.getElementById("learning-plan");
 
-    let totalStageSeconds = 0;
-    let remainingStageSeconds = 0;
+    let testQuestions = [];
+    let currentIndex = 0;
+    let answers = [];
+    let remainingTestSeconds = 0;
     let remainingQuestionSeconds = 0;
+    let totalTestSeconds = 0;
     let timerInterval = null;
 
-    // answers: {question, selectedIndex, isCorrect, stage}
-    let answers = [];
+    let topicStatsGlobal = {};
+    let weakTopicsSortedGlobal = [];
 
-    /***********************
+    /*******************************
      * ۳) توابع کمکی
-     ***********************/
+     *******************************/
     function shuffle(array) {
         return array
             .map(v => ({ v, sort: Math.random() }))
@@ -338,117 +878,94 @@
         }
     }
 
-    /***********************
-     * ۴) شروع مرحله‌ها
-     ***********************/
-    function startStage1() {
-        stage = 1;
-        answers = [];
-        stage1Questions = shuffle(allQuestions).slice(0, Math.min(QUESTIONS_STAGE1, allQuestions.length));
-        stage2Questions = [];
-        currentStageQuestions = stage1Questions;
+    /*******************************
+     * ۴) شروع آزمون
+     *******************************/
+    function startTest() {
+        testQuestions = shuffle(allQuestions).slice(0, Math.min(QUESTIONS_PER_TEST, allQuestions.length));
         currentIndex = 0;
+        answers = [];
 
-        totalStageSeconds = currentStageQuestions.length * SECONDS_PER_QUESTION;
-        remainingStageSeconds = totalStageSeconds;
+        totalTestSeconds = testQuestions.length * SECONDS_PER_QUESTION;
+        remainingTestSeconds = totalTestSeconds;
         remainingQuestionSeconds = SECONDS_PER_QUESTION;
 
-        stageLabel.textContent = "مرحله ۱ از ۲";
-        quizInfo.textContent   = `از بین بانک سؤالات، ${currentStageQuestions.length} سؤال تصادفی برای مرحله اول انتخاب شده است.`;
-
+        quizInfo.textContent = `در این آزمون ${testQuestions.length} سؤال از میان سؤالات آیین‌نامه انتخاب شده است. تمرکز روی سرعت‌های مجاز، حق تقدم، تابلوها و ایمنی است.`;
         hide(welcomeCard);
         hide(resultCard);
         show(quizCard);
 
         renderCurrentQuestion();
         startTimer();
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function startStage2() {
-        stage = 2;
-        currentStageQuestions = stage2Questions;
-        currentIndex = 0;
-
-        totalStageSeconds = currentStageQuestions.length * SECONDS_PER_QUESTION;
-        remainingStageSeconds = totalStageSeconds;
-        remainingQuestionSeconds = SECONDS_PER_QUESTION;
-
-        stageLabel.textContent = "مرحله ۲ از ۲";
-        quizInfo.textContent   = `این مرحله بر اساس نقاط ضعف مرحله اول طراحی شده و شامل ${currentStageQuestions.length} سؤال تمرکزی است.`;
-
-        show(quizCard);
-        renderCurrentQuestion();
-        startTimer();
-    }
-
-    /***********************
+    /*******************************
      * ۵) رندر سؤال فعلی
-     ***********************/
+     *******************************/
     function renderCurrentQuestion() {
-        clearTimer(); // برای اینکه زمان سؤال قبلی روی این تأثیر نگذارد
+        clearTimer();
         remainingQuestionSeconds = SECONDS_PER_QUESTION;
 
-        const totalQuestions = currentStageQuestions.length;
-        const q = currentStageQuestions[currentIndex];
+        const total = testQuestions.length;
+        const q = testQuestions[currentIndex];
 
-        questionCounter.textContent = `سؤال ${currentIndex + 1} از ${totalQuestions}`;
+        questionCounter.textContent = `سؤال ${currentIndex + 1} از ${total}`;
 
-        const htmlParts = [];
-        htmlParts.push(`<h3 style="margin-bottom:6px;">${q.text}</h3>`);
-        htmlParts.push(`<span class="badge badge-topic">${q.topic}</span>`);
+        let html = "";
+        html += `<h3 style="margin-bottom:6px;">${q.text}</h3>`;
+        html += `<span class="badge badge-topic">${q.topic}</span>`;
+        html += `<div class="options" style="margin-top:10px;">`;
 
-        htmlParts.push('<div class="options" style="margin-top:10px;">');
         q.options.forEach((opt, idx) => {
             const inputId = `q_${q.id}_opt${idx}`;
-            htmlParts.push(`
+            html += `
                 <label for="${inputId}">
                     <input type="radio" name="current-question" id="${inputId}" value="${idx}">
-                    ${opt}
+                    <span>${opt}</span>
                 </label>
-            `);
+            `;
         });
-        htmlParts.push("</div>");
+        html += `</div>`;
 
-        questionArea.innerHTML = htmlParts.join("");
-        updateTimerUI(); // برای مقدار اولیه
+        questionArea.innerHTML = html;
+
+        updateTimerUI();
         startTimer();
     }
 
-    /***********************
-     * ۶) تایمر و Progress Bar
-     ***********************/
+    /*******************************
+     * ۶) تایمر و نوار پیشرفت
+     *******************************/
     function startTimer() {
         clearTimer();
         timerInterval = setInterval(() => {
             remainingQuestionSeconds = Math.max(remainingQuestionSeconds - 1, 0);
-            remainingStageSeconds = Math.max(remainingStageSeconds - 1, 0);
+            remainingTestSeconds = Math.max(remainingTestSeconds - 1, 0);
             updateTimerUI();
 
-            // اگر زمان کل مرحله تمام شد
-            if (remainingStageSeconds === 0) {
+            if (remainingTestSeconds === 0) {
                 clearTimer();
-                // همه‌ی سؤالات باقی‌مانده به‌عنوان بدون پاسخ (غلط) ثبت می‌شوند
-                autoFinishStageDueToTime();
+                autoFinishDueTime();
             } else if (remainingQuestionSeconds === 0) {
-                // زمان این سؤال تمام شد => مثل skip
-                handleAnswer(null); // بدون انتخاب
+                handleAnswer(null);
             }
         }, 1000);
     }
 
     function updateTimerUI() {
-        timerText.textContent = `زمان باقی‌مانده این مرحله: ${formatSeconds(remainingStageSeconds)} (حداکثر ۱ دقیقه برای هر سؤال)`;
-        const percent = totalStageSeconds > 0 ? (remainingStageSeconds / totalStageSeconds) * 100 : 0;
+        timerText.textContent = `${formatSeconds(remainingTestSeconds)} تا پایان آزمون`;
+        const percent = totalTestSeconds > 0 ? (remainingTestSeconds / totalTestSeconds) * 100 : 0;
         progressInner.style.width = percent + "%";
+        progressInner.style.transform = `scaleX(${percent / 100})`;
     }
 
-    /***********************
-     * ۷) ثبت پاسخ و رفتن به سؤال بعدی
-     ***********************/
+    /*******************************
+     * ۷) ثبت پاسخ / رد کردن سؤال
+     *******************************/
     function handleNextButton() {
         const selected = document.querySelector('input[name="current-question"]:checked');
         if (!selected) {
-            // اگر چیزی انتخاب نشده، می‌توانی قبل از رفتن، هشدار بدهی یا مثل skip رفتار کنی
             handleAnswer(null);
         } else {
             handleAnswer(parseInt(selected.value, 10));
@@ -461,140 +978,85 @@
 
     function handleAnswer(selectedIndex) {
         clearTimer();
-
-        const q = currentStageQuestions[currentIndex];
+        const q = testQuestions[currentIndex];
         const isCorrect = (selectedIndex !== null && selectedIndex === q.correctIndex);
 
         answers.push({
             question: q,
-            selectedIndex: selectedIndex,
-            isCorrect: isCorrect,
-            stage: stage
+            selectedIndex,
+            isCorrect
         });
 
-        // رفتن به سؤال بعدی یا پایان مرحله
         currentIndex++;
-        if (currentIndex < currentStageQuestions.length && remainingStageSeconds > 0) {
+        if (currentIndex < testQuestions.length && remainingTestSeconds > 0) {
             renderCurrentQuestion();
         } else {
-            // پایان این مرحله
-            if (stage === 1) {
-                prepareStage2FromStage1();
-            } else {
-                finishAllStages();
-            }
+            finishTest();
         }
     }
 
-    function autoFinishStageDueToTime() {
-        // برای سؤال فعلی که ممکن است هنوز پاسخ نداشته باشد
-        const q = currentStageQuestions[currentIndex];
+    function autoFinishDueTime() {
+        // سؤال فعلی
+        const q = testQuestions[currentIndex];
         answers.push({
             question: q,
             selectedIndex: null,
-            isCorrect: false,
-            stage: stage
+            isCorrect: false
         });
 
-        // بقیه‌ی سؤالات باقیمانده هم بدون پاسخ فرض می‌شوند
-        for (let i = currentIndex + 1; i < currentStageQuestions.length; i++) {
-            const qq = currentStageQuestions[i];
+        // بقیه سؤالات باقی‌مانده
+        for (let i = currentIndex + 1; i < testQuestions.length; i++) {
+            const qq = testQuestions[i];
             answers.push({
                 question: qq,
                 selectedIndex: null,
-                isCorrect: false,
-                stage: stage
+                isCorrect: false
             });
         }
-
-        if (stage === 1) {
-            prepareStage2FromStage1();
-        } else {
-            finishAllStages();
-        }
+        finishTest();
     }
 
-    /***********************
-     * ۸) ساخت مرحله دوم براساس اشتباه‌های مرحله اول
-     ***********************/
-    function prepareStage2FromStage1() {
-        // محاسبه اشتباه‌ها براساس topic
-        const stage1Answers = answers.filter(a => a.stage === 1);
-        const topicWrongCount = {};
-        stage1Answers.forEach(a => {
-            const topic = a.question.topic;
-            if (!topicWrongCount[topic]) {
-                topicWrongCount[topic] = 0;
-            }
-            if (!a.isCorrect) {
-                topicWrongCount[topic] += 1;
-            }
-        });
-
-        // انتخاب topicهایی که حداقل ۱ اشتباه دارند
-        const weakTopics = Object.keys(topicWrongCount)
-            .filter(topic => topicWrongCount[topic] > 0)
-            .sort((a, b) => topicWrongCount[b] - topicWrongCount[a]);
-
-        // انتخاب سؤالات مرحله دوم از topicهای ضعیف
-        let candidateQuestions = [];
-        if (weakTopics.length > 0) {
-            const stage1Ids = new Set(stage1Questions.map(q => q.id));
-            candidateQuestions = allQuestions.filter(q =>
-                weakTopics.includes(q.topic) && !stage1Ids.has(q.id)
-            );
-        }
-
-        // اگر چیزی پیدا نشد، یا هیچ اشتباهی نداشت => مرحله دوم را حذف کن و مستقیم برو به نتیجه
-        if (candidateQuestions.length === 0) {
-            finishAllStages();
-            return;
-        }
-
-        stage2Questions = shuffle(candidateQuestions).slice(0, Math.min(QUESTIONS_STAGE2, candidateQuestions.length));
-
-        // اگر تعداد سؤالات مرحله دوم خیلی کم بود، می‌توانی با چند سؤال تصادفی دیگر پر کنی (اختیاری)
-        if (stage2Questions.length < QUESTIONS_STAGE2) {
-            const usedIds = new Set([...stage1Questions, ...stage2Questions].map(q => q.id));
-            const extra = shuffle(allQuestions.filter(q => !usedIds.has(q.id)))
-                .slice(0, QUESTIONS_STAGE2 - stage2Questions.length);
-            stage2Questions = stage2Questions.concat(extra);
-        }
-
-        // شروع مرحله دوم
-        if (stage2Questions.length > 0) {
-            startStage2();
-        } else {
-            finishAllStages();
-        }
-    }
-
-    /***********************
-     * ۹) محاسبه نتیجه نهایی و ساخت صفحه نتیجه
-     ***********************/
-    function finishAllStages() {
+    /*******************************
+     * ۸) محاسبه نتیجه آزمون
+     *******************************/
+    function finishTest() {
         clearTimer();
         hide(quizCard);
         show(resultCard);
 
-        const totalQuestions = answers.length;
-        const correctCount  = answers.filter(a => a.isCorrect).length;
-        const wrongCount    = totalQuestions - correctCount;
-        const scorePercent  = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+        const total = answers.length;
+        const correctCount = answers.filter(a => a.isCorrect).length;
+        const wrongCount = total - correctCount;
+        const scorePercent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
 
-        const MAX_WRONG_FOR_PASS = 1; // می‌توانی بر اساس سیاست خودت تغییر دهی
+        const MAX_WRONG_FOR_PASS = 1;
         const isPass = wrongCount <= MAX_WRONG_FOR_PASS;
 
-        let scoreText = `در مجموع دو مرحله، از ${totalQuestions} سؤال، تعداد ${correctCount} پاسخ صحیح و ${wrongCount} پاسخ غلط داشته‌اید. `;
-        scoreText += `درصد موفقیت شما: ${scorePercent}٪. `;
-        scoreText += `<br><br>نتیجه کلی: `;
+        let scoreText = `از ${total} سؤال، تعداد <strong>${correctCount}</strong> پاسخ صحیح و <strong>${wrongCount}</strong> پاسخ غلط داشتید. `;
+        scoreText += `درصد موفقیت شما: <strong>${scorePercent}٪</strong>.<br><br>`;
+        scoreText += `نتیجه کلی: `;
         scoreText += isPass
             ? `<span class="status-pass">در این سطح، قابل قبول هستید.</span>`
-            : `<span class="status-fail">برای قبولی نیاز به تمرین بیشتر دارید.</span>`;
+            : `<span class="status-fail">برای قبولی مطمئن، هنوز نیاز به تمرین بیشتر دارید.</span>`;
 
         scoreSummary.innerHTML = scoreText;
 
-        // تحلیل فصل‌ها / topicها
+        summaryRow.innerHTML = "";
+        const chip1 = document.createElement("div");
+        chip1.className = "summary-chip";
+        chip1.innerHTML = `زمان كل آزمون: <strong>${formatSeconds(totalTestSeconds)}</strong>`;
+        const chip2 = document.createElement("div");
+        chip2.className = "summary-chip";
+        chip2.innerHTML = `مدت استفاده‌شده: <strong>${formatSeconds(totalTestSeconds - remainingTestSeconds)}</strong>`;
+        const chip3 = document.createElement("div");
+        chip3.className = "summary-chip";
+        chip3.innerHTML = `پیشنهاد: <strong>${wrongCount <= 3 ? "یک مرور هدف‌مند" : "چند سری آزمون تمرینی"}</strong>`;
+
+        summaryRow.appendChild(chip1);
+        summaryRow.appendChild(chip2);
+        summaryRow.appendChild(chip3);
+
+        // تحلیل فصل‌ها
         const topicStats = {};
         answers.forEach(a => {
             const topic = a.question.topic;
@@ -602,10 +1064,10 @@
                 topicStats[topic] = { wrong: 0, total: 0 };
             }
             topicStats[topic].total += 1;
-            if (!a.isCorrect) {
-                topicStats[topic].wrong += 1;
-            }
+            if (!a.isCorrect) topicStats[topic].wrong += 1;
         });
+
+        topicStatsGlobal = topicStats;
 
         topicFeedback.innerHTML = "";
         const topics = Object.keys(topicStats);
@@ -618,49 +1080,27 @@
                 const stat = topicStats[topic];
                 const wrong = stat.wrong;
                 const totalTopic = stat.total;
-
                 let levelText;
                 if (wrong === 0) levelText = "وضعیت خوب";
                 else if (wrong === 1) levelText = "نیاز به مرور کوتاه";
                 else levelText = "نیاز به تمرکز بیشتر";
 
                 const item = document.createElement("div");
+                item.className = "topic-item";
                 item.innerHTML = `<span class="badge badge-topic">${topic}</span> - ${wrong} غلط از ${totalTopic} سؤال (${levelText})`;
                 topicFeedback.appendChild(item);
             });
         }
 
-        // پیشنهاد یادگیری
-        const weakTopicsSorted = topics
-            .map(topic => ({
-                topic,
-                wrong: topicStats[topic].wrong,
-                total: topicStats[topic].total
-            }))
-            .filter(t => t.wrong > 0)
-            .sort((a, b) => b.wrong - a.wrong);
-
-        let suggestionText = "";
-        if (weakTopicsSorted.length === 0) {
-            suggestionText =
-                "عملکرد شما بسیار خوب بوده است. برای تثبیت یادگیری، فصل‌ها را مرور کنید و چند سری تست کامل دیگر بزنید.";
-        } else {
-            const topTopic = weakTopicsSorted[0];
-            suggestionText =
-                `پیشنهاد می‌شود ابتدا فصل/بخش «${topTopic.topic}» را با دقت از کتاب مطالعه کنید، ` +
-                "مثال‌ها و شکل‌های آن را دوباره ببینید و سپس تست‌های بیشتری از همین بخش حل کنید. " +
-                "بعد از آن، به سراغ سایر بخش‌هایی بروید که در آن‌ها اشتباه بیشتری داشته‌اید.";
-        }
-        learningSuggestion.textContent = suggestionText;
-
-        // ساخت لیست سؤال‌های غلط + دکمه «توضیح / یادگیری»
+        // تهیه لیست سؤالات غلط + دکمه توضیح/یادگیری
         wrongQuestionsList.innerHTML = "";
         const wrongAnswers = answers.filter(a => !a.isCorrect);
         if (wrongAnswers.length === 0) {
-            wrongQuestionsList.textContent = "شما در این آزمون هیچ سؤال غلطی نداشتید.";
+            wrongQuestionsList.textContent = "در این آزمون هیچ سؤال غلطی نداشتید. عالی است! چند آزمون دیگر نیز برای تثبیت مطالب بزنید.";
         } else {
             wrongAnswers.forEach((a, idx) => {
                 const q = a.question;
+
                 const container = document.createElement("div");
                 container.className = "wrong-question";
 
@@ -673,15 +1113,14 @@
 
                 const btn = document.createElement("button");
                 btn.className = "btn-secondary";
-                btn.textContent = "توضیح / یادگیری";
                 btn.type = "button";
+                btn.textContent = "توضیح / یادگیری";
 
                 const explanationBox = document.createElement("div");
                 explanationBox.className = "explanation-box hidden";
-
-                const correctOptionText = q.options[q.correctIndex] || "";
+                const correctText = q.options[q.correctIndex] || "";
                 explanationBox.innerHTML = `
-                    <div><strong>پاسخ درست:</strong> ${correctOptionText}</div>
+                    <div><strong>پاسخ درست:</strong> ${correctText}</div>
                     <div style="margin-top:4px;"><strong>توضیح:</strong> ${q.explanation || "برای این سؤال هنوز توضیح ثبت نشده است."}</div>
                 `;
 
@@ -693,23 +1132,126 @@
                 header.appendChild(btn);
                 container.appendChild(header);
                 container.appendChild(explanationBox);
-
                 wrongQuestionsList.appendChild(container);
             });
         }
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // ساخت لیست موضوعات ضعیف برای برنامه یادگیری
+        const weakTopicsSorted = topics
+            .map(topic => ({
+                topic,
+                wrong: topicStats[topic].wrong,
+                total: topicStats[topic].total
+            }))
+            .filter(t => t.wrong > 0)
+            .sort((a, b) => b.wrong - a.wrong);
+
+        weakTopicsSortedGlobal = weakTopicsSorted;
+
+        // پاک کردن برنامه قبلی
+        learningPlan.classList.add("hidden");
+        learningPlan.innerHTML = "";
+        purchaseError.classList.add("hidden");
     }
 
-    /***********************
+    /*******************************
+     * ۹) ساخت برنامه یادگیری هوشمند (سمت کلاینت)
+     *******************************/
+    function buildLearningPlan() {
+        const name = (nameInput.value || "").trim();
+        const birthYearStr = (birthInput.value || "").trim();
+        const mobile = (mobileInput.value || "").trim();
+
+        let error = "";
+        const nowYear = new Date().getFullYear();
+        const jalaliApprox = nowYear - 621; // تبدیل تقریبی برای اعتبارسنجی سال شمسی
+
+        if (!name) {
+            error = "لطفاً نام و نام‌خانوادگی را وارد کنید.";
+        } else if (!birthYearStr || birthYearStr.length < 4) {
+            error = "لطفاً سال تولد را به صورت صحیح (مثلاً ۱۳۸۳) وارد کنید.";
+        } else if (!/^09\d{9}$/.test(mobile)) {
+            error = "شماره موبایل باید با 09 شروع شده و 11 رقم باشد.";
+        }
+
+        const birthYear = parseInt(birthYearStr, 10);
+        if (!error) {
+            if (birthYear < 1300 || birthYear > jalaliApprox) {
+                error = "سال تولد خارج از بازه منطقی است.";
+            }
+        }
+
+        if (error) {
+            purchaseError.textContent = error;
+            purchaseError.classList.remove("hidden");
+            learningPlan.classList.add("hidden");
+            return;
+        }
+
+        purchaseError.classList.add("hidden");
+
+        // محاسبه سن تقریبی
+        const ageApprox = jalaliApprox - birthYear;
+
+        // اگر هیچ موضوع ضعیفی ثبت نشده باشد
+        if (!weakTopicsSortedGlobal || weakTopicsSortedGlobal.length === 0) {
+            learningPlan.classList.remove("hidden");
+            learningPlan.innerHTML = `
+                <strong>${name}</strong> عزیز،
+                <br>در این آزمون سطح شما بسیار خوب بود و موضوع ضعیف مشخصی دیده نشد.
+                پیشنهاد هوش مصنوعی DriveNext برای شما:
+                <ul>
+                    <li>۲ تا ۳ آزمون کامل آیین‌نامه در هفته با زمان استاندارد</li>
+                    <li>مرور سریع فصل سرعت‌های مجاز و تابلوها برای تثبیت مطالب</li>
+                    <li>یک بار حل سؤالات سخت‌تر مربوط به سبقت و حق تقدم در آخر هفته</li>
+                </ul>
+            `;
+            return;
+        }
+
+        const top1 = weakTopicsSortedGlobal[0];
+        const top2 = weakTopicsSortedGlobal[1] || null;
+
+        let loadLevel;
+        if (ageApprox <= 20)      loadLevel = "ریتم تند و چالشی";
+        else if (ageApprox <= 30) loadLevel = "ریتم متعادل اما منظم";
+        else                      loadLevel = "ریتم ملایم‌تر و پیوسته";
+
+        const sessionsPerWeek = ageApprox <= 25 ? 5 : 3;
+        const questionsPerSession = top1.wrong >= 3 ? 25 : 15;
+
+        let planHtml = "";
+        planHtml += `<strong>${name}</strong> عزیز، برنامه یادگیری هوشمند شما بر اساس آزمون فعلی ساخته شد.`;
+        planHtml += `<br>الگوی پیشنهادی با توجه به سن تقریبی (${ageApprox} سال) و سطح فعلی: <strong>${loadLevel}</strong>.`;
+        planHtml += "<ul>";
+        planHtml += `<li>در هفته حداقل <strong>${sessionsPerWeek} جلسه</strong> تمرین تست‌زنی داشته باش (هر جلسه حدود ${questionsPerSession} سؤال).</li>`;
+        planHtml += `<li>در هر جلسه، ابتدا روی فصل <strong>«${top1.topic}»</strong> تمرکز کن تا اشتباه‌های (${top1.wrong} از ${top1.total}) پوشش داده شود.</li>`;
+
+        if (top2) {
+            planHtml += `<li>سپس در همان جلسه یا جلسه بعد، ۵ تا ۱۰ سؤال از فصل <strong>«${top2.topic}»</strong> حل کن تا تعادل بین مباحث حفظ شود.</li>`;
+        }
+
+        planHtml += `<li>هر دو جلسه یک بار، یک آزمون کوچک ۵ سؤالی «ترکیبی» از همه فصل‌ها بزن تا مغزت بین مباحث جابه‌جا شود.</li>`;
+        planHtml += `<li>در انتهای هر هفته، یک آزمون کامل ۳۰ سؤالی شبیه آزمون اصلی بزن و درصد خودت را با هفته قبل مقایسه کن.</li>`;
+        planHtml += "</ul>";
+        planHtml += `<div style="margin-top:6px; font-size:0.8rem; color:var(--text-muted);">
+            در نسخه متصل به سرور، هوش مصنوعی DriveNext براساس هر آزمون جدید، نوع و سطح سؤالات بعدی را برایت تغییر می‌دهد
+            تا به‌تدریج کل کتاب آیین‌نامه را پوشش بدهی و نقاط ضعف به نقطه قوت تبدیل شود.
+        </div>`;
+
+        learningPlan.innerHTML = planHtml;
+        learningPlan.classList.remove("hidden");
+    }
+
+    /*******************************
      * ۱۰) رویدادها
-     ***********************/
-    startBtn.addEventListener("click", startStage1);
-    retryBtn.addEventListener("click", startStage1);
+     *******************************/
+    startBtn.addEventListener("click", startTest);
     nextBtn.addEventListener("click", handleNextButton);
     skipBtn.addEventListener("click", handleSkipButton);
+    retryBtn.addEventListener("click", startTest);
+    buildPlanBtn.addEventListener("click", buildLearningPlan);
 
-    // سال فوتر
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
