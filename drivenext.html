@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveNext | آزمون رانندگی</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #38bdf8;
+      --text: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Vazirmatn", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1e293b, var(--bg) 45%),
+                  radial-gradient(circle at 80% 0%, #0ea5e9, var(--bg) 40%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      width: min(960px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      color: rgba(229, 231, 235, 0.7);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #e0f2fe;
+    }
+
+    p.subtitle {
+      margin: 0;
+      color: rgba(229, 231, 235, 0.85);
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 16px 0 8px;
+    }
+
+    .progress {
+      position: relative;
+      flex: 1;
+      height: 8px;
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      position: absolute;
+      inset: 0;
+      width: 0;
+      background: linear-gradient(90deg, #22d3ee, #0ea5e9);
+      transition: width 0.3s ease;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin: 0 0 16px;
+      line-height: 1.6;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(255, 255, 255, 0.03);
+      color: inherit;
+      text-align: right;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option:hover { border-color: rgba(56, 189, 248, 0.5); }
+
+    .option.selected { border-color: #38bdf8; background: rgba(56, 189, 248, 0.08); }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .secondary { background: rgba(255, 255, 255, 0.08); color: var(--text); }
+    .primary { background: #22d3ee; color: #0f172a; }
+    .primary:disabled { background: rgba(148, 163, 184, 0.5); cursor: not-allowed; }
+
+    .summary {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.1);
+      color: #67e8f9;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: rgba(229, 231, 235, 0.6);
+      font-size: 13px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="eyebrow">DriveNext</span>
+      <h1>آزمون تئوری رانندگی</h1>
+      <p class="subtitle">۳۰ سؤال پیشرفته برای آمادگی آزمون آیین‌نامه. پاسخ‌ها را با دقت انتخاب کنید.</p>
+    </header>
+
+    <div class="status-bar">
+      <div class="pill" id="meta">سؤال ۱ از ۳۰</div>
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      <div class="pill" id="score">امتیاز: ۰</div>
+    </div>
+
+    <div class="card" id="quiz-card">
+      <p class="question" id="question-text"></p>
+      <div class="options" id="options"></div>
+      <div class="actions">
+        <button class="secondary" id="restart" hidden>شروع مجدد</button>
+        <button class="primary" id="next" disabled>سؤال بعدی</button>
+      </div>
+    </div>
+
+    <footer>
+      ساخته شده برای پروژه DriveNext — برای شخصی‌سازی بیشتر می‌توانید استایل‌ها را به فایل styles.css منتقل کنید.
+    </footer>
+  </div>
+
+  <script src="questions_pro.js"></script>
+  <script>
+    const questionEl = document.getElementById('question-text');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('next');
+    const restartBtn = document.getElementById('restart');
+    const metaEl = document.getElementById('meta');
+    const scoreEl = document.getElementById('score');
+    const progressBar = document.getElementById('progress-bar');
+
+    let currentIndex = 0;
+    let score = 0;
+    let selectedOption = null;
+
+    function renderQuestion() {
+      const total = questionsPro.length;
+      const item = questionsPro[currentIndex];
+      questionEl.textContent = item.question;
+      optionsEl.innerHTML = '';
+      optionsEl.setAttribute('role', 'group');
+      optionsEl.setAttribute('aria-label', `گزینه‌های ${item.question}`);
+
+      item.options.forEach((option, idx) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'option';
+        button.textContent = option;
+        button.setAttribute('aria-pressed', 'false');
+        button.addEventListener('click', () => selectOption(idx, button));
+        optionsEl.appendChild(button);
+      });
+      metaEl.textContent = `سؤال ${currentIndex + 1} از ${total}`;
+      scoreEl.textContent = `امتیاز: ${score}`;
+      progressBar.style.width = `${((currentIndex + 1) / total) * 100}%`;
+      nextBtn.disabled = true;
+      selectedOption = null;
+      restartBtn.hidden = true;
+    }
+
+    function selectOption(idx, button) {
+      selectedOption = idx;
+      Array.from(optionsEl.children).forEach((child) => child.classList.remove('selected'));
+      button.classList.add('selected');
+      Array.from(optionsEl.children).forEach((child, childIdx) => {
+        child.setAttribute('aria-pressed', childIdx === idx ? 'true' : 'false');
+      });
+      nextBtn.disabled = false;
+    }
+
+    function handleNext() {
+      if (selectedOption === null) return;
+      const current = questionsPro[currentIndex];
+      if (selectedOption === current.answer) score += 1;
+
+      currentIndex += 1;
+      const total = questionsPro.length;
+      if (currentIndex < total) {
+        renderQuestion();
+      } else {
+        showSummary();
+      }
+    }
+
+    function showSummary() {
+      questionEl.textContent = 'پایان آزمون';
+      optionsEl.innerHTML = '';
+      const total = questionsPro.length;
+      const result = document.createElement('div');
+      result.className = 'summary';
+      result.innerHTML = `
+        <div>شما به <strong>${score}</strong> سؤال از ${total} سؤال پاسخ صحیح دادید.</div>
+        <div>نمره نهایی: ${(score / total * 100).toFixed(0)}٪</div>
+      `;
+      optionsEl.appendChild(result);
+      progressBar.style.width = '100%';
+      nextBtn.hidden = true;
+      restartBtn.hidden = false;
+      metaEl.textContent = 'آزمون تکمیل شد';
+      scoreEl.textContent = `امتیاز: ${score}`;
+    }
+
+    function restartQuiz() {
+      currentIndex = 0;
+      score = 0;
+      nextBtn.hidden = false;
+      renderQuestion();
+    }
+
+    nextBtn.addEventListener('click', handleNext);
+    restartBtn.addEventListener('click', restartQuiz);
+
+    if (Array.isArray(questionsPro) && questionsPro.length) {
+      renderQuestion();
+    } else {
+      questionEl.textContent = 'بانک سؤال یافت نشد';
+      nextBtn.disabled = true;
+    }
+  </script>
+</body>
+</html>
