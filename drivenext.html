@@ -212,17 +212,21 @@
       const item = questionsPro[currentIndex];
       questionEl.textContent = item.question;
       optionsEl.innerHTML = '';
+      optionsEl.setAttribute('role', 'group');
+      optionsEl.setAttribute('aria-label', `گزینه‌های ${item.question}`);
+
       item.options.forEach((option, idx) => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'option';
         button.textContent = option;
+        button.setAttribute('aria-pressed', 'false');
         button.addEventListener('click', () => selectOption(idx, button));
         optionsEl.appendChild(button);
       });
       metaEl.textContent = `سؤال ${currentIndex + 1} از ${total}`;
       scoreEl.textContent = `امتیاز: ${score}`;
-      progressBar.style.width = `${((currentIndex) / total) * 100}%`;
+      progressBar.style.width = `${((currentIndex + 1) / total) * 100}%`;
       nextBtn.disabled = true;
       selectedOption = null;
       restartBtn.hidden = true;
@@ -232,6 +236,9 @@
       selectedOption = idx;
       Array.from(optionsEl.children).forEach((child) => child.classList.remove('selected'));
       button.classList.add('selected');
+      Array.from(optionsEl.children).forEach((child, childIdx) => {
+        child.setAttribute('aria-pressed', childIdx === idx ? 'true' : 'false');
+      });
       nextBtn.disabled = false;
     }
 
