@@ -1,295 +1,1698 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DriveNext | آزمون رانندگی</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --accent: #38bdf8;
-      --text: #e5e7eb;
-    }
+    <meta charset="UTF-8">
+    <title>DriveNext | آکادمی آنلاین رانندگی نسل Z</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    * { box-sizing: border-box; }
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top, #1e293b, #020617);
+            --card-bg: rgba(15,23,42,0.88);
+            --accent: #38bdf8;
+            --accent-soft: rgba(56,189,248,0.18);
+            --danger: #f97373;
+            --success: #4ade80;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: rgba(148,163,184,0.35);
+        }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Vazirmatn", system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 20% 20%, #1e293b, var(--bg) 45%),
-                  radial-gradient(circle at 80% 0%, #0ea5e9, var(--bg) 40%);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
-    }
+        * { box-sizing: border-box; }
 
-    .container {
-      width: min(960px, 100%);
-      background: var(--card);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-      border-radius: 24px;
-      padding: 32px;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "IRANSans", sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+        }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+        }
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      color: rgba(229, 231, 235, 0.7);
-    }
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 24px 20px;
+            margin-top: 20px;
+            box-shadow:
+                0 18px 45px rgba(15,23,42,0.8),
+                0 0 0 1px rgba(148,163,184,0.2);
+            backdrop-filter: blur(22px);
+        }
 
-    h1 {
-      margin: 0;
-      font-size: 32px;
-      color: #e0f2fe;
-    }
+        h1, h2, h3 {
+            margin-top: 0;
+            font-weight: 700;
+        }
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.4rem; }
 
-    p.subtitle {
-      margin: 0;
-      color: rgba(229, 231, 235, 0.85);
-    }
+        p {
+            line-height: 1.7;
+            margin-top: 0;
+        }
 
-    .status-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 16px 0 8px;
-    }
+        ul {
+            margin-top: 8px;
+            padding-right: 22px;
+            color: var(--text-muted);
+        }
 
-    .progress {
-      position: relative;
-      flex: 1;
-      height: 8px;
-      background: rgba(148, 163, 184, 0.2);
-      border-radius: 999px;
-      overflow: hidden;
-    }
+        .brand-title {
+            font-size: .9rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
 
-    .progress span {
-      position: absolute;
-      inset: 0;
-      width: 0;
-      background: linear-gradient(90deg, #22d3ee, #0ea5e9);
-      transition: width 0.3s ease;
-    }
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .pill {
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: .78rem;
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
+        }
 
-    .card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(56, 189, 248, 0.15);
-      border-radius: 18px;
-      padding: 20px;
-    }
+        button {
+            border: none;
+            border-radius: 999px;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: .9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+            color: #0f172a;
+            box-shadow: 0 12px 25px rgba(56,189,248,0.4);
+        }
+        .btn-primary:hover { filter: brightness(1.07); }
 
-    .question {
-      font-size: 20px;
-      margin: 0 0 16px;
-      line-height: 1.6;
-    }
+        .btn-secondary {
+            background: rgba(15,23,42,0.85);
+            color: var(--text-main);
+            border: 1px solid var(--border-soft);
+        }
+        .btn-secondary:hover {
+            background: rgba(15,23,42,0.95);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px dashed var(--border-soft);
+        }
 
-    .options {
-      display: grid;
-      gap: 12px;
-    }
+        .hidden { display: none; }
 
-    .option {
-      padding: 14px 16px;
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      background: rgba(255, 255, 255, 0.03);
-      color: inherit;
-      text-align: right;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
 
-    .option:hover { border-color: rgba(56, 189, 248, 0.5); }
+        .profile {
+            background: rgba(56,189,248,0.12);
+            color: var(--accent);
+            border: 1px solid rgba(56,189,248,0.6);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: .85rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(56,189,248,0.2);
+        }
+        .profile:hover { filter: brightness(1.08); }
 
-    .option.selected { border-color: #38bdf8; background: rgba(56, 189, 248, 0.08); }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: .72rem;
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
+        }
+        .badge-topic {
+            background: rgba(250,204,21,0.08);
+            border-color: rgba(250,204,21,0.4);
+            color: #facc15;
+        }
+        .badge-soft {
+            background: rgba(56,189,248,0.1);
+            color: var(--accent);
+            border-color: rgba(56,189,248,0.4);
+        }
+        .badge-pro {
+            background: rgba(94,234,212,0.08);
+            border-color: rgba(94,234,212,0.5);
+            color: #5eead4;
+        }
 
-    .actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-      margin-top: 18px;
-    }
+        .status-pass { color: var(--success); font-weight: 600; }
+        .status-fail { color: var(--danger); font-weight: 600; }
 
-    button {
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-    }
+        .question-box { margin-top: 12px; }
 
-    .secondary { background: rgba(255, 255, 255, 0.08); color: var(--text); }
-    .primary { background: #22d3ee; color: #0f172a; }
-    .primary:disabled { background: rgba(148, 163, 184, 0.5); cursor: not-allowed; }
+        .options label {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            padding: 7px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(148,163,184,0.22);
+            transition: background .15s,border-color .15s,transform .05s;
+        }
+        .options label:hover {
+            background: rgba(15,23,42,0.9);
+            border-color: var(--accent-soft);
+            transform: translateY(-1px);
+        }
+        .options input[type="radio"] {
+            margin-top: 3px;
+            accent-color: var(--accent);
+        }
 
-    .summary {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
+        .timer-wrapper { margin: 14px 0; }
+        .timer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            font-size: .82rem;
+            color: var(--text-muted);
+        }
+        .timer-text-strong { color: var(--accent); font-weight: 500; }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(34, 211, 238, 0.1);
-      color: #67e8f9;
-      font-weight: 600;
-      font-size: 13px;
-    }
+        .progress-bar {
+            width: 100%;
+            height: 9px;
+            background: rgba(15,23,42,0.9);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 6px;
+            border: 1px solid rgba(30,64,175,0.5);
+        }
+        .progress-inner {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg,#22c55e,#eab308,#f97316,#ef4444);
+            background-size: 200% 100%;
+            animation: gradientShift 12s ease infinite;
+            transform-origin: right center;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    footer {
-      margin-top: 20px;
-      color: rgba(229, 231, 235, 0.6);
-      font-size: 13px;
-      text-align: center;
-    }
-  </style>
+        .wrong-question {
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            padding: 10px 12px;
+            margin-top: 10px;
+            background: rgba(15,23,42,0.9);
+        }
+        .wrong-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .wrong-header-title { font-size: .9rem; font-weight: 600; }
+        .explanation-box {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px dashed rgba(148,163,184,0.4);
+            font-size: .82rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .summary-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .summary-chip {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.5);
+            font-size: .8rem;
+        }
+        .summary-chip strong { color: var(--accent); }
+
+        .topics-list .topic-item {
+            margin-bottom: 4px;
+            font-size: .86rem;
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .price-tag small {
+            font-size: .8rem;
+            color: var(--text-muted);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: .8rem;
+        }
+        .form-field label { color: var(--text-muted); }
+        .form-field input {
+            background: rgba(15,23,42,0.9);
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            padding: 8px 10px;
+            color: var(--text-main);
+            font-size: .85rem;
+        }
+        .form-field input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+        }
+        .error-text {
+            color: var(--danger);
+            font-size: .78rem;
+            margin-top: 4px;
+        }
+
+        .plan-box {
+            margin-top: 14px;
+            padding: 12px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(34,197,94,0.4);
+            background: rgba(22,163,74,0.05);
+            font-size: .86rem;
+        }
+        .plan-box ul { margin: 6px 0 0; }
+
+        .footer {
+            margin-top: 32px;
+            font-size: .75rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* شکل‌های تابلوها و خط‌کشی با CSS */
+        .shape-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: .75rem;
+            color: var(--text-muted);
+        }
+        .shape-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .shape {
+            display: inline-block;
+        }
+        .shape-triangle-warning {
+            width: 20px;
+            height: 20px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 18px solid #facc15;
+        }
+        .shape-circle-forbid {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #ef4444;
+            background: #0f172a;
+        }
+        .shape-line-solid {
+            width: 40px;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+        }
+        .shape-line-dashed {
+            width: 40px;
+            height: 4px;
+            background-image: linear-gradient(to right,#e5e7eb 40%,rgba(15,23,42,0) 40%);
+            background-size: 8px 4px;
+        }
+
+        /* بات راهنما */
+        .helper-toggle {
+            position: fixed;
+            bottom: 18px;
+            left: 18px;
+            z-index: 50;
+            background: linear-gradient(135deg,#22c55e,#16a34a);
+            color: #0f172a;
+            box-shadow: 0 10px 25px rgba(34,197,94,0.5);
+        }
+        .helper-panel {
+            position: fixed;
+            bottom: 75px;
+            left: 18px;
+            width: min(320px, 90vw);
+            background: rgba(15,23,42,0.96);
+            border-radius: 18px;
+            box-shadow:
+                0 18px 45px rgba(15,23,42,0.9),
+                0 0 0 1px rgba(148,163,184,0.4);
+            padding: 14px 14px 12px;
+            font-size: .84rem;
+            z-index: 40;
+        }
+        .helper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .helper-title {
+            font-weight: 600;
+            font-size: .9rem;
+        }
+        .helper-body {
+            max-height: 260px;
+            overflow-y: auto;
+            padding-right: 2px;
+        }
+        .helper-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .helper-chip {
+            border-radius: 999px;
+            padding: 4px 8px;
+            border: 1px solid rgba(148,163,184,0.6);
+            cursor: pointer;
+            font-size: .78rem;
+            color: var(--text-main);
+            background: rgba(15,23,42,0.9);
+        }
+        .helper-chip:hover {
+            border-color: var(--accent);
+        }
+        .helper-subtle {
+            font-size: .75rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* لایه لاگین */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 150;
+        }
+        .overlay.show { display: flex; }
+
+        .login-box {
+            background: rgba(15,23,42,0.96);
+            border-radius: 16px;
+            padding: 18px 18px 14px;
+            width: min(360px, 90vw);
+            box-shadow:
+                0 16px 40px rgba(15,23,42,0.8),
+                0 0 0 1px rgba(148,163,184,0.35);
+        }
+        .login-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .login-sub {
+            font-size: .85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .login-box label {
+            display: block;
+            font-size: .82rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .login-box input {
+            width: 100%;
+            background: rgba(15,23,42,0.9);
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            padding: 9px 10px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(56,189,248,0.35);
+        }
+        .small-text {
+            font-size: .78rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 720px) {
+            h1 { font-size: 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .wrong-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <span class="eyebrow">DriveNext</span>
-      <h1>آزمون تئوری رانندگی</h1>
-      <p class="subtitle">۳۰ سؤال پیشرفته برای آمادگی آزمون آیین‌نامه. پاسخ‌ها را با دقت انتخاب کنید.</p>
-    </header>
+<div class="container">
 
-    <div class="status-bar">
-      <div class="pill" id="meta">سؤال ۱ از ۳۰</div>
-      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
-      <div class="pill" id="score">امتیاز: ۰</div>
+    <div class="topbar">
+        <button class="profile" id="loginTrigger" type="button">ورود با شماره موبایل</button>
     </div>
 
-    <div class="card" id="quiz-card">
-      <p class="question" id="question-text"></p>
-      <div class="options" id="options"></div>
-      <div class="actions">
-        <button class="secondary" id="restart" hidden>شروع مجدد</button>
-        <button class="primary" id="next" disabled>سؤال بعدی</button>
-      </div>
+    <!-- خوش‌آمد -->
+    <div class="card" id="welcome-card">
+        <div class="brand-title">DRIVENEXT · ONLINE DRIVING ACADEMY</div>
+        <h1>آزمون آیین‌نامه با طعم نسل Z</h1>
+        <p>
+            سطح خودت را در <strong>آیین‌نامه راهنمایی و رانندگی ایران</strong> بسنج؛
+            بعدش هوش مصنوعی برایت تمرین طراحی می‌کند تا دقیقاً همان جاهایی را تقویت کنی که ضعف داری.
+        </p>
+        <ul>
+            <li>آزمون ۱۰ سؤالی رایگان برای تشخیص سطح</li>
+            <li>تحلیل فصل‌ها، نمایش سؤالات غلط با جواب و توضیح</li>
+            <li>بعد از پرداخت: آزمون‌های ۳۰ سؤالی هوشمند و سخت‌تر</li>
+            <li>بات «راهنما» برای پرسیدن سؤال از فصل‌های مختلف کتاب</li>
+        </ul>
+
+        <div class="pill-row">
+            <div class="pill">قوانین و سرعت‌های مجاز ایران</div>
+            <div class="pill">تحلیل خودکار نقاط ضعف</div>
+            <div class="pill">طراحی شده برای نسل Z</div>
+        </div>
+
+        <div style="margin-top:18px; display:flex; flex-wrap:wrap; gap:10px;">
+            <button class="btn-primary" id="start-btn">شروع آزمون ۱۰ سؤالی</button>
+            <button class="btn-ghost" type="button">دمو – به‌زودی</button>
+        </div>
     </div>
 
-    <footer>
-      ساخته شده برای پروژه DriveNext — برای شخصی‌سازی بیشتر می‌توانید استایل‌ها را به فایل styles.css منتقل کنید.
-    </footer>
-  </div>
+    <!-- آزمون ۱۰ سؤالی -->
+    <div class="card hidden" id="quiz-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+            <div>
+                <span class="badge badge-soft">آزمون سطح اولیه</span>
+                <h2 style="margin-bottom:4px; margin-top:6px;">سؤالات آیین‌نامه تئوری (۱۰ سؤال)</h2>
+                <p id="quiz-info" style="font-size:.85rem; color:var(--text-muted); margin-top:0;"></p>
+            </div>
+            <div style="text-align:left;">
+                <span class="badge" id="question-counter"></span>
+            </div>
+        </div>
 
-  <script src="questions_pro.js"></script>
-  <script>
-    const questionEl = document.getElementById('question-text');
-    const optionsEl = document.getElementById('options');
-    const nextBtn = document.getElementById('next');
-    const restartBtn = document.getElementById('restart');
-    const metaEl = document.getElementById('meta');
-    const scoreEl = document.getElementById('score');
-    const progressBar = document.getElementById('progress-bar');
+        <div class="timer-wrapper">
+            <div class="timer-row">
+                <div>زمان کل آزمون: <span class="timer-text-strong" id="timer-text"></span></div>
+                <div style="font-size:.78rem;">هر سؤال حداکثر ۶۰ ثانیه</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-inner" id="progress-inner"></div>
+            </div>
+        </div>
 
+        <div id="question-area" class="question-box"></div>
+
+        <div class="shape-row">
+            <span class="shape-label">
+                <span class="shape shape-triangle-warning"></span> تابلو اخطاری
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-circle-forbid"></span> تابلو ممنوعیت
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-line-solid"></span> خط ممتد
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-line-dashed"></span> خط منقطع
+            </span>
+        </div>
+
+        <div style="margin-top: 16px; display:flex; flex-wrap:wrap; gap:8px;">
+            <button class="btn-primary" id="next-btn">ثبت پاسخ و سؤال بعدی</button>
+            <button class="btn-secondary" id="skip-btn" type="button">رد شدن از این سؤال</button>
+        </div>
+    </div>
+
+    <!-- نتیجه ۱۰ سؤال + پکیج -->
+    <div class="card hidden" id="result-card">
+        <h2>کارنامه هوشمند آیین‌نامه (۱۰ سؤال)</h2>
+        <p id="score-summary"></p>
+
+        <div class="summary-row" id="summary-row"></div>
+
+        <div id="topic-feedback" class="topics-list" style="margin-top:10px;"></div>
+
+        <h3 style="margin-top:18px;">سؤال‌هایی که نیاز به مرور دارند</h3>
+        <div id="wrong-questions-list"></div>
+
+        <hr style="margin:22px 0; border-color:rgba(148,163,184,0.28);">
+
+        <!-- پکیج -->
+        <div>
+            <h3>پکیج یادگیری هوشمند DriveNext</h3>
+            <p style="font-size:.9rem; color:var(--text-muted);">
+                با پرداخت فقط <strong>۲۲۷,۰۰۰ تومان</strong>، به آزمون‌های ۳۰ سؤالی هوشمند دسترسی می‌گیری.
+                سؤال‌ها هر بار بر اساس سطح و اشتباه‌های قبلی‌ات دقیق‌تر و سخت‌تر می‌شوند.
+            </p>
+
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;">
+                <div class="price-tag">
+                    ۲۲۷,۰۰۰ <span>تومان</span>
+                    <br><small>پرداخت یک‌باره · دسترسی به آزمون‌های هوشمند</small>
+                </div>
+                <div class="pill-row">
+                    <div class="pill">آزمون‌های ۳۰ سؤالی پویا</div>
+                    <div class="pill">تمرکز روی فصل‌های ضعیف</div>
+                    <div class="pill">کمک هوشمند «راهنما» برای هر فصل</div>
+                </div>
+            </div>
+
+            <div class="form-grid" style="margin-top:14px;">
+                <div class="form-field">
+                    <label for="name-input">نام و نام‌خانوادگی</label>
+                    <input id="name-input" type="text" placeholder="مثلاً: آرش رضایی">
+                </div>
+                <div class="form-field">
+                    <label for="birth-input">سال تولد (مثلاً ۱۳۸۳)</label>
+                    <input id="birth-input" type="number" inputmode="numeric" placeholder="۱۳۸۳">
+                </div>
+                <div class="form-field">
+                    <label for="mobile-input">شماره موبایل</label>
+                    <input id="mobile-input" type="tel" placeholder="09xxxxxxxxx">
+                </div>
+            </div>
+            <div id="purchase-error" class="error-text hidden"></div>
+
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+                <button class="btn-primary" id="build-plan-btn" type="button">
+                    پرداخت و ساخت برنامه یادگیری
+                </button>
+                <button class="btn-ghost" type="button" id="retry-btn">آزمون ۱۰ سؤالی دوباره</button>
+                <span style="font-size:.78rem; color:var(--text-muted);">
+                    (در این نسخه دمو، پرداخت واقعی انجام نمی‌شود و فقط منطق را تست می‌کنیم.)
+                </span>
+            </div>
+
+            <div id="learning-plan" class="plan-box hidden"></div>
+
+            <div id="pro-access" class="hidden" style="margin-top:16px;">
+                <h3>آزمون ۳۰ سؤالی هوشمند فعال شد</h3>
+                <p style="font-size:.85rem; color:var(--text-muted);">
+                    حالا می‌توانی آزمون‌های ۳۰ سؤالی را شروع کنی. سؤالات هر بار بر اساس سطح فعلی‌ات و فصل‌هایی که
+                    در آن‌ها اشتباه داشتی تنظیم می‌شوند.
+                </p>
+                <button class="btn-primary" id="start-pro-btn" type="button">
+                    شروع اولین آزمون ۳۰ سؤالی
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- آزمون ۳۰ سؤالی هوشمند -->
+    <div class="card hidden" id="pro-quiz-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+            <div>
+                <span class="badge badge-pro">آزمون ۳۰ سؤالی هوشمند</span>
+                <h2 style="margin-bottom:4px; margin-top:6px;">آزمون پیشرفته آیین‌نامه</h2>
+                <p id="pro-quiz-info" style="font-size:.85rem; color:var(--text-muted); margin-top:0;"></p>
+            </div>
+            <div style="text-align:left;">
+                <span class="badge" id="pro-question-counter"></span>
+            </div>
+        </div>
+
+        <div class="timer-wrapper">
+            <div class="timer-row">
+                <div>زمان کل آزمون: <span class="timer-text-strong" id="pro-timer-text"></span></div>
+                <div style="font-size:.78rem;">۳۰ سؤال · هر سؤال حداکثر ۶۰ ثانیه</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-inner" id="pro-progress-inner"></div>
+            </div>
+        </div>
+
+        <div id="pro-question-area" class="question-box"></div>
+
+        <div class="shape-row">
+            <span class="shape-label">
+                <span class="shape shape-triangle-warning"></span> تابلو خطر
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-circle-forbid"></span> ممنوعیت/محدودیت
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-line-solid"></span> سبقت ممنوع (خط ممتد)
+            </span>
+            <span class="shape-label">
+                <span class="shape shape-line-dashed"></span> امکان سبقت (خط منقطع)
+            </span>
+        </div>
+
+        <div style="margin-top: 16px; display:flex; flex-wrap:wrap; gap:8px;">
+            <button class="btn-primary" id="pro-next-btn">ثبت پاسخ و سؤال بعدی</button>
+            <button class="btn-secondary" id="pro-skip-btn" type="button">رد شدن از این سؤال</button>
+            <button class="btn-ghost" type="button" id="pro-exit-btn">خروج به کارنامه ۱۰ سؤالی</button>
+        </div>
+    </div>
+
+    <!-- بات راهنما -->
+    <button class="helper-toggle" id="helper-toggle" type="button">راهنما</button>
+    <div class="helper-panel hidden" id="helper-panel">
+        <div class="helper-header">
+            <div>
+                <div class="helper-title">بات راهنما</div>
+                <div style="font-size:.75rem; color:var(--text-muted);">بگو روی کدام بخش کتاب می‌خواهی کار کنی</div>
+            </div>
+            <button class="btn-ghost" id="helper-close" type="button" style="padding:4px 8px; font-size:.75rem;">
+                بستن
+            </button>
+        </div>
+        <div class="helper-body" id="helper-body"></div>
+    </div>
+
+    <div class="overlay" id="loginOverlay">
+        <div class="login-box">
+            <div class="login-title">ورود به DriveNext</div>
+            <div class="login-sub">برای ادامه شماره موبایل‌ات را وارد کن.</div>
+
+            <label for="phone">شماره موبایل</label>
+            <input id="phone" type="tel" placeholder="مثلاً 09xxxxxxxxx">
+
+            <div class="small-text">
+                کد تأیید برایت پیامک می‌شود. با ورود، شرایط استفاده را می‌پذیری.
+            </div>
+
+            <button class="btn-primary" style="width:100%; margin-bottom:0.6rem;">
+                دریافت کد تأیید
+            </button>
+
+            <div class="small-text" style="text-align:center;">
+                قبلاً کد گرفتی؟ کد را اینجا وارد کن.
+            </div>
+            <input type="text" placeholder="کد تأیید">
+
+            <button class="btn-secondary" style="width:100%; margin-top:0.4rem;" id="loginCancel">
+                لغو / بستن
+            </button>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; <span id="year"></span> DriveNext · آکادمی آنلاین رانندگی نسل Z
+    </div>
+</div>
+
+<!-- بانک سؤالات پیشرفته ۳۰ سؤالی -->
+<script src="questions_pro.js"></script>
+
+<script>
+    /********** ۱) سؤالات پایه ۱۰ سؤالی **********/
+    const allQuestions = [
+        {
+            id: 1,
+            text: "در تقاطع هم‌عرض بدون چراغ و تابلو، حق تقدم با کدام وسیله است؟",
+            options: [
+                "وسیله‌ای که از سمت چپ می‌آید",
+                "وسیله‌ای که از سمت راست می‌آید",
+                "وسیله‌ای که سریع‌تر حرکت می‌کند",
+                "وسیله نقلیه سنگین‌تر"
+            ],
+            correctIndex: 1,
+            topic: "حق تقدم و تقاطع‌ها",
+            explanation: "در تقاطع‌های هم‌سطح بدون علامت، حق تقدم با وسیله‌ای است که از سمت راست می‌آید؛ مگر تابلو یا مأمور خلافش را بگوید."
+        },
+        {
+            id: 2,
+            text: "وظیفه راننده هنگام مشاهده چراغ چشمک‌زن زرد چیست؟",
+            options: [
+                "ایست کامل طولانی",
+                "افزایش سرعت برای عبور سریع",
+                "کاهش سرعت و عبور با احتیاط",
+                "تغییر مسیر اجباری"
+            ],
+            correctIndex: 2,
+            topic: "چراغ‌ها و علائم برقی",
+            explanation: "چراغ زرد چشمک‌زن یعنی محل پرخطر؛ باید سرعت را کم کنید و با آمادگی برای توقف عبور کنید."
+        },
+        {
+            id: 3,
+            text: "تابلوی مثلثی با حاشیه قرمز مثل شکل زیر نشان‌دهنده چیست؟",
+            options: [
+                "راهنمای مسیر",
+                "تابلوی اخطاری",
+                "تابلوی بازدارنده",
+                "تابلوی خدماتی"
+            ],
+            correctIndex: 1,
+            topic: "تابلوهای راهنمایی",
+            explanation: "مثلث حاشیه قرمز در ایران معمولاً برای تابلوهای اخطاری استفاده می‌شود."
+        },
+        {
+            id: 4,
+            text: "حداکثر سرعت مجاز سواری در آزادراه برون‌شهری (بدون تابلو محدودیت) چقدر است؟",
+            options: [
+                "۹۵ کیلومتر در ساعت",
+                "۱۰۰ کیلومتر در ساعت",
+                "۱۱۰ کیلومتر در ساعت",
+                "۱۲۰ کیلومتر در ساعت"
+            ],
+            correctIndex: 3,
+            topic: "سرعت‌های مجاز",
+            explanation: "در بسیاری از منابع آموزشی، سرعت مجاز سواری در آزادراه برون‌شهری ۱۲۰ کیلومتر در ساعت ذکر می‌شود، مگر تابلو دیگری نصب شده باشد."
+        },
+        {
+            id: 5,
+            text: "در هوای بارانی و جاده خیس، مهم‌ترین اقدام برای ایمنی چیست؟",
+            options: [
+                "افزایش سرعت برای کمتر ماندن در باران",
+                "کاهش سرعت و افزایش فاصله طولی",
+                "خاموش کردن چراغ‌ها",
+                "حرکت در شانه خاکی"
+            ],
+            correctIndex: 1,
+            topic: "ایمنی و شرایط خاص",
+            explanation: "در باران مسافت ترمزگیری بیشتر است؛ باید سرعت را کم و فاصله را زیاد کنید."
+        },
+        {
+            id: 6,
+            text: "کدام مورد یکی از محل‌های ممنوعیت سبقت است؟",
+            options: [
+                "راه مستقیم با خط منقطع و دید کافی",
+                "پنجاه متر مانده به پیچ تند",
+                "آزادراه خلوت",
+                "مسیر یک‌طرفه دو خطه"
+            ],
+            correctIndex: 1,
+            topic: "سبقت و سبقت ممنوع",
+            explanation: "در نزدیکی پیچ‌های تند، روی پل‌ها، نزدیک تقاطع‌ها و روی خط ممتد سبقت ممنوع است."
+        },
+        {
+            id: 7,
+            text: "تابلوی دایره‌ای با حاشیه قرمز مثل شکل زیر معمولاً چه چیزی را نشان می‌دهد؟",
+            options: [
+                "تابلوی خدماتی",
+                "تابلوی اخطاری",
+                "تابلوی بازدارنده/ممنوعیت",
+                "تابلوی راهنما"
+            ],
+            correctIndex: 2,
+            topic: "تابلوهای راهنمایی",
+            explanation: "دایره سفید با حاشیه قرمز معمولاً برای ممنوعیت‌ها و محدودیت‌ها استفاده می‌شود."
+        },
+        {
+            id: 8,
+            text: "خط ممتد وسط راه (مثل شکل زیر) چه مفهومی دارد؟",
+            options: [
+                "امکان سبقت مجاز",
+                "محدودیت سرعت",
+                "ممنوعیت عبور از روی خط و سبقت",
+                "فقط برای موتور سیکلت"
+            ],
+            correctIndex: 2,
+            topic: "علائم افقی و خط‌کشی",
+            explanation: "خط ممتد یعنی مجاز نیستید از روی آن عبور کنید یا سبقت بگیرید."
+        },
+        {
+            id: 9,
+            text: "قانون دو ثانیه مربوط به کدام مورد است؟",
+            options: [
+                "زمان مجاز برای سبقت",
+                "فاصله طولی ایمن با خودروی جلویی",
+                "زمان روشن بودن راهنما",
+                "زمان ایست کامل پشت چراغ قرمز"
+            ],
+            correctIndex: 1,
+            topic: "فاصله طولی",
+            explanation: "قانون دو ثانیه برای فاصله طولی حداقل است تا در صورت ترمز خودروی جلویی زمان کافی برای واکنش داشته باشید."
+        },
+        {
+            id: 10,
+            text: "در تقاطع راه‌آهن بدون درب‌بند، راننده چه باید بکند؟",
+            options: [
+                "با سرعت معمول عبور کند",
+                "فقط اگر چراغ قرمز بود توقف کند",
+                "توقف، نگاه به دو طرف و گوش دادن، سپس عبور با احتیاط",
+                "از روی شانه خاکی عبور کند"
+            ],
+            correctIndex: 2,
+            topic: "راه‌آهن و محل‌های ویژه",
+            explanation: "در تقاطع راه‌آهن بدون حفاظ، توقف و اطمینان از نبود قطار الزامی است."
+        }
+    ];
+
+    /********** ۲) بات راهنما: ساختار داده **********/
+    const helperSections = [
+        {
+            id: "signs",
+            title: "تابلوها",
+            subs: [
+                {
+                    id: "warning-signs",
+                    title: "تابلوهای اخطاری (مثلثی)",
+                    tips: [
+                        "به شکل مثلثی با حاشیه قرمز دقت کن؛ این‌ها اخطار خطر هستند.",
+                        "تصویر داخل مثلث نوع خطر را نشان می‌دهد (پیچ، دست‌انداز، کاهش خطوط و ...).",
+                        "در فاصله‌ای قبل از خطر نصب می‌شوند تا فرصت واکنش داشته باشی."
+                    ]
+                },
+                {
+                    id: "forbid-signs",
+                    title: "تابلوهای بازدارنده/ممنوعیت (دایره‌ای)",
+                    tips: [
+                        "دایره با حاشیه قرمز معمولاً یعنی «ممنوع» یا «محدودیت».",
+                        "اعداد داخل تابلو غالباً محدودیت سرعت هستند.",
+                        "ترکیب خط ممتد + این تابلوها یعنی شرایط سخت‌گیرانه‌تر برای سبقت و توقف."
+                    ]
+                },
+                {
+                    id: "guide-signs",
+                    title: "تابلوهای راهنما و خدمات",
+                    tips: [
+                        "تابلوهای راهنما معمولاً مستطیل یا مربع هستند.",
+                        "رنگ زمینه (آبی، سبز، قهوه‌ای) نوع اطلاعات را مشخص می‌کند.",
+                        "مکان‌یابی خروجی‌ها و مسیرها کاملاً به این تابلوها وابسته است."
+                    ]
+                }
+            ]
+        },
+        {
+            id: "speed",
+            title: "سرعت‌های مجاز",
+            subs: [
+                {
+                    id: "urban-speed",
+                    title: "درون‌شهری و بزرگراه شهری",
+                    tips: [
+                        "در خیابان‌های معمولی شهر، سرعت مجاز کمتر از بزرگراه است.",
+                        "در بزرگراه درون‌شهری برای سواری حدود ۱۰۰ کیلومتر در ساعت در نظر گرفته می‌شود، مگر تابلو دیگری باشد.",
+                        "همیشه اول تابلو را ملاک قرار بده، بعد جدول‌های کلی را."
+                    ]
+                },
+                {
+                    id: "extra-urban-speed",
+                    title: "برون‌شهری و آزادراه",
+                    tips: [
+                        "در آزادراه برون‌شهری، سرعت مجاز سواری معمولاً ۱۲۰ کیلومتر در ساعت است.",
+                        "در جاده‌های اصلی برون‌شهری، سرعت پایین‌تر از آزادراه است (مثلاً حدود ۹۵).",
+                        "در شرایط بد جوی حتی اگر تابلو اجازه بدهد، باید سرعت را کاهش بدهی."
+                    ]
+                }
+            ]
+        },
+        {
+            id: "overtake",
+            title: "سبقت",
+            subs: [
+                {
+                    id: "overtake-rules",
+                    title: "قوانین کلی سبقت",
+                    tips: [
+                        "سبقت فقط وقتی مجاز است که دید کافی، خط منقطع و فاصله مناسب وجود داشته باشد.",
+                        "در پیچ‌ها، روی پل‌ها، نزدیک تقاطع‌ها و محل‌هایی با دید محدود، سبقت ممنوع است.",
+                        "قبل از سبقت راهنما بزن، آینه‌ها را چک کن و نقطه کور را هم کنترل کن."
+                    ]
+                },
+                {
+                    id: "overtake-lines",
+                    title: "سبقت و خط‌کشی",
+                    tips: [
+                        "خط ممتد = عبور و سبقت ممنوع.",
+                        "خط منقطع = امکان عبور و سبقت، اگر سایر شرایط ایمنی برقرار باشد.",
+                        "ترکیب ممتد + منقطع = فقط سمتی که کنار منقطع است حق عبور دارد."
+                    ]
+                }
+            ]
+        }
+    ];
+
+    /********** ۳) تنظیمات آزمون‌ها **********/
+    const QUESTIONS_PER_TEST = 10;
+    const SECONDS_PER_QUESTION = 60;
+
+    const PRO_QUESTIONS_PER_TEST = 30;
+    const PRO_SECONDS_PER_QUESTION = 60;
+
+    let testQuestions = [];
     let currentIndex = 0;
-    let score = 0;
-    let selectedOption = null;
+    let answers = [];
+    let remainingTestSeconds = 0;
+    let remainingQuestionSeconds = 0;
+    let totalTestSeconds = 0;
+    let timerInterval = null;
 
-    function renderQuestion() {
-      const total = questionsPro.length;
-      const item = questionsPro[currentIndex];
-      questionEl.textContent = item.question;
-      optionsEl.innerHTML = '';
-      optionsEl.setAttribute('role', 'group');
-      optionsEl.setAttribute('aria-label', `گزینه‌های ${item.question}`);
+    let topicStatsGlobal = {};
+    let weakTopicsSortedGlobal = [];
+    let hasPremium = false;
+    let proLevel = 1; // 1=easy,2=medium,3=hard تقریبی
+    let proAttempts = 0;
 
-      item.options.forEach((option, idx) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'option';
-        button.textContent = option;
-        button.setAttribute('aria-pressed', 'false');
-        button.addEventListener('click', () => selectOption(idx, button));
-        optionsEl.appendChild(button);
-      });
-      metaEl.textContent = `سؤال ${currentIndex + 1} از ${total}`;
-      scoreEl.textContent = `امتیاز: ${score}`;
-      progressBar.style.width = `${((currentIndex + 1) / total) * 100}%`;
-      nextBtn.disabled = true;
-      selectedOption = null;
-      restartBtn.hidden = true;
+    // عناصر DOM
+    const welcomeCard   = document.getElementById("welcome-card");
+    const quizCard      = document.getElementById("quiz-card");
+    const resultCard    = document.getElementById("result-card");
+
+    const startBtn      = document.getElementById("start-btn");
+    const nextBtn       = document.getElementById("next-btn");
+    const skipBtn       = document.getElementById("skip-btn");
+    const retryBtn      = document.getElementById("retry-btn");
+    const buildPlanBtn  = document.getElementById("build-plan-btn");
+
+    const quizInfo      = document.getElementById("quiz-info");
+    const questionCounter = document.getElementById("question-counter");
+    const questionArea  = document.getElementById("question-area");
+
+    const timerText     = document.getElementById("timer-text");
+    const progressInner = document.getElementById("progress-inner");
+
+    const scoreSummary  = document.getElementById("score-summary");
+    const summaryRow    = document.getElementById("summary-row");
+    const topicFeedback = document.getElementById("topic-feedback");
+    const wrongQuestionsList = document.getElementById("wrong-questions-list");
+
+    const nameInput     = document.getElementById("name-input");
+    const birthInput    = document.getElementById("birth-input");
+    const mobileInput   = document.getElementById("mobile-input");
+    const purchaseError = document.getElementById("purchase-error");
+    const learningPlan  = document.getElementById("learning-plan");
+    const proAccess     = document.getElementById("pro-access");
+    const startProBtn   = document.getElementById("start-pro-btn");
+
+    // آزمون ۳۰ سؤالی
+    const proQuizCard       = document.getElementById("pro-quiz-card");
+    const proQuizInfo       = document.getElementById("pro-quiz-info");
+    const proQuestionArea   = document.getElementById("pro-question-area");
+    const proQuestionCounter= document.getElementById("pro-question-counter");
+    const proTimerText      = document.getElementById("pro-timer-text");
+    const proProgressInner  = document.getElementById("pro-progress-inner");
+    const proNextBtn        = document.getElementById("pro-next-btn");
+    const proSkipBtn        = document.getElementById("pro-skip-btn");
+    const proExitBtn        = document.getElementById("pro-exit-btn");
+
+    let proTestQuestions = [];
+    let proAnswers = [];
+    let proCurrentIndex = 0;
+    let proRemainingTestSeconds = 0;
+    let proRemainingQuestionSeconds = 0;
+    let proTotalTestSeconds = 0;
+    let proTimerInterval = null;
+
+    // بات راهنما
+    const helperToggle = document.getElementById("helper-toggle");
+    const helperPanel  = document.getElementById("helper-panel");
+    const helperClose  = document.getElementById("helper-close");
+    const helperBody   = document.getElementById("helper-body");
+
+    // لاگین
+    const loginOverlay = document.getElementById("loginOverlay");
+    const loginTrigger = document.getElementById("loginTrigger");
+    const loginCancel  = document.getElementById("loginCancel");
+
+    /********** توابع عمومی **********/
+    function shuffle(array) {
+        return array
+            .map(v => ({ v, sort: Math.random() }))
+            .sort((a,b) => a.sort - b.sort)
+            .map(({ v }) => v);
+    }
+    function pad(num) { return num < 10 ? "0"+num : num.toString(); }
+    function formatSeconds(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return pad(m)+":"+pad(s);
+    }
+    function show(el) { el.classList.remove("hidden"); }
+    function hide(el) { el.classList.add("hidden"); }
+    function clearTimer() {
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+    }
+    function clearProTimer() {
+        if (proTimerInterval) { clearInterval(proTimerInterval); proTimerInterval = null; }
     }
 
-    function selectOption(idx, button) {
-      selectedOption = idx;
-      Array.from(optionsEl.children).forEach((child) => child.classList.remove('selected'));
-      button.classList.add('selected');
-      Array.from(optionsEl.children).forEach((child, childIdx) => {
-        child.setAttribute('aria-pressed', childIdx === idx ? 'true' : 'false');
-      });
-      nextBtn.disabled = false;
+    /********** ۴) آزمون ۱۰ سؤالی **********/
+    function startTest() {
+        testQuestions = shuffle(allQuestions).slice(0, Math.min(QUESTIONS_PER_TEST, allQuestions.length));
+        currentIndex = 0;
+        answers = [];
+
+        totalTestSeconds = testQuestions.length * SECONDS_PER_QUESTION;
+        remainingTestSeconds = totalTestSeconds;
+        remainingQuestionSeconds = SECONDS_PER_QUESTION;
+
+        quizInfo.textContent = `در این آزمون ${testQuestions.length} سؤال از مباحث کلیدی (سرعت، حق تقدم، تابلوها، ایمنی) انتخاب شده است.`;
+        hide(welcomeCard);
+        hide(resultCard);
+        show(quizCard);
+
+        renderCurrentQuestion();
+        startTimerBase();
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function handleNext() {
-      if (selectedOption === null) return;
-      const current = questionsPro[currentIndex];
-      if (selectedOption === current.answer) score += 1;
+    function renderCurrentQuestion() {
+        clearTimer();
+        remainingQuestionSeconds = SECONDS_PER_QUESTION;
 
-      currentIndex += 1;
-      const total = questionsPro.length;
-      if (currentIndex < total) {
-        renderQuestion();
-      } else {
-        showSummary();
-      }
+        const total = testQuestions.length;
+        const q = testQuestions[currentIndex];
+
+        questionCounter.textContent = `سؤال ${currentIndex + 1} از ${total}`;
+
+        let html = "";
+        html += `<h3 style="margin-bottom:6px;">${q.text}</h3>`;
+        if (q.topic) {
+            html += `<span class="badge badge-topic">${q.topic}</span>`;
+        }
+        html += `<div class="options" style="margin-top:10px;">`;
+        q.options.forEach((opt, idx) => {
+            const inputId = `q_${q.id}_opt${idx}`;
+            html += `
+                <label for="${inputId}">
+                    <input type="radio" name="current-question" id="${inputId}" value="${idx}">
+                    <span>${opt}</span>
+                </label>
+            `;
+        });
+        html += `</div>`;
+
+        questionArea.innerHTML = html;
+        updateTimerUI();
+        startTimerBase();
     }
 
-    function showSummary() {
-      questionEl.textContent = 'پایان آزمون';
-      optionsEl.innerHTML = '';
-      const total = questionsPro.length;
-      const result = document.createElement('div');
-      result.className = 'summary';
-      result.innerHTML = `
-        <div>شما به <strong>${score}</strong> سؤال از ${total} سؤال پاسخ صحیح دادید.</div>
-        <div>نمره نهایی: ${(score / total * 100).toFixed(0)}٪</div>
-      `;
-      optionsEl.appendChild(result);
-      progressBar.style.width = '100%';
-      nextBtn.hidden = true;
-      restartBtn.hidden = false;
-      metaEl.textContent = 'آزمون تکمیل شد';
-      scoreEl.textContent = `امتیاز: ${score}`;
+    function startTimerBase() {
+        clearTimer();
+        timerInterval = setInterval(() => {
+            remainingQuestionSeconds = Math.max(remainingQuestionSeconds - 1, 0);
+            remainingTestSeconds = Math.max(remainingTestSeconds - 1, 0);
+            updateTimerUI();
+            if (remainingTestSeconds === 0) {
+                clearTimer();
+                autoFinishDueTime();
+            } else if (remainingQuestionSeconds === 0) {
+                handleAnswer(null);
+            }
+        }, 1000);
     }
 
-    function restartQuiz() {
-      currentIndex = 0;
-      score = 0;
-      nextBtn.hidden = false;
-      renderQuestion();
+    function updateTimerUI() {
+        timerText.textContent = `${formatSeconds(remainingTestSeconds)} تا پایان آزمون`;
+        const percent = totalTestSeconds > 0 ? (remainingTestSeconds / totalTestSeconds) * 100 : 0;
+        progressInner.style.width = percent + "%";
+        progressInner.style.transform = `scaleX(${percent / 100})`;
     }
 
-    nextBtn.addEventListener('click', handleNext);
-    restartBtn.addEventListener('click', restartQuiz);
-
-    if (Array.isArray(questionsPro) && questionsPro.length) {
-      renderQuestion();
-    } else {
-      questionEl.textContent = 'بانک سؤال یافت نشد';
-      nextBtn.disabled = true;
+    function handleNextButton() {
+        const selected = document.querySelector('input[name="current-question"]:checked');
+        if (!selected) handleAnswer(null);
+        else handleAnswer(parseInt(selected.value, 10));
     }
-  </script>
+    function handleSkipButton() { handleAnswer(null); }
+
+    function handleAnswer(selectedIndex) {
+        clearTimer();
+        const q = testQuestions[currentIndex];
+        const isCorrect = (selectedIndex !== null && selectedIndex === q.correctIndex);
+
+        answers.push({ question: q, selectedIndex, isCorrect });
+
+        currentIndex++;
+        if (currentIndex < testQuestions.length && remainingTestSeconds > 0) {
+            renderCurrentQuestion();
+        } else {
+            finishTest();
+        }
+    }
+
+    function autoFinishDueTime() {
+        const q = testQuestions[currentIndex];
+        answers.push({ question: q, selectedIndex: null, isCorrect: false });
+        for (let i = currentIndex + 1; i < testQuestions.length; i++) {
+            const qq = testQuestions[i];
+            answers.push({ question: qq, selectedIndex: null, isCorrect: false });
+        }
+        finishTest();
+    }
+
+    function finishTest() {
+        clearTimer();
+        hide(quizCard);
+        show(resultCard);
+
+        const total = answers.length;
+        const correctCount = answers.filter(a => a.isCorrect).length;
+        const wrongCount = total - correctCount;
+        const scorePercent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+        const MAX_WRONG_FOR_PASS = 1;
+        const isPass = wrongCount <= MAX_WRONG_FOR_PASS;
+
+        let scoreText = `از ${total} سؤال، <strong>${correctCount}</strong> پاسخ صحیح و <strong>${wrongCount}</strong> پاسخ غلط داشتید. `;
+        scoreText += `درصد موفقیت: <strong>${scorePercent}٪</strong>.<br><br>`;
+        scoreText += `نتیجه کلی: `;
+        scoreText += isPass
+            ? `<span class="status-pass">در این سطح قابل قبول هستید.</span>`
+            : `<span class="status-fail">برای قبولی مطمئن نیاز به تمرین بیشتر دارید.</span>`;
+        scoreSummary.innerHTML = scoreText;
+
+        summaryRow.innerHTML = "";
+        const chip1 = document.createElement("div");
+        chip1.className = "summary-chip";
+        chip1.innerHTML = `زمان کل آزمون: <strong>${formatSeconds(totalTestSeconds)}</strong>`;
+        const chip2 = document.createElement("div");
+        chip2.className = "summary-chip";
+        chip2.innerHTML = `زمان استفاده‌شده: <strong>${formatSeconds(totalTestSeconds - remainingTestSeconds)}</strong>`;
+        const chip3 = document.createElement("div");
+        chip3.className = "summary-chip";
+        chip3.innerHTML = `پیشنهاد: <strong>${wrongCount <= 3 ? "مرور هدف‌مند" : "چند سری آزمون تمرینی"}</strong>`;
+        summaryRow.appendChild(chip1);
+        summaryRow.appendChild(chip2);
+        summaryRow.appendChild(chip3);
+
+        const topicStats = {};
+        answers.forEach(a => {
+            const topic = a.question.topic || "سایر";
+            if (!topicStats[topic]) topicStats[topic] = { wrong: 0, total: 0 };
+            topicStats[topic].total += 1;
+            if (!a.isCorrect) topicStats[topic].wrong += 1;
+        });
+        topicStatsGlobal = topicStats;
+
+        topicFeedback.innerHTML = "";
+        const topics = Object.keys(topicStats);
+        if (topics.length > 0) {
+            const title = document.createElement("h3");
+            title.textContent = "روی کدام بخش‌های کتاب بیشتر تمرکز کنید؟";
+            topicFeedback.appendChild(title);
+
+            topics.forEach(topic => {
+                const stat = topicStats[topic];
+                const wrong = stat.wrong;
+                const totalTopic = stat.total;
+                let levelText;
+                if (wrong === 0) levelText = "وضعیت خوب";
+                else if (wrong === 1) levelText = "نیاز به مرور کوتاه";
+                else levelText = "نیاز به تمرکز بیشتر";
+
+                const item = document.createElement("div");
+                item.className = "topic-item";
+                item.innerHTML = `<span class="badge badge-topic">${topic}</span> - ${wrong} غلط از ${totalTopic} سؤال (${levelText})`;
+                topicFeedback.appendChild(item);
+            });
+        }
+
+        wrongQuestionsList.innerHTML = "";
+        const wrongAnswers = answers.filter(a => !a.isCorrect);
+        if (wrongAnswers.length === 0) {
+            wrongQuestionsList.textContent = "هیچ سؤال غلطی نداشتید؛ عالی است! چند آزمون دیگر هم بزنید تا تثبیت شود.";
+        } else {
+            wrongAnswers.forEach((a, idx) => {
+                const q = a.question;
+                const container = document.createElement("div");
+                container.className = "wrong-question";
+
+                const header = document.createElement("div");
+                header.className = "wrong-header";
+
+                const title = document.createElement("div");
+                title.className = "wrong-header-title";
+                title.innerHTML = `سؤال ${idx + 1}: ${q.text}`;
+
+                const btn = document.createElement("button");
+                btn.className = "btn-secondary";
+                btn.type = "button";
+                btn.textContent = "توضیح / یادگیری";
+
+                const explanationBox = document.createElement("div");
+                explanationBox.className = "explanation-box hidden";
+                const correctText = q.options[q.correctIndex] || "";
+                explanationBox.innerHTML = `
+                    <div><strong>پاسخ درست:</strong> ${correctText}</div>
+                    <div style="margin-top:4px;"><strong>توضیح:</strong> ${q.explanation || "برای این سؤال هنوز توضیح ثبت نشده است."}</div>
+                `;
+
+                btn.addEventListener("click", () => {
+                    explanationBox.classList.toggle("hidden");
+                });
+
+                header.appendChild(title);
+                header.appendChild(btn);
+                container.appendChild(header);
+                container.appendChild(explanationBox);
+                wrongQuestionsList.appendChild(container);
+            });
+        }
+
+        const weakTopicsSorted = topics
+            .map(topic => ({
+                topic,
+                wrong: topicStats[topic].wrong,
+                total: topicStats[topic].total
+            }))
+            .filter(t => t.wrong > 0)
+            .sort((a, b) => b.wrong - a.wrong);
+        weakTopicsSortedGlobal = weakTopicsSorted;
+
+        learningPlan.classList.add("hidden");
+        learningPlan.innerHTML = "";
+        purchaseError.classList.add("hidden");
+        proAccess.classList.add("hidden");
+    }
+
+    /********** ۵) ساخت برنامه یادگیری + فعال کردن آزمون ۳۰ سؤالی **********/
+    function buildLearningPlan() {
+        const name = (nameInput.value || "").trim();
+        const birthYearStr = (birthInput.value || "").trim();
+        const mobile = (mobileInput.value || "").trim();
+
+        let error = "";
+        const nowYear = new Date().getFullYear();
+        const jalaliApprox = nowYear - 621;
+        const birthYear = parseInt(birthYearStr, 10);
+
+        if (!name)       error = "لطفاً نام و نام‌خانوادگی را وارد کنید.";
+        else if (!birthYearStr || birthYearStr.length < 4) error = "سال تولد را به‌صورت چهار رقم (مثلاً ۱۳۸۳) وارد کنید.";
+        else if (isNaN(birthYear) || birthYear < 1300 || birthYear > jalaliApprox) error = "سال تولد خارج از بازه منطقی است.";
+        else if (!/^09\d{9}$/.test(mobile)) error = "شماره موبایل باید با 09 شروع شده و 11 رقم باشد.";
+
+        if (error) {
+            purchaseError.textContent = error;
+            purchaseError.classList.remove("hidden");
+            learningPlan.classList.add("hidden");
+            proAccess.classList.add("hidden");
+            return;
+        }
+
+        purchaseError.classList.add("hidden");
+
+        const ageApprox = jalaliApprox - birthYear;
+        const weak = weakTopicsSortedGlobal;
+        let planHtml = "";
+
+        if (!weak || weak.length === 0) {
+            planHtml = `
+                <strong>${name}</strong> عزیز، سطحت در این آزمون خوب بود.
+                <ul>
+                    <li>۲ تا ۳ آزمون کامل آیین‌نامه در هفته بزن.</li>
+                    <li>یک بار مرور سریع فصل تابلوها و سرعت‌ها انجام بده.</li>
+                    <li>در آخر هفته یک آزمون ۳۰ سؤالی شبیه آزمون اصلی بزن.</li>
+                </ul>
+            `;
+        } else {
+            const top1 = weak[0];
+            const top2 = weak[1] || null;
+            const sessionsPerWeek = ageApprox <= 25 ? 5 : 3;
+            const questionsPerSession = top1.wrong >= 3 ? 25 : 15;
+            let loadLevel;
+            if (ageApprox <= 20)      loadLevel = "ریتم تند و چالشی";
+            else if (ageApprox <= 30) loadLevel = "ریتم متعادل و منظم";
+            else                      loadLevel = "ریتم ملایم اما پیوسته";
+
+            planHtml += `<strong>${name}</strong> عزیز، بر اساس آزمونی که دادی و سال تولد ${birthYear}، برنامه یادگیری هوشمند زیر پیشنهاد می‌شود.`;
+            planHtml += `<br>ریتم پیشنهادی: <strong>${loadLevel}</strong>.`;
+            planHtml += "<ul>";
+            planHtml += `<li>در هفته حداقل <strong>${sessionsPerWeek} جلسه</strong> تست‌زنی (هر جلسه حدود ${questionsPerSession} سؤال).</li>`;
+            planHtml += `<li>در هر جلسه، ابتدا روی فصل <strong>«${top1.topic}»</strong> تمرکز کن (بیشترین اشتباه را داشتی).</li>`;
+            if (top2) {
+                planHtml += `<li>سپس ۵ تا ۱۰ سؤال از فصل <strong>«${top2.topic}»</strong> حل کن.</li>`;
+            }
+            planHtml += `<li>هر دو جلسه یک بار، یک مینی آزمون ۵ سؤالی ترکیبی از همه فصل‌ها بزن.</li>`;
+            planHtml += `<li>در آخر هفته، یک آزمون ۳۰ سؤالی کامل برای سنجش پیشرفت انجام بده.</li>`;
+            planHtml += "</ul>";
+        }
+        planHtml += `<div style="margin-top:6px; font-size:.8rem; color:var(--text-muted);">
+            در نسخه متصل به سرور، به‌صورت خودکار پس از هر آزمون، سطحت دوباره ارزیابی می‌شود
+            و آزمون ۳۰ سؤالی بعدی سخت‌تر و دقیق‌تر می‌شود.
+        </div>`;
+
+        learningPlan.innerHTML = planHtml;
+        learningPlan.classList.remove("hidden");
+
+        hasPremium = true;
+        proAccess.classList.remove("hidden");
+    }
+
+    /********** ۶) آزمون ۳۰ سؤالی هوشمند **********/
+    function buildProQuestionSet() {
+        if (!Array.isArray(PRO_QUESTION_BANK) || PRO_QUESTION_BANK.length === 0) {
+            return [];
+        }
+
+        let weakTopicIds = weakTopicsSortedGlobal.map(t => t.topic);
+        if (weakTopicIds.length === 0) {
+            weakTopicIds = Array.from(new Set(PRO_QUESTION_BANK.map(q => q.topic)));
+        }
+
+        let easy = PRO_QUESTION_BANK.filter(q => q.difficulty === "easy");
+        let med  = PRO_QUESTION_BANK.filter(q => q.difficulty === "medium");
+        let hard = PRO_QUESTION_BANK.filter(q => q.difficulty === "hard");
+
+        // تمرکز روی موضوعات ضعیف‌تر
+        const prioritizedWeak = PRO_QUESTION_BANK.filter(q => weakTopicIds.includes(q.topic));
+
+        let target = [];
+
+        if (proLevel === 1) {
+            target = [
+                ...shuffle(prioritizedWeak.filter(q => q.difficulty === "easy")).slice(0, 15),
+                ...shuffle(prioritizedWeak.filter(q => q.difficulty !== "easy")).slice(0, 5),
+                ...shuffle(easy).slice(0, 10)
+            ];
+        } else if (proLevel === 2) {
+            target = [
+                ...shuffle(prioritizedWeak.filter(q => q.difficulty !== "easy")).slice(0, 18),
+                ...shuffle(med).slice(0, 8),
+                ...shuffle(easy).slice(0, 4)
+            ];
+        } else {
+            // سطح سخت
+            target = [
+                ...shuffle(prioritizedWeak.filter(q => q.difficulty !== "easy")).slice(0, 20),
+                ...shuffle(hard).slice(0, 8),
+                ...shuffle(med).slice(0, 4)
+            ];
+        }
+
+        target = shuffle(target).slice(0, Math.min(PRO_QUESTIONS_PER_TEST, target.length));
+        return target;
+    }
+
+    function startProTest() {
+        if (!hasPremium) return;
+        proTestQuestions = buildProQuestionSet();
+        if (!proTestQuestions || proTestQuestions.length === 0) {
+            alert("بانک سؤالات پیشرفته (questions_pro.js) خالی است یا درست لود نشده.");
+            return;
+        }
+
+        proCurrentIndex = 0;
+        proAnswers = [];
+
+        proTotalTestSeconds = proTestQuestions.length * PRO_SECONDS_PER_QUESTION;
+        proRemainingTestSeconds = proTotalTestSeconds;
+        proRemainingQuestionSeconds = PRO_SECONDS_PER_QUESTION;
+
+        proQuizInfo.textContent = `این آزمون ۳۰ سؤالی بر اساس نتیجه آزمون سطح اولیه و سطح فعلی شما (Level ${proLevel}) طراحی شده است. هر بار سؤالات جدیدتر و دقیق‌تر می‌آیند.`;
+
+        hide(welcomeCard);
+        hide(quizCard);
+        hide(resultCard);
+        show(proQuizCard);
+
+        renderProQuestion();
+        startProTimer();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderProQuestion() {
+        clearProTimer();
+        proRemainingQuestionSeconds = PRO_SECONDS_PER_QUESTION;
+
+        const total = proTestQuestions.length;
+        const q = proTestQuestions[proCurrentIndex];
+
+        proQuestionCounter.textContent = `سؤال ${proCurrentIndex + 1} از ${total}`;
+
+        let html = `<h3 style="margin-bottom:6px;">${q.text}</h3>`;
+        if (q.topic) html += `<span class="badge badge-topic">${q.topic}</span>`;
+        html += `<div class="options" style="margin-top:10px;">`;
+        q.options.forEach((opt, idx) => {
+            const inputId = `pro_q_${q.id}_opt${idx}`;
+            html += `
+                <label for="${inputId}">
+                    <input type="radio" name="pro-current-question" id="${inputId}" value="${idx}">
+                    <span>${opt}</span>
+                </label>
+            `;
+        });
+        html += `</div>`;
+        proQuestionArea.innerHTML = html;
+
+        updateProTimerUI();
+        startProTimer();
+    }
+
+    function startProTimer() {
+        clearProTimer();
+        proTimerInterval = setInterval(() => {
+            proRemainingQuestionSeconds = Math.max(proRemainingQuestionSeconds - 1, 0);
+            proRemainingTestSeconds = Math.max(proRemainingTestSeconds - 1, 0);
+            updateProTimerUI();
+            if (proRemainingTestSeconds === 0) {
+                clearProTimer();
+                autoFinishProDueTime();
+            } else if (proRemainingQuestionSeconds === 0) {
+                handleProAnswer(null);
+            }
+        }, 1000);
+    }
+
+    function updateProTimerUI() {
+        proTimerText.textContent = `${formatSeconds(proRemainingTestSeconds)} تا پایان آزمون`;
+        const percent = proTotalTestSeconds > 0 ? (proRemainingTestSeconds / proTotalTestSeconds) * 100 : 0;
+        proProgressInner.style.width = percent + "%";
+        proProgressInner.style.transform = `scaleX(${percent / 100})`;
+    }
+
+    function handleProNext() {
+        const selected = document.querySelector('input[name="pro-current-question"]:checked');
+        if (!selected) handleProAnswer(null);
+        else handleProAnswer(parseInt(selected.value, 10));
+    }
+    function handleProSkip() { handleProAnswer(null); }
+
+    function handleProAnswer(selectedIndex) {
+        clearProTimer();
+        const q = proTestQuestions[proCurrentIndex];
+        const isCorrect = (selectedIndex !== null && selectedIndex === q.correctIndex);
+        proAnswers.push({ question: q, selectedIndex, isCorrect });
+        proCurrentIndex++;
+        if (proCurrentIndex < proTestQuestions.length && proRemainingTestSeconds > 0) {
+            renderProQuestion();
+        } else {
+            finishProTest();
+        }
+    }
+
+    function autoFinishProDueTime() {
+        const q = proTestQuestions[proCurrentIndex];
+        proAnswers.push({ question: q, selectedIndex: null, isCorrect: false });
+        for (let i = proCurrentIndex + 1; i < proTestQuestions.length; i++) {
+            const qq = proTestQuestions[i];
+            proAnswers.push({ question: qq, selectedIndex: null, isCorrect: false });
+        }
+        finishProTest();
+    }
+
+    function finishProTest() {
+        clearProTimer();
+        const total = proAnswers.length;
+        const correctCount = proAnswers.filter(a => a.isCorrect).length;
+        const wrongCount = total - correctCount;
+        const scorePercent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+        if (scorePercent >= 85 && proLevel < 3) proLevel++;
+        else if (scorePercent < 60 && proLevel > 1) proLevel--;
+
+        proAttempts++;
+
+        alert(
+            `آزمون ۳۰ سؤالی تمام شد.\n\n` +
+            `تعداد درست: ${correctCount}\n` +
+            `تعداد غلط: ${wrongCount}\n` +
+            `درصد: ${scorePercent}٪\n\n` +
+            `سطح فعلی شما برای آزمون‌های بعدی: Level ${proLevel}`
+        );
+
+        hide(proQuizCard);
+        show(resultCard);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /********** ۷) بات راهنما **********/
+    function renderHelperHome() {
+        let html = `<p>اول بگو روی کدام بخش کتاب می‌خواهی بیشتر تمرکز کنی:</p>`;
+        html += `<div class="helper-chip-row">`;
+        helperSections.forEach(sec => {
+            html += `<div class="helper-chip" data-sec="${sec.id}">${sec.title}</div>`;
+        });
+        html += `</div>`;
+        html += `<div class="helper-subtle">مثلاً «تابلوها»، «سرعت‌های مجاز» یا «سبقت».</div>`;
+        helperBody.innerHTML = html;
+
+        helperBody.querySelectorAll(".helper-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                const secId = chip.getAttribute("data-sec");
+                renderHelperSection(secId);
+            });
+        });
+    }
+
+    function renderHelperSection(secId) {
+        const sec = helperSections.find(s => s.id === secId);
+        if (!sec) return renderHelperHome();
+
+        let html = `<p><strong>${sec.title}</strong> را انتخاب کردی. حالا زیرمجموعه‌ای که می‌خواهی روی آن کار کنی را انتخاب کن:</p>`;
+        html += `<div class="helper-chip-row">`;
+        sec.subs.forEach(sub => {
+            html += `<div class="helper-chip" data-sub="${sub.id}" data-sec="${sec.id}">${sub.title}</div>`;
+        });
+        html += `</div>`;
+        html += `<div class="helper-subtle">برای برگشت، روی دکمه «راهنما» بزن و دوباره انتخاب کن.</div>`;
+
+        helperBody.innerHTML = html;
+        helperBody.querySelectorAll(".helper-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                const sid = chip.getAttribute("data-sec");
+                const subid = chip.getAttribute("data-sub");
+                renderHelperSubSection(sid, subid);
+            });
+        });
+    }
+
+    function renderHelperSubSection(secId, subId) {
+        const sec = helperSections.find(s => s.id === secId);
+        if (!sec) return renderHelperHome();
+        const sub = sec.subs.find(s => s.id === subId);
+        if (!sub) return renderHelperSection(secId);
+
+        let html = `<p><strong>${sub.title}</strong></p>`;
+        html += "<ul>";
+        sub.tips.forEach(t => { html += `<li>${t}</li>`; });
+        html += "</ul>";
+
+        if (secId === "signs" && subId === "warning-signs") {
+            html += `
+                <div class="helper-subtle" style="margin-top:8px;">
+                    مثال: شکل زیر یک تابلو اخطاری عمومی است:
+                    <div class="shape-row">
+                        <span class="shape-label">
+                            <span class="shape shape-triangle-warning"></span> اخطار خطر
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+        if (secId === "signs" && subId === "forbid-signs") {
+            html += `
+                <div class="helper-subtle" style="margin-top:8px;">
+                    مثال: دایره قرمز زیر یک تابلو ممنوعیت را نشان می‌دهد:
+                    <div class="shape-row">
+                        <span class="shape-label">
+                            <span class="shape shape-circle-forbid"></span> نمونه تابلو ممنوعیت
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+        if (secId === "overtake" && subId === "overtake-lines") {
+            html += `
+                <div class="helper-subtle" style="margin-top:8px;">
+                    مثال خط‌کشی:
+                    <div class="shape-row">
+                        <span class="shape-label">
+                            <span class="shape shape-line-solid"></span> سبقت ممنوع (خط ممتد)
+                        </span>
+                        <span class="shape-label">
+                            <span class="shape shape-line-dashed"></span> امکان سبقت (خط منقطع)
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+
+        helperBody.innerHTML = html;
+    }
+
+    /********** ۸) لایه لاگین **********/
+    function openLogin() {
+        if (loginOverlay) loginOverlay.classList.add("show");
+    }
+    function closeLogin() {
+        if (loginOverlay) loginOverlay.classList.remove("show");
+    }
+
+    /********** ۹) رویدادها **********/
+    startBtn.addEventListener("click", startTest);
+    nextBtn.addEventListener("click", handleNextButton);
+    skipBtn.addEventListener("click", handleSkipButton);
+    retryBtn.addEventListener("click", startTest);
+    buildPlanBtn.addEventListener("click", buildLearningPlan);
+
+    startProBtn.addEventListener("click", startProTest);
+    proNextBtn.addEventListener("click", handleProNext);
+    proSkipBtn.addEventListener("click", handleProSkip);
+    proExitBtn.addEventListener("click", () => {
+        clearProTimer();
+        hide(proQuizCard);
+        show(resultCard);
+    });
+
+    helperToggle.addEventListener("click", () => {
+        if (helperPanel.classList.contains("hidden")) {
+            show(helperPanel);
+            renderHelperHome();
+        } else {
+            hide(helperPanel);
+        }
+    });
+    helperClose.addEventListener("click", () => hide(helperPanel));
+
+    if (loginTrigger) loginTrigger.addEventListener("click", openLogin);
+    if (loginCancel)  loginCancel.addEventListener("click", closeLogin);
+    if (loginOverlay) {
+        loginOverlay.addEventListener("click", (e) => {
+            if (e.target === loginOverlay) closeLogin();
+        });
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
